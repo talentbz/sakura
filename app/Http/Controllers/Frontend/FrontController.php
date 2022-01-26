@@ -11,4 +11,10 @@ class FrontController extends Controller
     {
         return view('front.index');
     }
+    public function clear(Request $request)
+    {
+        \Artisan::call('route:clear');
+        \Artisan::call('view:clear');
+        return "cleared cache";
+    }
 }

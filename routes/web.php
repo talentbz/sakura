@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 //frontend
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])->name('front.home');
+Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'clear'])->name('front.clear');
 // admin dashboard
 Route::prefix('/admin')->middleware(['Admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
