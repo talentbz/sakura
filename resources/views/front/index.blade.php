@@ -9,7 +9,7 @@
     <link href="{{ URL::asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.cdnfonts.com/css/electrolux-sans" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/electrolux-sans" rel="stylesheet">
 
     <link href="{{ URL::asset('/assets/frontend/css/style.css') }}" rel="stylesheet" type="text/css" />
 </head>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="contact-info whats-app">
                     <i class="mdi mdi-whatsapp"></i>
-                    <span>Call Us:</span>
+                    <span>Whatsapp:</span>
                     <a href="#">+81-90-9345-0908</a>
                 </div>
             </div>
@@ -294,6 +294,7 @@
 
             <!-- main contents -->
             <div class="main-contents">
+                <!-- new arrivals -->
                 <div class="main-contents-title">
                     <h1>New Arriavals</h1>
                     <a href="#" class="btn btn-light waves-effect">See all</a>
@@ -419,12 +420,15 @@
                         </div>
                     </div>
                 </div>
+                <!-- /end new arrivals -->
+
+                <!-- Best Deals -->
                 <div class="main-contents-title">
                     <h1>Best Deals</h1>
                     <a href="#" class="btn btn-light waves-effect">See all</a>
                     <div class="title-border"></div>
                 </div>
-                <div class="contents-list">
+                <div class="contents-list mb-5">
                     <div class="car-list">
                         <a href="#" class="car-image">
                             <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
@@ -544,10 +548,137 @@
                         </div>
                     </div>
                 </div>
+                <!-- /end Best Deals -->
+                
+                <!-- customer voice -->
+                <div class="main-contents-title">
+                    <h1>Customer's Voice</h1>
+                    <a href="#" class="btn btn-light waves-effect">List of customer's voice</a>
+                    <div class="title-border"></div>
+                </div>
+                <div class="customer-vocie">
+                    <div class="customer-list">
+                        <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                        <div class="customer-text">
+                            <h3>TOYOTA RACTIS</h3>
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-text">
+                                <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                                <div class="overlay-border"></div>
+                                <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-list">
+                        <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                        <div class="customer-text">
+                            <h3>TOYOTA RACTIS</h3>
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-text">
+                                <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                                <div class="overlay-border"></div>
+                                <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-list">
+                        <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                        <div class="customer-text">
+                            <h3>TOYOTA RACTIS</h3>
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-text">
+                                <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                                <div class="overlay-border"></div>
+                                <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-list">
+                        <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                        <div class="customer-text">
+                            <h3>TOYOTA RACTIS</h3>
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-text">
+                                <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                                <div class="overlay-border"></div>
+                                <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-list">
+                        <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                        <div class="customer-text">
+                            <h3>TOYOTA RACTIS</h3>
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-text">
+                                <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                                <div class="overlay-border"></div>
+                                <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-list">
+                        <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                        <div class="customer-text">
+                            <h3>TOYOTA RACTIS</h3>
+                        </div>
+                        <div class="overlay">
+                            <div class="overlay-text">
+                                <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                                <div class="overlay-border"></div>
+                                <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /end customer voice -->`
             </div>
             <!-- /end main contents -->
+
+            <!-- right sidebar -->
+            <div class="right-sidebar">
+                <div class="news-box mb-2">
+                    <a href="#">
+                        <img src="{{URL::asset ('/assets/frontend/images/news_clearange.png')}}" alt="">
+                    </a>
+                </div>
+                <div class="news-box mb-2">
+                    <a href="#">
+                        <img src="{{URL::asset ('/assets/frontend/images/news_shipping.png')}}" alt="">
+                    </a>
+                </div>
+                <div class="news-box mb-2">
+                    <a href="#">
+                        <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- /end rightsidebar -->
         </div>
     </div>
+    <!-- footer section -->
+    <div class="footer">
+        <div class="footer-warpper">
+            <div class="footer-logo">
+                <a href="#"><img src="{{URL::asset ('/assets/frontend/images/logo.png')}}" alt="" width="174"></a>
+                <p>We believe in offering you the best customer service possible. We have been in the vehicle trading business for over 15 years in Japan. Our new company, established in 2011, is even better equipped to provide you with your dream vehicle. We offer you 24hour prompt and reliable service. We will also help you to find the best customised solution to meet your specific needs.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copywirter">
+        <p></p>
+    </div>
+    <!-- footer section -->
 <!-- modal section -->
 <!--  advanced search modal -->
 <div class="modal fade advanced-seach-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -585,6 +716,8 @@
         $('.car-list').eq(7).css("margin-right", 0);
         $('.car-list').eq(11).css("margin-right", 0);
         $('.car-list').eq(15).css("margin-right", 0);
+        $('.customer-list').eq(2).css("margin-right", 0);
+        $('.customer-list').eq(5).css("margin-right", 0);
     });
 </script>
 </body>
