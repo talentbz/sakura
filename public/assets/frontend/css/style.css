@@ -441,6 +441,7 @@ h3 {
 .footer-logo {
     float: left;
     width: 30.5%;
+    margin-right: 8.85%;
 }
 .footer-logo p{
     font-size: 15px;
@@ -455,4 +456,202 @@ h3 {
     font-size: 18px;
     margin-right: 25px;
     color: #fff; 
+}
+.footer-menu{
+    width: 14.7%;
+    margin-right: 8.85%;
+    float: left;
+}
+.footer-menu h3, .footer-contact h3{
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 23px;
+    color: #fff;
+}
+.footer-menu a{
+    color: #EFEFEF;
+    font-size: 17px;
+    margin-bottom: 13px;
+}
+.footer-menu .left-menu, .footer-menu .right-menu {
+    width: 50%;
+    float: left;
+    text-align: left;
+    display: inline-grid;
+}
+.footer-contact {
+    width: 37.1%;
+    float: left;
+}
+.address-contact{
+    width: 60%;
+    float: left;
+}
+.contact-left i{
+    font-size: 18px;
+    color: #E9E9E9;
+}
+.contact-list {
+    display: flex;
+}
+.contact-right {
+    float: left;
+    margin-left: 19px;
+}
+.contact-right h3{
+    font-weight: 600;
+    font-size: 17px;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+.contact-right p{
+    font-size: 15px;
+    color: #FFFFFF;
+}
+.phone-contact {
+    width: 40%;
+    float: left;
+    padding-left: 37px;
+}
+.copywirter{
+    background: #212121;
+}
+.copywirter p{
+    font-size: 17px;
+    padding: 25px 0;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+/* modal section */
+.advanced-content {
+    border: transparent;
+}
+.advanced-header {
+    background: #E10B14;
+}
+.advanced-header .modal-title, .advanced-header button{
+    color: #fff;
+}
+.form-wrapper {
+    padding: 1rem;
+}
+.search-wrapper{
+    background: #F8F8F8;
+    border-radius: 6px;
+    padding: 1rem;
+    display: flow-root;
+}
+.search-wrapper h3{
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+.custom-from-check {
+    float: left;
+    margin-right: 24px;
+}
+.custom-from-check .form-check-input{
+    width: 1.2em;
+    height: 1.2em;
+    margin-top: 0.15em;
+}
+.custom-from-check label{
+    margin: 0;
+}
+.custom-lavel {
+    float: left;
+    margin: 5px 0;
+}
+.custom-select {
+    float: left;
+}
+.lavel-s{
+    width: 30%;
+}
+.select-s {
+    width: 60%;
+}
+.lavel-m{
+    width: 20%;
+}
+.select-m{
+    width: 80%;
+}
+.custom-select select {
+    padding: 0.27rem 1.65rem 0.27rem 0.55rem;
+}
+.left-select-m {
+    width: 48%;
+    float: left;
+}
+.right-select-m {
+    width: 48%;
+    float: right;
+}
+.spec-title {
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    margin-top: 21px;
+    margin-bottom: 10px;
+}
+.spec-left, .spec-right{
+    background: #F8F8F8;
+    height: 45px;
+}
+.spec-left {
+    width: 19%;
+    float: left;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    /* text-align: center; */
+}
+.spec-left label{
+    padding: 13px 0;
+    padding-left: 14px;
+}
+.spec-right {
+    width: 80%;
+    float: right;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.spec-select select{
+    padding: 0.27rem 1.65rem 0.27rem 0.55rem;
+}
+.spec-select {
+    width: 40%;
+    float: left;
+    margin-left: 0.5rem;
+    padding-top: 7px;
+}
+.spec-fuel {
+    width: 82%;
+}
+.spec-right .custom-from-check{
+    margin-left: 0.5rem;
+    padding: 13px 6px;
+    margin-right: 0;
+}
+.spec-right input{
+    width: 80%;
+    margin-left: 0.5rem;
+    margin-top: 9px;
+}
+.modal-submit {
+    width: 170px;
+    /* margin: 10px auto; */
+    margin: auto;
+    margin-top: 29px;
+}
+.modal-submit button{
+    background: #EF1923 !important;
+    width: 100%;
+    font-size: 18px;
+}
+.modal-submit i{
+    position: relative;
+    top: 3px;
+    margin-left: 6px;
 }
