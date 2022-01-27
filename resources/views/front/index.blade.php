@@ -10,7 +10,7 @@
     <!-- Icons Css -->
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://fonts.cdnfonts.com/css/electrolux-sans" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
     <link href="{{ URL::asset('/assets/frontend/css/style.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -179,7 +179,7 @@
                         <div class="search-category">
                             <a href="#" class="mb-3">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                                <p>Bus (10seats +)</p><span>(549)</span>
+                                <p>Bus</p><span>(549)</span>
                             </a>
                             <a href="#" class="mb-3">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
