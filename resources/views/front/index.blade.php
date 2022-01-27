@@ -11,7 +11,7 @@
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://fonts.cdnfonts.com/css/electrolux-sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
-    <link href="{{ URL::asset('/assets/frontend/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/frontend/css/style.css?v1.2') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <!-- top menu setion -->
