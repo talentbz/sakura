@@ -1187,3 +1187,23 @@ h3 {
         margin-right: 6px;
     }
 }
+@media only screen and (max-width: 360px) {
+    .banner-img img {
+        width: 339px;
+    }
+    .whats-app {
+        margin-left: 10px;
+    }
+    .hero {
+        height: 262px;
+    }
+    .select-width, .select-width-last {
+        width: 34.2%;
+    }
+    .search-category a {
+        width: 75px;
+    }
+    .car-list {
+        margin-right: 7px;
+    }
+}
