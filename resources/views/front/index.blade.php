@@ -18,6 +18,18 @@
     <div class="top-menu">
         <div class="top-menu-wrapper">
             <div class="top-left">
+                <div class="topnav" id="myTopnav">
+                    <a href="#" class="active">Home</a>
+                    <a href="#">Stock</a>
+                    <a href="#">Payment</a>
+                    <a href="#">News</a>
+                    <a href="#">Agents</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">Contact us</a>
+                </div>
+                <a href="javascript:void(0);" class="mobile-icon" onclick="mobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </a>
                 <div class="contact-info call-us">
                     <i class="mdi mdi-whatsapp"></i>
                     <span>Call Us:</span>
@@ -763,7 +775,7 @@
             <div class="modal-body advanced-body">
                 <form action="">
                     <div class="form-wrapper row">
-                        <div class="col-md-6">
+                        <div class="modal-section col-md-6 col-sm-12">
                             <div class="search-wrapper mb-4">
                                 <h3>Search by Free Keywords</h3>
                                 <input type="text" class="form-control">
@@ -863,7 +875,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="modal-section col-md-6 col-sm-12">
                             <div class="search-wrapper mb-4">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -949,13 +961,13 @@
                             </div>
                             <div class=specification-list>
                                 <div class="spec-left mb-1">
-                                    <label for="">Engine Code</label>
+                                    <label for="" class="txt-2">Engine Code</label>
                                 </div>
                                 <div class="spec-right mb-1">
                                     <input type="text" class="form-control form-control-sm">
                                 </div>
                                 <div class="spec-left mb-1">
-                                    <label for="">Engine Size</label>
+                                    <label for="" class="txt-2">Engine Size</label>
                                 </div>
                                 <div class="spec-right mb-1">
                                     <div class="spec-select">
@@ -976,7 +988,7 @@
                                     </div>
                                 </div>
                                 <div class="spec-left mb-1">
-                                    <label for="">Drive Type</label>
+                                    <label for="" class="txt-2">Drive Type</label>
                                 </div>
                                 <div class="spec-right mb-1">
                                     <div class="custom-from-check">
@@ -1052,7 +1064,32 @@
         $('.car-list').eq(15).css("margin-right", 0);
         $('.customer-list').eq(2).css("margin-right", 0);
         $('.customer-list').eq(5).css("margin-right", 0);
+        if($( window ).width() <= 425){
+            $('.car-list').eq(3).css("display", "none");
+            $('.car-list').eq(4).css("display", "none");
+            $('.car-list').eq(5).css("display", "none");
+            $('.car-list').eq(6).css("display", "none");
+            $('.car-list').eq(7).css("display", "none");
+            $('.car-list').eq(11).css("display", "none");
+            $('.car-list').eq(12).css("display", "none");
+            $('.car-list').eq(13).css("display", "none");
+            $('.car-list').eq(14).css("display", "none");
+            $('.car-list').eq(15).css("display", "none");
+            $('.customer-list').eq(2).css("display", "none");
+            $('.customer-list').eq(3).css("display", "none");
+            $('.customer-list').eq(4).css("display", "none");
+            $('.customer-list').eq(5).css("display", "none");
+        }
+ 
     });
+    function mobileMenu() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
 </script>
 </body>
 </html>
