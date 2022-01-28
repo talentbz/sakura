@@ -31,14 +31,18 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <div class="contact-info call-us">
-                    <i class="mdi mdi-whatsapp"></i>
+                    <a href="#">
+                        <i class="bx bxs-phone-call"></i>    
+                    </a>
                     <span>Call Us:</span>
-                    <a href="#">+81-29-868-3668</a>
+                    <a class="mobile-no" href="#">+81-29-868-3668</a>
                 </div>
                 <div class="contact-info whats-app">
-                    <i class="mdi mdi-whatsapp"></i>
+                    <a href="#">
+                        <i class="mdi mdi-whatsapp"></i>
+                    </a>
                     <span>Whatsapp:</span>
-                    <a href="#">+81-90-9345-0908</a>
+                    <a class="whatsapp-no" href="#">+81-90-9345-0908</a>
                 </div>
             </div>
             <div class="top-right">
@@ -668,6 +672,12 @@
                     <a href="#">
                         <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">
                     </a>
+                </div>
+                <div class="news-box mb-2">
+                    <div class="fb-wrapper">
+                        <h3>FaceBook</h3>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSakuraMotorsCo.Ltd&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=846808562582364" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
                 </div>
             </div>
             <!-- /end rightsidebar -->

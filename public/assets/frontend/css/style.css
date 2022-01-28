@@ -23,6 +23,9 @@ h3 {
     color: #fff;
     float: left;
 }
+.call-us{
+    margin-top: 6px;
+}
 .contact-info i{
     font-size: 24px;
 }
@@ -435,6 +438,20 @@ h3 {
 }
 .news-box img{
     width: 100%;
+}
+.news-box .fb-wrapper{
+    width: 100%;
+}
+.news-box iframe{
+    width: 100%;
+}
+.fb-wrapper h3{
+    font-size: 19px;
+    background: #4267B2;
+    border-radius: 6px 6px 0px 0px;
+    color: #fff;
+    padding: 11px 21px;
+    margin: 0;
 }
 /* footer section */
 .footer{
@@ -862,6 +879,9 @@ h3 {
         margin-right: 30px;
         margin-top: 20px;
     }
+    .fb-wrapper {
+        display: none;
+    }
     .footer-logo {
         width: 40%;
     }
@@ -913,7 +933,7 @@ h3 {
     .top-menu-wrapper, .hero-wrapper, .contents-wrapper, .footer-warpper {
         width: 90%;
     }
-    .contact-info span, .contact-info a{
+    .contact-info span, .contact-info .mobile-no, .contact-info .whatsapp-no{
         display: none;
     }
     .top-left {
@@ -1096,6 +1116,9 @@ h3 {
     .news-box {
         width: 100%;
     }
+    .fb-wrapper {
+        display: block;
+    }
     .footer-warpper {
         margin-top: 36px !important;
         margin-bottom: 44px !important;
@@ -1205,5 +1228,37 @@ h3 {
     }
     .car-list {
         margin-right: 7px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .mobile-icon{
+        margin-right: 10px;
+    }
+    .whats-app {
+        margin-left: 8px;
+    }
+    .banner-img img {
+        width: 300px;
+        margin-top: 5px;
+    }
+    .select-width, .select-width-last {
+        width: 32.2%;
+    }
+    .search-category a {
+        width: 71px;
+        margin-right: 1px;
+        margin-bottom: 1px !important;
+    }
+    .car-list {
+        margin-right: 6px;
+    }
+    .customer-list {
+        margin-right: 5px;
+    }
+    .main-contents-title h1 {
+        font-size: 17px;
+    }
+    .main-contents-title a {
+        font-size: 11px;
     }
 }
