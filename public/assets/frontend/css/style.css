@@ -118,15 +118,13 @@ h3 {
     width: 800px;
 }
 
-/* /end head */
+/* /end head*/
 
 /* contents section */
 .contents-wrapper {
     width: 81.47%;
-    /* margin: 25px auto; */
+    margin: 25px auto;
     display: flex;
-    margin-left: 186px;
-    margin-right: 186px;
     margin-top: 64px;
 }
 /* left sidebar */
