@@ -11,7 +11,7 @@
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://fonts.cdnfonts.com/css/electrolux-sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
-    <link href="{{ URL::asset('/assets/frontend/css/style.css?v1.23') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/frontend/css/style.css?') }}{{ time() }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <!-- top menu setion -->
@@ -35,14 +35,14 @@
                         <i class="bx bxs-phone-call"></i>    
                     </a>
                     <span>Call Us:</span>
-                    <a class="mobile-no" href="#">+81-29-868-3668</a>
+                    <a class="mobile-no" href="tel:+81-29-868-3668">+81-29-868-3668</a>
                 </div>
                 <div class="contact-info whats-app">
                     <a href="#">
                         <i class="mdi mdi-whatsapp"></i>
                     </a>
                     <span>Whatsapp:</span>
-                    <a class="whatsapp-no" href="#">+81-90-9345-0908</a>
+                    <a class="whatsapp-no" href="https://wa.me/819093450908">+81-90-9345-0908</a>
                 </div>
             </div>
             <div class="top-right">
@@ -118,7 +118,7 @@
                     </div>
                     <form action="" class="custom-search">
                         <div class="form-content">
-                            <input type="text" class="form-control search-input" placeholder="Search keywords"> 
+                            <input type="text" class="form-control search-input" placeholder="Keywords"> 
                             <span class="bx bx-search-alt"></span>
                             <p class="req">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
                         </div>
@@ -144,15 +144,15 @@
                                 <div class="select-width">
                                     <select class="form-select">
                                         <option>Any</option>
-                                        <option>Large select</option>
-                                        <option>Small select</option>
+                                        <option>1991</option>
+                                        <option>1992</option>
                                     </select>
                                 </div>
                                 <div class="select-width-last">
                                     <select class="form-select">
                                         <option>Any</option>
-                                        <option>Large select</option>
-                                        <option>Small select</option>
+                                        <option>1991</option>
+                                        <option>1992</option>
                                     </select>
                                 </div>
                             </div>
@@ -162,15 +162,15 @@
                                 <div class="select-width">
                                     <select class="form-select">
                                         <option>Any</option>
-                                        <option>Large select</option>
-                                        <option>Small select</option>
+                                        <option>$1,000</option>
+                                        <option>$10,000</option>
                                     </select>
                                 </div>
                                 <div class="select-width-last">
                                     <select class="form-select">
                                         <option>Any</option>
-                                        <option>Large select</option>
-                                        <option>Small select</option>
+                                        <option>$10,000</option>
+                                        <option>$20,000</option>
                                     </select>
                                 </div>
                             </div>
@@ -336,7 +336,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -348,7 +347,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -360,7 +358,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -372,7 +369,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -395,7 +391,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -407,7 +402,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -419,7 +413,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -431,7 +424,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -464,7 +456,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -476,7 +467,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -488,7 +478,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -500,7 +489,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -523,7 +511,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -535,7 +522,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -547,7 +533,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -559,7 +544,6 @@
                             <a href="#">
                                 <h3>MITSUBISHI ROSA BUS</h3>
                             </a>
-                            <p>176000 km Manual BE436F-30128</p>
                             <h3>FOB: $8,036</h3>
                         </div>
                     </div>
@@ -676,7 +660,9 @@
                 <div class="news-box mb-2">
                     <div class="fb-wrapper">
                         <h3>FaceBook</h3>
-                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSakuraMotorsCo.Ltd&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=846808562582364" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <div id="fb-root"></div>
+                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=846808562582364&autoLogAppEvents=1" nonce="0rEHGYlH"></script>
+                        <div class="fb-page" data-href="https://www.facebook.com/SakuraMotorsCo.Ltd" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SakuraMotorsCo.Ltd" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SakuraMotorsCo.Ltd">Sakura Motors Co.,Ltd</a></blockquote></div>
                     </div>
                 </div>
             </div>

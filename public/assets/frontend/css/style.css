@@ -69,7 +69,7 @@ h3 {
 }
 .hero {
     background: url('../images/banner.png');
-    height: 414px;
+    height: 375px;
 }
 .hero-wrapper {
     width: 81.47%;
@@ -94,6 +94,9 @@ h3 {
     font-size: 18px;
     margin-right: 33px;
 }
+.menu ul li a:hover {
+    color: #E10B14;       
+}
 .menu ul li .last-menu{
     margin: 0;
 }
@@ -101,8 +104,7 @@ h3 {
     clear: both;
 }
 .banner-desc h1{
-    font-size: 50px;
-    line-height: 56px;
+    font-size: 40px;
     color: #fff;
     text-align: center;
     font-family: Electrolize;
@@ -110,7 +112,10 @@ h3 {
 }
 .banner-img{
     text-align: center;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+}
+.banner-img img{
+    width: 800px;
 }
 
 /* /end head */
@@ -126,7 +131,7 @@ h3 {
 }
 /* left sidebar */
 .left-sidebar {
-    width: 24.5%;
+    width: 17%;
     float: left;
 }
 .search-car {
@@ -138,10 +143,10 @@ h3 {
 }
 .search-title h3 {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 18px;
     color: #fff;
-    padding: 22px 0;
+    padding: 15px 0;
     margin-bottom: 0;
     margin-left: 25px;
 }
@@ -152,58 +157,62 @@ h3 {
     border-bottom-right-radius: 6px;
 }
 .search-input {
-    padding: 9px 0;
-    font-size: 18px;
-    padding-left: 25px;
-    border-radius: 6px;
+    padding: 6px 0;
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 4px;
 }
 .custom-search .form-content{
-    padding: 17px 19px;
+    padding: 17px 12px;
 }
 .form-content span {
     position: absolute;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 38px;
-    right: 35px;
-    top: 22px;
+    right: 25px;
+    top: 17px;
     color: #b9bfc4;
 }
 .form-content .req {
-    font-size: 15px;
+    font-size: 12px;
     line-height: 18px;
     color: #fff;
-    margin-top: 14px;
+    margin-top: 6px;
+    margin-bottom: 0;
 }
 .select-search {
-    padding: 0 19px
+    padding: 0 12px;
 }
 .select-search .input-group span{
     background: #920000;
     color: #fff;
     border: transparent;
-    width: 105px;
-    font-size: 17px;
-    padding: 0 27px;
+    width: 72px;
+    font-size: 15px;
 }
 .select-width, .select-width-last {
-    width: 31%;
+    width: 34%;
 }
 .select-width select{
     border-radius: unset;
 }
+.select-search select, .select-width select, .select-width-last select{
+    background-position: right 0.2rem center;
+}
 .select-width-last {
-    margin-left: 23px !important;
+    margin-left: 5px !important;
 }
 .select-width-last select{
     border-top-left-radius: unset;
     border-bottom-left-radius: unset;
 }
 .advance-search {
+    margin-top: 12px;
     text-align: right;
 }
 .advance-search a {
     color: #fff;
-    font-size: 20px;
+    font-size: 15px;
 }
 .search-submit{
     width: 100%;
@@ -211,11 +220,12 @@ h3 {
     background: #081803;
     color: #fff;
     border-radius: 0px 0px 6px 6px;
-    font-size: 20px;
-    padding: 16px 0;
+    font-size: 18px;
+    padding: 10px 0;
 }
 .search-submit i{
-    margin-left: 10px;
+    margin-left: 3px;
+    font-size: 14px;
 }
 .search-type, .search-maker {
     margin-top: 30px;
@@ -229,12 +239,15 @@ h3 {
     border-top-left-radius: 6px;
 }
 .search-category {
-    padding: 22px 25px;
+    padding: 22px 12px;
 }
 .search-category a{
     color: #4B4B4B;
-    font-size: 18px;
+    font-size: 15px;
     display: block;
+}
+.search-category a:hover {
+    color: #E10B14;
 }
 .search-category img{
     float: left;
@@ -250,9 +263,9 @@ h3 {
 /* /end left sidebar */
 /* main contents */
 .main-contents {
-    width: 51%;
+    width: 66%;
     float: left;
-    padding: 0 30px;
+    padding: 0 15px;
 }
 .main-contents-title h1 {
     float: left;
@@ -275,18 +288,18 @@ h3 {
     display: flex;
 }
 .contents-list {
-    margin-top: 17px;
+    margin-top: 10px;
     display: inline-block;
     width: 100%;
 }
 .car-list {
-    width: 23%;
+    width: 24%;
     border-radius: 6px;
     background: #FFFFFF;
     box-shadow: 0px 4px 44px rgb(0 0 0 / 6%);
     float: left;
-    margin-top: 20px;
-    margin-right: 2.66%;
+    margin-right: 1.33%;
+    margin-bottom: 10px;
 }
 .car-list img{
     width: 100%;
@@ -298,7 +311,7 @@ h3 {
     opacity: .5;
 }
 .car-desc{
-    padding: 18px 13px;
+    padding: 4px 7px;
 }
 .car-desc h3{
     color: #E10B14;
@@ -434,7 +447,7 @@ h3 {
 /* right sidebar */
 .right-sidebar{
     float: left;
-    width: 24.5%;
+    width: 17%;
 }
 .news-box img{
     width: 100%;
@@ -443,7 +456,7 @@ h3 {
     width: 100%;
 }
 .news-box iframe{
-    width: 100%;
+    width: 100% !important;
 }
 .fb-wrapper h3{
     font-size: 19px;
@@ -686,12 +699,39 @@ h3 {
 .topnav {
     display: none;
 }
-  
+.select-width .form-select, .select-width-last .form-select{
+    padding: 0.47rem 0.45rem 0.47rem 0.45rem;
+}
 
 /* responsive */
+@media only screen and (max-width: 1680px) {
+    .select-search select, .select-width select, .select-width-last select{
+        font-size: 12px !important;
+        background-size: 8px 12px;
+    }
+    .select-search .input-group span {
+        width: 62px;
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 1600px) {
+    .select-search select, .select-width select, .select-width-last select{
+        font-size: 12px !important;
+    }
+    .select-width, .select-width-last {
+        width: 33%;
+    }
+}
 @media only screen and (max-width: 1440px) {
-    .hero{
-        height: 389px;
+    .hero-wrapper, .top-menu-wrapper, .contents-wrapper {
+        width: 88%;
+    } 
+    .select-width, .select-width-last {
+        width: 34%;
+    }
+    .search-title h3 {
+        font-size: 16px;
+        margin-left: 18px;
     }
     .hero-wrapper .logo img{
         width: 82%;
@@ -700,7 +740,6 @@ h3 {
         font-size: 17px;
     }
     .banner-desc h1 {
-        font-size: 45px;
         padding-top: 20px;
     }
     .contents-wrapper {
@@ -715,10 +754,14 @@ h3 {
         right: 28px;
         top: 17px;
     }
+    .custom-search .form-content {
+        padding: 17px 6px;
+    }
+    .select-search {
+        padding: 0px 6px;
+    }
     .select-search .input-group span {
-        width: 90px;
-        font-size: 15px;
-        padding: 0 18px;
+        
     }
     .select-width-last {
         margin-left: 4px !important;
@@ -776,9 +819,14 @@ h3 {
         font-size: 15px;
     }
 }
+@media only screen and (max-width: 1366px) {
+    .hero-wrapper, .top-menu-wrapper, .contents-wrapper {
+        width: 93%;
+    }
+}
 @media only screen and (max-width: 1280px) {
     .top-menu-wrapper, .hero-wrapper, .contents-wrapper, .footer-warpper  {
-        width: 1100px;
+        width: 94%;
     }
     .contact-info i, .social i {
         font-size: 20px;
@@ -797,11 +845,14 @@ h3 {
         width: 75%;
     }
     .hero {
-        height: 360px;
+        height: 347px;
     }
     .banner-desc h1 {
-        font-size: 40px;
+        font-size: 37px;
     }    
+    .select-width .form-select, .select-width-last .form-select {
+        padding: 0.47rem 0.45rem 0.47rem 0.25rem;
+    }
     .banner-img img{
         width: 750px;
     }
@@ -813,16 +864,19 @@ h3 {
         padding-bottom: 7px;
     }
     .select-width, .select-width-last {
-        width: 30%;
+        width: 33%;
     }
     .select-width-last {
-        margin-left: 2px !important;
+        margin-left: 4px !important;
     }
     .main-contents-title a {
         font-size: 12px;
     }
 }
 @media only screen and (max-width: 1024px) {
+    .hero {
+        height: 300px;
+    }
     .top-menu-wrapper {
         width: 900px;
     }
@@ -847,7 +901,7 @@ h3 {
         margin-right: 23px;
     }
     .banner-desc h1 {
-        font-size: 35px;
+        font-size: 32px;
     }
     .banner-img {
         margin-top: 0;
@@ -855,20 +909,17 @@ h3 {
     .banner-img img {
         width: 620px;
     }
-    .banner-desc h1 {
-        font-size: 35px;
-    }
-    .hero {
-        height: 320px;
+    .select-width, .select-width-last {
+        width: 34%;
     }
     .search-title h3 {
         margin-left: 21px;
     }
     .left-sidebar {
-        width: 30%;
+        width: 25%;
     }
     .main-contents {
-        width: 70%;
+        width: 75%;
     }
     .right-sidebar {
         width: 100%;
@@ -949,6 +1000,9 @@ h3 {
     .left-sidebar, .main-contents {
         width: 100%;
     }
+    .custom-search .form-content, .select-search {
+        padding: 17px 12px;
+    }
     .search-title h3 {
         color: #201E1E;
     }
@@ -993,7 +1047,7 @@ h3 {
         margin-top: 20px;
     }
     .select-width, .select-width-last {
-        width: 43%;
+        width: 45%;
     }
     .news-box {
         width: 30%;
@@ -1048,7 +1102,10 @@ h3 {
         margin: 20px auto;  
     }
     .select-width, .select-width-last {
-        width: 36.5%;
+        width: 40.5%;
+    }
+    .select-width-last {
+        margin-left: 8px !important;
     }
     .search-car-title {
         padding-top: 15px;
@@ -1169,6 +1226,15 @@ h3 {
     .car-list{
         margin-right: 8px;
     }
+    .select-width, .select-width-last {
+        width: 40%;
+    }
+    .advance-search{
+        margin-bottom: 0!important;
+    }
+    .news-box{
+        margin-top: 0;
+    }
 }
 @media only screen and (max-width: 412px) {
     .whats-app {
@@ -1183,7 +1249,7 @@ h3 {
         margin-left: 18px;
     }
     .select-width, .select-width-last {
-        width: 35.8%;
+        width: 39.7%;
     }
     .search-category a {
         width: 83px;
@@ -1193,13 +1259,16 @@ h3 {
     .search-category a {
         width: 82px;
     }
+    .select-width, .select-width-last {
+        width: 39.5%;
+    }
 }
 @media only screen and (max-width: 375px) {
     .whats-app {
         margin-left: 14px;
     }
     .select-width, .select-width-last {
-        width: 35%;
+        width: 39.1%;
     }
     .search-category a {
         width: 78px;
@@ -1221,7 +1290,7 @@ h3 {
         height: 262px;
     }
     .select-width, .select-width-last {
-        width: 34.2%;
+        width: 38.6%;
     }
     .search-category a {
         width: 75px;
@@ -1242,7 +1311,7 @@ h3 {
         margin-top: 5px;
     }
     .select-width, .select-width-last {
-        width: 32.2%;
+        width: 37.2%;
     }
     .search-category a {
         width: 71px;
