@@ -193,31 +193,31 @@
                     </div>
                     <div class="search-type-contents">
                         <div class="search-category">
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
                                 <p>Bus</p><span>(549)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
                                 <p>Truck</p><span>(2,016)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
                                 <p>Van</p><span>(1,002)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
                                 <p>Sub</p><span>(102)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
                                 <p>Sedan</p><span>(4,386)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_pickup.png')}}" alt="">
                                 <p>Pick up</p><span>(549)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/s_machinery.png')}}" alt="">
                                 <p>Machinery </p><span>(12)</span>
                             </a>
@@ -237,63 +237,63 @@
                     </div>
                     <div class="search-maker-contents">
                         <div class="search-category">
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_toyota.png')}}" alt="">
                                 <p>Toyoda</p><span>(549)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_nissan.png')}}" alt="">
                                 <p>Nissan</p><span>(2,016)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_mitsubishi.png')}}" alt="">
                                 <p>Mitsubishi</p><span>(1,002)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_honda.png')}}" alt="">
                                 <p>Honda</p><span>(102)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_mazda.png')}}" alt="">
                                 <p>Mazda</p><span>(4,386)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_subaru.png')}}" alt="">
                                 <p>Subaru</p><span>(549)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_suzuki.png')}}" alt="">
                                 <p>Suzuki</p><span>(12)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_isuzu.png')}}" alt="">
                                 <p>Isuzu</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_daihatsu.png')}}" alt="">
                                 <p>Daihatsu</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_hino.png')}}" alt="">
                                 <p>Hino</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_udtrucks.png')}}" alt="">
                                 <p>Ud Trucks</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_mercedes.png')}}" alt="">
                                 <p>Mercedes benz</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_bmw.png')}}" alt="">
                                 <p>Bmw</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_audi.png')}}" alt="">
                                 <p>Audi</p><span>(50)</span>
                             </a>
-                            <a href="#" class="mb-3">
+                            <a href="#" class="mb-1">
                                 <img src="{{URL::asset ('/assets/frontend/images/m_chrysler.png')}}" alt="">
                                 <p>Chrysler</p><span>(50)</span>
                             </a>
@@ -673,29 +673,12 @@
     <div class="footer">
         <div class="footer-warpper">
             <div class="footer-logo">
-                <a href="#"><img src="{{URL::asset ('/assets/frontend/images/logo.png')}}" alt="" width="174"></a>
+                <a href="#">Sakura Motors</a>
                 <p>We believe in offering you the best customer service possible. We have been in the vehicle trading business for over 15 years in Japan. Our new company, established in 2011, is even better equipped to provide you with your dream vehicle. We offer you 24hour prompt and reliable service. We will also help you to find the best customised solution to meet your specific needs.</p>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-menu">
-                <h3>Quick Link</h3>
-                <div class="footer-menu-list">
-                    <div class="left-menu">
-                        <a href="#">Home</a>
-                        <a href="#">Stock</a>
-                        <a href="#">Company</a>
-                        <a href="#">Payment</a>
-                    </div>
-                    <div class="right-menu">
-                        <a href="#">News</a>
-                        <a href="#">Agents</a>
-                        <a href="#">Gallery</a>
-                        <a href="#">Contact Us</a>
-                    </div>
                 </div>
             </div>
             <div class="footer-contact">
@@ -717,7 +700,7 @@
                               </div>  
                               <div class="contact-right">
                                   <h3>Email:</h3>
-                                  <p>nfo@sakuramotors.com</p>
+                                  <p>info@sakuramotors.com</p>
                               </div>
                         </div>
                         <div class="contact-list">
