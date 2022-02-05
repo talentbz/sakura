@@ -1,5 +1,5 @@
 body {
-    font-family: Electrolux Sans;
+    font-family: Electrolux Sans Regular;
     font-style: normal;
     background: #E5E5E5;
 }
@@ -479,9 +479,9 @@ h3 {
     margin-right: 8.85%;
 }
 .footer-logo a {
-    font-size: 30px;
+    font-size: 23px;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
 }
 .footer-logo p{
     font-size: 15px;
@@ -704,7 +704,9 @@ h3 {
 .select-width .form-select, .select-width-last .form-select{
     padding: 0.47rem 0.45rem 0.47rem 0.45rem;
 }
-
+.modal.show .modal-dialog {
+    /* max-width: 1000px; */
+}
 /* responsive */
 @media only screen and (max-width: 1680px) {
     .select-search select, .select-width select, .select-width-last select{
