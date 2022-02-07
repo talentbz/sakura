@@ -2,7 +2,7 @@
 @section('title') User List @endsection
 @section('css')
     <link href="{{ URL::asset('/assets/libs/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ URL::asset('/assets/admin/pages/vehicle/create.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/admin/pages/vehicle/create.css?') }}{{ time() }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
