@@ -1,0 +1,9 @@
+.detail-wrapper {
+    width: 1340px;
+    margin: auto;
+}
+.car-feature .form-check-input[type=checkbox] {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 5px;
+}
