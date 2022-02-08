@@ -6,3 +6,6 @@
     height: 1.2em;
     margin-right: 5px;
 }
+.fileinput-upload-button {
+    display: none !important;
+}

@@ -102,5 +102,6 @@ return [
     'fuel_type' =>[
         'Diesel', 'Electric', 'Gasoline', 'Hybrid', 'Petrol'
     ],
+    
 
 ];
