@@ -29,7 +29,7 @@ class TestCommand extends Command
      */
     protected $signature = 'test
         {--without-tty : Disable output to TTY}
-        {--parallel : Indicates if the tests should run in parallel}
+        {--p|parallel : Indicates if the tests should run in parallel}
         {--recreate-databases : Indicates if the test databases should be re-created}
     ';
 
@@ -68,19 +68,12 @@ class TestCommand extends Command
             throw new RequirementsException('Running Collision ^5.0 artisan test command requires at least Laravel ^8.0.');
         }
 
-        if ($this->option('parallel')) {
-            // @phpstan-ignore-next-line
-            if ((int) \Illuminate\Foundation\Application::VERSION[0] < 9) {
-                throw new RequirementsException('Running tests in parallel requires at least Laravel ^9.0.');
+        if ($this->option('parallel') && !$this->isParallelDependenciesInstalled()) {
+            if (!$this->confirm('Running tests in parallel requires "brianium/paratest". Do you wish to install it as a dev dependency?')) {
+                return 1;
             }
 
-            if (!$this->isParallelDependenciesInstalled()) {
-                if (!$this->confirm('Running tests in parallel requires "brianium/paratest". Do you wish to install it as a dev dependency?')) {
-                    return 1;
-                }
-
-                $this->installParallelDependencies();
-            }
+            $this->installParallelDependencies();
         }
 
         $options = array_slice($_SERVER['argv'], $this->option('without-tty') ? 3 : 2);
@@ -97,10 +90,7 @@ class TestCommand extends Command
             ),
             null,
             // Envs ...
-            $parallel ? [
-                'LARAVEL_PARALLEL_TESTING'                    => 1,
-                'LARAVEL_PARALLEL_TESTING_RECREATE_DATABASES' => $this->option('recreate-databases'),
-            ] : [],
+            $parallel ? $this->paratestEnvironmentVariables() : $this->phpunitEnvironmentVariables(),
         ))->setTimeout(null);
 
         try {
@@ -127,23 +117,17 @@ class TestCommand extends Command
      */
     protected function binary()
     {
-        switch (true) {
-            case $this->option('parallel'):
-                $command = 'vendor/brianium/paratest/bin/paratest';
-                break;
-            case class_exists(\Pest\Laravel\PestServiceProvider::class):
-                $command = 'vendor/pestphp/pest/bin/pest';
-                break;
-            default:
-                $command = 'vendor/phpunit/phpunit/phpunit';
-                break;
+        if (class_exists(\Pest\Laravel\PestServiceProvider::class)) {
+            $command = $this->option('parallel') ? ['vendor/pestphp/pest/bin/pest', '--parallel'] : ['vendor/pestphp/pest/bin/pest'];
+        } else {
+            $command = $this->option('parallel') ? ['vendor/brianium/paratest/bin/paratest'] : ['vendor/phpunit/phpunit/phpunit'];
         }
 
         if ('phpdbg' === PHP_SAPI) {
-            return [PHP_BINARY, '-qrr', $command];
+            return array_merge([PHP_BINARY, '-qrr'], $command);
         }
 
-        return [PHP_BINARY, $command];
+        return array_merge([PHP_BINARY], $command);
     }
 
     /**
@@ -179,6 +163,7 @@ class TestCommand extends Command
     {
         $options = array_values(array_filter($options, function ($option) {
             return !Str::startsWith($option, '--env=')
+                && !Str::startsWith($option, '-p')
                 && !Str::startsWith($option, '--parallel')
                 && !Str::startsWith($option, '--recreate-databases');
         }));
@@ -191,6 +176,29 @@ class TestCommand extends Command
             "--configuration=$file",
             "--runner=\Illuminate\Testing\ParallelRunner",
         ], $options);
+    }
+
+    /**
+     * Get the array of environment variables for running PHPUnit.
+     *
+     * @return array
+     */
+    protected function phpunitEnvironmentVariables()
+    {
+        return [];
+    }
+
+    /**
+     * Get the array of environment variables for running Paratest.
+     *
+     * @return array
+     */
+    protected function paratestEnvironmentVariables()
+    {
+        return [
+            'LARAVEL_PARALLEL_TESTING'                    => 1,
+            'LARAVEL_PARALLEL_TESTING_RECREATE_DATABASES' => $this->option('recreate-databases'),
+        ];
     }
 
     /**

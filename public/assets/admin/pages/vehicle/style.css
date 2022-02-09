@@ -1,0 +1,9 @@
+#datatable th{
+    text-align: center;
+}
+#datatable td{
+    vertical-align: baseline;
+}
+.edit {
+    margin-right: 12px;
+}

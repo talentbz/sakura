@@ -3,7 +3,7 @@
 @section('css')
     <link href="{{ URL::asset('/assets/admin/plugin/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" rel="stylesheet" type="text/css">
-    <link href="{{ URL::asset('/assets/admin/pages/vehicle/create.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/admin/pages/vehicle/edit.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
@@ -42,6 +42,9 @@
                                             <div class="col-md-8">
                                                 <select id="subcategory" class="form-select" name="model_type">
                                                     <option value="">select</option>
+                                                    @if(!is_null($data->model_type))
+                                                        <option value="{{$data->model_type}}" selected>{{$data->model_type}}</option>
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -164,8 +167,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="drive_type">
                                                     <option value="">Select Drive Type</option>
-                                                    <option value="2 Wheel">2 Wheel</option>
-                                                    <option value="4 Wheel">4 Wheel</option>
+                                                    @foreach($drive_type as $row)
+                                                        <option value="{{$row}}" {{ $data->drive_type == $row ? "selected" : "" }}>{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -178,9 +182,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="transmission">
                                                     <option value="">Select Transmission</option>
-                                                    <option value="Automatic">Automatic</option>
-                                                    <option value="Manual">Manual</option>
-                                                    <option value="Semi-Automatic">Semi-Automatic</option>
+                                                    @foreach($transmission as $row)
+                                                        <option value="{{$row}}" {{ $data->transmission == $row ? "selected" : "" }}>{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -193,8 +197,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="steering">
                                                     <option value="">Select Steering</option>
-                                                    <option value="Right">Right</option>
-                                                    <option value="Left">Left</option>
+                                                    @foreach($steering as $row)
+                                                        <option value="{{$row}}" {{ $data->steering == $row ? "selected" : "" }}>{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -207,11 +212,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="doors">
                                                     <option value="">Select Doors</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
+                                                    @foreach($doors as $row)
+                                                        <option value="{{$row}}" {{ $data->doors == $row ? "selected" : "" }}>{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -400,10 +403,14 @@
                                 <h4 class="card-title mb-4">Add Vehicle Image</h4>
                                 <div class="row">
                                     <label class="col-form-label">Image Upload</label>
-                                    <div class="file-loading">
-                                            <input id="input-24" name="file[]" type="file" multiple>
+                                    <form id="imageForm" class="custom-validation" method="post" enctype="multipart/form-data">
+                                        {!! csrf_field() !!}
+                                        <div class="file-loading">
+                                                <input id="input-711" name="file[]" type="file" multiple>
+                                                <input type="hide" value="{{$data->id}}" name="vehicle_id">
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -452,11 +459,15 @@
 @section('script')
     <script>
         var models = @json($models);
-        var create_url = "{{route('admin.vehicle.create_post')}}";
+        var image_path = @json($get_image_path);
+        var id_array = @json($id_array);
+        var image_delete = "{{route('admin.vehicle.imageDelete')}}";
+        var image_add = "{{route('admin.vehicle.imageAdd')}}";
+        var edit_post = "{{route('admin.vehicle.edit_post', ['id' => $data->id])}}";
     </script>
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/dropzone/dropzone.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/admin/plugin/fileinput/fileinput.js') }}"></script>
-    <script src="{{ URL::asset('/assets/admin/pages/vehicle/create.js') }}"></script>
+    <script src="{{ URL::asset('/assets/admin/pages/vehicle/edit.js') }}"></script>
 @endsection

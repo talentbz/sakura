@@ -102,6 +102,16 @@ return [
     'fuel_type' =>[
         'Diesel', 'Electric', 'Gasoline', 'Hybrid', 'Petrol'
     ],
-    
-
+    'drive_type' => [
+        '2 Wheel', '4 Wheel'
+    ],
+    'transmission' =>[
+        'Automatic', 'Manual', 'Semi-Automatic'
+    ],  
+    'steering' =>[
+        'Right', 'Left'
+    ],
+    'doors' =>[
+        1, 2, 3, 4, 5
+    ]  
 ];

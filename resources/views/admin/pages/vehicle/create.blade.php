@@ -164,8 +164,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="drive_type">
                                                     <option value="">Select Drive Type</option>
-                                                    <option value="2 Wheel">2 Wheel</option>
-                                                    <option value="4 Wheel">4 Wheel</option>
+                                                    @foreach($drive_type as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -178,9 +179,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="transmission">
                                                     <option value="">Select Transmission</option>
-                                                    <option value="Automatic">Automatic</option>
-                                                    <option value="Manual">Manual</option>
-                                                    <option value="Semi-Automatic">Semi-Automatic</option>
+                                                    @foreach($transmission as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -193,8 +194,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="steering">
                                                     <option value="">Select Steering</option>
-                                                    <option value="Right">Right</option>
-                                                    <option value="Left">Left</option>
+                                                    @foreach($steering as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -207,11 +209,9 @@
                                             <div class="col-md-8">
                                                 <select class="form-select" name="doors">
                                                     <option value="">Select Doors</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
+                                                    @foreach($doors as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

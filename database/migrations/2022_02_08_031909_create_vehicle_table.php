@@ -61,7 +61,6 @@ class CreateVehicleTable extends Migration
             $table->boolean('rear_spoiler')->default(0);
             $table->boolean('alloy_wheels')->default(0);
             $table->boolean('bluetooth')->default(0);
-            $table->longText('image_url')->nullable();
             $table->string('video_link')->nullable();
             $table->double('price')->nullable();
             $table->double('sale_price')->nullable();
