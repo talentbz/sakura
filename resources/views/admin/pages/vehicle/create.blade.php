@@ -402,7 +402,7 @@
                                 <div class="row">
                                     <label class="col-form-label">Image Upload</label>
                                     <div class="file-loading">
-                                            <input id="input-24" name="file[]" type="file" multiple>
+                                            <input id="input-24" name="file[]" type="file" multiple required>
                                         </div>
                                     </div>
                                 </div>
@@ -414,7 +414,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="col-form-label">Video link</label>
-                                        <input class="form-control" parsley-type="url" type="url" placeholder="https://www.youtube.com/... " name="video_link" required>
+                                        <input type="url" class="form-control" placeholder="https://www.youtube.com/... " name="video_link" required>
                                     </div>
                                     <div class="col-md-6">
                                         <p class="mt-4">If you don't have the videos handy, don't worry. You can add or edit them after you complete your ad using the "Manage Your Ad" page.</p>

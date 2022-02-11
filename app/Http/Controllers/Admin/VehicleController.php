@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use DB, Validator, Exception, Image, URL;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
+use App\Models\Rate;
 
 class VehicleController extends Controller
 {
@@ -44,9 +45,8 @@ class VehicleController extends Controller
     }
     public function edit(Request $request, $id) {
         $data = Vehicle::findOrFail($id);
-        $stock_id =$data->stock_no;
-        $image_path = VehicleImage::where('stock_no', $stock_id)->get();
-        $get_url = URL::asset('uploads/vehicle/'.$stock_id.'/real');
+        $image_path = VehicleImage::where('vehicle_id', $id)->get();
+        $get_url = URL::asset('uploads/vehicle/'.$id.'/real');
         $get_image_path = [];
         $id_array = [];
         foreach($image_path as $row){
@@ -75,10 +75,10 @@ class VehicleController extends Controller
     }
     public function imageDelete(Request $request){
         $id = $request->key;
-        $stock_no = VehicleImage::where('id', $id)->first()->stock_no;
+        $vehicle_id = VehicleImage::where('id', $id)->first()->vehicle_id;
         $fileName = VehicleImage::where('id', $id)->first()->image;
-        $real_image = ('uploads/vehicle/'.$stock_no.'/real'.'/'.$fileName);
-        $thumb_image = ('uploads/vehicle/'.$stock_no.'/thumb'.'/'.$fileName);
+        $real_image = ('uploads/vehicle/'.$vehicle_id.'/real'.'/'.$fileName);
+        $thumb_image = ('uploads/vehicle/'.$vehicle_id.'/thumb'.'/'.$fileName);
         if(File::exists(public_path($real_image))){
             File::delete(public_path($real_image));   
         }
@@ -95,8 +95,8 @@ class VehicleController extends Controller
         $fileNames = VehicleImage::where('vehicle_id', $vehicleId)->get();
 
         foreach($fileNames as $fileName){
-            $real_image = ('uploads/vehicle/'.$stock_no.'/real'.'/'.$fileName->image);
-            $thumb_image = ('uploads/vehicle/'.$stock_no.'/thumb'.'/'.$fileName->image);
+            $real_image = ('uploads/vehicle/'.$vehicleId.'/real'.'/'.$fileName->image);
+            $thumb_image = ('uploads/vehicle/'.$vehicleId.'/thumb'.'/'.$fileName->image);
             if(File::exists(public_path($real_image))){
                 File::delete(public_path($real_image));   
             }
@@ -165,7 +165,8 @@ class VehicleController extends Controller
 
         //image upload section
         if ($request->has('file')) { 
-            $path = public_path('uploads/vehicle/'.$request->stock_no.'/');
+            $vehicle_id = Vehicle::latest('id')->first()->id;
+            $path = public_path('uploads/vehicle/'.$vehicle_id.'/');
             if(!file_exists($path)){
                 File::makeDirectory($path);
             }
@@ -195,7 +196,6 @@ class VehicleController extends Controller
                 
                 $vehicle_image->image = $fileName;
                 $vehicle_image->vehicle_id = $vehicle_id;
-                $vehicle_image->stock_no = $request->stock_no;
                 $vehicle_image->save(); 
             }
         }
@@ -292,11 +292,9 @@ class VehicleController extends Controller
         return response()->json(['result' => true, 'Add new vehicle' => $vehicle]);
     }
     public function imageAdd(Request $request){
-        
         //image upload section
         if ($request->has('file')) { 
-            dd($request->all());
-            $path = public_path('uploads/vehicle/'.$request->stock_no.'/');
+            $path = public_path('uploads/vehicle/'.$request->vehicle_id.'/');
             if(!file_exists($path)){
                 File::makeDirectory($path);
             }
@@ -309,7 +307,6 @@ class VehicleController extends Controller
                 File::makeDirectory($real_path); //create thumb image folder
             }
             foreach($request->file as $row){
-                $vehicle_image = new VehicleImage;
                 $fileName = $row->getClientOriginalName();
                 $imgx = Image::make($row->getRealPath());
                 // get real image
@@ -323,10 +320,25 @@ class VehicleController extends Controller
                         $constraint->aspectRatio();
                     })->save($thumb_path.$fileName);
                 
+                $vehicle_image = new VehicleImage;
                 $vehicle_image->image = $fileName;
-                $vehicle_image->stock_no = $request->stock_no;
+                $vehicle_image->vehicle_id = $request->vehicle_id;
                 $vehicle_image->save(); 
             }
         }
+        return response()->json(['uploaded' => 'uploads/vehicle/'.$request->vehicle_id.'/'.$fileName]);
+    }
+    public function rate(Request $request){
+
+        $rate = Rate::latest('id')->first()->rate;
+        return view('admin.pages.vehicle.rate', [
+            'rate' => $rate,
+        ]);
+    }
+    public function rate_post(Request $request){
+        $rate = Rate::latest('id')->first();
+        $rate->rate = $request->rate;
+        $rate->save();
+        return response()->json(['result' => true, 'Updated rate' => $rate]);
     }
 }

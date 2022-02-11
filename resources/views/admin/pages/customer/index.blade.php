@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
-@section('title') User List @endsection
+@section('title') Customer List @endsection
 @section('css')
-    <link href="{{ URL::asset('/assets/admin/pages/vehicle/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/admin/pages/customer/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') Vehicle Management @endslot
-        @slot('title') Vehilce List @endslot
+        @slot('li_1') Customer Voice @endslot
+        @slot('title') Customer List @endslot
     @endcomponent
     <div class="row">
         <div class="col-lg-12">
@@ -16,36 +16,37 @@
                         <thead>
                             <tr>
                                 <th align="center" width="5%">Image</th>
-                                <th align="center">Stock No</th>
-                                <th align="center">Vehicle Name</th>
-                                <th align="center">Price</th>
-                                <th align="center">Date</th>
+                                <th align="center">Title</th>
+                                <th align="center">Description</th>
+                                <th align="center">Customer Name</th>
+                                <th align="center">Country</th>
+                                <th align="center">Review Date</th>
+                                <th align="center">Publish Date</th>
                                 <th align="center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($data as $row)
                             <tr>
                                 <td align="center">
-                                    <img src="{{URL::asset('/uploads/vehicle')}}{{'/'}}{{$row->id}}{{'/thumb'}}{{'/'}}{{$row->image}}" alt="" width="80">
+                                    <img src="" alt="">
                                 </td>
-                                <td align="center">SM{{$row->stock_no}}</td>
-                                <td align="center">{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</td>
-                                <td align="center">¥ {{number_format($row->price)}}</td>
-                                <td align="center">{{date("Y-m-d", strtotime($row->updated_at))}}</td>
+                                <td align="center">I very happy i received</td>
+                                <td align="center">I very happy i received my car in a good condition .The vehicle was in a nice condition.</td>
+                                <td align="center">Rain, Elden Paul</td>
+                                <td align="center">Zimbabwe</td>
+                                <td align="center">31/Jan/2022</td>
+                                <td align="center">31/Jan/2022</td>
                                 <td align="center">
-                                        <a href="{{route('admin.vehicle.edit', ['id' => $row->id])}}" class="text-success edit" ><i
+                                        <a href="#" class="text-success edit" ><i
                                                 class="mdi mdi-pencil font-size-18"></i></a>
-                                        <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="{{$row->id}}" data-bs-toggle="modal"
+                                        <a href="#" class="text-danger confirm_delete" data-id="" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i
                                                 class="mdi mdi-delete font-size-18"></i></a>
                                 </td>
                             </tr>
-                            @empty
-                            <tr>
-                                <td align="center" colspan="13">There are no any data.</p>
-                            </tr>
-                            @endforelse
+                            <!-- <tr>
+                                <td align="center" colspan="8">There are no any data.</p>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>

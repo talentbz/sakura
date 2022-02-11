@@ -40,6 +40,8 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     });
     Route::group(['prefix' => 'vehicle'], function(){
         Route::get('/', [App\Http\Controllers\Admin\VehicleController::class, 'index'])->name('admin.vehicle.index');
+        Route::get('/rate', [App\Http\Controllers\Admin\VehicleController::class, 'rate'])->name('admin.vehicle.rate');
+        Route::post('/rate_post', [App\Http\Controllers\Admin\VehicleController::class, 'rate_post'])->name('admin.vehicle.rate_post');
         Route::get('/create', [App\Http\Controllers\Admin\VehicleController::class, 'create'])->name('admin.vehicle.create');
         Route::post('/create_post', [App\Http\Controllers\Admin\VehicleController::class, 'create_post'])->name('admin.vehicle.create_post');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\VehicleController::class, 'edit'])->name('admin.vehicle.edit');
@@ -47,6 +49,14 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::post('/imageDelete', [App\Http\Controllers\Admin\VehicleController::class, 'imageDelete'])->name('admin.vehicle.imageDelete');
         Route::post('/imageAdd', [App\Http\Controllers\Admin\VehicleController::class, 'imageAdd'])->name('admin.vehicle.imageAdd');
         Route::get('/delete', [App\Http\Controllers\Admin\VehicleController::class, 'delete'])->name('admin.vehicle.delete');
+    });
+
+    Route::group(['prefix' => 'customer'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('admin.customer.index');
+        Route::get('/add', [App\Http\Controllers\Admin\CustomerController::class, 'add'])->name('admin.customer.add');
+        Route::post('/add_post', [App\Http\Controllers\Admin\CustomerController::class, 'add_post'])->name('admin.customer.add_post');
+        Route::get('/edit', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('admin.customer.edit');
+        Route::post('/edit_post', [App\Http\Controllers\Admin\CustomerController::class, 'edit_post'])->name('admin.customer.edit_post');
     });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');

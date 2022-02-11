@@ -20,8 +20,19 @@
                         <span>Vehicle Management</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.vehicle.rate')}}" >Currency Rate</a></li>
                         <li><a href="{{route('admin.vehicle.index')}}" >Vehilce List</a></li>
                         <li><a href="{{route('admin.vehicle.create')}}" >Add Vehilce</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bxs-user-detail"></i>
+                        <span>Customer Voice</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.customer.index')}}" >Review List</a></li>
+                        <li><a href="{{route('admin.customer.add')}}" >Add Review</a></li>
                     </ul>
                 </li>
                 <li>
