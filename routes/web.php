@@ -15,11 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
 //frontend
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])->name('front.home');
+Route::group(['prefix' => 'user'], function(){
+    Route::get('/login', [App\Http\Controllers\Frontend\UserController::class, 'login'])->name('front.user.login');
+    Route::post('/login_post', [App\Http\Controllers\Frontend\UserController::class, 'login_post'])->name('front.user.login_post');
+    Route::get('/signup', [App\Http\Controllers\Frontend\UserController::class, 'signup'])->name('front.user.signup');
+    Route::post('/signup_post', [App\Http\Controllers\Frontend\UserController::class, 'signup_post'])->name('front.user.signup_post');
+});
+Route::prefix('/user')->middleware(['auth:web', 'CustomerRole'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Frontend\UserController::class, 'dashboard'])->name('front.user.dashboard');
+});
 Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'clear'])->name('front.clear');
+
 // admin dashboard
-Route::prefix('/admin')->middleware(['Admin'])->group(function () {
+Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
     Route::group(['prefix' => 'user'], function(){
         Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.user');
@@ -46,7 +57,7 @@ Route::prefix('/admin')->middleware(['Admin'])->group(function () {
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+// Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);

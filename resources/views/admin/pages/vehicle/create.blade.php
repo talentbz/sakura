@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-12">
             <div class="detail-wrapper">
-                    <form id="myForm"  method="post" enctype="multipart/form-data">
+                    <form id="myForm" class="custom-validation"  method="post" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                         <div class="card">
                             <div class="card-body">
@@ -22,10 +22,21 @@
                                     <div class="col-md-4">
                                         <div class="detail-list mb-3 row">
                                             <div class="col-md-4">
+                                                <label class="col-form-label"> Stock No</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" data-parsley-type="number" type="text" placeholder="Ex: 1875" name="stock_no" required > 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8"></div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
                                                 <label class="col-form-label">Make</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select select-category" name="make_type">
+                                                <select class="form-select select-category" name="make_type" required>
                                                     <option value="">select</option>
                                                     @foreach($models as $model)
                                                         <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
@@ -40,7 +51,7 @@
                                                 <label class="col-form-label">Model</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select id="subcategory" class="form-select" name="model_type">
+                                                <select id="subcategory" class="form-select" name="model_type" required>
                                                     <option value="">select</option>
                                                 </select>
                                             </div>
@@ -52,7 +63,7 @@
                                                 <label class="col-form-label">Body Type</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select" name="body_type">
+                                                <select class="form-select" name="body_type" required>
                                                     <option value="">Select Body Type</option>
                                                     @foreach($body_type as $row)
                                                         <option value="{{$row}}">{{$row}}</option>
@@ -64,30 +75,10 @@
                                     <div class="col-md-4">
                                         <div class="detail-list mb-3 row">
                                             <div class="col-md-4">
-                                                <label class="col-form-label"> Stock No</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Stock No" name="stock_no"> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
-                                                <label class="col-form-label"> Registration</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Registration" name="registration">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
                                                 <label class="col-form-label">Fuel type</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select" name="fuel_type">
+                                                <select class="form-select" name="fuel_type" required>
                                                     <option value="">Select Fuel type</option>
                                                         @foreach($fuel_type as $row)
                                                             <option value="{{$row}}">{{$row}}</option>
@@ -99,70 +90,10 @@
                                     <div class="col-md-4">
                                         <div class="detail-list mb-3 row">
                                             <div class="col-md-4">
-                                                <label class="col-form-label">Mileage</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Mileage(km)" name="mileage">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
-                                                <label class="col-form-label">Engine Model</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Engine Model" name="engine_model">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
-                                                <label class="col-form-label"> Engine Size CC</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Engine Size CC" name="engine_size">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
-                                                <label class="col-form-label">Seats</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Seats" name="seats">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
-                                                <label class="col-form-label">Model Code</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Model Code" name="model_code">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
-                                                <label class="col-form-label">Exterior Color</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Exterior Color" name="exterior_color">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="detail-list mb-3 row">
-                                            <div class="col-md-4">
                                                 <label class="col-form-label">Drive Type</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select" name="drive_type">
+                                                <select class="form-select" name="drive_type" required>
                                                     <option value="">Select Drive Type</option>
                                                     @foreach($drive_type as $row)
                                                         <option value="{{$row}}">{{$row}}</option>
@@ -177,7 +108,7 @@
                                                 <label class="col-form-label">Transmission</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select" name="transmission">
+                                                <select class="form-select" name="transmission" required>
                                                     <option value="">Select Transmission</option>
                                                     @foreach($transmission as $row)
                                                         <option value="{{$row}}">{{$row}}</option>
@@ -192,7 +123,7 @@
                                                 <label class="col-form-label">Steering</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select" name="steering">
+                                                <select class="form-select" name="steering" required>
                                                     <option value="">Select Steering</option>
                                                     @foreach($steering as $row)
                                                         <option value="{{$row}}">{{$row}}</option>
@@ -207,7 +138,7 @@
                                                 <label class="col-form-label">Doors</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <select class="form-select" name="doors">
+                                                <select class="form-select" name="doors" required>
                                                     <option value="">Select Doors</option>
                                                     @foreach($doors as $row)
                                                         <option value="{{$row}}">{{$row}}</option>
@@ -219,10 +150,80 @@
                                     <div class="col-md-4">
                                         <div class="detail-list mb-3 row">
                                             <div class="col-md-4">
+                                                <label class="col-form-label"> Registration</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" type="text" placeholder="Enter Registration" name="registration" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
+                                                <label class="col-form-label">Mileage</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" data-parsley-type="number" type="text" placeholder="Enter Mileage(km)" name="mileage" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
+                                                <label class="col-form-label">Engine Model</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" type="text" placeholder="Enter Engine Model" name="engine_model" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
+                                                <label class="col-form-label"> Engine Size CC</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" type="text" placeholder="Enter Engine Size CC" name="engine_size" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
+                                                <label class="col-form-label">Seats</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" data-parsley-type="number" type="text" placeholder="Enter Seats" name="seats" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
+                                                <label class="col-form-label">Model Code</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" type="text" placeholder="Enter Model Code" name="model_code" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
+                                                <label class="col-form-label">Exterior Color</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" type="text" placeholder="Enter Exterior Color" name="exterior_color" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="detail-list mb-3 row">
+                                            <div class="col-md-4">
                                                 <label class="col-form-label">Max Loading Capacity</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Max Loading Capacity" name="loading_capacity">
+                                                <input class="form-control" type="text" placeholder="Enter Max Loading Capacity" name="loading_capacity" required>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +233,7 @@
                                                 <label class="col-form-label">Length(cm)</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Length(cm)" name="length">
+                                                <input class="form-control" data-parsley-type="number" type="text" placeholder="Enter Length(cm)" name="length" required>
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +243,7 @@
                                                 <label class="col-form-label">Width(cm)</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Width(cm)" name="width">
+                                                <input class="form-control" data-parsley-type="number" type="text" placeholder="Enter Width(cm)" name="width" required>
                                             </div>
                                         </div>
                                     </div>
@@ -252,7 +253,7 @@
                                                 <label class="col-form-label">Height(cm)</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Height(cm)" name="height">
+                                                <input class="form-control" data-parsley-type="number" type="text" placeholder="Enter Height(cm)" name="height" required>
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +263,7 @@
                                                 <label class="col-form-label">Chassis</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" placeholder="Enter Chassis" name="chassis">
+                                                <input class="form-control" type="text" placeholder="Enter Chassis" name="chassis" required>
                                             </div>
                                         </div>
                                     </div>
@@ -413,7 +414,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="col-form-label">Video link</label>
-                                        <input class="form-control" type="text" placeholder="Enter Video link" name="video_link">
+                                        <input class="form-control" parsley-type="url" type="url" placeholder="https://www.youtube.com/... " name="video_link" required>
                                     </div>
                                     <div class="col-md-6">
                                         <p class="mt-4">If you don't have the videos handy, don't worry. You can add or edit them after you complete your ad using the "Manage Your Ad" page.</p>
@@ -430,11 +431,11 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label class="col-form-label">Price* (¥)</label>
-                                                <input class="form-control" type="number" placeholder="" require name="price">
+                                                <input class="form-control" type="number" placeholder="" name="price" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="col-form-label">Sale Price (¥)</label>
-                                                <input class="form-control" type="number" placeholder="" require name="sale_price">
+                                                <label class="col-form-label">Discount Price (¥)</label>
+                                                <input class="form-control" type="number" placeholder=""  name="sale_price">
                                             </div>
                                         </div>
                                     </div>
@@ -457,7 +458,6 @@
     </script>
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/dropzone/dropzone.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/admin/plugin/fileinput/fileinput.js') }}"></script>
     <script src="{{ URL::asset('/assets/admin/pages/vehicle/create.js') }}"></script>
 @endsection

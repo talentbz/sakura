@@ -1,7 +1,7 @@
-@extends('layouts.master-without-nav')
+@extends('admin.layouts.master-without-nav')
 
 @section('title')
-    @lang('translation.Login')
+    Login
 @endsection
 
 @section('body')
@@ -20,7 +20,7 @@
                                     <div class="col-7">
                                         <div class="text-primary p-4">
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <p>Sign in to continue to Sakura Motor.</p>
+                                            <p>Sign in to continue to SakuraMotors.</p>
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
@@ -50,7 +50,7 @@
                                     </a>
                                 </div>
                                 <div class="p-2">
-                                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                                    <form id="myForm" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Email</label>
@@ -114,4 +114,11 @@
         </div>
         <!-- end account-pages -->
 
+    @endsection
+    @section('script')
+    <script>
+        login_url = "{{route('front.user.login_post')}}";
+        dashboard_url = "{{route('front.user.dashboard')}}";
+    </script>
+    <script src="{{ URL::asset('/assets/frontend/js/login.js') }}"></script>
     @endsection

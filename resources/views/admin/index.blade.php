@@ -4,7 +4,7 @@
 
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') CheapBed @endslot
+        @slot('li_1') SakuraMotors @endslot
         @slot('title') Dashboards @endslot
     @endcomponent
 @endsection

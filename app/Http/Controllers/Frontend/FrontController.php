@@ -9,7 +9,7 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        return view('front.index');
+        return view('front.pages.home.index');
     }
     public function clear(Request $request)
     {

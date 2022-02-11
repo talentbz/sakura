@@ -24,6 +24,8 @@ $("#input-24").fileinput({
     },
     
     overwriteInitial: false,
+    minFileCount: 1,
+    validateInitialCount: true,
     maxFileCount: 50,
     showBrowse: false,
     browseOnZoneClick: true,
@@ -31,7 +33,8 @@ $("#input-24").fileinput({
 
 $('form#myForm').submit(function(e){
     e.preventDefault();
-    e.stopPropagation();
+    var $form = $(this);
+    if (!$form.valid) return false;
     var formData = new FormData(this);
     $.ajaxSetup({
         headers: {
@@ -42,9 +45,6 @@ $('form#myForm').submit(function(e){
         url: create_url,
         method: 'post',
         data: formData,
-        beforeSend: function(){
-            $('.back').hide();
-        },
         success: function (res) {
             toastr["success"]("Success");
             setInterval(function(){ 

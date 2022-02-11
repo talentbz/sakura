@@ -36,15 +36,7 @@
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->country}}</td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info btn-sm dropdown-toggle " data-bs-toggle="dropdown"
-                                            aria-expanded="false">Action<i class="mdi mdi-chevron-down"></i></button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Details</a>
-                                            <a class="dropdown-item" href="{{route('admin.user.change_password', $row->id)}}">Change Password</a>
-                                            <a class="dropdown-item confirm_delete" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $row->id }}">Delete</a>
-                                        </div>
-                                    </div><!-- /btn-group -->
+                                    
                                 </td>
                             </tr>
                             @empty
