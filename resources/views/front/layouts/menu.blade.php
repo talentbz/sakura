@@ -1,11 +1,11 @@
 <div class="header">
     <div class="logo">
-        <a href="#"><img src="{{URL::asset ('/assets/frontend/images/logo.png')}}" alt=""></a>
+        <a href="{{route('front.home')}}"><img src="{{URL::asset ('/assets/frontend/images/logo.png')}}" alt=""></a>
     </div>
     <div class="menu">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Stock</a></li>
+            <li><a href="{{route('front.home')}}">Home</a></li>
+            <li><a href="{{route('front.stock')}}">Stock</a></li>
             <li><a href="#">Company</a></li>
             <li><a href="#">Payment</a></li>
             <li><a href="#">News</a></li>

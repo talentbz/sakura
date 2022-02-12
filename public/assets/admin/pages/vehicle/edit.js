@@ -60,6 +60,9 @@ $(document).ready(function () {
             },
             success: function (res) {
                 toastr["success"]("Success");
+                setInterval(function(){ 
+                    location.href = list_url; 
+                }, 2000);
             },
             error: function (res){
                 console.log(res)

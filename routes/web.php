@@ -18,6 +18,8 @@ Auth::routes();
 
 //frontend
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])->name('front.home');
+Route::get('/stock', [App\Http\Controllers\Frontend\StockController::class, 'index'])->name('front.stock');
+
 Route::group(['prefix' => 'user'], function(){
     Route::get('/login', [App\Http\Controllers\Frontend\UserController::class, 'login'])->name('front.user.login');
     Route::post('/login_post', [App\Http\Controllers\Frontend\UserController::class, 'login_post'])->name('front.user.login_post');

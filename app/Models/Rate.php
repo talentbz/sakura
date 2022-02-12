@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Rate extends Model
 {
     use HasFactory;
-    protected $table = 'Rate';
+    protected $table = 'rate';
 }

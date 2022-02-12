@@ -461,6 +461,7 @@
         var image_add = "{{route('admin.vehicle.imageAdd')}}";
         var edit_post = "{{route('admin.vehicle.edit_post', ['id' => $data->id])}}";
         var vehicle_id = "{{$data->id}}";
+        var list_url = "{{route('admin.vehicle.index')}}";
     </script>
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>

@@ -22,4 +22,7 @@ class CustomerController extends Controller
             'country' => $country,
         ]);
     }
+    public function add_post(Request $request){
+        dd($request->all());
+    }
 }
