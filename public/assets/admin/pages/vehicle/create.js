@@ -46,7 +46,7 @@ $(document).ready(function () {
             success: function (res) {
                 toastr["success"]("Success");
                 setInterval(function(){ 
-                    location.href = self_url; 
+                    location.href = list_url; 
                 }, 2000);
             },
             error: function (res){

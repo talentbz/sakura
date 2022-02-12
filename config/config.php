@@ -109,7 +109,7 @@ return [
         'Automatic', 'Manual', 'Semi-Automatic'
     ],  
     'steering' =>[
-        'Right', 'Right'
+        'Right', 'Left'
     ],
     'doors' =>[
         1, 2, 3, 4, 5

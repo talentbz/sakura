@@ -454,7 +454,7 @@
     <script>
         var models = @json($models);
         var create_url = "{{route('admin.vehicle.create_post')}}";
-        var self_url = "{{route('admin.vehicle.create')}}";
+        var list_url = "{{route('admin.vehicle.index')}}";
     </script>
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>

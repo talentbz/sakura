@@ -91,7 +91,6 @@ class VehicleController extends Controller
 
     public function delete(Request $request){
         $vehicleId = $request->id;
-        $stock_no = VehicleImage::where('vehicle_id', $vehicleId)->first()->stock_no;
         $fileNames = VehicleImage::where('vehicle_id', $vehicleId)->get();
 
         foreach($fileNames as $fileName){
