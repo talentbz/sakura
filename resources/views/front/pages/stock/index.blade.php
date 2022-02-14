@@ -9,7 +9,42 @@
     <div class="hero-wrapper">
         @include('front.layouts.menu')
         <div class="banner-desc">
+            <h1>Price Calculator</h1>
         </div>
+        <form action="">
+            <div class="calculator-filter mt-3">
+                <div class="calculator-select">
+                    <label for="">Select your country</label>
+                    <select class="form-select" name="">
+                        <option value="">Select</option>
+                        @foreach($country as $row)
+                            <option value="{{$row}}">{{$row}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="calculator-select">
+                    <label for="">Select port</label>
+                    <select class="form-select" name="">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+                <div class="calculator-select">
+                    <label for="">Do you need inspection?</label>
+                    <select class="form-select" name="">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+                <div class="calculator-select">
+                    <label for="">Do you need insurance?</label>
+                    <select class="form-select" name="">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+                <div class="calculator-select">
+                    <button type="submit" class="btn btn-primary"><i class="bx bx-calendar"></i> Calculator</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <!-- /end banner && menu -->
@@ -33,18 +68,18 @@
                     <div class="select-search">
                         <div class="input-group mb-2">
                             <span class="input-group-text">Maker</span>
-                            <select class="form-select">
+                            <select class="form-select select-category">
                                 <option>Any</option>
-                                <option>Large select</option>
-                                <option>Small select</option>
+                                @foreach($models as $model)
+                                    <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="input-group mb-2">
                             <span class="input-group-text">Model</span>
-                            <select class="form-select">
+                            <select class="form-select subcategory">
                                 <option>Any</option>
-                                <option>Large select</option>
-                                <option>Small select</option>
+                                <option></option>
                             </select>
                         </div>
                         <div class="input-group mb-2">
@@ -52,15 +87,17 @@
                             <div class="select-width">
                                 <select class="form-select">
                                     <option>Any</option>
-                                    <option>1991</option>
-                                    <option>1992</option>
+                                    @foreach($year as $row)
+                                        <option value="{{$row}}">{{$row}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="select-width-last">
                                 <select class="form-select">
                                     <option>Any</option>
-                                    <option>1991</option>
-                                    <option>1992</option>
+                                    @foreach($year as $row)
+                                        <option value="{{$row}}">{{$row}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -217,124 +254,88 @@
         <!-- /end left sidebar -->
 
         <!-- main contents -->
-        <div class="main-contents">
+        <div class="main-stock">
             <!-- new arrivals -->
             <div class="main-contents-title">
-                <h1>New Arriavals</h1>
-                <a href="#" class="btn btn-light waves-effect">See all</a>
+                <h1>List All Vehicles</h1>
+                <div class="stock-sort row">
+                    <div class="col-md-4">
+                        <label class="col-form-label">Sort By:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select sort-by">
+                            <option value="">Select</option>
+                            <option value="">New Arriavals</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="title-border"></div>
-            </div>
-            <div class="contents-list mb-5">
-                <div class="car-list">
-                    <a href="#" class="car-image">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                        <div class="media-count">
-                            <div class="image-count">
-                                <i class="fas fa-camera"></i>
-                                <span>13</span>
-                            </div>
-                            <div class="image-count">
-                                <i class="fas fa-video"></i>
-                                <span>1</span>
-                            </div>
+                @for($i=1; $i < 25; $i++)
+                <div class="contents-list mb-2">
+                    <input type="hidden" value="{{$i}}">
+                    <div class="stock-image">
+                        <img src="{{URL::asset ('/uploads/vehicle/4/thumb/1-33.jpg')}}" alt="">
+                    </div>
+                    <div class="stock-contents">
+                        <h5>NISSAN CIVILIAN BUS</h5>
+                        <table class="table table-bordered dt-responsive  nowrap w-100">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="table-light" scope="row">STOCK NO</td>
+                                    <td>SM1716</td>
+                                    <td class="table-light">REGISTRATION</td>
+                                    <td>2002/12</td>
+                                    <td class="table-light">FUEL TYPE</td>
+                                    <td>Diesel</td>
+                                </tr>       
+                                <tr>
+                                    <td class="table-light" scope="row">MILEAGE</td>
+                                    <td>300,000 km</td>
+                                    <td class="table-light">ENGINE MODEL</td>
+                                    <td>TD42</td>
+                                    <td class="table-light">ENGINE CC</td>
+                                    <td>4200</td>
+                                </tr>       
+                                <tr>
+                                    <td class="table-light">SEATS</td>
+                                    <td>26</td>
+                                    <td class="table-light">EXTERIOR COLOR</td>
+                                    <td>BLUE/WHITE</td>
+                                    <td class="table-light">DRIVE TYPE</td>
+                                    <td>2 Wheel</td>
+                                </tr>  
+                                <tr>
+                                    <td class="table-light">OPTIONS</td>
+                                    <td colspan="5">A/C, Power Sterring, Auto Door</td>
+                                </tr>        
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="stock-price-list">
+                        <div class="fob-price">
+                            <span class="fob-label">Price (FOB)</span>
+                            <span class="fob-value">$4,445</span>
                         </div>
-                        <div class="reserved-mark">Reserved</div>
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_2.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_3.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#" class="car-image">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                        <div class="media-count">
-                            <div class="image-count">
-                                <i class="fas fa-camera"></i>
-                                <span>13</span>
-                            </div>
-                            <div class="image-count">
-                                <i class="fas fa-video"></i>
-                                <span>1</span>
-                            </div>
+                        <div class="price-border-bottom"></div>
+                        <div class="total-price">
+                            <span class="total-label">Total Price</span>
+                            <span class="totla-value">$10,500</span>
                         </div>
-                        <div class="reserved-mark">Reserved</div>
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
+                        <div class="price-border-bottom"></div>
+                        <div class="country-port">
+                            <p class="cif">(CIF Inspect)</p>
+                            <p class="port">Durban</p>
+                        </div>
+                        <div class="detail-inquire">
+                            <a href="#" class="btn-detail">Details</a>
+                            <a href="#" class="btn-inquire">Inquire</a>
+                        </div>
                     </div>
                 </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_2.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_3.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
+                <div class="contents-border-right"></div>
+                @endfor
             </div>
             <!-- /end new arrivals -->
 
@@ -347,5 +348,8 @@
 @include('front.layouts.searchModal')
 
 @section('script')
+    <script>
+        var models = @json($models);
+    </script>
     <script src="{{ URL::asset('/assets/frontend/pages/stock/index.js')}}"></script>
 @endsection

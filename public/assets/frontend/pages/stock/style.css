@@ -1,0 +1,250 @@
+body {
+    background: #fff !important;
+}
+.calculator-filter {
+    width: 58%;
+    margin: auto;
+}
+.calculator-select {
+    width: 20%;
+    padding-right: 10px;
+    float: left;
+}
+.calculator-select label {
+    color: #fff;
+}
+.calculator-select button {
+    width: 100%;
+    margin-top: 26px;
+    background: #EF1923;
+    border: 1px solid #EF1923;
+}
+.calculator-select button:hover{
+    background: #d31620 !important;
+    border: 1px solid #d31620;
+}
+.main-stock {
+    width: 82%;
+    float: left;
+    padding: 0 15px;
+}
+.stock-sort {
+    width: 20%;
+    float: right;
+}
+.contents-list {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #D3D3D3;
+}
+.stock-image {
+    width: 20%;
+    float: left;
+}
+.stock-image img{
+    width: 100%;
+}
+.stock-contents {
+    width: 63%;
+    padding: 0 28px;
+    float: left;
+}
+.stock-contents h5, .stock-contents .table-light {
+    font-weight: 600;
+}
+.stock-contents h5 {
+    color: #E10B14;
+}
+.stock-contents table {
+    font-size: 12px;
+}
+.stock-price-list {
+    width: 15%;
+    float: left;
+    margin-top: 10px;
+}
+
+.fob-label {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.fob-value {
+    color: #3c9a03;
+    font-size: 20px;
+}
+.total-label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #E10B14;
+    margin-right: 20px;
+}
+.totla-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #E10B14
+}
+.cif {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.port {
+    color: #E10B14;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.detail-inquire {
+    width: 100%;
+    display: block;
+
+}
+.btn-detail {
+    float: left !important;
+}
+.btn-inquire {
+    float: right !important;
+}
+.btn-detail,  .btn-inquire{
+    background: #EF1923;
+    color: #fff;
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 15px !important;
+}
+.btn-detail:hover,  .btn-inquire:hover {
+    color: #fff !important;
+    background: #d31620;
+}
+.price-border-bottom {
+    border-bottom: 1px solid #D3D3D3;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+.contents-border-right {
+    display: none;
+}
+@media only screen and (max-width: 1680px) {
+    .calculator-filter {
+        width: 60%;
+    }
+    .fob-value, .totla-value {
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .hero {
+        height: 330px;
+    }
+    .calculator-filter {
+        width: 65%;
+    }
+    .fob-label, .total-label {
+        font-size: 14px;
+    }
+    .fob-value, .totla-value {
+        font-size: 16px;
+    }
+    .btn-detail, .btn-inquire {
+        font-size: 14px !important;
+    }
+    .stock-sort {
+        width: 21%;
+    }
+}
+@media only screen and (max-width: 1366px) {
+    .stock-sort {
+        width: 22%;
+    }
+    .fob-label, .total-label{
+        margin-right: 18px;
+    }
+    .stock-contents table {
+        font-size: 11px;
+    }
+    .stock-price-list {
+        margin-top: 20px;
+    }
+    .stock-contents {
+        padding: 0 15px;
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .hero {
+        height: 313px !important;
+    }
+    .stock-sort {
+        width: 23%;
+    }
+    .calculator-filter {
+        width: 67%;
+    }
+    .fob-label, .total-label {
+        margin-right: 13px;
+    }
+    .btn-detail, .btn-inquire {
+        padding: 5px 13px;
+    }
+    .cif, .port{
+        font-size: 14px;
+    }
+    .sort-by {
+        padding: 5px 10px !important;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .calculator-filter {
+        width: 93%;
+    }
+    .main-stock {
+        width: 75%;
+    }
+    .stock-contents {
+        display: none;
+    }
+    .stock-sort {
+        width: 34%;
+    }
+    .contents-list {
+        width: 50% !important;
+        float: left;
+        padding: 10px;
+    }
+    .stock-sort label{
+        display: none;
+    }
+    .stock-image {
+        width: 43%;
+    }
+    .stock-price-list {
+        width: 100%;
+        padding: 10px;
+    }
+    .contents-border-right {
+        width: 1px;
+        height: auto;
+        background: #F2F2F2;
+    }
+}
+@media only screen and (max-width: 768px) {
+    
+}
+@media only screen and (max-width: 425px) {
+    
+}
+@media only screen and (max-width: 414px) {
+    
+}
+@media only screen and (max-width: 412px) {
+    
+}
+@media only screen and (max-width: 393px) {
+    
+}
+@media only screen and (max-width: 390px) {
+    
+}
+@media only screen and (max-width: 375px) {
+    
+}
