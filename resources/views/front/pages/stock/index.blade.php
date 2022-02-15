@@ -253,6 +253,37 @@
         </div>
         <!-- /end left sidebar -->
 
+        <!-- mobile calc section -->
+        <form action="">
+            <div class="calc-mobile">
+                <div class="calc-title">
+                    <p>Price Calculator</p>
+                </div>
+                <div class="calc-form">
+                    <div class="calc-list">
+                        <label for="">Select Country</label>
+                        <select class="form-select" name="">
+                            <option value="">Select</option>
+                            @foreach($country as $row)
+                                <option value="{{$row}}">{{$row}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="calc-list">
+                        <label for="">Select Country</label>
+                        <select class="form-select" name="">
+                            <option value="">Select</option>
+                            @foreach($country as $row)
+                                <option value="{{$row}}">{{$row}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="calc-list">
+                        <label for="">Select Country</label>
+                    </div>
+                </div>
+            </div>
+        </form> <!-- mobile calc section -->
         <!-- main contents -->
         <div class="main-stock">
             <!-- new arrivals -->
@@ -271,7 +302,10 @@
                 </div>
                 <div class="title-border"></div>
                 @for($i=1; $i < 25; $i++)
-                <div class="contents-list mb-2">
+                <div class="contents-list">
+                    <div class="stock-mobile-title">
+                        <h5>NISSAN CIVILIAN BUS</h5>
+                    </div>
                     <input type="hidden" value="{{$i}}">
                     <div class="stock-image">
                         <img src="{{URL::asset ('/uploads/vehicle/4/thumb/1-33.jpg')}}" alt="">
@@ -285,26 +319,26 @@
                                 <tr>
                                     <td class="table-light" scope="row">STOCK NO</td>
                                     <td>SM1716</td>
-                                    <td class="table-light">REGISTRATION</td>
+                                    <td class="table-light">Year</td>
                                     <td>2002/12</td>
-                                    <td class="table-light">FUEL TYPE</td>
-                                    <td>Diesel</td>
-                                </tr>       
-                                <tr>
-                                    <td class="table-light" scope="row">MILEAGE</td>
-                                    <td>300,000 km</td>
-                                    <td class="table-light">ENGINE MODEL</td>
+                                    <td class="table-light">Model</td>
                                     <td>TD42</td>
-                                    <td class="table-light">ENGINE CC</td>
-                                    <td>4200</td>
                                 </tr>       
                                 <tr>
-                                    <td class="table-light">SEATS</td>
-                                    <td>26</td>
-                                    <td class="table-light">EXTERIOR COLOR</td>
-                                    <td>BLUE/WHITE</td>
-                                    <td class="table-light">DRIVE TYPE</td>
-                                    <td>2 Wheel</td>
+                                    <td class="table-light" scope="row">Transmission</td>
+                                    <td>Manual</td>
+                                    <td class="table-light">ENGINE MODEL</td>
+                                    <td>1HZ</td>
+                                    <td class="table-light">ENGINE Type</td>
+                                    <td>Bus</td>
+                                </tr>       
+                                <tr>
+                                    <td class="table-light">Engine CC</td>
+                                    <td>4200</td>
+                                    <td class="table-light">Seating</td>
+                                    <td>29</td>
+                                    <td class="table-light">Chassis</td>
+                                    <td>HZB50-0007403</td>
                                 </tr>  
                                 <tr>
                                     <td class="table-light">OPTIONS</td>
@@ -312,6 +346,18 @@
                                 </tr>        
                             </tbody>
                         </table>
+                    </div>
+                    <div class="stock-mobile-contents">
+                        <p class="stock-label">Stock No</p>
+                        <p class="stock-value">SM1716</p>
+                        <p class="stock-label">Year</p>
+                        <p class="stock-value">2002/12</p>
+                        <p class="stock-label">Model</p>
+                        <p class="stock-value">TD42</p>
+                        <p class="stock-label">Trans</p>
+                        <p class="stock-value">Manual</p>
+                        <p class="stock-label">Trans</p>
+                        <p class="stock-value">Manual</p>
                     </div>
                     <div class="stock-price-list">
                         <div class="fob-price">
@@ -333,8 +379,8 @@
                             <a href="#" class="btn-inquire">Inquire</a>
                         </div>
                     </div>
+                    <div class="contents-border-right"></div>
                 </div>
-                <div class="contents-border-right"></div>
                 @endfor
             </div>
             <!-- /end new arrivals -->

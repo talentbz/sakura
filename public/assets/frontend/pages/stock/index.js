@@ -16,4 +16,15 @@ $(document).ready(function () {
                 }
             }
     })
+
+    border_object = $('.contents-border-right');
+    if($( window ).width() <= 1024){
+        for(i=0; i<border_object.length; i++){
+            if(i==0){
+                border_object.eq(i).css('display', 'none')    
+            } else{
+                border_object.eq(3*i).css('display', 'none');
+            }
+        }
+    }
 })
