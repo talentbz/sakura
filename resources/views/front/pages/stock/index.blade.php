@@ -257,29 +257,57 @@
         <form action="">
             <div class="calc-mobile">
                 <div class="calc-title">
-                    <p>Price Calculator</p>
+                    <h3>Price Calculator</h3>
                 </div>
                 <div class="calc-form">
                     <div class="calc-list">
-                        <label for="">Select Country</label>
-                        <select class="form-select" name="">
-                            <option value="">Select</option>
-                            @foreach($country as $row)
-                                <option value="{{$row}}">{{$row}}</option>
-                            @endforeach
-                        </select>
+                        <div class="calc-list-label">
+                            <label for="">Select Country</label>
+                        </div>
+                        <div class="calc-list-value">
+                            <select class="form-select" name="">
+                                <option value="">Select</option>
+                                @foreach($country as $row)
+                                    <option value="{{$row}}">{{$row}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="calc-list">
-                        <label for="">Select Country</label>
-                        <select class="form-select" name="">
-                            <option value="">Select</option>
-                            @foreach($country as $row)
-                                <option value="{{$row}}">{{$row}}</option>
-                            @endforeach
-                        </select>
+                        <div class="calc-list-label">
+                            <label for="">Select Port</label>
+                        </div>
+                        <div class="calc-list-value">
+                            <select class="form-select" name="">
+                                <option value="">Select</option>
+                                @foreach($country as $row)
+                                    <option value="{{$row}}">{{$row}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="calc-list">
-                        <label for="">Select Country</label>
+                        <div class="calc-list-label">
+                            <label for="">Inspention</label>
+                        </div>
+                        <div class="calc-list-value">
+                            <a href="#" class="btn btn-ins ins-margin">No</a>
+                            <a href="#" class="btn btn-ins">Yes</a>
+                        </div>
+                        <input type="hidden" name="menuip">
+                    </div>
+                    <div class="calc-list">
+                        <div class="calc-list-label">
+                            <label for="">Insurance</label>
+                        </div>
+                        <div class="calc-list-value">
+                            <a href="#" class="btn btn-ins ins-margin">No</a>
+                            <a href="#" class="btn btn-ins">Yes</a>
+                        </div>
+                        <input type="hidden" name="menuip">
+                    </div>
+                    <div class="calc-submit">
+                        <button type="submit" class="btn ins-submit"><i class="bx bx-calendar"></i> Calculate</button>
                     </div>
                 </div>
             </div>
@@ -301,7 +329,7 @@
                     </div>
                 </div>
                 <div class="title-border"></div>
-                @for($i=1; $i < 25; $i++)
+                @for($i=0; $i < 24; $i++)
                 <div class="contents-list">
                     <div class="stock-mobile-title">
                         <h5>NISSAN CIVILIAN BUS</h5>

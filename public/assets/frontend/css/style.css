@@ -1221,7 +1221,7 @@ h3 {
         line-height: 14px;
     }
     .contents-list {
-        margin-bottom: 30px !important;
+        margin-bottom: 30px;
     }
     .main-contents {
         padding: 0;

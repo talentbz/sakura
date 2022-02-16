@@ -347,7 +347,7 @@
                 <a href="#" class="btn btn-light waves-effect">See all</a>
                 <div class="title-border"></div>
             </div>
-            <div class="contents-list mb-5">
+            <div class="contents-list">
                 <div class="car-list">
                     <a href="#" class="car-image">
                         <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
