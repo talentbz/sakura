@@ -403,8 +403,8 @@
                             <p class="port">Durban</p>
                         </div>
                         <div class="detail-inquire">
-                            <a href="#" class="btn-detail">Details</a>
-                            <a href="#" class="btn-inquire">Inquire</a>
+                            <a href="{{route('front.details', ['id' => $i])}}" class="btn-detail">Details</a>
+                            <a href="{{route('front.details', ['id' => $i])}}" class="btn-inquire">Inquire</a>
                         </div>
                     </div>
                     <div class="contents-border-right"></div>
