@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DB, Validator, Exception, Image, URL, ZipArchive, File;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
-
+use App\Models\Rate;
 class StockController extends Controller
 {
     public function index(Request $request)
@@ -24,6 +24,10 @@ class StockController extends Controller
         for ($i=date('Y'); $i >= 1950 ; $i--) { 
             array_push($year, $i);
         }
+
+        $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+                                    ->groupBy('vehicle_image.vehicle_id')->paginate(24);
+        $rate = Rate::first()->rate;
         return view('front.pages.stock.index', [
             'models' => $models,
             'body_type' => $body_type,
@@ -34,6 +38,8 @@ class StockController extends Controller
             'doors' => $doors,
             'year' => $year,
             'country' => $country,
+            'vehicle_data' => $vehicle_data,
+            'rate' => $rate,
         ]);
     }
     public function details(Request $request, $id){

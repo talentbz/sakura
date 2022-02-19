@@ -53,6 +53,7 @@ body {
 }
 .stock-contents h5 {
     color: #E10B14;
+    text-transform: uppercase;
 }
 .stock-contents table {
     font-size: 12px;
@@ -265,6 +266,7 @@ body {
     .stock-mobile-title h5 {
         color: #E10B14;
         font-weight: 600;
+        text-transform: uppercase;
     }
     .stock-mobile-contents {
         width: 57%;

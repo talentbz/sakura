@@ -282,3 +282,137 @@ a.btn-ins {
     border-color: #eff2f7;
     background-color: #f8f9fa;
 }
+.social-share {
+    margin: 10px 0;
+}
+.social-face, .social-viber, .social-whatsapp {
+    color: #FFF;
+    border-radius: 2px;
+    padding: 3px 8px;
+    font-size: 12px;
+    margin-right: 20px;
+}
+.social-face {
+    background: #4266B2;
+}
+.social-face:hover {
+    background: #284e9e;
+    color: #fff;
+}
+.social-viber {
+    background: #665CAC;
+    color: #fff;
+}
+.social-viber:hover {
+    background: #4d4588;
+    color: #fff;
+}
+.social-whatsapp {
+    background: #26D366;
+    color: #fff;
+}
+.social-whatsapp:hover{
+    background: #24b75a;
+    color: #fff;
+}
+.download-image {
+    float: right;
+}
+.download-image i {
+    margin-right: 7px;
+}
+.mobile-sidebar, .mobile-table {
+    display: none;
+}
+@media only screen and (max-width: 1680px) {
+    .contents-details {
+        width: 80%;
+    }
+    .detail-sidebar {
+        width: 26%;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .hero {
+        height: 162px !important;
+    }    
+    .main-products {
+        width: 67%;
+    }
+    .detail-sidebar {
+        width: 30%;
+    }
+}
+@media only screen and (max-width: 1366px) {
+    .contents-details {
+        width: 84%;
+    }
+}
+@media only screen and (max-width: 1280px) { 
+    a.btn-ins {
+        padding: 7px 20px;
+    }
+    .hero {
+        height: 152px !important;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .hero {
+        height: 138px !important;
+    }
+    .contents-details {
+        width: 90%;
+    }
+    .calc-list-label {
+        width: 40%;
+    }
+    .calc-list-value {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .mobile-sidebar {
+        display: block;
+    }
+    .detail-sidebar {
+        width: 100%;
+    }
+    .main-products {
+        width: 100%;
+    }
+    .pc-sidebar {
+        display: none;
+    }
+    .detail-sidebar {
+        margin: 0;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .pc-table {
+        display: none;
+    }
+    .mobile-table{
+        display: block;
+    }
+    .social-face, .social-viber, .social-whatsapp {
+        margin-right: 0;
+    }
+    a.btn-ins {
+        padding: 7px 36px;
+    }
+}
+@media only screen and (max-width: 414px) {
+    .contents-details {
+        width: 93%;
+    }
+}
+@media only screen and (max-width: 393px) {
+    a.btn-ins {
+        padding: 7px 33px;
+    }
+}
+@media only screen and (max-width: 375px) { 
+    a.btn-ins {
+        padding: 7px 31px;
+    }
+}
