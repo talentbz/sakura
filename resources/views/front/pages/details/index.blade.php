@@ -16,6 +16,7 @@
 <!-- contents -->
 <div class="contents">
     <div class="contents-details">
+        <!-- mobile -->
         <div class="detail-sidebar mobile-sidebar">
             <!-- price calculator -->
             <div class="price-calculator">
@@ -157,14 +158,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /end mobile -->
         <div class="main-products">
             <div class="vehicle-info">
                 <div class="vehicle-name">
-                    <h3>NISSAN CIVILIAN BUS</h3>
+                    <h3>{{$vehicle_data->make_type}} {{$vehicle_data->model_type}} {{$vehicle_data->body_type}}</h3>
                     <div class="vehicle-chas">
                         <span>CHASSIS</span>
-                        <p>BHW41-020113</p>
+                        <p>{{$vehicle_data->chassis}}</p>
                     </div>
                     <div class="vehicle-name-border"></div>
                 </div>
@@ -172,7 +173,11 @@
                     <div class="price-info">
                         <div class="fob-price">
                             <h3 class="fob-label">Price (Fob)</h3>
-                            <h3 class="fob-value">$6,250</h3>
+                            @if($vehicle_data->sale_price==null)
+                                <h3 class="fob-value">${{number_format(round($vehicle_data->price/$rate))}}</h3>
+                            @else                                
+                                <h3 class="fob-value">${{number_format(round($vehicle_data->sale_price/$rate))}}</h3>
+                            @endif
                         </div>
                         <div class="total-price">
                             <h5 class="total-price-label">Total Price</h5>
@@ -222,127 +227,107 @@
                     <tbody class="pc-table">
                         <tr>
                             <td class="table-light" scope="row">STOCK NO</td>
-                            <td>SM1716</td>
+                            <td>SM{{$vehicle_data->stock_no}}</td>
                             <td class="table-light">Year</td>
-                            <td>2002/12</td>
+                            <td>{{$vehicle_data->registration}}</td>
                             <td class="table-light">Model</td>
                             <td>TD42</td>
                         </tr>       
                         <tr>
                             <td class="table-light" scope="row">Transmission</td>
-                            <td>Manual</td>
+                            <td>{{$vehicle_data->transmission}}</td>
                             <td class="table-light">ENGINE MODEL</td>
-                            <td>1HZ</td>
-                            <td class="table-light">ENGINE Type</td>
-                            <td>Bus</td>
+                            <td>{{$vehicle_data->engine_model}}</td>
+                            <td class="table-light">Fuel Type</td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
                         </tr>       
                         <tr>
                             <td class="table-light">Engine CC</td>
-                            <td>4200</td>
+                            <td>{{$vehicle_data->engine_size}}</td>
                             <td class="table-light">Seating</td>
-                            <td>29</td>
+                            <td>{{$vehicle_data->seats}}</td>
                             <td class="table-light">Chassis</td>
-                            <td>HZB50-0007403</td>
+                            <td>{{$vehicle_data->chassis}}</td>
                         </tr>        
                         <tr>
                             <td class="table-light">Drive Type</td>
-                            <td>2 Wheel</td>
+                            <td>{{$vehicle_data->drive_type}}</td>
                             <td class="table-light">Mileage</td>
-                            <td>30,000 (km)</td>
+                            <td>{{$vehicle_data->mileage}} (km)</td>
                             <td class="table-light">Make</td>
-                            <td>Nissan</td>
+                            <td>{{$vehicle_data->make_type}}</td>
                         </tr>  
                         <tr>
                             <td class="table-light">Width(Cm)</td>
-                            <td>210</td>
+                            <td>{{$vehicle_data->width}}</td>
                             <td class="table-light">Height(cm)</td>
-                            <td>290</td>
+                            <td>{{$vehicle_data->height}}</td>
                             <td class="table-light">Length(cm)</td>
-                            <td>700</td>
+                            <td>{{$vehicle_data->length}}</td>
                         </tr>  
                         <tr>
                             <td class="table-light">Steering</td>
-                            <td>Right</td>
+                            <td>{{$vehicle_data->steering}}</td>
                             <td class="table-light">Doors</td>
-                            <td>N/A</td>
+                            <td>{{$vehicle_data->doors}}</td>
                             <td class="table-light">Fuel Type</td>
-                            <td>Diesel</td>
-                        </tr> 
-                        <tr>
-                            <td class="table-light">Steering</td>
-                            <td>Right</td>
-                            <td class="table-light">Doors</td>
-                            <td>N/A</td>
-                            <td class="table-light">Fuel Type</td>
-                            <td>Diesel</td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
                         </tr> 
                     </tbody>
                     <tbody class="mobile-table">
                         <tr>
                             <td class="table-light" scope="row">STOCK NO</td>
-                            <td>SM1716</td>
+                            <td>SM{{$vehicle_data->stock_no}}</td>
                             <td class="table-light">Year</td>
-                            <td>2002/12</td>
-                        </tr>       
+                            <td>{{$vehicle_data->registration}}</td>
+                        </tr>    
                         <tr>
                             <td class="table-light">Model</td>
                             <td>TD42</td>
                             <td class="table-light" scope="row">Transmission</td>
-                            <td>Manual</td>
-                        </tr>
+                            <td>{{$vehicle_data->transmission}}</td>
+                        </tr>   
                         <tr>
                             <td class="table-light">ENGINE MODEL</td>
-                            <td>1HZ</td>
-                            <td class="table-light">ENGINE Type</td>
-                            <td>Bus</td>
-                        </tr>     
+                            <td>{{$vehicle_data->engine_model}}</td>
+                            <td class="table-light">Fuel Type</td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
+                        </tr>       
                         <tr>
                             <td class="table-light">Engine CC</td>
-                            <td>4200</td>
+                            <td>{{$vehicle_data->engine_size}}</td>
                             <td class="table-light">Drive Type</td>
-                            <td>2 Wheel</td>
-                        </tr>  
+                            <td>{{$vehicle_data->drive_type}}</td>
+                        </tr>
                         <tr>
                             <td class="table-light">Seating</td>
-                            <td>29</td>
+                            <td>{{$vehicle_data->seats}}</td>
                             <td class="table-light">Chassis</td>
-                            <td>HZB50-0007403</td>
+                            <td>{{$vehicle_data->chassis}}</td>
                         </tr>        
                         <tr>
                             <td class="table-light">Mileage</td>
-                            <td>30,000 (km)</td>
+                            <td>{{$vehicle_data->mileage}} (km)</td>
                             <td class="table-light">Make</td>
-                            <td>Nissan</td>
-                        </tr>  
+                            <td>{{$vehicle_data->make_type}}</td>
+                        </tr>
                         <tr>
                             <td class="table-light">Width(Cm)</td>
-                            <td>210</td>
+                            <td>{{$vehicle_data->width}}</td>
                             <td class="table-light">Steering</td>
-                            <td>Right</td>
-                        </tr>
+                            <td>{{$vehicle_data->steering}}</td>
+                        </tr>  
                         <tr>
                             <td class="table-light">Height(cm)</td>
-                            <td>290</td>
+                            <td>{{$vehicle_data->height}}</td>
                             <td class="table-light">Length(cm)</td>
-                            <td>700</td>
+                            <td>{{$vehicle_data->length}}</td>
                         </tr>  
                         <tr>
                             <td class="table-light">Doors</td>
-                            <td>N/A</td>
+                            <td>{{$vehicle_data->doors}}</td>
                             <td class="table-light">Fuel Type</td>
-                            <td>Diesel</td>
-                        </tr> 
-                        <tr>
-                            <td class="table-light">Doors</td>
-                            <td>N/A</td>
-                            <td class="table-light">Fuel Type</td>
-                            <td>Diesel</td>
-                        </tr>
-                        <tr>
-                            <td class="table-light">Steering</td>
-                            <td>Right</td>
-                            <td class="table-light">Steering</td>
-                            <td>Right</td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
                         </tr> 
                     </tbody>
                 </table>

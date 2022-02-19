@@ -106,35 +106,35 @@
                     <div class="search-category">
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                            <p>Bus</p><span>(549)</span>
+                            <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
                         </a>
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
-                            <p>Truck</p><span>(2,016)</span>
+                            <p>Truck</p><span>({{$body_truck && $body_truck->body_count ? $body_truck->body_count : 0}})</span>
                         </a>
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
-                            <p>Van</p><span>(1,002)</span>
+                            <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
                         </a>
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
-                            <p>Sub</p><span>(102)</span>
+                            <p>Sub</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
-                            <p>Sedan</p><span>(4,386)</span>
+                            <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
                         </a>
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_pickup.png')}}" alt="">
-                            <p>Pick up</p><span>(549)</span>
+                            <p>Pick up</p><span>({{$body_pick_up && $body_pick_up->body_count ? $body_pick_up->body_count : 0}})</span>
                         </a>
                         <a href="#" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_machinery.png')}}" alt="">
-                            <p>Machinery </p><span>(12)</span>
+                            <p>Machinery </p><span>({{$body_machinery && $body_machinery->body_count ? $body_machinery->body_count : 0}})</span>
                         </a>
                         <a href="#">
                             <img src="{{URL::asset ('/assets/frontend/images/s_stractor.png')}}" alt="">
-                            <p>Tractor</p><span>(50)</span>
+                            <p>Tractor</p><span>({{$body_tractor && $body_tractor->body_count ? $body_tractor->body_count : 0}})</span>
                         </a>
                     </div>
                 </div>
@@ -224,240 +224,86 @@
             <!-- new arrivals -->
             <div class="main-contents-title">
                 <h1>New Arriavals</h1>
-                <a href="#" class="btn btn-light waves-effect">See all</a>
+                <a href="{{route('front.stock')}}" class="btn btn-light waves-effect">See all</a>
                 <div class="title-border"></div>
             </div>
             <div class="contents-list mb-5">
+                @foreach($vehicle_data as $row)
                 <div class="car-list">
-                    <a href="#" class="car-image">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
+                    <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="car-image">
+                        <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
                         <div class="media-count">
+                            @if(isset($row->image_length))
                             <div class="image-count">
                                 <i class="fas fa-camera"></i>
-                                <span>13</span>
+                                <span>{{$row->image_length}}</span>
                             </div>
+                            @endif
+                            @if(isset($row->video_link))
                             <div class="image-count">
                                 <i class="fas fa-video"></i>
                                 <span>1</span>
                             </div>
+                            @endif
+
                         </div>
                         <div class="reserved-mark">Reserved</div>
                     </a>
                     <div class="car-desc">
                         <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
+                            <h3>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h3>
                         </a>
-                        <h3>FOB: $8,036</h3>
+                        @if($row->sale_price==null)
+                            <h3>FOB: ${{number_format(round($row->price/$rate))}}</h3>
+                        @else
+                            <h3>FOB: ${{number_format(round($row->sale_price/$rate))}}</h3>
+                        @endif
                     </div>
                 </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_2.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_3.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#" class="car-image">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                        <div class="media-count">
-                            <div class="image-count">
-                                <i class="fas fa-camera"></i>
-                                <span>13</span>
-                            </div>
-                            <div class="image-count">
-                                <i class="fas fa-video"></i>
-                                <span>1</span>
-                            </div>
-                        </div>
-                        <div class="reserved-mark">Reserved</div>
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_2.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_3.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- /end new arrivals -->
 
             <!-- Best Deals -->
             <div class="main-contents-title">
                 <h1>Best Deals</h1>
-                <a href="#" class="btn btn-light waves-effect">See all</a>
+                <a href="{{route('front.stock')}}" class="btn btn-light waves-effect">See all</a>
                 <div class="title-border"></div>
             </div>
             <div class="contents-list">
+                @foreach($vehicle_data as $row)
                 <div class="car-list">
-                    <a href="#" class="car-image">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
+                    <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="car-image">
+                        <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
                         <div class="media-count">
+                            @if(isset($row->image_length))
                             <div class="image-count">
                                 <i class="fas fa-camera"></i>
-                                <span>13</span>
+                                <span>{{$row->image_length}}</span>
                             </div>
+                            @endif
+                            @if(isset($row->video_link))
                             <div class="image-count">
                                 <i class="fas fa-video"></i>
                                 <span>1</span>
                             </div>
+                            @endif
+
                         </div>
                         <div class="reserved-mark">Reserved</div>
                     </a>
                     <div class="car-desc">
                         <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
+                            <h3>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h3>
                         </a>
-                        <h3>FOB: $8,036</h3>
+                        @if($row->sale_price==null)
+                            <h3>FOB: ${{number_format(round($row->price/$rate))}}</h3>
+                        @else
+                            <h3>FOB: ${{number_format(round($row->sale_price/$rate))}}</h3>
+                        @endif
                     </div>
                 </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_2.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_3.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#" class="car-image">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                        <div class="media-count">
-                            <div class="image-count">
-                                <i class="fas fa-camera"></i>
-                                <span>13</span>
-                            </div>
-                            <div class="image-count">
-                                <i class="fas fa-video"></i>
-                                <span>1</span>
-                            </div>
-                        </div>
-                        <div class="reserved-mark">Reserved</div>
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_2.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_3.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
-                <div class="car-list">
-                    <a href="#">
-                        <img src="{{URL::asset ('/assets/frontend/images/car_1.png')}}" alt="">
-                    </a>
-                    <div class="car-desc">
-                        <a href="#">
-                            <h3>MITSUBISHI ROSA BUS</h3>
-                        </a>
-                        <h3>FOB: $8,036</h3>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- /end Best Deals -->
             

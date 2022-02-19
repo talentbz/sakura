@@ -4,8 +4,8 @@
     </div>
     <div class="menu">
         <ul>
-            <li><a href="{{route('front.home')}}">Home</a></li>
-            <li><a href="{{route('front.stock')}}">Stock</a></li>
+            <li><a href="{{route('front.home')}}" class="{{  request()->routeIs('front.home') ? 'active' : '' }}">Home</a></li>
+            <li><a href="{{route('front.stock')}}" class="{{  request()->routeIs('front.stock') ? 'active' : '' }}">Stock</a></li>
             <li><a href="#">Company</a></li>
             <li><a href="#">Payment</a></li>
             <li><a href="#">News</a></li>

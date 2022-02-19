@@ -94,7 +94,7 @@ h3 {
     font-size: 18px;
     margin-right: 33px;
 }
-.menu ul li a:hover {
+.menu ul li a:hover, .menu ul li a:active, .menu ul li a.active {
     color: #E10B14;       
 }
 .menu ul li .last-menu{
@@ -304,6 +304,8 @@ h3 {
     opacity: 1;
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 .car-list img:hover{
     opacity: .5;
@@ -314,6 +316,7 @@ h3 {
 .car-desc h3{
     color: #E10B14;
     font-size: 15px;
+    text-transform: uppercase;
 }
 .car-desc p{
     font-size: 14px;

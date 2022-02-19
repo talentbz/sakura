@@ -26,7 +26,9 @@ class StockController extends Controller
         }
 
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
-                                    ->groupBy('vehicle_image.vehicle_id')->paginate(24);
+                                    ->groupBy('vehicle_image.vehicle_id')
+                                    ->orderBy('vehicle.created_at', 'desc')
+                                    ->paginate(24);
         $rate = Rate::first()->rate;
         return view('front.pages.stock.index', [
             'models' => $models,
@@ -43,6 +45,8 @@ class StockController extends Controller
         ]);
     }
     public function details(Request $request, $id){
+        $vehicle_data = Vehicle::where('id', $id)->first();
+        $rate = Rate::first()->rate;
         $vehicle_img = VehicleImage::select('image')->where('vehicle_id', $id)->get();
         $real_url = URL::asset('uploads/vehicle/'.$id.'/real');
         $thumb_url = URL::asset('uploads/vehicle/'.$id.'/thumb');
@@ -53,6 +57,8 @@ class StockController extends Controller
             'thumb_url' => $thumb_url,
             'country' => $country,
             'id' =>$id,
+            'vehicle_data' => $vehicle_data,
+            'rate' => $rate
         ]);
     }
     public function image_download(Request $request, $id){

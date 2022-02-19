@@ -19,6 +19,7 @@ $(document).ready(function () {
 
     border_object = $('.contents-border-right');
     if($( window ).width() <= 1024){
+        border_object.css('display', 'block')
         for(i=0; i<border_object.length; i++){
             border_object.eq(3*i).css('display', 'none');
         }

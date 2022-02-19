@@ -16,6 +16,7 @@ body {
 .vehicle-name h3{
     color: #E10B14;
     font-weight: 600;
+    text-transform: uppercase;
 }
 .vehicle-chas span{
     float: left;
