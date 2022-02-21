@@ -740,6 +740,21 @@ h3 {
 .modal.show .modal-dialog {
     /* max-width: 1000px; */
 }
+/* spiner loading */
+.spinner-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .2);
+}
+.spinner-border {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
 /* responsive */
 @media only screen and (max-width: 1680px) {
     .select-search select, .select-width select, .select-width-last select{

@@ -18,7 +18,7 @@ Auth::routes();
 
 //frontend
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])->name('front.home');
-Route::get('/stock', [App\Http\Controllers\Frontend\StockController::class, 'index'])->name('front.stock');
+Route::any('/stock', [App\Http\Controllers\Frontend\StockController::class, 'index'])->name('front.stock');
 Route::get('/details/{id}', [App\Http\Controllers\Frontend\StockController::class, 'details'])->name('front.details');
 Route::get('/details/image_download/{id}', [App\Http\Controllers\Frontend\StockController::class, 'image_download'])->name('front.details.image_download');
 

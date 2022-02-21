@@ -104,35 +104,41 @@
                 </div>
                 <div class="search-type-contents">
                     <div class="search-category">
-                        <a href="#" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                            <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
-                        </a>
-                        <a href="#" class="mb-1">
+                        
+                        <form action="{{route('front.stock')}}" method="post">
+                            @csrf
+                            <a href="javascript:void(0)" class="mb-1">
+                                <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
+                                <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
+                                <input type="hidden" name="body_type" value="bus">
+                                <button type="submit">asd</button>
+                            </a>
+                        </form>
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
                             <p>Truck</p><span>({{$body_truck && $body_truck->body_count ? $body_truck->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
                             <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
                             <p>Sub</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
                             <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_pickup.png')}}" alt="">
                             <p>Pick up</p><span>({{$body_pick_up && $body_pick_up->body_count ? $body_pick_up->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_machinery.png')}}" alt="">
                             <p>Machinery </p><span>({{$body_machinery && $body_machinery->body_count ? $body_machinery->body_count : 0}})</span>
                         </a>
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <img src="{{URL::asset ('/assets/frontend/images/s_stractor.png')}}" alt="">
                             <p>Tractor</p><span>({{$body_tractor && $body_tractor->body_count ? $body_tractor->body_count : 0}})</span>
                         </a>
@@ -148,67 +154,67 @@
                 </div>
                 <div class="search-maker-contents">
                     <div class="search-category">
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_toyota.png')}}" alt="">
                             <p>Toyoda</p><span>(549)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_nissan.png')}}" alt="">
                             <p>Nissan</p><span>(2,016)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mitsubishi.png')}}" alt="">
                             <p>Mitsubishi</p><span>(1,002)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_honda.png')}}" alt="">
                             <p>Honda</p><span>(102)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mazda.png')}}" alt="">
                             <p>Mazda</p><span>(4,386)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_subaru.png')}}" alt="">
                             <p>Subaru</p><span>(549)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_suzuki.png')}}" alt="">
                             <p>Suzuki</p><span>(12)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_isuzu.png')}}" alt="">
                             <p>Isuzu</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_daihatsu.png')}}" alt="">
                             <p>Daihatsu</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_hino.png')}}" alt="">
                             <p>Hino</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_udtrucks.png')}}" alt="">
                             <p>Ud Trucks</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mercedes.png')}}" alt="">
                             <p>Mercedes benz</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_bmw.png')}}" alt="">
                             <p>Bmw</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_audi.png')}}" alt="">
                             <p>Audi</p><span>(50)</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="javascript:void(0)" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_chrysler.png')}}" alt="">
                             <p>Chrysler</p><span>(50)</span>
                         </a>
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <img src="{{URL::asset ('/assets/frontend/images/m_volkswagen.png')}}" alt="">
                             <p>Volkswagen</p><span>(50)</span>
                         </a>
@@ -250,7 +256,7 @@
                         <div class="reserved-mark">Reserved</div>
                     </a>
                     <div class="car-desc">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <h3>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h3>
                         </a>
                         @if($row->sale_price==null)
@@ -293,7 +299,7 @@
                         <div class="reserved-mark">Reserved</div>
                     </a>
                     <div class="car-desc">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <h3>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h3>
                         </a>
                         @if($row->sale_price==null)
@@ -310,7 +316,7 @@
             <!-- customer voice -->
             <div class="main-contents-title">
                 <h1>Customer's Voice</h1>
-                <a href="#" class="btn btn-light waves-effect">List of customer's voice</a>
+                <a href="javascript:void(0)" class="btn btn-light waves-effect">List of customer's voice</a>
                 <div class="title-border"></div>
             </div>
             <div class="customer-vocie">

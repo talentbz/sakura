@@ -329,100 +329,10 @@
                     </div>
                 </div>
                 <div class="title-border"></div>
-                @foreach($vehicle_data as $row)
-                <div class="contents-list">
-                    <div class="stock-mobile-title">
-                        <h5>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h5>
-                    </div>
-                    <div class="stock-image">
-                        <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
-                    </div>
-                    <div class="stock-contents">
-                        <h5>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h5>
-                        <table class="table table-bordered dt-responsive  nowrap w-100">
-                            <thead>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="table-light" scope="row">STOCK NO</td>
-                                    <td>SM{{$row->stock_no}}</td>
-                                    <td class="table-light">Year</td>
-                                    <td>{{$row->registration}}</td>
-                                    <td class="table-light">Model</td>
-                                    <td>TD42</td>
-                                </tr>       
-                                <tr>
-                                    <td class="table-light" scope="row">Transmission</td>
-                                    <td>{{$row->transmission}}</td>
-                                    <td class="table-light">ENGINE MODEL</td>
-                                    <td>{{$row->engine_model}}</td>
-                                    <td class="table-light">Body Type</td>
-                                    <td>{{$row->body_type}}</td>
-                                </tr>       
-                                <tr>
-                                    <td class="table-light">Engine CC</td>
-                                    <td>{{$row->engine_size}}</td>
-                                    <td class="table-light">Seating</td>
-                                    <td>{{$row->seats}}</td>
-                                    <td class="table-light">Chassis</td>
-                                    <td>{{$row->chassis}}</td>
-                                </tr>  
-                                <tr>
-                                    <td class="table-light">OPTIONS</td>
-                                    <td colspan="5">
-                                        {{$row->ac==1 ? 'A/C, ':''}}
-                                        {{$row->power_steering==1 ? 'Power Steering, ':''}}
-                                        {{$row->auto_door==1 ? 'Auto Door, ':''}}
-                                        {{$row->remote_key==1 ? 'Remote Key, ':''}}
-                                        {{$row->navigation==1 ? 'Navigation, ':''}}
-                                        {{$row->power_locks==1 ? 'Power Locks, ':''}}
-                                        {{$row->cd_player==1 ? 'CD player, ':''}}
-                                        {{$row->dvd==1 ? 'DVD, ':''}}
-                                        {{$row->mp3_interface==1 ? 'MP3 interface, ':''}}
-                                    </td>
-                                </tr>        
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="stock-mobile-contents">
-                        <p class="stock-label">Stock No</p>
-                        <p class="stock-value">SM{{$row->stock_no}}</p>
-                        <p class="stock-label">Year</p>
-                        <p class="stock-value">{{$row->registration}}</p>
-                        <p class="stock-label">Model</p>
-                        <p class="stock-value">TD42</p>
-                        <p class="stock-label">Trans</p>
-                        <p class="stock-value">{{$row->transmission}}</p>
-                        <p class="stock-label">Trans</p>
-                        <p class="stock-value">Manual</p>
-                    </div>
-                    <div class="stock-price-list">
-                        <div class="fob-price">
-                            <span class="fob-label">Price (FOB)</span>
-                            @if($row->sale_price==null)
-                                <span class="fob-value">${{number_format(round($row->price/$rate))}}</span>
-                            @else
-                                <span class="fob-value">${{number_format(round($row->sale_price/$rate))}}</span>
-                            @endif
-                        </div>
-                        <div class="price-border-bottom"></div>
-                        <div class="total-price">
-                            <span class="total-label">Total Price</span>
-                            <span class="totla-value">$10,500</span>
-                        </div>
-                        <div class="price-border-bottom"></div>
-                        <div class="country-port">
-                            <p class="cif">(CIF Inspect)</p>
-                            <p class="port">Durban</p>
-                        </div>
-                        <div class="detail-inquire">
-                            <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="btn-detail">Details</a>
-                            <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="btn-inquire">Inquire</a>
-                        </div>
-                    </div>
-                    <div class="contents-border-right"></div>
+                <div id="stock-list"></div>
+                <div class="load-more">
+                    <button id="load-more">Load more</button>
                 </div>
-                @endforeach
             </div>
             <!-- /end new arrivals -->
 
@@ -437,6 +347,7 @@
 @section('script')
     <script>
         var models = @json($models);
+        var sock_page = "{{route('front.stock')}}"
     </script>
     <script src="{{ URL::asset('/assets/frontend/pages/stock/index.js')}}"></script>
 @endsection

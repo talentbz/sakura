@@ -31,4 +31,30 @@ $(document).ready(function () {
                 border_object.eq(2*i).css('display', 'none');
         }
     }
+
+    var page = 1;
+    infinteLoadMore(page);
+    $('#load-more').click(function () {
+        page++;
+        infinteLoadMore(page);
+    });
+    function infinteLoadMore(page) {
+        $.ajax({
+                url: sock_page + "?page=" + page,
+                datatype: "html",
+                type: "get",
+            })
+            .done(function (response) {
+                console.log(response.length);
+                if (response.length <= 24) {
+                    $('#load-more').hide();
+                    //$('.auto-load').html("We don't have more data to display :(");
+                    return;
+                }
+                $("#stock-list").append(response);
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                console.log('Server error occured');
+            });
+    }
 })
