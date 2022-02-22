@@ -59,16 +59,16 @@
                 <div class="search-title search-car-title">
                     <h3>Search Japanese Car</h3>
                 </div>
-                <form action="" class="custom-search">
+                <form action="{{route('front.stock')}}" method="get" class="custom-search">
                     <div class="form-content">
-                        <input type="text" class="form-control search-input" placeholder="Keywords"> 
+                        <input type="text" class="form-control search-input" placeholder="Keywords" name="search_keyword"> 
                         <span class="bx bx-search-alt"></span>
                         <p class="req">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
                     </div>
                     <div class="select-search">
                         <div class="input-group mb-2">
                             <span class="input-group-text">Maker</span>
-                            <select class="form-select select-category">
+                            <select class="form-select select-category" name="maker">
                                 <option>Any</option>
                                 @foreach($models as $model)
                                     <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="input-group mb-2">
                             <span class="input-group-text">Model</span>
-                            <select class="form-select subcategory">
+                            <select class="form-select subcategory" name="model_name">
                                 <option>Any</option>
                                 <option></option>
                             </select>
@@ -85,7 +85,7 @@
                         <div class="input-group mb-2">
                             <span class="input-group-text">Year</span>
                             <div class="select-width">
-                                <select class="form-select">
+                                <select class="form-select" name="from_year">
                                     <option>Any</option>
                                     @foreach($year as $row)
                                         <option value="{{$row}}">{{$row}}</option>
@@ -93,7 +93,7 @@
                                 </select>
                             </div>
                             <div class="select-width-last">
-                                <select class="form-select">
+                                <select class="form-select" name="to_year">
                                     <option>Any</option>
                                     @foreach($year as $row)
                                         <option value="{{$row}}">{{$row}}</option>
@@ -105,14 +105,14 @@
                         <div class="input-group mb-2">
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
-                                <select class="form-select">
+                                <select class="form-select" name="from_price">
                                     <option>Any</option>
                                     <option>$1,000</option>
                                     <option>$10,000</option>
                                 </select>
                             </div>
                             <div class="select-width-last">
-                                <select class="form-select">
+                                <select class="form-select" name="tp_price">
                                     <option>Any</option>
                                     <option>$10,000</option>
                                     <option>$20,000</option>
@@ -138,37 +138,37 @@
                 </div>
                 <div class="search-type-contents">
                     <div class="search-category">
-                        <a href="#" class="mb-1">
+                    <a href="{{route('front.stock')}}{{'/?body_type=bus'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                            <p>Bus</p><span>(549)</span>
+                            <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=truck'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
-                            <p>Truck</p><span>(2,016)</span>
+                            <p>Truck</p><span>({{$body_truck && $body_truck->body_count ? $body_truck->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=van'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
-                            <p>Van</p><span>(1,002)</span>
+                            <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
-                            <p>Sub</p><span>(102)</span>
+                            <p>Sub</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=sedan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
-                            <p>Sedan</p><span>(4,386)</span>
+                            <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=pick up'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_pickup.png')}}" alt="">
-                            <p>Pick up</p><span>(549)</span>
+                            <p>Pick up</p><span>({{$body_pick_up && $body_pick_up->body_count ? $body_pick_up->body_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=Machinery'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_machinery.png')}}" alt="">
-                            <p>Machinery </p><span>(12)</span>
+                            <p>Machinery </p><span>({{$body_machinery && $body_machinery->body_count ? $body_machinery->body_count : 0}})</span>
                         </a>
-                        <a href="#">
+                        <a href="{{route('front.stock')}}{{'/?body_type=Tractor'}}">
                             <img src="{{URL::asset ('/assets/frontend/images/s_stractor.png')}}" alt="">
-                            <p>Tractor</p><span>(50)</span>
+                            <p>Tractor</p><span>({{$body_tractor && $body_tractor->body_count ? $body_tractor->body_count : 0}})</span>
                         </a>
                     </div>
                 </div>
@@ -182,69 +182,69 @@
                 </div>
                 <div class="search-maker-contents">
                     <div class="search-category">
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Toyoda'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_toyota.png')}}" alt="">
-                            <p>Toyoda</p><span>(549)</span>
+                            <p>Toyoda</p><span>({{$make_toyoda && $make_toyoda->make_count ? $make_toyoda->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=nissan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_nissan.png')}}" alt="">
-                            <p>Nissan</p><span>(2,016)</span>
+                            <p>Nissan</p><span>({{$make_nissan && $make_nissan->make_count ? $make_nissan->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=mitsubishi'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mitsubishi.png')}}" alt="">
-                            <p>Mitsubishi</p><span>(1,002)</span>
+                            <p>Mitsubishi</p><span>({{$make_mitsubishi && $make_mitsubishi->make_count ? $make_mitsubishi->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=honda'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_honda.png')}}" alt="">
-                            <p>Honda</p><span>(102)</span>
+                            <p>Honda</p><span>({{$make_honda && $make_honda->make_count ? $make_honda->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=mazda'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mazda.png')}}" alt="">
-                            <p>Mazda</p><span>(4,386)</span>
+                            <p>Mazda</p><span>({{$make_mazda && $make_mazda->make_count ? $make_mazda->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=subaru'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_subaru.png')}}" alt="">
-                            <p>Subaru</p><span>(549)</span>
+                            <p>Subaru</p><span>({{$make_subaru && $make_subaru->make_count ? $make_subaru->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=suzuki'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_suzuki.png')}}" alt="">
-                            <p>Suzuki</p><span>(12)</span>
+                            <p>Suzuki</p><span>({{$make_suzuki && $make_suzuki->make_count ? $make_suzuki->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=isuzu'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_isuzu.png')}}" alt="">
-                            <p>Isuzu</p><span>(50)</span>
+                            <p>Isuzu</p><span>({{$make_isuzu && $make_isuzu->make_count ? $make_isuzu->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=daihatsu'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_daihatsu.png')}}" alt="">
-                            <p>Daihatsu</p><span>(50)</span>
+                            <p>Daihatsu</p><span>({{$make_daihatsu && $make_daihatsu->make_count ? $make_daihatsu->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=hino'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_hino.png')}}" alt="">
-                            <p>Hino</p><span>(50)</span>
+                            <p>Hino</p><span>({{$make_hino && $make_hino->make_count ? $make_hino->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=ud trucks'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_udtrucks.png')}}" alt="">
-                            <p>Ud Trucks</p><span>(50)</span>
+                            <p>Ud Trucks</p><span>({{$make_udTrucks && $make_udTrucks->make_count ? $make_udTrucks->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Mercedes benz'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mercedes.png')}}" alt="">
-                            <p>Mercedes benz</p><span>(50)</span>
+                            <p>Mercedes benz</p><span>({{$make_mercedesBenz && $make_mercedesBenz->make_count ? $make_mercedesBenz->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Bmw'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_bmw.png')}}" alt="">
-                            <p>Bmw</p><span>(50)</span>
+                            <p>Bmw</p><span>({{$make_bmw && $make_bmw->make_count ? $make_bmw->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Audi'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_audi.png')}}" alt="">
-                            <p>Audi</p><span>(50)</span>
+                            <p>Audi</p><span>({{$make_audi && $make_audi->make_count ? $make_audi->make_count : 0}})</span>
                         </a>
-                        <a href="#" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Chrysler'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_chrysler.png')}}" alt="">
-                            <p>Chrysler</p><span>(50)</span>
+                            <p>Chrysler</p><span>({{$make_chrysler && $make_chrysler->make_count ? $make_chrysler->make_count : 0}})</span>
                         </a>
-                        <a href="#">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Volkswagen'}}">
                             <img src="{{URL::asset ('/assets/frontend/images/m_volkswagen.png')}}" alt="">
-                            <p>Volkswagen</p><span>(50)</span>
+                            <p>Volkswagen</p><span>({{$make_volkswagen && $make_volkswagen->make_count ? $make_volkswagen->make_count : 0}})</span>
                         </a>
                     </div>
                 </div>
@@ -329,9 +329,9 @@
                     </div>
                 </div>
                 <div class="title-border"></div>
-                <div id="stock-list"></div>
-                <div class="load-more">
-                    <button id="load-more">Load more</button>
+                <div id="stock-contents">
+                    {{ csrf_field() }}
+                    <div id="stock-list"></div>
                 </div>
             </div>
             <!-- /end new arrivals -->
@@ -347,7 +347,14 @@
 @section('script')
     <script>
         var models = @json($models);
-        var sock_page = "{{route('front.stock')}}"
+        var sock_page = "{{route('front.stock')}}";
+        var search_keyword = "{{$search_keyword}}";
+        var maker = "{{$maker}}";
+        var model_name = "{{$model_name}}";
+        var from_year = "{{$from_year}}";
+        var to_year = "{{$to_year}}";
+        var from_price = "{{$from_price}}";
+        var to_price = "{{$to_price}}";
     </script>
     <script src="{{ URL::asset('/assets/frontend/pages/stock/index.js')}}"></script>
 @endsection

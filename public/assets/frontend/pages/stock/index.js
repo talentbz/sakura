@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    var local_url = new URL(window.location.href);
+    var body_type = local_url.searchParams.get("body_type");
+    var make_type = local_url.searchParams.get("make_type");
     //model select category and sub category
     $('.select-category').on("change", function (e) { 
         var select_val = $(e.currentTarget).val();
@@ -16,7 +19,6 @@ $(document).ready(function () {
                 }
             }
     })
-
     border_object = $('.contents-border-right');
     if($( window ).width() <= 1024){
         border_object.css('display', 'block')
@@ -32,20 +34,50 @@ $(document).ready(function () {
         }
     }
 
+    var _token = $('input[name="_token"]').val();
+    // load_data('', _token);
+
+    // function load_data(id="", _token){
+    //     $.ajax({
+    //         url:sock_page,
+    //         method:"POST",
+    //         data:{id:id, _token:_token},
+    //         success:function(data)
+    //         {
+    //             console.log(data);
+    //             $('#load_more_button').remove();
+    //             $('#stock-contents').html(data);
+    //             $('#stock-list').append(data);
+    //         }
+    //     })
+    // }
+
+    // $(document).on('click', '#load_more_button', function(){
+    //     var id = $(this).data('id');
+    //     $('#load_more_button').html('<b>Loading...</b>');
+    //     load_data(id, _token);
+    // });
     var page = 1;
     infinteLoadMore(page);
-    $('#load-more').click(function () {
+    $(document).on('click', '#load_more_button', function(){
+        $('#load_more_button').html('<b>Loading...</b>');
         page++;
         infinteLoadMore(page);
     });
+   
+    
+    console.log(body_type);
     function infinteLoadMore(page) {
-        $.ajax({
+            $.ajax({
                 url: sock_page + "?page=" + page,
-                datatype: "html",
+                data:{
+                    body_type:body_type,
+                    make_type:make_type,
+                },
                 type: "get",
             })
             .done(function (response) {
-                console.log(response.length);
+                $('#load_more_button').remove();
                 if (response.length <= 24) {
                     $('#load-more').hide();
                     //$('.auto-load').html("We don't have more data to display :(");

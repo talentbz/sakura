@@ -104,41 +104,35 @@
                 </div>
                 <div class="search-type-contents">
                     <div class="search-category">
-                        
-                        <form action="{{route('front.stock')}}" method="post">
-                            @csrf
-                            <a href="javascript:void(0)" class="mb-1">
-                                <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                                <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
-                                <input type="hidden" name="body_type" value="bus">
-                                <button type="submit">asd</button>
-                            </a>
-                        </form>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=bus'}}" class="mb-1">
+                            <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
+                            <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
+                        </a>
+                        <a href="{{route('front.stock')}}{{'/?body_type=truck'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
                             <p>Truck</p><span>({{$body_truck && $body_truck->body_count ? $body_truck->body_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=van'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
                             <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
                             <p>Sub</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=sedan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
                             <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=pick up'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_pickup.png')}}" alt="">
                             <p>Pick up</p><span>({{$body_pick_up && $body_pick_up->body_count ? $body_pick_up->body_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=Machinery'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_machinery.png')}}" alt="">
                             <p>Machinery </p><span>({{$body_machinery && $body_machinery->body_count ? $body_machinery->body_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="{{route('front.stock')}}{{'/?body_type=Tractor'}}">
                             <img src="{{URL::asset ('/assets/frontend/images/s_stractor.png')}}" alt="">
                             <p>Tractor</p><span>({{$body_tractor && $body_tractor->body_count ? $body_tractor->body_count : 0}})</span>
                         </a>
@@ -154,69 +148,69 @@
                 </div>
                 <div class="search-maker-contents">
                     <div class="search-category">
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=toyoda'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_toyota.png')}}" alt="">
-                            <p>Toyoda</p><span>(549)</span>
+                            <p>Toyoda</p><span>({{$make_toyoda && $make_toyoda->make_count ? $make_toyoda->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=nissan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_nissan.png')}}" alt="">
-                            <p>Nissan</p><span>(2,016)</span>
+                            <p>Nissan</p><span>({{$make_nissan && $make_nissan->make_count ? $make_nissan->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=mitsubishi'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mitsubishi.png')}}" alt="">
-                            <p>Mitsubishi</p><span>(1,002)</span>
+                            <p>Mitsubishi</p><span>({{$make_mitsubishi && $make_mitsubishi->make_count ? $make_mitsubishi->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=honda'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_honda.png')}}" alt="">
-                            <p>Honda</p><span>(102)</span>
+                            <p>Honda</p><span>({{$make_honda && $make_honda->make_count ? $make_honda->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=mazda'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mazda.png')}}" alt="">
-                            <p>Mazda</p><span>(4,386)</span>
+                            <p>Mazda</p><span>({{$make_mazda && $make_mazda->make_count ? $make_mazda->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=subaru'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_subaru.png')}}" alt="">
-                            <p>Subaru</p><span>(549)</span>
+                            <p>Subaru</p><span>({{$make_subaru && $make_subaru->make_count ? $make_subaru->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=suzuki'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_suzuki.png')}}" alt="">
-                            <p>Suzuki</p><span>(12)</span>
+                            <p>Suzuki</p><span>({{$make_suzuki && $make_suzuki->make_count ? $make_suzuki->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=isuzu'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_isuzu.png')}}" alt="">
-                            <p>Isuzu</p><span>(50)</span>
+                            <p>Isuzu</p><span>({{$make_isuzu && $make_isuzu->make_count ? $make_isuzu->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=daihatsu'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_daihatsu.png')}}" alt="">
-                            <p>Daihatsu</p><span>(50)</span>
+                            <p>Daihatsu</p><span>({{$make_daihatsu && $make_daihatsu->make_count ? $make_daihatsu->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=hino'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_hino.png')}}" alt="">
-                            <p>Hino</p><span>(50)</span>
+                            <p>Hino</p><span>({{$make_hino && $make_hino->make_count ? $make_hino->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=ud trucks'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_udtrucks.png')}}" alt="">
-                            <p>Ud Trucks</p><span>(50)</span>
+                            <p>Ud Trucks</p><span>({{$make_udTrucks && $make_udTrucks->make_count ? $make_udTrucks->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Mercedes benz'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_mercedes.png')}}" alt="">
-                            <p>Mercedes benz</p><span>(50)</span>
+                            <p>Mercedes benz</p><span>({{$make_mercedesBenz && $make_mercedesBenz->make_count ? $make_mercedesBenz->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Bmw'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_bmw.png')}}" alt="">
-                            <p>Bmw</p><span>(50)</span>
+                            <p>Bmw</p><span>({{$make_bmw && $make_bmw->make_count ? $make_bmw->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Audi'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_audi.png')}}" alt="">
-                            <p>Audi</p><span>(50)</span>
+                            <p>Audi</p><span>({{$make_audi && $make_audi->make_count ? $make_audi->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Chrysler'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_chrysler.png')}}" alt="">
-                            <p>Chrysler</p><span>(50)</span>
+                            <p>Chrysler</p><span>({{$make_chrysler && $make_chrysler->make_count ? $make_chrysler->make_count : 0}})</span>
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Volkswagen'}}">
                             <img src="{{URL::asset ('/assets/frontend/images/m_volkswagen.png')}}" alt="">
-                            <p>Volkswagen</p><span>(50)</span>
+                            <p>Volkswagen</p><span>({{$make_volkswagen && $make_volkswagen->make_count ? $make_volkswagen->make_count : 0}})</span>
                         </a>
                     </div>
                 </div>

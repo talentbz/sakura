@@ -28,6 +28,23 @@ class FrontController extends Controller
         $body_machinery = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Machinery')->first();
         $body_tractor = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Tractor')->first();
         
+        //make type
+        $make_toyoda = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Toyota')->first();
+        $make_nissan = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Nissan')->first();
+        $make_mitsubishi = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Mitsubishi')->first();
+        $make_honda= Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Honda')->first();
+        $make_mazda = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Mazda')->first();
+        $make_subaru = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Subaru')->first();
+        $make_suzuki = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Suzuki')->first();
+        $make_isuzu = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Isuzu')->first();
+        $make_daihatsu = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Daihatsu')->first();
+        $make_hino = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Hino')->first();
+        $make_udTrucks = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Ud Trucks')->first();
+        $make_mercedesBenz = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Mercedes benz')->first();
+        $make_bmw = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Bmw')->first();
+        $make_audi = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Audi')->first();
+        $make_chrysler = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Chrysler')->first();
+        $make_volkswagen = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Volkswagen')->first();
         return view('front.pages.home.index', [
             'vehicle_data' => $vehicle_data,
             'rate' => $rate,
@@ -39,6 +56,24 @@ class FrontController extends Controller
             'body_machinery' => $body_machinery,
             'body_tractor' => $body_tractor,
             'body_sub' => $body_sub,
+
+             //make type
+             'make_toyoda' => $make_toyoda,
+             'make_nissan' => $make_nissan,
+             'make_mitsubishi' => $make_mitsubishi,
+             'make_honda' => $make_honda,
+             'make_mazda' => $make_mazda,
+             'make_subaru' => $make_subaru,
+             'make_suzuki' => $make_suzuki,
+             'make_isuzu' => $make_isuzu,
+             'make_daihatsu' => $make_daihatsu,
+             'make_hino' => $make_hino,
+             'make_udTrucks' => $make_udTrucks,
+             'make_mercedesBenz' => $make_mercedesBenz,
+             'make_bmw' => $make_bmw,
+             'make_audi' => $make_audi,
+             'make_chrysler' => $make_chrysler,
+             'make_volkswagen' => $make_volkswagen,
         ]);
     }
     public function clear(Request $request)
