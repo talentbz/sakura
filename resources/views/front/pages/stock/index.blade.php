@@ -182,9 +182,9 @@
                 </div>
                 <div class="search-maker-contents">
                     <div class="search-category">
-                        <a href="{{route('front.stock')}}{{'/?make_type=Toyoda'}}" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?make_type=Toyota'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_toyota.png')}}" alt="">
-                            <p>Toyoda</p><span>({{$make_toyoda && $make_toyoda->make_count ? $make_toyoda->make_count : 0}})</span>
+                            <p>Toyota</p><span>({{$make_toyoda && $make_toyoda->make_count ? $make_toyoda->make_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?make_type=nissan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/m_nissan.png')}}" alt="">

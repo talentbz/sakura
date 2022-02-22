@@ -76,6 +76,32 @@ class StockController extends Controller
             } elseif(isset($request->make_type)){
                 $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->make_type);  
             }
+            if(isset($request->search_keyword)) {
+                $general_search = preg_split('/\s+/', $request->search_keyword, -1, PREG_SPLIT_NO_EMPTY); 
+                $vehicle_data = $vehicle_data->where(function ($q) use ($general_search) {
+                    foreach ($general_search as $value) {
+                        $q->orWhere('vehicle.make_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.stock_no', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.model_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.body_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.registration', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.engine_model', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.model_code', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.fuel_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.drive_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.exterior_color', 'LIKE', "%{$value}%");
+                    }
+                });
+            }
+            if(isset($request->maker)){
+                $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->maker);  
+            }
+            if(isset($request->model_name)){
+                $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->model_name);  
+            }
+            // if(isset($request->from_year)){
+            //     $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->model_name);  
+            // }
             $vehicle_data = $vehicle_data->paginate(24);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
@@ -188,7 +214,7 @@ class StockController extends Controller
                             <button type="button" name="load_more_button" data-id="'.$last_id.'" id="load_more_button">Load More</button>
                         </div>';
             } else {
-                $list.= '<div id="load_more">
+                $list.= '<div id="load_more" style="display:none">
                             <button type="button" name="load_more_button">No Data Found</button>
                         </div>';
             }

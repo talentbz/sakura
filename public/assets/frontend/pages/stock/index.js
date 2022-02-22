@@ -68,25 +68,32 @@ $(document).ready(function () {
     
     console.log(body_type);
     function infinteLoadMore(page) {
-            $.ajax({
-                url: sock_page + "?page=" + page,
-                data:{
-                    body_type:body_type,
-                    make_type:make_type,
-                },
-                type: "get",
-            })
-            .done(function (response) {
-                $('#load_more_button').remove();
-                if (response.length <= 24) {
-                    $('#load-more').hide();
-                    //$('.auto-load').html("We don't have more data to display :(");
-                    return;
-                }
-                $("#stock-list").append(response);
-            })
-            .fail(function (jqXHR, ajaxOptions, thrownError) {
-                console.log('Server error occured');
-            });
+        $.ajax({
+            url: sock_page + "?page=" + page,
+            data:{
+                body_type:body_type,
+                make_type:make_type,
+                search_keyword:search_keyword,
+                maker:maker,
+                model_name:model_name,
+                from_year:from_year,
+                to_year:to_year,
+                from_price:from_price,
+                to_price:to_price,
+            },
+            type: "get",
+        })
+        .done(function (response) {
+            $('#load_more_button').remove();
+            if (response.length <= 24) {
+                $('#load-more').hide();
+                //$('.auto-load').html("We don't have more data to display :(");
+                return;
+            }
+            $("#stock-list").append(response);
+        })
+        .fail(function (jqXHR, ajaxOptions, thrownError) {
+            console.log('Server error occured');
+        });
     }
 })
