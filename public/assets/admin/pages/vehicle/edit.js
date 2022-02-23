@@ -16,6 +16,9 @@ $(document).ready(function () {
                 }
             }
     })
+    $(document).on('click', '.file-drop-zone', function(){
+        $('.fileinput-upload-button').attr('style','display: block !important'); 
+    })
     $("#input-711").fileinput({
         
         initialPreview: image_path,

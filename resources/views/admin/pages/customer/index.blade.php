@@ -20,8 +20,8 @@
                                 <th align="center">Description</th>
                                 <th align="center">Customer Name</th>
                                 <th align="center">Country</th>
-                                <th align="center">Review Date</th>
-                                <th align="center">Rate</th>
+                                <!-- <th align="center">Review Date</th>
+                                <th align="center">Rate</th> -->
                                 <th align="center">Action</th>
                             </tr>
                         </thead>
@@ -37,8 +37,8 @@
                                 </td>
                                 <td align="center">{{$row->customer_name}}</td>
                                 <td align="center">{{$row->country}}</td>
-                                <td align="center">{{$row->register_date}}</td>
-                                <td align="center">{{$row->rate}}</td>
+                                <!-- <td align="center">{{$row->register_date}}</td>
+                                <td align="center">{{$row->rate}}</td> -->
                                 <td align="center">
                                         <a href="#" class="text-success edit" ><i
                                                 class="mdi mdi-pencil font-size-18"></i></a>
