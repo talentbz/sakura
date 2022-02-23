@@ -254,7 +254,7 @@ class VehicleController extends Controller
         $vehicle->price = $request->price;
         $vehicle->sale_price = $request->sale_price;
         $vehicle->video_link = $request->video_link;
-        // $vehicle->save();
+        $vehicle->save();
         
         //image upload section
         // if ($request->has('file')) { 
@@ -306,7 +306,7 @@ class VehicleController extends Controller
                 File::makeDirectory($thumb_path); //create thumb image folder
             }
             if(!file_exists($real_path)) {
-                File::makeDirectory($real_path); //create thumb image folder
+                File::makeDirectory($real_path); //create real image folder
             }
             foreach($request->file as $row){
                 $fileName = $row->getClientOriginalName();

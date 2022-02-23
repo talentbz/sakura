@@ -16,7 +16,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-calendar-check"></i>
+                        <i class="bx bxs-car"></i>
                         <span>Vehicle Management</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">

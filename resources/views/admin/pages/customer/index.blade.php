@@ -15,27 +15,30 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
-                                <th align="center" width="5%">Image</th>
+                                <th align="center">Image</th>
                                 <th align="center">Title</th>
                                 <th align="center">Description</th>
                                 <th align="center">Customer Name</th>
                                 <th align="center">Country</th>
                                 <th align="center">Review Date</th>
-                                <th align="center">Publish Date</th>
+                                <th align="center">Rate</th>
                                 <th align="center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse($review as $row)
                             <tr>
                                 <td align="center">
-                                    <img src="" alt="">
+                                    <img src="{{URL::asset('/uploads/review')}}{{'/'}}{{$row->id}}{{'/'}}{{$row->image}}" alt="" width="80">
                                 </td>
-                                <td align="center">I very happy i received</td>
-                                <td align="center">I very happy i received my car in a good condition .The vehicle was in a nice condition.</td>
-                                <td align="center">Rain, Elden Paul</td>
-                                <td align="center">Zimbabwe</td>
-                                <td align="center">31/Jan/2022</td>
-                                <td align="center">31/Jan/2022</td>
+                                <td align="center">{{$row->title}}</td>
+                                <td align="center">
+                                    <p>{{$row->description}}</p>
+                                </td>
+                                <td align="center">{{$row->customer_name}}</td>
+                                <td align="center">{{$row->country}}</td>
+                                <td align="center">{{$row->register_date}}</td>
+                                <td align="center">{{$row->rate}}</td>
                                 <td align="center">
                                         <a href="#" class="text-success edit" ><i
                                                 class="mdi mdi-pencil font-size-18"></i></a>
@@ -44,9 +47,11 @@
                                                 class="mdi mdi-delete font-size-18"></i></a>
                                 </td>
                             </tr>
-                            <!-- <tr>
+                            @empty
+                            <tr>
                                 <td align="center" colspan="8">There are no any data.</p>
-                            </tr> -->
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

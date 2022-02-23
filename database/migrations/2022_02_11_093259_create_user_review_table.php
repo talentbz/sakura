@@ -15,9 +15,12 @@ class CreateUserReviewTable extends Migration
     {
         Schema::create('user_review', function (Blueprint $table) {
             $table->id();
+            $table->string('customer_name');
+            $table->string('country');
             $table->string('title');
-            $table->string('description');
-            $table->double('star')->nullable();
+            $table->longText('description');
+            $table->date('register_date');
+            $table->double('rate')->nullable();
             $table->timestamps();
         });
     }

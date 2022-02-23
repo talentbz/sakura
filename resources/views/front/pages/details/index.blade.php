@@ -391,16 +391,16 @@
             <div class="login-register">
                 <ul class="nav nav-pills nav-justified" role="tablist">
                     <li class="nav-item waves-effect waves-light inquiry-wrapper">
-                        <a class="nav-link inquiry active " data-bs-toggle="tab" href="#inquiry" role="tab"> Guest Inquiry </a>
+                        <a class="nav-link inquiry active " data-bs-toggle="tab" href="#inquiry-pc" role="tab"> Guest Inquiry </a>
                     </li>
                     <li class="nav-item waves-effect waves-light login-wrapper">
-                        <a class="nav-link login" data-bs-toggle="tab" href="#login" role="tab">LOG IN</a>
+                        <a class="nav-link login" data-bs-toggle="tab" href="#login-pc" role="tab">LOG IN</a>
                     </li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div class="tab-pane active" id="inquiry" role="tabpanel">
+                    <div class="tab-pane active" id="inquiry-pc" role="tabpanel">
                         <form action="">
                             <div class="inquiry-form">
                                 <!-- <div class="inquiry-title">
@@ -455,7 +455,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane" id="login" role="tabpanel">
+                    <div class="tab-pane" id="login-pc" role="tabpanel">
                         <form action="">
                             <div class="login-form">
                                 <div class="login-list">
