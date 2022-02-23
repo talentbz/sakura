@@ -17,8 +17,9 @@
                             <tr>
                                 <th align="center" width="5%">Image</th>
                                 <th align="center">Stock No</th>
-                                <th align="center">Vehicle Name</th>
                                 <th align="center">Price</th>
+                                <th align="center">Discounted Price</th>
+                                <th align="center">USD Price</th>
                                 <th align="center">Date</th>
                                 <th align="center">Action</th>
                             </tr>
@@ -30,9 +31,18 @@
                                     <img src="{{URL::asset('/uploads/vehicle')}}{{'/'}}{{$row->id}}{{'/thumb'}}{{'/'}}{{$row->image}}" alt="" width="80">
                                 </td>
                                 <td align="center">SM{{$row->stock_no}}</td>
-                                <td align="center">{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</td>
                                 <td align="center">¥ {{number_format($row->price)}}</td>
-                                <td align="center">{{date("Y-m-d", strtotime($row->updated_at))}}</td>
+                                @if($row->sale_price)
+                                    <td align="center">¥ {{number_format($row->sale_price)}}</td>
+                                @else
+                                    <td align="center"></td>
+                                @endif
+                                @if($row->sale_price)
+                                    <td align="center">$ {{number_format(round($row->sale_price / $rate))}}</td>
+                                @else
+                                    <td align="center">$ {{number_format(round($row->price / $rate))}}</td>
+                                @endif
+                                <td align="center">{{date("Y-m-d", strtotime($row->created_at))}}</td>
                                 <td align="center">
                                         <a href="{{route('admin.vehicle.edit', ['id' => $row->id])}}" class="text-success edit" ><i
                                                 class="mdi mdi-pencil font-size-18"></i></a>

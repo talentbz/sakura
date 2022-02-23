@@ -13,12 +13,12 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
+        $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
-                                    ->groupBy('vehicle_image.vehicle_id')
+                                     ->groupBy('vehicle_image.vehicle_id')
                                     ->orderBy('vehicle.created_at', 'desc')
                                     ->paginate(8);
-        $rate = Rate::first()->rate;
         $body_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'bus')->first();
         $body_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Truck')->first();
         $body_van = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Van')->first();
@@ -45,9 +45,37 @@ class FrontController extends Controller
         $make_audi = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Audi')->first();
         $make_chrysler = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Chrysler')->first();
         $make_volkswagen = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Volkswagen')->first();
+        
+        //config variable
+        $models = config('config.model_catgory');
+        $body_type= config('config.body_type');
+        $fuel_type= config('config.fuel_type');
+        $drive_type= config('config.drive_type');
+        $transmission= config('config.transmission');
+        $steering= config('config.steering');
+        $doors= config('config.doors');
+        $year = [];
+        $price =[];
+        for ($i=date('Y'); $i >= 1950 ; $i--) { 
+            array_push($year, $i);
+        }
+        for ($i=1000; $i <= 14000; $i+= 2000) { 
+            array_push($price, $i);
+        }
         return view('front.pages.home.index', [
             'vehicle_data' => $vehicle_data,
             'rate' => $rate,
+            //config variable
+            'models' => $models,
+            'body_type' => $body_type,
+            'fuel_type' => $fuel_type,
+            'drive_type' => $drive_type,
+            'transmission' => $transmission,
+            'steering' => $steering,
+            'doors' => $doors,
+            'year' => $year,
+            'price' => $price,
+            //body type
             'body_bus' => $body_bus,
             'body_truck' => $body_truck,
             'body_van' => $body_van,

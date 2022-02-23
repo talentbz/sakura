@@ -22,7 +22,7 @@ class StockController extends Controller
         $doors= config('config.doors');
         $country= config('config.country');
         $year = [];
-
+        $price =[];
         // body type
         $body_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'bus')->first();
         $body_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Truck')->first();
@@ -64,11 +64,16 @@ class StockController extends Controller
         for ($i=date('Y'); $i >= 1950 ; $i--) { 
             array_push($year, $i);
         }
+        for ($i=1000; $i <= 14000; $i+= 2000) { 
+            array_push($price, $i);
+        }
+        $rate = Rate::first()->rate;    
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+                                    ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
+                                    ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->groupBy('vehicle_image.vehicle_id')
                                     ->orderBy('vehicle.created_at', 'desc');
-
-        $rate = Rate::first()->rate;                                    
+                                
         $list = '';                            
         if ($request->ajax()) {
             if(isset($request->body_type)){
@@ -76,32 +81,41 @@ class StockController extends Controller
             } elseif(isset($request->make_type)){
                 $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->make_type);  
             }
-            if(isset($request->search_keyword)) {
+            if(!is_null($request->search_keyword)) {
                 $general_search = preg_split('/\s+/', $request->search_keyword, -1, PREG_SPLIT_NO_EMPTY); 
                 $vehicle_data = $vehicle_data->where(function ($q) use ($general_search) {
                     foreach ($general_search as $value) {
-                        $q->orWhere('vehicle.make_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.stock_no', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.model_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.body_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.registration', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.engine_model', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.model_code', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.fuel_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.drive_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('vehicle.exterior_color', 'LIKE', "%{$value}%");
+                        $q->orWhere('make_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('stock_no', 'LIKE', "%{$value}%");
+                        $q->orWhere('model_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('body_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('registration', 'LIKE', "%{$value}%");
+                        $q->orWhere('engine_model', 'LIKE', "%{$value}%");
+                        $q->orWhere('model_code', 'LIKE', "%{$value}%");
+                        $q->orWhere('fuel_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('drive_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('exterior_color', 'LIKE', "%{$value}%");
                     }
                 });
             }
-            if(isset($request->maker)){
-                $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->maker);  
+            if(!is_null($request->maker)){
+                $vehicle_data = $vehicle_data->where('make_type', $request->maker);  
             }
-            if(isset($request->model_name)){
-                $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->model_name);  
+            if(!is_null($request->model_name)){
+                $vehicle_data = $vehicle_data->where('model_type', $request->model_name);  
             }
-            // if(isset($request->from_year)){
-            //     $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->model_name);  
-            // }
+            if(!is_null($request->from_year)){
+                $vehicle_data = $vehicle_data->where('year', '>=', $request->from_year);  
+            }
+            if(!is_null($request->to_year)){
+                $vehicle_data = $vehicle_data->where('year', '<=', $request->to_year);  
+            }
+            if(!is_null($request->from_price)){
+                $vehicle_data = $vehicle_data->where('price_usd', '>=', $request->from_price);  
+            }
+            if(!is_null($request->to_price)){
+                $vehicle_data = $vehicle_data->where('price_usd', '<=', (int)$request->to_price);  
+            }
             $vehicle_data = $vehicle_data->paginate(24);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
@@ -239,6 +253,7 @@ class StockController extends Controller
             'body_machinery' => $body_machinery,
             'body_tractor' => $body_tractor,
             'body_sub' => $body_sub,
+            'price' => $price,
             //make type
             'make_toyoda' => $make_toyoda,
             'make_nissan' => $make_nissan,

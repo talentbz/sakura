@@ -27,43 +27,45 @@
                 <div class="search-title search-car-title">
                     <h3>Search Japanese Car</h3>
                 </div>
-                <form action="" class="custom-search">
+                <form action="{{route('front.stock')}}" method="get" class="custom-search">
                     <div class="form-content">
-                        <input type="text" class="form-control search-input" placeholder="Keywords"> 
+                        <input type="text" class="form-control search-input" placeholder="Keywords" name="search_keyword"> 
                         <span class="bx bx-search-alt"></span>
                         <p class="req">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
                     </div>
                     <div class="select-search">
                         <div class="input-group mb-2">
                             <span class="input-group-text">Maker</span>
-                            <select class="form-select">
-                                <option>Any</option>
-                                <option>Large select</option>
-                                <option>Small select</option>
+                            <select class="form-select select-category" name="maker">
+                                <option value="">Any</option>
+                                @foreach($models as $model)
+                                    <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="input-group mb-2">
                             <span class="input-group-text">Model</span>
-                            <select class="form-select">
-                                <option>Any</option>
-                                <option>Large select</option>
-                                <option>Small select</option>
+                            <select class="form-select subcategory" name="model_name">
+                                <option value="">Any</option>
+                                <option></option>
                             </select>
                         </div>
                         <div class="input-group mb-2">
                             <span class="input-group-text">Year</span>
                             <div class="select-width">
-                                <select class="form-select">
-                                    <option>Any</option>
-                                    <option>1991</option>
-                                    <option>1992</option>
+                                <select class="form-select" name="from_year">
+                                    <option value="">Any</option>
+                                    @foreach($year as $row)
+                                        <option value="{{$row}}">{{$row}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="select-width-last">
-                                <select class="form-select">
-                                    <option>Any</option>
-                                    <option>1991</option>
-                                    <option>1992</option>
+                                <select class="form-select" name="to_year">
+                                    <option value="">Any</option>
+                                    @foreach($year as $row)
+                                        <option value="{{$row}}">{{$row}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -431,5 +433,8 @@
 @include('front.layouts.searchModal')
 
 @section('script')
-
+<script>
+    var models = @json($models);
+</script>
+<script src="{{ URL::asset('/assets/frontend/pages/home/index.js')}}"></script>
 @endsection

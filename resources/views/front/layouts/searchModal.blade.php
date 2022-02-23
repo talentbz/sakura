@@ -13,7 +13,7 @@
                         <div class="modal-section col-md-6 col-sm-12">
                             <div class="search-wrapper mb-4">
                                 <h3>Search by Free Keywords</h3>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="search_keyword">
                                 <p class="mt-2">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
                             </div>
                             <div class="search-wrapper">
@@ -38,7 +38,7 @@
                                 <div class="spec-right mb-1">
                                     <div class="spec-select">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="spec-select">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -59,7 +59,7 @@
                                 <div class="spec-right mb-1">
                                     <div class="spec-select spec-fuel">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -118,22 +118,20 @@
                                             <lavel>Maker:</lavel>
                                         </div>
                                         <div class="custom-select select-s mb-2">
-                                            <select class="form-select">
-                                                <option selected>Any</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                            <select class="form-select select-category" name="maker">
+                                                <option value="">Any</option>
+                                                @foreach($models as $model)
+                                                    <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="custom-lavel lavel-s">
                                             <lavel>Model:</lavel>
                                         </div>
                                         <div class="custom-select select-s mb-2">
-                                            <select class="form-select">
-                                                <option selected>Any</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                            <select class="form-select subcategory">
+                                                <option value="">Any</option>
+                                                <option></option>
                                             </select>
                                         </div>
                                         <div class="custom-lavel lavel-s">
@@ -141,7 +139,7 @@
                                         </div>
                                         <div class="custom-select select-s mb-2">
                                             <select class="form-select">
-                                                <option selected>Any</option>
+                                                <option value="">Any</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -154,19 +152,19 @@
                                         </div>
                                         <div class="custom-select select-m mb-2">
                                             <div class="left-select-m">
-                                                <select class="form-select ">
-                                                    <option selected>Any</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select " name="from_year">
+                                                    <option value="">Any</option>
+                                                    @foreach($year as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="right-select-m">
-                                                <select class="form-select ">
-                                                    <option selected>Any</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select " name="to_year">
+                                                    <option value="">Any</option>
+                                                    @foreach($year as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -175,19 +173,19 @@
                                         </div>
                                         <div class="custom-select select-m mb-2">
                                             <div class="left-select-m">
-                                                <select class="form-select ">
-                                                    <option selected>Any</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select " name="from_price">
+                                                    <option value="">Any</option>
+                                                    @foreach($price as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="right-select-m">
-                                                <select class="form-select ">
-                                                    <option selected>Any</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select " name="to_price">
+                                                    <option value="">Any</option>
+                                                    @foreach($price as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -207,7 +205,7 @@
                                 <div class="spec-right mb-1">
                                     <div class="spec-select">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -215,7 +213,7 @@
                                     </div>
                                     <div class="spec-select">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -245,7 +243,7 @@
                                 <div class="spec-right mb-1">
                                     <div class="spec-select">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -253,7 +251,7 @@
                                     </div>
                                     <div class="spec-select">
                                         <select class="form-select">
-                                            <option selected>Any</option>
+                                            <option value="">Any</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>

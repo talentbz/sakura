@@ -416,7 +416,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="col-form-label">Video link</label>
-                                    <input class="form-control" type="text" placeholder="Enter Video link" name="video_link" value="{{$data->video_link}}" required>
+                                    <input class="form-control" type="text" placeholder="Enter Video link" name="video_link" value="{{$data->video_link}}">
                                 </div>
                                 <div class="col-md-6">
                                     <p class="mt-4">If you don't have the videos handy, don't worry. You can add or edit them after you complete your ad using the "Manage Your Ad" page.</p>

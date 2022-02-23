@@ -15,12 +15,15 @@ class VehicleController extends Controller
 {
     public function index(Request $request)
     {
+        $rate = Rate::latest('id')->first()->rate;
         $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                         ->groupBy('vehicle.id')
                         ->select('vehicle.*', 'vehicle_image.image')
+                        ->orderBy('vehicle.created_at', 'desc')
                         ->get();
         return view('admin.pages.vehicle.index', [
             'data' => $data,
+            'rate' => $rate,
         ]);
     }
     public function create(Request $request)

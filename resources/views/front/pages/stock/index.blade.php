@@ -61,7 +61,7 @@
                 </div>
                 <form action="{{route('front.stock')}}" method="get" class="custom-search">
                     <div class="form-content">
-                        <input type="text" class="form-control search-input" placeholder="Keywords" name="search_keyword"> 
+                        <input type="text" class="form-control search-input" placeholder="Keywords" name="search_keyword" value="{{$search_keyword}}"> 
                         <span class="bx bx-search-alt"></span>
                         <p class="req">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
                     </div>
@@ -69,35 +69,57 @@
                         <div class="input-group mb-2">
                             <span class="input-group-text">Maker</span>
                             <select class="form-select select-category" name="maker">
-                                <option>Any</option>
-                                @foreach($models as $model)
-                                    <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
-                                @endforeach
+                                <option value="">Any</option>
+                                @if(!is_null($maker))
+                                    @foreach($models as $model)
+                                        <option value="{{$model['category_name']}}" {{ $maker == $model['category_name'] ? "selected" : "" }}>{{$model['category_name']}}</option>
+                                    @endforeach
+                                @else
+                                    @foreach($models as $model)
+                                        <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="input-group mb-2">
                             <span class="input-group-text">Model</span>
                             <select class="form-select subcategory" name="model_name">
-                                <option>Any</option>
-                                <option></option>
+                                <option value="">Any</option>
+                                @if(!is_null($model_name))
+                                    <option value="{{$model_name}}" selected>{{$model_name}}</option>
+                                @else
+                                    <option></option>
+                                @endif
                             </select>
                         </div>
                         <div class="input-group mb-2">
                             <span class="input-group-text">Year</span>
                             <div class="select-width">
                                 <select class="form-select" name="from_year">
-                                    <option>Any</option>
-                                    @foreach($year as $row)
-                                        <option value="{{$row}}">{{$row}}</option>
-                                    @endforeach
+                                    <option value="">Any</option>
+                                    @if(!is_null($from_year))
+                                        @foreach($year as $row)
+                                            <option value="{{$row}}" {{ $from_year == $row ? "selected" : "" }}>{{$row}}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($year as $row)
+                                            <option value="{{$row}}">{{$row}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="select-width-last">
                                 <select class="form-select" name="to_year">
-                                    <option>Any</option>
-                                    @foreach($year as $row)
-                                        <option value="{{$row}}">{{$row}}</option>
-                                    @endforeach
+                                    <option value="">Any</option>
+                                    @if(!is_null($to_year))
+                                        @foreach($year as $row)
+                                            <option value="{{$row}}" {{ $to_year == $row ? "selected" : "" }}>{{$row}}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($year as $row)
+                                            <option value="{{$row}}">{{$row}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -106,16 +128,30 @@
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
                                 <select class="form-select" name="from_price">
-                                    <option>Any</option>
-                                    <option>$1,000</option>
-                                    <option>$10,000</option>
+                                    <option value="">Any</option>
+                                    @if(!is_null($from_price))
+                                        @foreach($price as $row)
+                                            <option value="{{$row}}" {{ $from_price == $row ? "selected" : "" }}>{{$row}}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($price as $row)
+                                            <option value="{{$row}}">{{$row}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="select-width-last">
-                                <select class="form-select" name="tp_price">
-                                    <option>Any</option>
-                                    <option>$10,000</option>
-                                    <option>$20,000</option>
+                                <select class="form-select" name="to_price">
+                                    <option value="">Any</option>
+                                    @if(!is_null($to_price))
+                                        @foreach($price as $row)
+                                            <option value="{{$row}}" {{ $to_price == $row ? "selected" : "" }}>{{$row}}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($price as $row)
+                                            <option value="{{$row}}">{{$row}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
