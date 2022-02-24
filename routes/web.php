@@ -22,6 +22,7 @@ Route::any('/stock', [App\Http\Controllers\Frontend\StockController::class, 'ind
 Route::get('/details/{id}', [App\Http\Controllers\Frontend\StockController::class, 'details'])->name('front.details');
 Route::get('/details/image_download/{id}', [App\Http\Controllers\Frontend\StockController::class, 'image_download'])->name('front.details.image_download');
 Route::get('/contact_us', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('front.contact');
+Route::post('/contact_us/email', [App\Http\Controllers\Frontend\ContactController::class, 'contactEmail'])->name('front.contact.email');
 Route::get('/company', [App\Http\Controllers\Frontend\ContactController::class, 'company'])->name('front.company');
 Route::get('/agents', [App\Http\Controllers\Frontend\ContactController::class, 'agents'])->name('front.agents');
 Route::get('/gallery', [App\Http\Controllers\Frontend\ContactController::class, 'gallery'])->name('front.gallery');
