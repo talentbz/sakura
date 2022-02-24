@@ -332,6 +332,50 @@
                     </tbody>
                 </table>
             </div>
+            <!-- feature table -->
+            <div class="featured-option">
+                <div class="car-detail-title">
+                    <h3>Featured Options</h3>
+                </div>
+                <table class="table table-bordered dt-responsive  nowrap w-100">
+                    <tr>
+                        <td class="{{$vehicle_data->ac==1?'attached-on':'attached-off'}}">AC</td>
+                        <td class="{{$vehicle_data->power_steering==1?'attached-on':'attached-off'}}">Power Steering</td>
+                        <td class="{{$vehicle_data->auto_door==1?'attached-on':'attached-off'}}">Auto Door</td>
+                        <td class="{{$vehicle_data->remote_key==1?'attached-on':'attached-off'}}">Remote Key</td>
+                        <td class="{{$vehicle_data->backup_camera==1?'attached-on':'attached-off'}}">Backup Camera</td>
+                        <td class="{{$vehicle_data->navigation==1?'attached-on':'attached-off'}}">Navigation</td>
+                    </tr>
+                    <tr>
+                        <td class="{{$vehicle_data->power_locks==1?'attached-on':'attached-off'}}">Power Locks</td>
+                        <td class="{{$vehicle_data->cd_player==1?'attached-on':'attached-off'}}">CD player</td>
+                        <td class="{{$vehicle_data->dvd==1?'attached-on':'attached-off'}}">DVD</td>
+                        <td class="{{$vehicle_data->mp3_interface==1?'attached-on':'attached-off'}}">MP3 interface</td>
+                        <td class="{{$vehicle_data->ratio==1?'attached-on':'attached-off'}}">Radio</td>
+                        <td class="{{$vehicle_data->sun_roof==1?'attached-on':'attached-off'}}">Sun Roof</td>
+                    </tr>
+                    <tr>
+                        <td class="{{$vehicle_data->air_bag==1?'attached-on':'attached-off'}}">Air bag</td>
+                        <td class="{{$vehicle_data->abs==1?'attached-on':'attached-off'}}">ABS</td>
+                        <td class="{{$vehicle_data->s_power_locks==1?'attached-on':'attached-off'}}">Power Locks</td>
+                        <td class="{{$vehicle_data->parking_sensors==1?'attached-on':'attached-off'}}">Parking sensors</td>
+                        <td class="{{$vehicle_data->grill_guard==1?'attached-on':'attached-off'}}">Grill Guard</td>
+                        <td class="{{$vehicle_data->back_camera==1?'attached-on':'attached-off'}}">Back Camera</td>
+                    </tr>
+                    <tr>
+                        <td class="{{$vehicle_data->leather_seat==1?'attached-on':'attached-off'}}">Leather Seat</td>
+                        <td class="{{$vehicle_data->power_seat==1?'attached-on':'attached-off'}}">Power Seat</td>
+                        <td class="{{$vehicle_data->power_mirrors==1?'attached-on':'attached-off'}}">Power Mirrors</td>
+                        <td class="{{$vehicle_data->power_window==1?'attached-on':'attached-off'}}">Power Window</td>
+                        <td class="{{$vehicle_data->rear_spoiler==1?'attached-on':'attached-off'}}">Rear Spoiler</td>
+                        <td class="{{$vehicle_data->alloy_wheels==1?'attached-on':'attached-off'}}">Alloy wheels</td>
+                    </tr>
+                    <tr>
+                        <td class="{{$vehicle_data->bluetooth==1?'attached-on':'attached-off'}}">Bluetooth</td>
+                        <td colspan="5"></td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="detail-sidebar pc-sidebar">
             <!-- price calculator -->

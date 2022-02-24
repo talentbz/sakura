@@ -16,7 +16,7 @@ $(document).ready(function () {
                 success: function (data){
                     toastr["success"]("Success");
                     $('#myModal').modal('hide');
-                    $('.tabel_reload').html();
+                    location.href = index_url; 
                 }
             })
         })

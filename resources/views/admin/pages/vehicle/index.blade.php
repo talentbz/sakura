@@ -85,6 +85,7 @@
 @section('script')
     <script>
         var delete_url = "{{route('admin.vehicle.delete')}}";
+        var index_url = "{{route('admin.vehicle.index')}}";
     </script>
     <script src="{{ URL::asset('/assets/admin/pages/vehicle/index.js') }}"></script>
 @endsection

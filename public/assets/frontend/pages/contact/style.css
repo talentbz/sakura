@@ -1,0 +1,47 @@
+body {
+    background: #fff !important;
+}
+.hero {
+    height: 190px !important;
+}
+.contact-details {
+    width: 80%;
+    margin: 30px auto;
+}
+.custom-validation label{
+    margin-bottom: 0;
+}
+.list-margin {
+    margin-top: 10px !important;
+}
+.parsley-error {
+    border-color: #f46a6a !important;
+}
+.parsley-errors-list {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+.parsley-errors-list.filled {
+    display: block;
+}
+
+.parsley-errors-list > li {
+    font-size: 12px;
+    list-style: none;
+    color: #f46a6a;
+    margin-top: 5px;
+}
+.contact-submit {
+    text-align: right;
+}
+.contact-submit button {
+    background: #d32027 !important;
+    border-color: #d32027 !important;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.contact-submit button:hover {
+    background: #b11b20 !important;
+    border-color: #b11b20 !important;
+}

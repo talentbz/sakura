@@ -21,6 +21,11 @@ Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])
 Route::any('/stock', [App\Http\Controllers\Frontend\StockController::class, 'index'])->name('front.stock');
 Route::get('/details/{id}', [App\Http\Controllers\Frontend\StockController::class, 'details'])->name('front.details');
 Route::get('/details/image_download/{id}', [App\Http\Controllers\Frontend\StockController::class, 'image_download'])->name('front.details.image_download');
+Route::get('/contact_us', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('front.contact');
+Route::get('/company', [App\Http\Controllers\Frontend\ContactController::class, 'company'])->name('front.company');
+Route::get('/agents', [App\Http\Controllers\Frontend\ContactController::class, 'agents'])->name('front.agents');
+Route::get('/gallery', [App\Http\Controllers\Frontend\ContactController::class, 'gallery'])->name('front.gallery');
+Route::get('/payment', [App\Http\Controllers\Frontend\ContactController::class, 'payment'])->name('front.payment');
 
 Route::group(['prefix' => 'user'], function(){
     Route::get('/login', [App\Http\Controllers\Frontend\UserController::class, 'login'])->name('front.user.login');

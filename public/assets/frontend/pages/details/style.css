@@ -325,6 +325,12 @@ a.btn-ins {
 .mobile-sidebar, .mobile-table {
     display: none;
 }
+.attached-on {
+    background-color: #FFDDBF !important;
+}
+.attached-off{
+    color: #B9B9B9 !important;
+}
 @media only screen and (max-width: 1680px) {
     .contents-details {
         width: 80%;
