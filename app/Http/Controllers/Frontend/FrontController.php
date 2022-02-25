@@ -8,11 +8,16 @@ use DB, Validator, Exception, Image, URL, ZipArchive, File;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;
+use Location;
+
 
 class FrontController extends Controller
 {
     public function index(Request $request)
     {
+        $ip = $request->ip();
+        $data = \Location::get($ip);
+        dd($data);
         $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   

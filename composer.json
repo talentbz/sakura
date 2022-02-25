@@ -15,7 +15,8 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2"
+        "laravel/ui": "^3.2",
+        "stevebauman/location": "^6.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -40,7 +41,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helpers.php" 
+        ]
     },
     "autoload-dev": {
         "psr-4": {
