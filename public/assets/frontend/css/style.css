@@ -755,6 +755,26 @@ h3 {
     top: 40%;
     left: 50%;
 }
+/* page title */
+.page-title {
+    margin-bottom: 10px;
+}
+.page-title ul {
+    display: inline;
+    padding: 0;
+}
+.page-title ul li{
+    display: inline;
+}
+.page-title a {
+    font-size: 18px;
+}
+.current-page {
+    color: #6c757d;
+}
+.current-page:hover {
+    color: #6c757d;
+}
 /* responsive */
 @media only screen and (max-width: 1680px) {
     .select-search select, .select-width select, .select-width-last select{

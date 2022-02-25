@@ -1,0 +1,43 @@
+.hero {
+    height: 190px !important;
+}
+body{
+    background: #fff !important;
+}
+.contents {
+    display: flex;
+}
+.comapny-details {
+    width: 80%;
+    margin: 30px auto;
+}
+.company-contents h1{
+    color: #000;
+}
+.company-contents p {
+    font-size: 14px;
+}
+.company-contents img {
+    width: 100%;
+}
+.company-vision, .company-mission {
+    font-weight: 600;
+    color: #000;
+}
+.company-mission {
+    margin-top: 50px;
+}
+.company-vision {
+    margin-top: 30px;
+}
+.company-info {
+    margin-top: 30px !important;
+}
+.company-info h2{
+    text-align: center;
+    font-weight: 700;
+    color: #000;
+}
+.company-info p {
+    border-bottom: 1px solid #000;
+}

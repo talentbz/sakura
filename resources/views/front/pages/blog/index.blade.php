@@ -11,27 +11,26 @@
 </div>
 <div class="contents">
     <div class="contact-details">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Contact US</li>
-        </ol>
-        </nav>
+        <div class="page-title">
+            <ul>
+                <li><a href="{{route('front.home')}}">Home <i class="fas fa-angle-right"></i></a></li>
+                <li><a class="current-page">Blog</a></li>
+            </ul>
+        </div>
         <div class="main-blog">
-            @for($i=0; $i<=9; $i++)
-            <div class="blog-list row">
-                <input type="hidden" value="{{$i}}">
-                <div class="col-md-3">
-                    <img src="{{ URL::asset('/assets/images/small/img-2.jpg') }}" alt="">
-                </div>
-                <div class="col-md-9">
-                    <a href="#">
-                        <h3 class="blog-title">1ST TOYOTA PASSENGER CAR 1936 MODEL AANEW BLOG POST</h3>
-                    </a>
-                    <div class="blog-desc">
-                        <p >This is the 1st Toyota Passenger car Model AA, year 1936, was Developed under leadership of Toyota Motor corporation’s founder,Kiichiro Toyota. it was modeled on the latest American vehicles.This is the 1st Toyota Passenger car Model AA, year 1936, was Developed under leadership of Toyota Motor corporation’s founder,Kiichiro Toyota. it was modeled on the latest American vehicles.This is the 1st Toyota Passenger car Model AA, year 1936, was Developed under leadership of Toyota Motor corporation’s founder,Kiichiro Toyota. it was modeled on the latest American vehicles.This is the 1st Toyota Passenger car Model AA, year 1936, was Developed under leadership of Toyota Motor corporation’s founder,Kiichiro Toyota. it was modeled on the latest American vehicles.</p>
+            @for($i=0; $i < 9; $i++)
+            <div class="blog-list">
+                <div class="row">
+                    <div class="col-md-3 blog-image">
+                        <a href="#">
+                            <img src="{{asset('/uploads/vehicle/50/thumb/1-46.jpg')}}" alt="">
+                        </a>
                     </div>
-                    <a href="#" class="read-more">Read more</a>
+                    <div class="col-md-9 blog-contents">
+                        <h3 class="blog-title">1ST TOYOTA PASSENGER CAR 1936 MODEL AANEW BLOG POST</h3>
+                        <p class="blog-desc">This is the 1st Toyota Passenger car Model AA, year 1936, was Developed under leadership of Toyota Motor corporation’s founder,Kiichiro Toyota. it was modeled on the latest American vehicles.</p>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
                 </div>
             </div>
             @endfor

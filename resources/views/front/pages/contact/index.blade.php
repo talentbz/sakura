@@ -12,8 +12,15 @@
 </div>
 <div class="contents">
     <div class="contact-details">
+        <div class="page-title">
+            <ul>
+                <li><a href="{{route('front.home')}}">Home <i class="fas fa-angle-right"></i></a></li>
+                <li><a class="current-page">Contact Us</a></li>
+            </ul>
+        </div>
         <div class="row">
             <div class="col-md-6">
+                <p>Please feel free to call or email us, if you have any questions or suggestions.</p>
                 <form class="custom-validation" action="{{route('front.contact.email')}}" method="post">
                     @csrf
                     <div class="list-margin">

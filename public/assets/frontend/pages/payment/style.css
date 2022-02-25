@@ -1,0 +1,39 @@
+.hero {
+    height: 190px !important;
+}
+body{
+    background: #fff !important;
+}
+.contents {
+    display: flex;
+}
+.payment-details {
+    width: 80%;
+    margin: 30px auto;
+}
+.main-payment {
+    float: left;
+    width: 80%;
+}
+.right-sidebar {
+    float: right !important;
+}
+table {
+    font-size: 18px;
+}
+.label {
+    font-weight: 600;
+}
+@media only screen and (max-width: 1440px) {
+    .hero {
+        height: 160px !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .payment-details {
+        width: 90%;
+    }
+    .main-payment{
+        width: 100%;
+    }
+}

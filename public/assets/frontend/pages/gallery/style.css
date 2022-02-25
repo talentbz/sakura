@@ -1,0 +1,38 @@
+.hero {
+    height: 190px !important;
+}
+body{
+    background: #fff !important;
+}
+.contents {
+    display: flex;
+}
+.gallery-details{
+    width: 80%;
+    margin: 30px auto;
+}
+.gallery a img {
+    float: left;
+    width: 25%;
+    height: auto;
+    border: 2px solid #fff;
+    -webkit-transition: -webkit-transform .15s ease;
+    -moz-transition: -moz-transform .15s ease;
+    -o-transition: -o-transform .15s ease;
+    -ms-transition: -ms-transform .15s ease;
+    transition: transform .15s ease;
+    position: relative;
+}
+.clear {
+    clear: both;
+}
+.gallery-list {
+    margin-bottom: 20px;
+}
+.gallery-list strong {
+    color: #000;
+}
+.gallery-list span {
+    color: #e41515;
+    font-weight: 700;
+}
