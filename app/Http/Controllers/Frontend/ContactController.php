@@ -16,7 +16,6 @@ class ContactController extends Controller
         ]);
     }
     public function contactEmail(Request $request){
-        
         Mail::send('mail', array(
             'is_contact'  =>'on',
             'subject' => $request->get('subject'),
@@ -27,9 +26,9 @@ class ContactController extends Controller
             'city' => $request->get('city'),
             'comment' => $request->get('comment'),
         ), function($message) use ($request){
-            $message->from($request->email);
+            $message->from('inquiry@sakuramotors.com');
             $message->to('inquiry@sakuramotors.com', $request->subject)
-            ->subject($request->subject);
+                    ->subject($request->subject);
         });      
         
         return back()->with('success', 'Thanks for contacting!');

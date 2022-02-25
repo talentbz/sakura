@@ -27,6 +27,8 @@ Route::get('/company', [App\Http\Controllers\Frontend\ContactController::class, 
 Route::get('/agents', [App\Http\Controllers\Frontend\ContactController::class, 'agents'])->name('front.agents');
 Route::get('/gallery', [App\Http\Controllers\Frontend\ContactController::class, 'gallery'])->name('front.gallery');
 Route::get('/payment', [App\Http\Controllers\Frontend\ContactController::class, 'payment'])->name('front.payment');
+Route::get('/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('front.blog');
+Route::get('/blog/{id}', [App\Http\Controllers\Frontend\BlogController::class, 'details'])->name('front.blog.detail');
 
 Route::group(['prefix' => 'user'], function(){
     Route::get('/login', [App\Http\Controllers\Frontend\UserController::class, 'login'])->name('front.user.login');

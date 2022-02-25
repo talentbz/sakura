@@ -1,0 +1,44 @@
+.hero {
+    height: 190px !important;
+}
+.contents {
+    display: flex;
+}
+.contact-details {
+    width: 80%;
+    margin: 30px auto;
+}
+.main-blog {
+    width: 81%;
+    float: left;
+}
+.blog-list {
+    background-color: #fff;
+    /* max-height: 194px; */
+    /* min-height: 194px; */
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+.blog-list img {
+    width: 100%;
+}
+.blog-title {
+    color: #E10B14;
+}
+.blog-desc {
+    
+}
+.right-sidebar {
+    float: right !important;
+}
+.read-more {
+    float: right;
+    color: #fff;
+    padding: 6px 7px;
+    border-radius: 3px;
+    background: #E10B14;
+}
+.read-more:hover {
+    background: #be131c;
+    color: #fff;
+}
