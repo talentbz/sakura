@@ -20,19 +20,37 @@
                                 <div class="col-md-4">
                                     <div class="detail-list mb-3 row">
                                         <div class="col-md-4">
-                                            <label class="col-form-label">Rate:</label>
+                                            <label class="col-form-label">USD Rate:</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" data-parsley-type="number" class="form-control" value="{{$rate}}" name="rate" required>
+                                            <input type="text" data-parsley-type="number" class="form-control" value="{{$rate->rate}}" name="rate" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="detail-list mb-3 row">
+                                        <div class="col-md-4">
+                                            <label class="col-form-label">Inspection:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" data-parsley-type="number" class="form-control" value="{{$rate->inspection}}" name="inspection" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="detail-list mb-3 row">
+                                        <div class="col-md-4">
+                                            <label class="col-form-label">Insurance:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" data-parsley-type="number" class="form-control" value="{{$rate->insurance}}" name="insurance" required>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRateTable extends Migration
+class CreateNewsImage extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateRateTable extends Migration
      */
     public function up()
     {
-        Schema::create('rate', function (Blueprint $table) {
+        Schema::create('news_image', function (Blueprint $table) {
             $table->id();
-            $table->double('rate');
-            $table->double('inspection');
-            $table->double('insurance');
+            $table->integer('news_id');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateRateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rate');
+        Schema::dropIfExists('news_image');
     }
 }

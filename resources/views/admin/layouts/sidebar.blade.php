@@ -13,7 +13,15 @@
                         <span>Dashboards</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-calculator"></i>
+                        <span>Country & Port</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.port.index')}}">Port List</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bxs-car"></i>
@@ -21,8 +29,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{route('admin.vehicle.rate')}}" >Currency Rate</a></li>
-                        <li><a href="{{route('admin.vehicle.index')}}" >Vehilce List</a></li>
-                        <li><a href="{{route('admin.vehicle.create')}}" >Add Vehilce</a></li>
+                        <li><a href="{{route('admin.vehicle.index')}}" >Vehicle List</a></li>
+                        <li><a href="{{route('admin.vehicle.create')}}" >Add Vehicle</a></li>
                     </ul>
                 </li>
                 <li>
@@ -33,6 +41,16 @@
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{route('admin.customer.index')}}" >Review List</a></li>
                         <li><a href="{{route('admin.customer.add')}}" >Add Review</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-detail"></i>
+                        <span>News</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.news.index')}}" >News List</a></li>
+                        <li><a href="{{route('admin.news.add')}}" >Add News</a></li>
                     </ul>
                 </li>
                 <li>

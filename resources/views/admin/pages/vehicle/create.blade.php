@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title') User List @endsection
+@section('title') Vehicle List @endsection
 @section('css')
     <link href="{{ URL::asset('/assets/admin/plugin/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" rel="stylesheet" type="text/css">

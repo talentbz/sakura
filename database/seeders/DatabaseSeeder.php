@@ -22,7 +22,16 @@ class DatabaseSeeder extends Seeder
             'role'     => 1,
         ]);
         DB::table('rate')->insert([
-            'rate'     => 110,
+            'rate'          => 110,
+            'inspection'    => 300,
+            'insurance'     => 100,
         ]);
+        
+        $country= config('config.country');
+        foreach($country as $row){
+            DB::table('ports')->insert([
+                'country' => $row,
+            ]); 
+        }
     }
 }

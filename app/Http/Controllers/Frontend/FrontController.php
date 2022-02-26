@@ -15,9 +15,9 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $ip = $request->ip();
-        $data = \Location::get($ip);
-        dd($data);
+        // $ip = $request->ip();
+        // $data = \Location::get('80.237.47.16');
+        // dd($data);
         $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   

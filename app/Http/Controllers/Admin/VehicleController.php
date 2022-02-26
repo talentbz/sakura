@@ -332,7 +332,7 @@ class VehicleController extends Controller
     }
     public function rate(Request $request){
 
-        $rate = Rate::latest('id')->first()->rate;
+        $rate = Rate::latest('id')->first();
         return view('admin.pages.vehicle.rate', [
             'rate' => $rate,
         ]);
@@ -340,6 +340,8 @@ class VehicleController extends Controller
     public function rate_post(Request $request){
         $rate = Rate::latest('id')->first();
         $rate->rate = $request->rate;
+        $rate->inspection = $request->inspection;
+        $rate->insurance = $request->insurance;
         $rate->save();
         return response()->json(['result' => true, 'Updated rate' => $rate]);
     }

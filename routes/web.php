@@ -70,6 +70,20 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/edit', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('admin.customer.edit');
         Route::post('/edit_post', [App\Http\Controllers\Admin\CustomerController::class, 'edit_post'])->name('admin.customer.edit_post');
     });
+    Route::group(['prefix' => 'port'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\PortController::class, 'index'])->name('admin.port.index');
+        Route::get('/edit/{country}', [App\Http\Controllers\Admin\PortController::class, 'edit'])->name('admin.port.edit');
+        Route::post('/edit_post', [App\Http\Controllers\Admin\PortController::class, 'edit_post'])->name('admin.port.edit_post');
+        Route::get('/delete', [App\Http\Controllers\Admin\PortController::class, 'delete'])->name('admin.port.delete');
+    });
+    Route::group(['prefix' => 'news'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
+        Route::get('/add', [App\Http\Controllers\Admin\NewsController::class, 'add'])->name('admin.news.add');
+        Route::post('/add_post', [App\Http\Controllers\Admin\NewsController::class, 'add_post'])->name('admin.news.add_post');
+        Route::get('/edit', [App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
+        Route::post('/edit_post', [App\Http\Controllers\Admin\NewsController::class, 'edit_post'])->name('admin.news.edit_post');
+        Route::get('/delete', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
+    });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');
 });
