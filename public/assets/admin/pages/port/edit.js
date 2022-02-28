@@ -20,7 +20,6 @@ $(document).ready(function () {
         $(this).closest("tr").remove();       
         counter -= 1
     });
-    
 
     $('form#myForm').submit(function(e){
         e.preventDefault();

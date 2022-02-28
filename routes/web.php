@@ -19,6 +19,7 @@ Auth::routes();
 //frontend
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])->name('front.home');
 Route::any('/stock', [App\Http\Controllers\Frontend\StockController::class, 'index'])->name('front.stock');
+Route::get('/select_port', [App\Http\Controllers\Frontend\StockController::class, 'select_port'])->name('front.select_port');
 Route::get('/details/{id}', [App\Http\Controllers\Frontend\StockController::class, 'details'])->name('front.details');
 Route::get('/details/image_download/{id}', [App\Http\Controllers\Frontend\StockController::class, 'image_download'])->name('front.details.image_download');
 Route::get('/contact_us', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('front.contact');
@@ -74,7 +75,6 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\PortController::class, 'index'])->name('admin.port.index');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\PortController::class, 'edit'])->name('admin.port.edit');
         Route::post('/edit_post', [App\Http\Controllers\Admin\PortController::class, 'edit_post'])->name('admin.port.edit_post');
-        Route::get('/delete', [App\Http\Controllers\Admin\PortController::class, 'delete'])->name('admin.port.delete');
     });
     Route::group(['prefix' => 'news'], function(){
         Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');

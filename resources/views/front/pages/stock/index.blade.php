@@ -11,11 +11,11 @@
         <div class="banner-desc">
             <h1>Price Calculator</h1>
         </div>
-        <form action="">
+        <div class="">
             <div class="calculator-filter mt-3">
                 <div class="calculator-select">
                     <label for="">Select your country</label>
-                    <select class="form-select" name="">
+                    <select class="form-select" name="price_country" id="select-country">
                         @foreach($country as $row)
                             <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                         @endforeach
@@ -23,7 +23,7 @@
                 </div>
                 <div class="calculator-select">
                     <label for="">Select port</label>
-                    <select class="form-select port" name="">
+                    <select class="form-select port" name="price_port">
                         @if($port_count)
                             @for($i=0; $i<$port_count; $i++)
                                 <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
@@ -36,23 +36,23 @@
                 </div>
                 <div class="calculator-select">
                     <label for="">Do you need inspection?</label>
-                    <select class="form-select" name="inspection">
-                        <option value="y" >Yes</option>
-                        <option value="n" >No</option>
+                    <select class="form-select inspection" name="inspection" >
+                        <option value="0" >No</option>
+                        <option value="{{$rate_ins->inspection}}" >Yes</option>
                     </select>
                 </div>
                 <div class="calculator-select">
                     <label for="">Do you need insurance?</label>
-                    <select class="form-select" name="insurance">
-                        <option value="y" >Yes</option>
-                        <option value="n" >No</option>
+                    <select class="form-select insurance" name="insurance">
+                        <option value="0" >No</option>
+                        <option value="{{$rate_ins->insurance}}" >Yes</option>
                     </select>
                 </div>
                 <div class="calculator-select">
-                    <button type="submit" class="btn btn-primary"><i class="bx bx-calendar"></i> Calculator</button>
+                    <button type="submit" class="btn btn-primary" id="price-calc"><i class="bx bx-calendar"></i> Calculator</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 <!-- /end banner && menu -->
@@ -298,7 +298,7 @@
         <!-- /end left sidebar -->
 
         <!-- mobile calc section -->
-        <form action="">
+        <div class="">
             <div class="calc-mobile">
                 <div class="calc-title">
                     <h3>Price Calculator</h3>
@@ -310,9 +310,8 @@
                         </div>
                         <div class="calc-list-value">
                             <select class="form-select" name="">
-                                <option value="">Select</option>
                                 @foreach($country as $row)
-                                    <option value="{{$row}}">{{$row}}</option>
+                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -323,10 +322,14 @@
                         </div>
                         <div class="calc-list-value">
                             <select class="form-select" name="">
-                                <option value="">Select</option>
-                                @foreach($country as $row)
-                                    <option value="{{$row}}">{{$row}}</option>
-                                @endforeach
+                                @if($port_count)
+                                    @for($i=0; $i<$port_count; $i++)
+                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                                    @endfor
+                                    <option value="0"></option>
+                                @else
+                                    <option value="0"></option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -335,27 +338,27 @@
                             <label for="">Inspention</label>
                         </div>
                         <div class="calc-list-value">
-                            <a href="#" class="btn btn-ins ins-margin">No</a>
-                            <a href="#" class="btn btn-ins">Yes</a>
+                            <a class="btn btn-ins ins-margin insp-n" data-id="0">No</a>
+                            <a class="btn btn-ins insp-y" data-id="{{$rate_ins->inspection}}">Yes</a>
                         </div>
-                        <input type="hidden" name="menuip">
+                        <input type="hidden" class="insp-value" value="0">
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
                             <label for="">Insurance</label>
                         </div>
                         <div class="calc-list-value">
-                            <a href="#" class="btn btn-ins ins-margin">No</a>
-                            <a href="#" class="btn btn-ins">Yes</a>
+                            <a  class="btn btn-ins ins-margin insu-n" data-id="0">No</a>
+                            <a  class="btn btn-ins insu-y" data-id="{{$rate_ins->insurance}}">Yes</a>
                         </div>
-                        <input type="hidden" name="menuip">
+                        <input type="hidden" class="insu-value" value="0">
                     </div>
                     <div class="calc-submit">
-                        <button type="submit" class="btn ins-submit"><i class="bx bx-calendar"></i> Calculate</button>
+                        <button type="submit" class="btn ins-submit" id="mobile-cal-btn"><i class="bx bx-calendar"></i> Calculate</button>
                     </div>
                 </div>
             </div>
-        </form> <!-- mobile calc section -->
+        </div> <!-- mobile calc section -->
         <!-- main contents -->
         <div class="main-stock">
             <!-- new arrivals -->
@@ -392,6 +395,7 @@
     <script>
         var models = @json($models);
         var sock_page = "{{route('front.stock')}}";
+        var select_port = "{{route('front.select_port')}}";
         var search_keyword = "{{$search_keyword}}";
         var maker = "{{$maker}}";
         var model_name = "{{$model_name}}";

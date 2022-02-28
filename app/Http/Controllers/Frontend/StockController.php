@@ -16,7 +16,7 @@ class StockController extends Controller
     public function index(Request $request)
     {
         $ip = $request->ip();
-        $country_ip = \Location::get($ip);
+        $country_ip = \Location::get('112.134.189.70');
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
@@ -76,7 +76,12 @@ class StockController extends Controller
         $from_price = $request->from_price;
         $to_price = $request->to_price;
         
-
+        //price calc
+        $price_country = $request->price_country;
+        $price_port = $request->price_port;
+        $inspection = $request->inspection;
+        $insurance = $request->insurance;
+        
         for ($i=date('Y'); $i >= 1950 ; $i--) { 
             array_push($year, $i);
         }
@@ -215,23 +220,24 @@ class StockController extends Controller
                         $list.='<div class="stock-price-list">';
                             $list.='<div class="fob-price">';
                                 $list.='<span class="fob-label">Price (FOB)</span>';
+                                $list.='<input type="hidden" class="cubic-meter" value="'.(($result->length * $result->width * $result->height)/1000000).'">';
                                 if($result->sale_price==null){
-                                    $list.='<input type="hidden" value="'.round($result->price/$rate).'">';
+                                    $list.='<input type="hidden" class="price" value="'.round($result->price/$rate).'">';
                                     $list.='<span class="fob-value">$'.number_format(round($result->price/$rate)).'</span>';
                                 } else{
-                                    $list.='<input type="hidden" value="'.round($result->sale_price/$rate).'">';
+                                    $list.='<input type="hidden" class="price" value="'.round($result->sale_price/$rate).'">';
                                     $list.='<span class="fob-value">$'.number_format(round($result->sale_price/$rate)).'</span>';
                                 }
                             $list.='</div>';
                             $list.='<div class="price-border-bottom"></div>';
                             $list.='<div class="total-price">';
                                 $list.='<span class="total-label">Total Price</span>';
-                                $list.='<span class="totla-value">$10,500</span>';
+                                $list.='<span class="totla-value">ASK</span>';
                             $list.='</div>';
                             $list.='<div class="price-border-bottom"></div>';
                             $list.='<div class="country-port">';
-                                $list.='<p class="cif">(CIF Inspect)</p>';
-                                $list.='<p class="port">Durban</p>';
+                                $list.='<p class="cif">(Final Country)</p>';
+                                $list.='<p class="port">Port</p>';
                             $list.='</div>';
                             $list.='<div class="detail-inquire">';
                                 $list.='<a href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="btn-detail">Details</a>';
@@ -276,6 +282,7 @@ class StockController extends Controller
             'port_count' => $port_count,
             'port_key' => $port_key, 
             'port_price' => $port_price,
+            'rate_ins' => $rate_ins,
             //make type
             'make_toyoda' => $make_toyoda,
             'make_nissan' => $make_nissan,
@@ -301,6 +308,11 @@ class StockController extends Controller
             'to_year' => $to_year,
             'from_price' => $from_price,
             'to_price' => $to_price,
+            //price form
+            'price_country' =>$price_country,
+            'price_port' => $price_port,
+            'inspection' => $inspection,
+            'insurance' => $insurance,
         ]);
     }
     public function details(Request $request, $id){
@@ -336,5 +348,10 @@ class StockController extends Controller
         }
     
         return response()->download(public_path($public_dir.$fileName));
+    }
+    public function select_port(Request $request){ 
+        $country_id = $request->id;
+        $port = Port::where('id', $country_id)->first();
+        return response()->json(['result' => true, 'port' => $port]);
     }
 }

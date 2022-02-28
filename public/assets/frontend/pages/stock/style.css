@@ -373,6 +373,11 @@ body {
         background: #fff;
         padding: 7px 36px;
     }
+    a.active{
+        background: #286090;
+        border-color: #286090;
+        color: #fff !important;
+    }
     .calc-submit {
         width: 30%;
         float: right;

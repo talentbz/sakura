@@ -19,6 +19,22 @@ $(document).ready(function () {
                 }
             }
     })
+    $('#select-country').on("change", function (e) { 
+        var id = $(e.currentTarget).val()
+        $.ajax({
+            url: select_port,
+            data:{
+                id:id
+            },
+            type: "get",
+        })
+        .done(function (response) {
+            console.log(response);
+        })
+        .fail(function (jqXHR, ajaxOptions, thrownError) {
+            console.log('Server error occured');
+        });
+    })
     border_object = $('.contents-border-right');
     if($( window ).width() <= 1024){
         border_object.css('display', 'block')
@@ -35,28 +51,6 @@ $(document).ready(function () {
     }
 
     var _token = $('input[name="_token"]').val();
-    // load_data('', _token);
-
-    // function load_data(id="", _token){
-    //     $.ajax({
-    //         url:sock_page,
-    //         method:"POST",
-    //         data:{id:id, _token:_token},
-    //         success:function(data)
-    //         {
-    //             console.log(data);
-    //             $('#load_more_button').remove();
-    //             $('#stock-contents').html(data);
-    //             $('#stock-list').append(data);
-    //         }
-    //     })
-    // }
-
-    // $(document).on('click', '#load_more_button', function(){
-    //     var id = $(this).data('id');
-    //     $('#load_more_button').html('<b>Loading...</b>');
-    //     load_data(id, _token);
-    // });
     var page = 1;
     infinteLoadMore(page);
     $(document).on('click', '#load_more_button', function(){
@@ -89,15 +83,110 @@ $(document).ready(function () {
                 return;
             }
             $("#stock-list").append(response);
+            if( page>1 ){
+                price_calc();
+            }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             console.log('Server error occured');
         });
     }
+    $(document).on('click', '#price-calc', function(){       
+        price_calc();
+    })
+
 
     /* 
-        price calculator
+        pc price calculator
     */
-        $port_price = $('.port').val();
-        console.log($('.fob-value').value())
+   function price_calc(){
+        port_price = parseInt($('.port option:selected' ).val()); 
+        port_name = $('.port option:selected' ).text(); 
+        inspection_price = parseInt($('.inspection option:selected' ).val());
+        insurance_price = parseInt($('.insurance option:selected' ).val()); 
+        $('.stock-price-list').each(function() {
+            total_price = parseInt($(this).find('.price').val());
+            cubic_meter = $(this).find('.cubic-meter').val();
+            price_shipping = port_price*cubic_meter;
+            if(port_price == 0) {
+                cif = "( C & F )"
+                final_price = "ASK"    
+            } else {
+                if(inspection_price == 0){
+                    cif = '( CIF )'
+                }
+                if(insurance_price == 0){
+                    cif = '(  C&F Inspect )'
+                }
+                if(insurance_price == 0 && inspection_price == 0){
+                    cif = '( C & F )';
+                }
+                if(!insurance_price == 0 && !inspection_price == 0){
+                    cif = '( CIF Inspect )'
+                }
+                final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
+            }
+            $(this).find('.cif').text(cif);
+            $(this).find('.port').text(port_name);
+            $(this).find('.totla-value').text(final_price);
+        })
+   }
+    
+   $('.insp-n').click(function(){
+       $(this).addClass('active')
+       $('.insp-y').removeClass('active')    
+       $('.insp-value').val($(this).data("id"))
+   })
+   $('.insp-y').click(function(){
+        $(this).addClass('active')
+        $('.insp-n').removeClass('active')    
+        $('.insp-value').val($(this).data("id"))
+   })
+   $('.insu-n').click(function(){
+        $(this).addClass('active')
+        $('.insu-y').removeClass('active')    
+        $('.insu-value').val($(this).data("id"))
+   })
+   $('.insu-y').click(function(){
+        $(this).addClass('active')
+        $('.insu-n').removeClass('active')    
+        $('.insu-value').val($(this).data("id"))
+   })
+
+   $(document).on('click', '#mobile-cal-btn', function(){
+        price_calc_mobile()
+   })
+   //   mobile calc function
+   function price_calc_mobile(){
+    port_price = parseInt($('.port option:selected' ).val()); 
+    port_name = $('.port option:selected' ).text(); 
+    inspection_price = parseInt($('.insp-value' ).val());
+    insurance_price = parseInt($('.insu-value' ).val()); 
+    $('.stock-price-list').each(function() {
+        total_price = parseInt($(this).find('.price').val());
+        cubic_meter = $(this).find('.cubic-meter').val();
+        price_shipping = port_price*cubic_meter;
+        if(port_price == 0) {
+            cif = "( C & F )"
+            final_price = "ASK"    
+        } else {
+            if(inspection_price == 0){
+                cif = '( CIF )'
+            }
+            if(insurance_price == 0){
+                cif = '(  C&F Inspect )'
+            }
+            if(insurance_price == 0 && inspection_price == 0){
+                cif = '( C & F )';
+            }
+            if(!insurance_price == 0 && !inspection_price == 0){
+                cif = '( CIF Inspect )'
+            }
+            final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
+        }
+        $(this).find('.cif').text(cif);
+        $(this).find('.port').text(port_name);
+        $(this).find('.totla-value').text(final_price);
+    })
+}
 })
