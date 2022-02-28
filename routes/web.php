@@ -72,7 +72,7 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     });
     Route::group(['prefix' => 'port'], function(){
         Route::get('/', [App\Http\Controllers\Admin\PortController::class, 'index'])->name('admin.port.index');
-        Route::get('/edit/{country}', [App\Http\Controllers\Admin\PortController::class, 'edit'])->name('admin.port.edit');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\PortController::class, 'edit'])->name('admin.port.edit');
         Route::post('/edit_post', [App\Http\Controllers\Admin\PortController::class, 'edit_post'])->name('admin.port.edit_post');
         Route::get('/delete', [App\Http\Controllers\Admin\PortController::class, 'delete'])->name('admin.port.delete');
     });

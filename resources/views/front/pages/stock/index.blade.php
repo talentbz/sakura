@@ -16,28 +16,36 @@
                 <div class="calculator-select">
                     <label for="">Select your country</label>
                     <select class="form-select" name="">
-                        <option value="">Select</option>
                         @foreach($country as $row)
-                            <option value="{{$row}}">{{$row}}</option>
+                            <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="calculator-select">
                     <label for="">Select port</label>
-                    <select class="form-select" name="">
-                        <option value="">Select</option>
+                    <select class="form-select port" name="">
+                        @if($port_count)
+                            @for($i=0; $i<$port_count; $i++)
+                                <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                            @endfor
+                            <option value="0"></option>
+                        @else
+                            <option value="0"></option>
+                        @endif
                     </select>
                 </div>
                 <div class="calculator-select">
                     <label for="">Do you need inspection?</label>
-                    <select class="form-select" name="">
-                        <option value="">Select</option>
+                    <select class="form-select" name="inspection">
+                        <option value="y" >Yes</option>
+                        <option value="n" >No</option>
                     </select>
                 </div>
                 <div class="calculator-select">
                     <label for="">Do you need insurance?</label>
-                    <select class="form-select" name="">
-                        <option value="">Select</option>
+                    <select class="form-select" name="insurance">
+                        <option value="y" >Yes</option>
+                        <option value="n" >No</option>
                     </select>
                 </div>
                 <div class="calculator-select">

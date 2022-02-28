@@ -20,7 +20,7 @@
                                 <select class="form-select select-category" required>
                                     <option value="">select</option>
                                     @foreach($country as $row)
-                                        <option value="{{$row}}">{{$row}}</option>
+                                        <option value="{{$row->id}}">{{$row->country}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -32,5 +32,15 @@
     </div>
 @endsection
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('.select-category').on("change", function (e) { 
+                var id = $(e.currentTarget).val();
+                edit_url = `{{route('admin.port.index')}}/edit/${id}`;
+                console.log(edit_url)
+                location.href = edit_url; 
+            })
+        })
+    </script>
     <script src="{{ URL::asset('/assets/admin/pages/port/index.js') }}"></script>
 @endsection

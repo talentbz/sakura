@@ -8,10 +8,26 @@ use DB, Validator, Exception, Image, URL, ZipArchive, File;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;
+use App\Models\Port;
+use Location;
+
 class StockController extends Controller
 {
     public function index(Request $request)
     {
+        $ip = $request->ip();
+        $country_ip = \Location::get($ip);
+        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        if($current_country->port) {
+            $port_count = count(json_decode($current_country->port));
+            $port_key = json_decode($current_country->port);
+            $port_price = json_decode($current_country->price);    
+        } else {
+            $port_count = 0;
+            $port_key = [];
+            $port_price = [];
+        }
+        $rate_ins = Rate::first();
         // config variable
         $models = config('config.model_catgory');
         $body_type= config('config.body_type');
@@ -20,7 +36,7 @@ class StockController extends Controller
         $transmission= config('config.transmission');
         $steering= config('config.steering');
         $doors= config('config.doors');
-        $country= config('config.country');
+        $country= Port::get();
         $year = [];
         $price =[];
         // body type
@@ -200,8 +216,10 @@ class StockController extends Controller
                             $list.='<div class="fob-price">';
                                 $list.='<span class="fob-label">Price (FOB)</span>';
                                 if($result->sale_price==null){
+                                    $list.='<input type="hidden" value="'.round($result->price/$rate).'">';
                                     $list.='<span class="fob-value">$'.number_format(round($result->price/$rate)).'</span>';
                                 } else{
+                                    $list.='<input type="hidden" value="'.round($result->sale_price/$rate).'">';
                                     $list.='<span class="fob-value">$'.number_format(round($result->sale_price/$rate)).'</span>';
                                 }
                             $list.='</div>';
@@ -254,6 +272,10 @@ class StockController extends Controller
             'body_tractor' => $body_tractor,
             'body_sub' => $body_sub,
             'price' => $price,
+            'current_country' => $current_country,
+            'port_count' => $port_count,
+            'port_key' => $port_key, 
+            'port_price' => $port_price,
             //make type
             'make_toyoda' => $make_toyoda,
             'make_nissan' => $make_nissan,

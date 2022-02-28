@@ -65,8 +65,6 @@ $(document).ready(function () {
         infinteLoadMore(page);
     });
    
-    
-    console.log(body_type);
     function infinteLoadMore(page) {
         $.ajax({
             url: sock_page + "?page=" + page,
@@ -96,4 +94,10 @@ $(document).ready(function () {
             console.log('Server error occured');
         });
     }
+
+    /* 
+        price calculator
+    */
+        $port_price = $('.port').val();
+        console.log($('.fob-value').value())
 })
