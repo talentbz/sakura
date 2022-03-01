@@ -37,8 +37,8 @@ $(document).ready(function () {
                 for(i=0; i<port_name.length; i++){
                     html +='<option value="'+port_price[i]+'">'+port_name[i]+'</option>'
                 }
-                html +='<option value="0"></option>'
             } 
+            html +='<option value="0"></option>'
             $('#price-port')
                     .find('option')
                     .remove()
@@ -112,6 +112,7 @@ $(document).ready(function () {
             if(port_price == 0) {
                 cif = "( C & F )"
                 final_price = "ASK"    
+                port_name = 'Port'
             } else {
                 if(inspection_price == 0){
                     cif = '( CIF )'
