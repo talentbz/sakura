@@ -39,7 +39,7 @@
                             <select class="form-select select-category" name="maker">
                                 <option value="">Any</option>
                                 @foreach($models as $model)
-                                    <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
+                                    <option value="{{$model['category_name']}}">{{Str::upper($model['category_name'])}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -428,9 +428,9 @@
         <!-- /end rightsidebar -->
     </div>
 </div>
-@endsection
 <!-- modal section -->
 @include('front.layouts.searchModal')
+@endsection
 
 @section('script')
 <script>

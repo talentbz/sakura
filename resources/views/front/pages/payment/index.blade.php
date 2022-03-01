@@ -1,6 +1,7 @@
 @extends('front.layouts.index')
 @section('title') Payment @endsection
 @section('css')
+    <link href="{{ URL::asset('/assets/frontend/css/hero.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('/assets/frontend/pages/payment/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -28,10 +29,6 @@
                     <tr>
                         <td class="label">Account Number:	</td>
                         <td>244-0488651</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Bank Name:</td>
-                        <td>SUMITOMO MITSUI BANKING CORPORATION</td>
                     </tr>
                     <tr>
                         <td class="label">Bank Name:</td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Validator, Exception, Image, URL, ZipArchive, File;
+use Illuminate\Support\Str;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;

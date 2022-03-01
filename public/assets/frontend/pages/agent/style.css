@@ -34,18 +34,44 @@ body{
         margin-left: 0;
     }
 }
-@media only screen and (max-width: 1024px) { 
-    .agent-details img{
-        width: 100%;
+@media only screen and (max-width: 1440px) {
+    .hero {
+        height: 160px !important;
     }
 }
-@media only screen and (max-width: 1280px) { 
+@media only screen and (max-width: 1280px){
     .agent-details {
         width: 90%;
+    }
+    .hero {
+        height: 149px !important;
+    }
+}
+@media only screen and (max-width: 1024px) { 
+    .hero {
+        height: 137px !important
+    }
+    .agent-details img{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 768px) { 
     .agent-list p{
         font-size: 13px;
+    }
+}
+@media only screen and (max-width: 425px) { 
+    .page-title a {
+        font-size: 16px;
+    }
+    .agent-details {
+        width: 94%;
+        margin: 10px auto;
+    }
+    .agent-list {
+        margin-bottom: 5px;
+    }
+    .agent-info {
+        margin-top: 20px !important;
     }
 }

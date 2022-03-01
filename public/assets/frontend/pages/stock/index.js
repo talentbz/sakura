@@ -49,20 +49,7 @@ $(document).ready(function () {
             console.log('Server error occured');
         });
     })
-    border_object = $('.contents-border-right');
-    if($( window ).width() <= 1024){
-        border_object.css('display', 'block')
-        for(i=0; i<border_object.length; i++){
-            border_object.eq(3*i).css('display', 'none');
-        }
-    }
-    if($( window ).width() <= 425){
-        border_object.css('display', 'block')
-        for(i=0; i<border_object.length; i++){  
-                console.log((2*i));
-                border_object.eq(2*i).css('display', 'none');
-        }
-    }
+    
 
     var _token = $('input[name="_token"]').val();
     var page = 1;
@@ -114,8 +101,8 @@ $(document).ready(function () {
         pc price calculator
     */
    function price_calc(){
-        port_price = parseInt($('.port option:selected' ).val()); 
-        port_name = $('.port option:selected' ).text(); 
+        port_price = parseInt($('.port-pc option:selected' ).val()); 
+        port_name = $('.port-pc option:selected' ).text(); 
         inspection_price = parseInt($('.inspection option:selected' ).val());
         insurance_price = parseInt($('.insurance option:selected' ).val()); 
         $('.stock-price-list').each(function() {
@@ -207,3 +194,19 @@ $(document).ready(function () {
     })
 }
 })
+
+border_object = $('.contents-border-right');
+console.log(border_object)
+if($(window).width() <= 1024){
+    console.log(border_object)
+    for(i=0; i<border_object.length; i++){
+        border_object.eq(3*i).css('display', 'none');
+    }
+}
+if($( window ).width() <= 425){
+    border_object.css('display', 'block')
+    for(i=0; i<border_object.length; i++){  
+            console.log((2*i));
+            border_object.eq(2*i).css('display', 'none');
+    }
+}

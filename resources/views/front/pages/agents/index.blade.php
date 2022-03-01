@@ -23,7 +23,7 @@
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <img src="{{asset('/assets/frontend/images/chrisopherS.jpg')}}" alt="">
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="col-md-9 col-sm-9 col-xs-12 agent-info">
                         <p><strong>Country :</strong> Zambia</p>
                         <p><strong>Name :</strong> Christopher Simpamba</p>
                         <p><strong>Address : </strong> Plot 3854, Congo road , Industrial area , Chililabombwe, Zambia</p>
@@ -37,7 +37,7 @@
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <img src="{{asset('/assets/frontend/images/Ezekia-Ndone--250x300.jpg')}}" alt="">
                     </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="col-md-9 col-sm-9 col-xs-12 agent-info">
                         <p><strong>Country :</strong> Tanzania</p>
                         <p><strong>Name :</strong> Ezekia Ndone</p>
                         <p><strong>Address : </strong> Ezekia Ndone, Box 3797, Mbeya, Tanzania</p>

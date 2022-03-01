@@ -23,7 +23,7 @@
                 </div>
                 <div class="calculator-select">
                     <label for="">Select port</label>
-                    <select class="form-select port" name="price_port" id="price-port">
+                    <select class="form-select port-pc" name="price_port" id="price-port">
                         @if($port_count)
                             @for($i=0; $i<$port_count; $i++)
                                 <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
@@ -80,11 +80,11 @@
                                 <option value="">Any</option>
                                 @if(!is_null($maker))
                                     @foreach($models as $model)
-                                        <option value="{{$model['category_name']}}" {{ $maker == $model['category_name'] ? "selected" : "" }}>{{$model['category_name']}}</option>
+                                        <option value="{{$model['category_name']}}" {{ $maker == $model['category_name'] ? "selected" : "" }}>{{Str::upper($model['category_name'])}}</option>
                                     @endforeach
                                 @else
                                     @foreach($models as $model)
-                                        <option value="{{$model['category_name']}}">{{$model['category_name']}}</option>
+                                        <option value="{{$model['category_name']}}">{{Str::upper($model['category_name'])}}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -387,9 +387,9 @@
         <!-- /end main contents -->
     </div>
 </div>
-@endsection
 <!-- modal section -->
 @include('front.layouts.searchModal')
+@endsection
 
 @section('script')
     <script>

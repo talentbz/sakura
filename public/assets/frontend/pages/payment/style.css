@@ -29,11 +29,33 @@ table {
         height: 160px !important;
     }
 }
+@media only screen and (max-width: 1280px){
+    .hero {
+        height: 149px !important;
+    }
+}
+@media only screen and (max-width: 1024px){
+    .hero {
+        height: 137px !important
+    }
+}
 @media only screen and (max-width: 768px) {
     .payment-details {
         width: 90%;
     }
     .main-payment{
         width: 100%;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .payment-details {
+        width: 94%;
+        margin: 10px auto;
+    }
+    .page-title a {
+        font-size: 16px;
+    }
+    table {
+        font-size: 12px;
     }
 }

@@ -36,3 +36,30 @@ body{
     color: #e41515;
     font-weight: 700;
 }
+@media only screen and (max-width: 1440px){
+    .hero {
+        height: 160px !important;
+    }
+}
+@media only screen and (max-width: 1280px){
+    .hero {
+        height: 149px !important;
+    }
+}
+@media only screen and (max-width: 1024px){
+    .hero {
+        height: 137px !important
+    }
+}
+@media only screen and (max-width: 425px) {
+    .gallery-details {
+        width: 94%;
+        margin: 10px auto;
+    }
+    .page-title a {
+        font-size: 16px !important;
+    }
+    table {
+        font-size: 12px;
+    }
+}
