@@ -17,7 +17,9 @@ class StockController extends Controller
     {
         $ip = $request->ip();
         $country_ip = \Location::get('112.134.189.70');
+        // $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
             $port_key = json_decode($current_country->port);
@@ -316,12 +318,25 @@ class StockController extends Controller
         ]);
     }
     public function details(Request $request, $id){
+        $ip = $request->ip();
+        $country_ip = \Location::get('112.134.189.70');
+        // $country_ip = \Location::get($ip);
+        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        if($current_country->port) {
+            $port_count = count(json_decode($current_country->port));
+            $port_key = json_decode($current_country->port);
+            $port_price = json_decode($current_country->price);    
+        } else {
+            $port_count = 0;
+            $port_key = [];
+            $port_price = [];
+        }
         $vehicle_data = Vehicle::where('id', $id)->first();
-        $rate = Rate::first()->rate;
+        $rate = Rate::first();
         $vehicle_img = VehicleImage::select('image')->where('vehicle_id', $id)->get();
         $real_url = URL::asset('uploads/vehicle/'.$id.'/real');
         $thumb_url = URL::asset('uploads/vehicle/'.$id.'/thumb');
-        $country = config('config.country');
+        $country = Port::get();
         return view('front.pages.details.index', [
             'vehicle_img' => $vehicle_img,
             'real_url' => $real_url,
@@ -329,7 +344,11 @@ class StockController extends Controller
             'country' => $country,
             'id' =>$id,
             'vehicle_data' => $vehicle_data,
-            'rate' => $rate
+            'rate' => $rate,
+            'current_country' => $current_country,
+            'port_count' => $port_count,
+            'port_key' => $port_key, 
+            'port_price' => $port_price,
         ]);
     }
     public function image_download(Request $request, $id){

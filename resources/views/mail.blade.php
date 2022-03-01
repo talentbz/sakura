@@ -64,7 +64,66 @@
                 
             </tbody>
             @else
-            
+            <tbody>
+                <!-- checkbox -->
+                <tr>
+                    <td class="table-light" scope="row">Name</td>
+                    <td >{{$inqu_name}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Email</td>
+                    <td >{{$inqu_email}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Comtact No</td>
+                    <td >{{$inqu_mobile}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Address</td>
+                    <td >{{$inqu_address}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Country</td>
+                    <td >{{$inqu_country}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">City</td>
+                    <td >{{$inqu_city}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Vehicle Name</td>
+                    <td >{{$vehicle_name}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">FOB Price</td>
+                    <td >{{$fob_price}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Insurance</td>
+                    <td >{{$insurance}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Inspection</td>
+                    <td >{{$inspection}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Port Name/td>
+                    <td >{{$inqu_port}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Total Price/td>
+                    <td >{{$total_price}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">Web Link/td>
+                    <td >{{$site_url}}</td>
+                </tr>
+                <tr>
+                    <td class="table-light" scope="row">comment</td>
+                    <td >{{$inqu_comment}}</td>
+                </tr>
+                
+            </tbody>
             @endif
         </table>
     </body>

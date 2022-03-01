@@ -189,6 +189,11 @@ a.btn-ins {
     padding: 7px 23px;
     background: #fff;
 }
+a.active {
+    background: #286090;
+    border-color: #286090;
+    color: #fff !important;
+}
 .ins-margin {
     margin-right: 10px;
 }
@@ -330,6 +335,37 @@ a.btn-ins {
 }
 .attached-off{
     color: #B9B9B9 !important;
+}
+.parsley-error {
+    border-color: #f46a6a !important;
+}
+.parsley-errors-list {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+.parsley-errors-list.filled {
+    display: block;
+}
+
+.parsley-errors-list > li {
+    font-size: 12px;
+    list-style: none;
+    color: #f46a6a;
+    margin-top: 5px;
+}
+.contact-submit {
+    text-align: right;
+}
+.contact-submit button {
+    background: #d32027 !important;
+    border-color: #d32027 !important;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.contact-submit button:hover {
+    background: #b11b20 !important;
+    border-color: #b11b20 !important;
 }
 @media only screen and (max-width: 1680px) {
     .contents-details {

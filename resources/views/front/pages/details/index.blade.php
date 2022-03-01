@@ -29,10 +29,9 @@
                             <label for="">Select Country</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select" name="">
-                                <option value="">Select</option>
+                            <select class="form-select select-country" name="">
                                 @foreach($country as $row)
-                                    <option value="{{$row}}">{{$row}}</option>
+                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -42,8 +41,15 @@
                             <label for="">Select Port</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select" name="">
-                                <option value="">Select</option>
+                            <select class="form-select port" name="">
+                                @if($port_count)
+                                    @for($i=0; $i<$port_count; $i++)
+                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                                    @endfor
+                                    <option value="0"></option>
+                                @else
+                                    <option value="0"></option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -52,23 +58,23 @@
                             <label for="">Inspention</label>
                         </div>
                         <div class="calc-list-value">
-                            <a href="#" class="btn btn-ins ins-margin">No</a>
-                            <a href="#" class="btn btn-ins">Yes</a>
+                            <a href="javascript:void(0)" class="btn btn-ins ins-margin insp-n" data-id="0">No</a>
+                            <a href="javascript:void(0)" class="btn btn-ins insp-y" data-id="{{$rate->inspection}}">Yes</a>
                         </div>
-                        <input type="hidden" name="menuip">
+                        <input type="hidden" class="insp-value" value="0">
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
                             <label for="">Insurance</label>
                         </div>
                         <div class="calc-list-value">
-                            <a href="#" class="btn btn-ins ins-margin">No</a>
-                            <a href="#" class="btn btn-ins">Yes</a>
+                            <a href="javascript:void(0)" class="btn btn-ins ins-margin insu-n" data-id="0">No</a>
+                            <a href="javascript:void(0)" class="btn btn-ins insu-y" data-id="{{$rate->insurance}}">Yes</a>
                         </div>
-                        <input type="hidden" name="menuip">
+                        <input type="hidden" class="insu-value" value="0">
                     </div>
                 </div>
-                <button type="submit" class="ins-submit"><i class="bx bx-calendar"></i> Calculate</button>
+                <button type="submit" class="ins-submit" id="mobile-calc"><i class="bx bx-calendar"></i> Calculate</button>
             </div>
             <!-- /price calculator -->
             <!-- login register  -->
@@ -85,7 +91,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="inquiry" role="tabpanel">
-                        <form action="">
+                        <form class="custom-validation" action="{{route('front.inquiry.email')}}">
                             <div class="inquiry-form">
                                 <!-- <div class="inquiry-title">
                                     <h3>Please fill the *required fields</h3>
@@ -99,9 +105,8 @@
                                         <div class="inquiry-right">
                                             <label for="">Select your country</label>
                                             <select class="form-select" name="inq_country" required>
-                                                <option value="">Select</option>
                                                 @foreach($country as $row)
-                                                    <option value="{{$row}}">{{$row}}</option>
+                                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -140,7 +145,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="login" role="tabpanel">
-                        <form action="">
+                        <form class="custom-validation" action="">
                             <div class="login-form">
                                 <div class="login-list">
                                     <label for="">Email*</label>
@@ -173,19 +178,22 @@
                     <div class="price-info">
                         <div class="fob-price">
                             <h3 class="fob-label">Price (Fob)</h3>
+                            <input type="hidden" class="cubic-meter" value="{{($vehicle_data->width*$vehicle_data->length*$vehicle_data->height)/1000000}}">
                             @if($vehicle_data->sale_price==null)
-                                <h3 class="fob-value">${{number_format(round($vehicle_data->price/$rate))}}</h3>
+                                <input type="hidden" class="price" value="{{round($vehicle_data->price/$rate->rate)}}"/>
+                                <h3 class="fob-value">${{number_format(round($vehicle_data->price/$rate->rate))}}</h3>
                             @else                                
-                                <h3 class="fob-value">${{number_format(round($vehicle_data->sale_price/$rate))}}</h3>
+                                <input type="hidden" class="price" value="{{round($vehicle_data->sale_price/$rate->rate)}}"/>
+                                <h3 class="fob-value">${{number_format(round($vehicle_data->sale_price/$rate->rate))}}</h3>
                             @endif
                         </div>
                         <div class="total-price">
                             <h5 class="total-price-label">Total Price</h5>
-                            <h5 class="total-price-value">(C&F), ASK</h5>
+                            <h5 class="total-price-value">ASK</h5>
                         </div>
                     </div>
                     <div class="cif">
-                        <p>(C&F Inspect), Dar es Salaam</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -389,10 +397,9 @@
                             <label for="">Select Country</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select" name="">
-                                <option value="">Select</option>
+                            <select class="form-select select-country" name="">
                                 @foreach($country as $row)
-                                    <option value="{{$row}}">{{$row}}</option>
+                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -402,8 +409,15 @@
                             <label for="">Select Port</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select" name="">
-                                <option value="">Select</option>
+                            <select class="form-select port" name="">
+                                @if($port_count)
+                                    @for($i=0; $i<$port_count; $i++)
+                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                                    @endfor
+                                    <option value="0"></option>
+                                @else
+                                    <option value="0"></option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -412,23 +426,23 @@
                             <label for="">Inspention</label>
                         </div>
                         <div class="calc-list-value">
-                            <a href="#" class="btn btn-ins ins-margin">No</a>
-                            <a href="#" class="btn btn-ins">Yes</a>
+                            <a href="javascript:void(0)" class="btn btn-ins ins-margin insp-n" data-id="0">No</a>
+                            <a href="javascript:void(0)" class="btn btn-ins insp-y" data-id="{{$rate->inspection}}">Yes</a>
                         </div>
-                        <input type="hidden" name="menuip">
+                        <input type="hidden" class="insp-value" value="0">
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
                             <label for="">Insurance</label>
                         </div>
                         <div class="calc-list-value">
-                            <a href="#" class="btn btn-ins ins-margin">No</a>
-                            <a href="#" class="btn btn-ins">Yes</a>
+                            <a href="javascript:void(0)" class="btn btn-ins ins-margin insu-n" data-id="0">No</a>
+                            <a href="javascript:void(0)" class="btn btn-ins insu-y" data-id="{{$rate->insurance}}">Yes</a>
                         </div>
-                        <input type="hidden" name="menuip">
+                        <input type="hidden" class="insu-value" value="0">
                     </div>
                 </div>
-                <button type="submit" class="ins-submit"><i class="bx bx-calendar"></i> Calculate</button>
+                <button type="submit" class="ins-submit" id="pc-calc"><i class="bx bx-calendar"></i> Calculate</button>
             </div>
             <!-- /price calculator -->
             <!-- login register  -->
@@ -445,11 +459,16 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="inquiry-pc" role="tabpanel">
-                        <form action="">
+                        <form class="custom-validation inquForm"  method="post">
+                            @csrf
                             <div class="inquiry-form">
-                                <!-- <div class="inquiry-title">
-                                    <h3>Please fill the *required fields</h3>
-                                </div> -->
+                                <input type="hidden" name="vehicle_name" value="{{($vehicle_data->make_type)}} {{$vehicle_data->model_type}} {{$vehicle_data->body_type}}">
+                                <input type="hidden" name="fob_price" class="inqu_fob_price" value="">
+                                <input type="hidden" name="inspection" class="inqu_inspection" value="">
+                                <input type="hidden" name="insurance" class="inqu_insurance" value="">
+                                <input type="hidden" name="inqu_port" class="inqu_port" value="">
+                                <input type="hidden" name="total_price" class="inqu_total_price" value="">
+                                <input type="hidden" name="site_url" class="inqu_url" value="">
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
@@ -458,10 +477,9 @@
                                         </div>
                                         <div class="inquiry-right">
                                             <label for="">Select your country</label>
-                                            <select class="form-select" name="inq_country" required>
-                                                <option value="">Select</option>
+                                            <select class="form-select" name="inqu_country" required>
                                                 @foreach($country as $row)
-                                                    <option value="{{$row}}">{{$row}}</option>
+                                                    <option value="{{$row->country}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -479,7 +497,7 @@
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
                                             <label for="">Mobile*</label>
-                                            <input class="form-control"  type="text" placeholder="Mobile Number" name="inqu_mobile" required > 
+                                            <input class="form-control"  data-parsley-type="number" type="text" placeholder="Mobile Number" name="inqu_mobile" required > 
                                         </div>
                                         <div class="inquiry-right">
                                             <label for="">City*</label>
@@ -488,7 +506,7 @@
                                     </div>
                                     <div class="inquiry-list">
                                         <label for="">Your Message</label>
-                                        <textarea  class="form-control" rows="3" placeholder="" ></textarea>
+                                        <textarea  class="form-control" rows="3" placeholder="" name="inqu_comment"></textarea>
                                     </div>
                                     <div class="inquiry-list">
                                         <div class="inquiry-right">
@@ -500,7 +518,7 @@
                         </form>
                     </div>
                     <div class="tab-pane" id="login-pc" role="tabpanel">
-                        <form action="">
+                        <form class="custom-validation" action="">
                             <div class="login-form">
                                 <div class="login-list">
                                     <label for="">Email*</label>
@@ -524,7 +542,11 @@
 @endsection
 @section('script')
     <script>
+        var select_port = "{{route('front.select_port')}}";
+        var inq_url = "{{route('front.inquiry.email')}}";
     </script>
+    <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/slick/slick.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/frontend/pages/details/index.js')}}"></script>
 @endsection
