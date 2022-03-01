@@ -19,6 +19,8 @@ $(document).ready(function () {
                 }
             }
     })
+
+    //price calc for pc version
     $('#select-country').on("change", function (e) { 
         var id = $(e.currentTarget).val()
         $.ajax({
@@ -49,7 +51,38 @@ $(document).ready(function () {
             console.log('Server error occured');
         });
     })
-    
+
+    //price cal for mobile version
+    $('#select-country-mobile').on("change", function (e) { 
+        var id = $(e.currentTarget).val()
+        $.ajax({
+            url: select_port,
+            data:{
+                id:id
+            },
+            type: "get",
+        })
+        .done(function (response) {
+            var port = response.port;
+            var port_name = JSON.parse(port.port)
+            var port_price = JSON.parse(port.price)
+            html = ''
+            if(port_name != null){
+                for(i=0; i<port_name.length; i++){
+                    html +='<option value="'+port_price[i]+'">'+port_name[i]+'</option>'
+                }
+            } 
+            html +='<option value="0"></option>'
+            $('#price-port-mobile')
+                    .find('option')
+                    .remove()
+                    .end()
+                    .append(html)
+        })
+        .fail(function (jqXHR, ajaxOptions, thrownError) {
+            console.log('Server error occured');
+        });
+    })
 
     var _token = $('input[name="_token"]').val();
     var page = 1;

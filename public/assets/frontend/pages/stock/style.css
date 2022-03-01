@@ -388,6 +388,12 @@ body {
         background: #920000;
         color: #fff;
     }
+    .calc-submit button:hover{
+        color: #fff !important;
+    }
+    .calc-submit button:active{
+        color: #fff !important;
+    }
 }
 @media only screen and (max-width: 425px) {
     .top-menu-wrapper, .hero-wrapper, .contents-wrapper {

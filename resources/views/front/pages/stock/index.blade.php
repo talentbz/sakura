@@ -309,7 +309,7 @@
                             <label for="">Select Country</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select" name="">
+                            <select class="form-select" id="select-country-mobile" name="">
                                 @foreach($country as $row)
                                     <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                 @endforeach
@@ -321,7 +321,7 @@
                             <label for="">Select Port</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select port" name="">
+                            <select class="form-select port" name="" id="price-port-mobile">
                                 @if($port_count)
                                     @for($i=0; $i<$port_count; $i++)
                                         <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
