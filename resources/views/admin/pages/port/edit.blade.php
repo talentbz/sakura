@@ -42,7 +42,7 @@
                                                 <td class="col-sm-4">
                                                     <input type="number" name="price[]"  class="form-control" value="{{$port_price[$i]}}" required/>
                                                 </td>
-                                                <td class="col-sm-2"><a class="deleteRow"></a></td>
+                                                <td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>
                                             </tr>    
                                             @endfor
                                         @else

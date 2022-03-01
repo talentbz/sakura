@@ -29,7 +29,21 @@ $(document).ready(function () {
             type: "get",
         })
         .done(function (response) {
-            console.log(response);
+            var port = response.port;
+            var port_name = JSON.parse(port.port)
+            var port_price = JSON.parse(port.price)
+            html = ''
+            if(port_name != null){
+                for(i=0; i<port_name.length; i++){
+                    html +='<option value="'+port_price[i]+'">'+port_name[i]+'</option>'
+                }
+                html +='<option value="0"></option>'
+            } 
+            $('#price-port')
+                    .find('option')
+                    .remove()
+                    .end()
+                    .append(html)
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             console.log('Server error occured');
@@ -125,6 +139,9 @@ $(document).ready(function () {
                     cif = '( CIF Inspect )'
                 }
                 final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
+            }
+            if(final_price == '$NaN') {
+                final_price ='ASK'
             }
             $(this).find('.cif').text(cif);
             $(this).find('.port').text(port_name);

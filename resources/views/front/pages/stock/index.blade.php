@@ -23,7 +23,7 @@
                 </div>
                 <div class="calculator-select">
                     <label for="">Select port</label>
-                    <select class="form-select port" name="price_port">
+                    <select class="form-select port" name="price_port" id="price-port">
                         @if($port_count)
                             @for($i=0; $i<$port_count; $i++)
                                 <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
