@@ -92,7 +92,7 @@
                 </tr>
                 <tr>
                     <td class="table-light" scope="row">Vehicle Name</td>
-                    <td >{{$vehicle_name}}</td>
+                    <td style="text-transform: uppercase;">{{$vehicle_name}}</td>
                 </tr>
                 <tr>
                     <td class="table-light" scope="row">FOB Price</td>
@@ -107,16 +107,16 @@
                     <td >{{$inspection}}</td>
                 </tr>
                 <tr>
-                    <td class="table-light" scope="row">Port Name/td>
+                    <td class="table-light" scope="row">Port Name</td>
                     <td >{{$inqu_port}}</td>
                 </tr>
                 <tr>
-                    <td class="table-light" scope="row">Total Price/td>
+                    <td class="table-light" scope="row">Total Price</td>
                     <td >{{$total_price}}</td>
                 </tr>
                 <tr>
-                    <td class="table-light" scope="row">Web Link/td>
-                    <td >{{$site_url}}</td>
+                    <td class="table-light" scope="row">Web Link</td>
+                    <td ><a href="{{$site_url}}">{{$site_url}}</a></td>
                 </tr>
                 <tr>
                     <td class="table-light" scope="row">comment</td>
