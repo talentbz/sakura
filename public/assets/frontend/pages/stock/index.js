@@ -22,6 +22,8 @@ $(document).ready(function () {
 
     //price calc for pc version
     $('#select-country').on("change", function (e) { 
+        e.preventDefault();
+        e.stopPropagation();
         var id = $(e.currentTarget).val()
         $.ajax({
             url: select_port,
@@ -125,7 +127,7 @@ $(document).ready(function () {
             console.log('Server error occured');
         });
     }
-    $(document).on('click', '#price-calc', function(){       
+    $(document).on('click', '#price-calc', function(){      
         price_calc();
     })
 
@@ -138,12 +140,12 @@ $(document).ready(function () {
         port_name = $('.port-pc option:selected' ).text(); 
         inspection_price = parseInt($('.inspection option:selected' ).val());
         insurance_price = parseInt($('.insurance option:selected' ).val()); 
-        $('.stock-price-list').each(function() {
+        $('.contents-list').each(function(e) {
             total_price = parseInt($(this).find('.price').val());
             cubic_meter = $(this).find('.cubic-meter').val();
             price_shipping = port_price*cubic_meter;
             if(port_price == 0) {
-                cif = "( C & F )"
+                cif = '( C & F )'
                 final_price = "ASK"    
                 port_name = 'Port'
             } else {
@@ -164,6 +166,12 @@ $(document).ready(function () {
             if(final_price == '$NaN') {
                 final_price ='ASK'
             }
+            country = $('#select-country').val();
+            current_url = $(this).find('.detail-inquire a').attr("data-contents");
+            new_url = current_url + '?country=' + country +'&port=' +port_price +'&inspection='+inspection_price +'&insurance='+insurance_price +'&total_price=' + final_price;
+            $(this).find('.detail-inquire a').attr("href", new_url)
+            $(this).find('.stock-contents a').attr("href", new_url)
+            $(this).find('.stock-image a').attr("href", new_url)
             $(this).find('.cif').text(cif);
             $(this).find('.port').text(port_name);
             $(this).find('.totla-value').text(final_price);
@@ -200,7 +208,7 @@ $(document).ready(function () {
     port_name = $('.port option:selected' ).text(); 
     inspection_price = parseInt($('.insp-value' ).val());
     insurance_price = parseInt($('.insu-value' ).val()); 
-    $('.stock-price-list').each(function() {
+    $('.contents-list').each(function() {
         total_price = parseInt($(this).find('.price').val());
         cubic_meter = $(this).find('.cubic-meter').val();
         price_shipping = port_price*cubic_meter;
@@ -222,6 +230,12 @@ $(document).ready(function () {
             }
             final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
         }
+        country = $('#select-country-mobile').val();
+        current_url = $(this).find('.detail-inquire a').attr("data-contents");
+        new_url = current_url + '?country=' + country +'&port=' +port_price +'&inspection='+inspection_price +'&insurance='+insurance_price +'&total_price=' + final_price;
+        $(this).find('.detail-inquire a').attr("href", new_url)
+        $(this).find('.stock-mobile-title a').attr("href", new_url)
+        $(this).find('.stock-image a').attr("href", new_url)
         $(this).find('.cif').text(cif);
         $(this).find('.port').text(port_name);
         $(this).find('.totla-value').text(final_price);

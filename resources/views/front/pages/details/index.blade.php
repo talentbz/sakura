@@ -44,24 +44,24 @@
                             <select class="form-select port" name="">
                                 @if($port_count)
                                     @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                                        <option value="{{$port_price[$i]}}" {{$port == $port_price[$i] ? 'selected':''}}>{{$port_key[$i]}}</option>
                                     @endfor
-                                    <option value="0"></option>
+                                    <option value="0" {{$port == 0? 'selected':''}}></option>
                                 @else
-                                    <option value="0"></option>
+                                    <option value="0" {{$port == 0? 'selected':''}}></option>
                                 @endif
                             </select>
                         </div>
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
-                            <label for="">Inspention</label>
+                            <label for="">Inspection</label>
                         </div>
                         <div class="calc-list-value">
                             <a href="javascript:void(0)" class="btn btn-ins ins-margin insp-n" data-id="0">No</a>
                             <a href="javascript:void(0)" class="btn btn-ins insp-y" data-id="{{$rate->inspection}}">Yes</a>
                         </div>
-                        <input type="hidden" class="insp-value" value="0">
+                        <input type="hidden" class="insp-value" value="{{$inspection?$inspection:0}}">
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
@@ -71,7 +71,7 @@
                             <a href="javascript:void(0)" class="btn btn-ins ins-margin insu-n" data-id="0">No</a>
                             <a href="javascript:void(0)" class="btn btn-ins insu-y" data-id="{{$rate->insurance}}">Yes</a>
                         </div>
-                        <input type="hidden" class="insu-value" value="0">
+                        <input type="hidden" class="insu-value" value="{{$insurance?$insurance:0}}">
                     </div>
                 </div>
                 <button type="submit" class="ins-submit" id="mobile-calc"><i class="bx bx-calendar"></i> Calculate</button>
@@ -189,7 +189,7 @@
                         </div>
                         <div class="total-price">
                             <h5 class="total-price-label">Total Price</h5>
-                            <h5 class="total-price-value">ASK</h5>
+                            <h5 class="total-price-value">{{$total_price ? $total_price:'ASK'}}</h5>
                         </div>
                     </div>
                     <div class="cif">
@@ -412,24 +412,24 @@
                             <select class="form-select port" name="">
                                 @if($port_count)
                                     @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                                        <option value="{{$port_price[$i]}}" {{$port == $port_price[$i] ? 'selected':''}}>{{$port_key[$i]}}</option>
                                     @endfor
-                                    <option value="0"></option>
+                                    <option value="0" {{$port == 0 ? 'selected':''}}></option>
                                 @else
-                                    <option value="0"></option>
+                                    <option value="0" {{$port == 0 ? 'selected':''}}></option>
                                 @endif
                             </select>
                         </div>
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
-                            <label for="">Inspention</label>
+                            <label for="">Inspection</label>
                         </div>
                         <div class="calc-list-value">
                             <a href="javascript:void(0)" class="btn btn-ins ins-margin insp-n" data-id="0">No</a>
                             <a href="javascript:void(0)" class="btn btn-ins insp-y" data-id="{{$rate->inspection}}">Yes</a>
                         </div>
-                        <input type="hidden" class="insp-value" value="0">
+                        <input type="hidden" class="insp-value" value="{{$inspection?$inspection:0}}">
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
@@ -439,7 +439,7 @@
                             <a href="javascript:void(0)" class="btn btn-ins ins-margin insu-n" data-id="0">No</a>
                             <a href="javascript:void(0)" class="btn btn-ins insu-y" data-id="{{$rate->insurance}}">Yes</a>
                         </div>
-                        <input type="hidden" class="insu-value" value="0">
+                        <input type="hidden" class="insu-value" value="{{$insurance?$insurance:0}}">
                     </div>
                 </div>
                 <button type="submit" class="ins-submit" id="pc-calc"><i class="bx bx-calendar"></i> Calculate</button>

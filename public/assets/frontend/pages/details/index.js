@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    price_calc();
     $('.slider-thumbnails').slick({
         infinite: false,
         slidesToShow: 7,
@@ -49,7 +50,7 @@ $(document).ready(function () {
     })
     function price_calc(){
         port_price = parseInt($('.port option:selected' ).val()); 
-        port_name = $('.port option:selected' ).text(); 
+        port_name = $('.port:first option:selected' ).text(); 
         inspection_price = parseInt($('.insp-value' ).val());
         insurance_price = parseInt($('.insu-value' ).val()); 
         total_price = parseInt($('.price').val());                                                                                                                 
@@ -77,6 +78,17 @@ $(document).ready(function () {
         }
         $('.cif p').text(cif +', '+ port_name);
         $('.total-price-value').text(final_price);
+    }
+
+    if($('.insp-value').val() == 0){
+        $('.insp-n').addClass('active');    
+    } else {
+        $('.insp-y').addClass('active');    
+    }
+    if($('.insu-value').val() == 0){
+        $('.insu-n').addClass('active');    
+    } else {
+        $('.insu-y').addClass('active');    
     }
     $('.insp-n').click(function(){
         $(this).addClass('active')

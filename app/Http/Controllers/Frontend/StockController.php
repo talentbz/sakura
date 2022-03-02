@@ -150,17 +150,17 @@ class StockController extends Controller
                 foreach ($vehicle_data as $result) {
                     $list.='<div class="contents-list">';
                         $list.= '<div class="stock-mobile-title">';
-                            $list.= '<a href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
+                            $list.= '<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
                                 $list.=  '<h5>'.$result->make_type.' '.$result->model_type.' ' .$result->body_type.'</h5>';
                             $list.='</a>';
                         $list.='</div>';
                         $list.='<div class="stock-image">';
-                            $list.='<a href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
+                            $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
                                 $list.='<img src="'.URL::asset('/uploads/vehicle').'/'.$result->vehicle_id.'/thumb'.'/'.$result->image.'" alt="">';
                             $list.='</a>';                                                
                         $list.='</div>';
                         $list.='<div class="stock-contents">';
-                            $list.='<a href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="stock-name">';
+                            $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="stock-name">';
                                 $list.='<h5>'.$result->make_type.' '.$result->model_type.' '.$result->body_type.'</h5>';
                             $list.='</a>';
                             $list.='<table class="table table-bordered dt-responsive  nowrap w-100">';
@@ -243,8 +243,8 @@ class StockController extends Controller
                                 $list.='<p class="port">Port</p>';
                             $list.='</div>';
                             $list.='<div class="detail-inquire">';
-                                $list.='<a href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="btn-detail">Details</a>';
-                                $list.='<a href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="btn-inquire">Inquire</a>';
+                                $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'" data-contents="'.route('front.details', ['id' => $result->vehicle_id]).'" class="btn-detail">Details</a>';
+                                $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="btn-inquire">Inquire</a>';
                             $list.='</div>';
                         $list.='</div>';
                         $list.='<div class="contents-border-right"></div>';
@@ -319,10 +319,19 @@ class StockController extends Controller
         ]);
     }
     public function details(Request $request, $id){
+        
         $ip = $request->ip();
         $country_ip = \Location::get('112.134.189.70');
         // $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        if($request->has('total_price')){
+            $current_country = Port::where('id', $request->country)->first();
+            $total_price = $request->total_price;
+            $port = $request->port;
+            $inspection = $request->inspection;
+            $insurance = $request->insurance;
+        }
+        
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
             $port_key = json_decode($current_country->port);
@@ -350,6 +359,10 @@ class StockController extends Controller
             'port_count' => $port_count,
             'port_key' => $port_key, 
             'port_price' => $port_price,
+            'total_price' =>$total_price,
+            'port' => $port,
+            'inspection' => $inspection,
+            'insurance' => $insurance,
         ]);
     }
     public function image_download(Request $request, $id){
