@@ -39,7 +39,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('/signup_post', [App\Http\Controllers\Frontend\UserController::class, 'signup_post'])->name('front.user.signup_post');
 });
 Route::prefix('/user')->middleware(['auth:web', 'CustomerRole'])->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\Frontend\UserController::class, 'dashboard'])->name('front.user.dashboard');
+    Route::get('/mypage', [App\Http\Controllers\Frontend\UserController::class, 'myPage'])->name('front.user.mypage');
 });
 Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'clear'])->name('front.clear');
 
@@ -69,8 +69,11 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('admin.customer.index');
         Route::get('/add', [App\Http\Controllers\Admin\CustomerController::class, 'add'])->name('admin.customer.add');
         Route::post('/add_post', [App\Http\Controllers\Admin\CustomerController::class, 'add_post'])->name('admin.customer.add_post');
-        Route::get('/edit', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('admin.customer.edit');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('admin.customer.edit');
         Route::post('/edit_post', [App\Http\Controllers\Admin\CustomerController::class, 'edit_post'])->name('admin.customer.edit_post');
+        Route::get('/delete', [App\Http\Controllers\Admin\CustomerController::class, 'delete'])->name('admin.customer.delete');
+        Route::post('/imageAdd', [App\Http\Controllers\Admin\CustomerController::class, 'imageAdd'])->name('admin.customer.imageAdd');
+        Route::post('/imageDelete', [App\Http\Controllers\Admin\CustomerController::class, 'imageDelete'])->name('admin.customer.imageDelete');
     });
     Route::group(['prefix' => 'port'], function(){
         Route::get('/', [App\Http\Controllers\Admin\PortController::class, 'index'])->name('admin.port.index');
@@ -81,9 +84,11 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
         Route::get('/add', [App\Http\Controllers\Admin\NewsController::class, 'add'])->name('admin.news.add');
         Route::post('/add_post', [App\Http\Controllers\Admin\NewsController::class, 'add_post'])->name('admin.news.add_post');
-        Route::get('/edit', [App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
         Route::post('/edit_post', [App\Http\Controllers\Admin\NewsController::class, 'edit_post'])->name('admin.news.edit_post');
         Route::get('/delete', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
+        Route::post('/imageAdd', [App\Http\Controllers\Admin\NewsController::class, 'imageAdd'])->name('admin.news.imageAdd');
+        Route::post('/imageDelete', [App\Http\Controllers\Admin\NewsController::class, 'imageDelete'])->name('admin.news.imageDelete');
     });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');

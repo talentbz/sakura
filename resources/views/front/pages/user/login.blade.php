@@ -118,7 +118,7 @@
     @section('script')
     <script>
         login_url = "{{route('front.user.login_post')}}";
-        dashboard_url = "{{route('front.user.dashboard')}}";
+        mypage_url = "{{route('front.user.mypage')}}";
     </script>
     <script src="{{ URL::asset('/assets/frontend/js/login.js') }}"></script>
     @endsection

@@ -3,6 +3,7 @@
 @section('css')
     <link href="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('/assets/admin/plugin/fileinput/fileinput.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('/assets/admin/pages/news/create.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -39,7 +40,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">News Contents</label>
                                         <div>
-                                            <textarea id="elm1" name="news_contents" required></textarea>
+                                            <textarea class="mceEditor" id="news-contents"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +67,8 @@
 @endsection
 @section('script')
     <script>
-        var create_url = "{{route('')}}"
+        var create_url = "{{route('admin.news.add_post')}}"
+        var list_url = "{{route('admin.news.index')}}"
     </script>
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>

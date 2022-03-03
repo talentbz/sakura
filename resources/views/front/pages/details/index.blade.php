@@ -44,11 +44,11 @@
                             <select class="form-select port" name="">
                                 @if($port_count)
                                     @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}" {{$port == $port_price[$i] ? 'selected':''}}>{{$port_key[$i]}}</option>
+                                        <option value="{{$port_price[$i]}}" {{$port == ''?'':($port == $port_price[$i] ? 'selected':'')}}>{{$port_key[$i]}}</option>
                                     @endfor
-                                    <option value="0" {{$port == 0? 'selected':''}}></option>
+                                    <option value="0" {{$port == ''?:($port == 0? 'selected':'')}}></option>
                                 @else
-                                    <option value="0" {{$port == 0? 'selected':''}}></option>
+                                    <option value="0" {{$port == ''?:($port == 0? 'selected':'')}}></option>
                                 @endif
                             </select>
                         </div>
@@ -189,7 +189,7 @@
                         </div>
                         <div class="total-price">
                             <h5 class="total-price-label">Total Price</h5>
-                            <h5 class="total-price-value">{{$total_price ? $total_price:'ASK'}}</h5>
+                            <h5 class="total-price-value">{{!$total_price=='' ? $total_price:'ASK'}}</h5>
                         </div>
                     </div>
                     <div class="cif">
@@ -412,11 +412,11 @@
                             <select class="form-select port" name="">
                                 @if($port_count)
                                     @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}" {{$port == $port_price[$i] ? 'selected':''}}>{{$port_key[$i]}}</option>
+                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
                                     @endfor
-                                    <option value="0" {{$port == 0 ? 'selected':''}}></option>
+                                    <option value="0"></option>
                                 @else
-                                    <option value="0" {{$port == 0 ? 'selected':''}}></option>
+                                    <option value="0"></option>
                                 @endif
                             </select>
                         </div>

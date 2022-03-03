@@ -8,6 +8,8 @@ use DB, Validator, Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use Location;
+use App\Models\Port;
 use App\Models\User;
 
 
@@ -22,8 +24,13 @@ class UserController extends Controller
     public function signup(Request $request)
     {
         $country = config('config.country');
+        $ip = $request->ip();
+        $country_ip = \Location::get('112.134.189.70');
+        // $country_ip = \Location::get($ip);
+        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first()->country;
         return view('front.pages.user.signup', [
             'country' => $country,
+            'current_country' => $current_country,
         ]);
     }
     public function signup_post(Request $request) {
@@ -67,9 +74,10 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
-    public function dashboard(Request $request) {
-        return view('front.pages.user.dashboard', [
+    public function myPage(Request $request) {
+        return view('front.pages.user.mypage', [
             // 'data' => $data,
         ]);
     }
+
 }

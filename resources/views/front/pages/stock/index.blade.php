@@ -17,7 +17,12 @@
                     <label for="">Select your country</label>
                     <select class="form-select" name="price_country" id="select-country">
                         @foreach($country as $row)
-                            <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
+                        {{$price_country}}
+                            @if($price_country)
+                                <option value="{{$row->id}}" {{ $price_country == $row->id ? "selected" : "" }}>{{$row->country}}</option>
+                            @else
+                                <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -26,7 +31,7 @@
                     <select class="form-select port-pc" name="price_port" id="price-port">
                         @if($port_count)
                             @for($i=0; $i<$port_count; $i++)
-                                <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
+                                <option value="{{$port_price[$i]}}" {{$price_port ==$port_price[$i]? 'selected':'' }}>{{$port_key[$i]}}</option>
                             @endfor
                             <option value="0"></option>
                         @else
@@ -35,14 +40,14 @@
                     </select>
                 </div>
                 <div class="calculator-select">
-                    <label for="">Do you need inspection?</label>
+                    <label for="">Inspection</label>
                     <select class="form-select inspection" name="inspection" >
                         <option value="0" >No</option>
                         <option value="{{$rate_ins->inspection}}" >Yes</option>
                     </select>
                 </div>
                 <div class="calculator-select">
-                    <label for="">Do you need insurance?</label>
+                    <label for="">Insurance</label>
                     <select class="form-select insurance" name="insurance">
                         <option value="0" >No</option>
                         <option value="{{$rate_ins->insurance}}" >Yes</option>
@@ -163,12 +168,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="advance-search mb-2">
+                        <!-- <div class="advance-search mb-2">
                             <a data-bs-toggle="modal" href="javascript:void(0)" data-bs-target=".advanced-seach-modal">
                                 Advance Search
                                 <i class="fas fa-angle-double-right"></i>    
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <button type="submit" class="search-submit">Search <i class="fas fa-search"></i></button>
                 </form>
@@ -387,8 +392,6 @@
         <!-- /end main contents -->
     </div>
 </div>
-<!-- modal section -->
-@include('front.layouts.searchModal')
 @endsection
 
 @section('script')
@@ -403,6 +406,10 @@
         var to_year = "{{$to_year}}";
         var from_price = "{{$from_price}}";
         var to_price = "{{$to_price}}";
+        var price_country = "{{$price_country}}";
+        var price_port = "{{$price_port}}";
+        var inspection = "{{$inspection}}";
+        var insurance = "{{$insurance}}";
     </script>
     <script src="{{ URL::asset('/assets/frontend/pages/stock/index.js')}}"></script>
 @endsection

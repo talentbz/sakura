@@ -2,6 +2,7 @@ $(document).ready(function () {
     var local_url = new URL(window.location.href);
     var body_type = local_url.searchParams.get("body_type");
     var make_type = local_url.searchParams.get("make_type");
+    
     //model select category and sub category
     $('.select-category').on("change", function (e) { 
         var select_val = $(e.currentTarget).val();
@@ -94,7 +95,19 @@ $(document).ready(function () {
         page++;
         infinteLoadMore(page);
     });
-   
+    $(document).on('click', '#price-calc', function(){   
+        price_calc();
+        // var price_country = $('#select-country').val(); 
+        // var price_port = parseInt($('.port-pc option:selected' ).val()); 
+        // var inspection = parseInt($('.inspection option:selected' ).val());
+        // var insurance = parseInt($('.insurance option:selected' ).val()); 
+        // if(window.location.href.indexOf('?') > -1) {
+        //     location.href = window.location.href + "&price_country=" + price_country + '&price_port=' + price_port + '&inspection=' + inspection + '&insurance=' + insurance
+        // } else {
+        //     location.href = window.location.href + "?price_country=" + price_country + '&price_port=' + price_port + '&inspection=' + inspection + '&insurance=' + insurance
+        // }  
+
+    })
     function infinteLoadMore(page) {
         $.ajax({
             url: sock_page + "?page=" + page,
@@ -108,6 +121,10 @@ $(document).ready(function () {
                 to_year:to_year,
                 from_price:from_price,
                 to_price:to_price,
+                // price_country:price_country,
+                // price_port:price_port,
+                // inspection:inspection,
+                // insurance:insurance,
             },
             type: "get",
         })
@@ -127,56 +144,7 @@ $(document).ready(function () {
             console.log('Server error occured');
         });
     }
-    $(document).on('click', '#price-calc', function(){      
-        price_calc();
-    })
-
-
-    /* 
-        pc price calculator
-    */
-   function price_calc(){
-        port_price = parseInt($('.port-pc option:selected' ).val()); 
-        port_name = $('.port-pc option:selected' ).text(); 
-        inspection_price = parseInt($('.inspection option:selected' ).val());
-        insurance_price = parseInt($('.insurance option:selected' ).val()); 
-        $('.contents-list').each(function(e) {
-            total_price = parseInt($(this).find('.price').val());
-            cubic_meter = $(this).find('.cubic-meter').val();
-            price_shipping = port_price*cubic_meter;
-            if(port_price == 0) {
-                cif = '( C & F )'
-                final_price = "ASK"    
-                port_name = 'Port'
-            } else {
-                if(inspection_price == 0){
-                    cif = '( CIF )'
-                }
-                if(insurance_price == 0){
-                    cif = '(  C&F Inspect )'
-                }
-                if(insurance_price == 0 && inspection_price == 0){
-                    cif = '( C & F )';
-                }
-                if(!insurance_price == 0 && !inspection_price == 0){
-                    cif = '( CIF Inspect )'
-                }
-                final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
-            }
-            if(final_price == '$NaN') {
-                final_price ='ASK'
-            }
-            country = $('#select-country').val();
-            current_url = $(this).find('.detail-inquire a').attr("data-contents");
-            new_url = current_url + '?country=' + country +'&port=' +port_price +'&inspection='+inspection_price +'&insurance='+insurance_price +'&total_price=' + final_price;
-            $(this).find('.detail-inquire a').attr("href", new_url)
-            $(this).find('.stock-contents a').attr("href", new_url)
-            $(this).find('.stock-image a').attr("href", new_url)
-            $(this).find('.cif').text(cif);
-            $(this).find('.port').text(port_name);
-            $(this).find('.totla-value').text(final_price);
-        })
-   }
+    
     
    $('.insp-n').click(function(){
        $(this).addClass('active')
@@ -202,8 +170,59 @@ $(document).ready(function () {
    $(document).on('click', '#mobile-cal-btn', function(){
         price_calc_mobile()
    })
-   //   mobile calc function
-   function price_calc_mobile(){
+   
+})
+// $( window ).on( "load", function() {
+//     price_calc();
+//     price_calc_mobile();
+// });
+/* 
+    pc price calculator
+*/
+function price_calc(){
+    port_price = parseInt($('.port-pc option:selected' ).val()); 
+    port_name = $('.port-pc option:selected' ).text(); 
+    inspection_price = parseInt($('.inspection option:selected' ).val());
+    insurance_price = parseInt($('.insurance option:selected' ).val()); 
+    country = $('#select-country').val();
+    $('.contents-list').each(function(e) {
+        total_price = parseInt($(this).find('.price').val());
+        cubic_meter = $(this).find('.cubic-meter').val();
+        price_shipping = port_price*cubic_meter;
+        if(port_price == 0) {
+            cif = '( C & F )'
+            final_price = "ASK"    
+            port_name = 'Port'
+        } else {
+            if(inspection_price == 0){
+                cif = '( CIF )'
+            }
+            if(insurance_price == 0){
+                cif = '(  C&F Inspect )'
+            }
+            if(insurance_price == 0 && inspection_price == 0){
+                cif = '( C & F )';
+            }
+            if(!insurance_price == 0 && !inspection_price == 0){
+                cif = '( CIF Inspect )'
+            }
+            final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
+        }
+        if(final_price == '$NaN') {
+            final_price ='ASK'
+        }
+        current_url = $(this).find('.detail-inquire a').attr("data-contents");
+        new_url = current_url + '?country=' + country +'&port=' +port_price +'&inspection='+inspection_price +'&insurance='+insurance_price +'&total_price=' + final_price;
+        $(this).find('.detail-inquire a').attr("href", new_url)
+        $(this).find('.stock-contents a').attr("href", new_url)
+        $(this).find('.stock-image a').attr("href", new_url)
+        $(this).find('.cif').text(cif);
+        $(this).find('.port').text(port_name);
+        $(this).find('.totla-value').text(final_price);
+    })
+}
+//   mobile calc function 
+function price_calc_mobile(){
     port_price = parseInt($('.port option:selected' ).val()); 
     port_name = $('.port option:selected' ).text(); 
     inspection_price = parseInt($('.insp-value' ).val());
@@ -241,12 +260,8 @@ $(document).ready(function () {
         $(this).find('.totla-value').text(final_price);
     })
 }
-})
-
 border_object = $('.contents-border-right');
-console.log(border_object)
 if($(window).width() <= 1024){
-    console.log(border_object)
     for(i=0; i<border_object.length; i++){
         border_object.eq(3*i).css('display', 'none');
     }
@@ -254,7 +269,6 @@ if($(window).width() <= 1024){
 if($( window ).width() <= 425){
     border_object.css('display', 'block')
     for(i=0; i<border_object.length; i++){  
-            console.log((2*i));
             border_object.eq(2*i).css('display', 'none');
     }
 }

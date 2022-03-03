@@ -73,9 +73,8 @@
                                         <div class="mb-3">
                                             <label class="form-label">Select Country</label>
                                            <select class="form-select" name="country" required>
-                                               <option value="">Select Country</option>
                                                @foreach($country as $row)
-                                                    <option value="{{$row}}">{{$row}}</option>
+                                                    <option value="{{$row}}" {{$current_country == $row ? 'selected' :''}}>{{$row}}</option>
                                                @endforeach
                                            </select>
                                         </div>
@@ -101,6 +100,7 @@
 @section('script')
 <script>
     create_url = "{{route('front.user.signup_post')}}";
+    login_url = "{{route('front.user.login')}}";
 </script>
 <script src="{{ URL::asset('/assets/frontend/js/signup.js') }}"></script>
 @endsection

@@ -83,6 +83,7 @@
 @section('script')
 <script>
     var add_post = "{{route('admin.customer.add_post')}}"
+    var list_url = "{{route('admin.customer.index')}}"
 </script>
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>

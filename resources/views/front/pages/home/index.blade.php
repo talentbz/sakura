@@ -87,12 +87,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="advance-search mb-2">
+                        <!-- <div class="advance-search mb-2">
                             <a data-bs-toggle="modal" href="javascript:void(0)" data-bs-target=".advanced-seach-modal">
                                 Advance Search
                                 <i class="fas fa-angle-double-right"></i>    
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <button type="submit" class="search-submit">Search <i class="fas fa-search"></i></button>
                 </form>
@@ -428,8 +428,6 @@
         <!-- /end rightsidebar -->
     </div>
 </div>
-<!-- modal section -->
-@include('front.layouts.searchModal')
 @endsection
 
 @section('script')

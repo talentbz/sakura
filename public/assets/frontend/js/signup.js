@@ -16,9 +16,9 @@ $('form#myForm').submit(function(e){
                 toastr["warning"]("Exist Email.");
             } else {
                 toastr["success"]("Success");
-                // setInterval(function(){ 
-                //     location.href = self_url; 
-                // }, 2000);
+                setInterval(function(){ 
+                    location.href = login_url; 
+                }, 2000);
             }
         },
         error: function (res){

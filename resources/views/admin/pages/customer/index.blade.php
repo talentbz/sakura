@@ -29,20 +29,20 @@
                             @forelse($review as $row)
                             <tr>
                                 <td align="center">
-                                    <img src="{{URL::asset('/uploads/review')}}{{'/'}}{{$row->id}}{{'/'}}{{$row->image}}" alt="" width="80">
+                                    <img src="{{URL::asset('/uploads/review')}}{{'/'}}{{$row->user_review_id}}{{'/'}}{{$row->image}}" alt="" width="80">
                                 </td>
                                 <td>{{$row->title}}</td>
                                 <td >
                                     <p>{{$row->description}}</p>
                                 </td>
-                                <td align="center">{{prefix_word($row->customer_name, 30)}}</td>
+                                <td align="center">{{$row->customer_name}}</td>
                                 <td align="center">{{$row->country}}</td>
                                 <td align="center">{{$row->register_date}}</td>
                                 <td align="center">{{$row->rate}}</td>
                                 <td align="center">
-                                        <a href="#" class="text-success edit" ><i
+                                        <a href="{{route('admin.customer.edit', ['id' => $row->user_review_id])}}" class="text-success edit" ><i
                                                 class="mdi mdi-pencil font-size-18"></i></a>
-                                        <a href="#" class="text-danger confirm_delete" data-id="" data-bs-toggle="modal"
+                                        <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="{{$row->user_review_id}}" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i
                                                 class="mdi mdi-delete font-size-18"></i></a>
                                 </td>
@@ -80,7 +80,8 @@
 @endsection
 @section('script')
     <script>
-        var delete_url = "{{route('admin.vehicle.delete')}}";
+        var delete_url = "{{route('admin.customer.delete')}}";
+        var list_url = "{{route('admin.customer.index')}}"
     </script>
-    <script src="{{ URL::asset('/assets/admin/pages/vehicle/index.js') }}"></script>
+    <script src="{{ URL::asset('/assets/admin/pages/customer/index.js') }}"></script>
 @endsection

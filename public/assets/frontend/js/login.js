@@ -15,7 +15,7 @@ $('form#myForm').submit(function(e){
             if(res == 'success'){
                 toastr["success"]("Success!!!");
                 setInterval(function(){ 
-                    location.href = dashboard_url; 
+                    location.href = mypage_url; 
                 }, 2000);
             } else {
                 toastr["warning"]("The provided credentials do not match our records");

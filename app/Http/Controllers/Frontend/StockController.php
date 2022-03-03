@@ -84,7 +84,6 @@ class StockController extends Controller
         $price_port = $request->price_port;
         $inspection = $request->inspection;
         $insurance = $request->insurance;
-        
         for ($i=date('Y'); $i >= 1950 ; $i--) { 
             array_push($year, $i);
         }
@@ -140,6 +139,10 @@ class StockController extends Controller
             if(!is_null($request->to_price)){
                 $vehicle_data = $vehicle_data->where('price_usd', '<=', (int)$request->to_price);  
             }
+            //price calc
+            // if(!is_null($price_country) && !is_null($price_port) && !is_null($inspection) && !is_null($insurance)){
+                
+            // }
             $vehicle_data = $vehicle_data->paginate(24);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
@@ -324,6 +327,10 @@ class StockController extends Controller
         $country_ip = \Location::get('112.134.189.70');
         // $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        $total_price = '';
+        $port = '';
+        $inspection = '';
+        $insurance = '';
         if($request->has('total_price')){
             $current_country = Port::where('id', $request->country)->first();
             $total_price = $request->total_price;
@@ -331,7 +338,6 @@ class StockController extends Controller
             $inspection = $request->inspection;
             $insurance = $request->insurance;
         }
-        
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
             $port_key = json_decode($current_country->port);
