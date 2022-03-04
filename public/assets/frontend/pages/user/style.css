@@ -1,0 +1,55 @@
+.hero {
+    height: 190px !important;
+}
+body{
+    background: #fff !important;
+}
+.contents {
+    display: flex;
+}
+.registered-details {
+    width: 80%;
+    margin: 30px auto;
+}
+.user-sidebar, .user-contents {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #ededed;
+}
+.user-sidebar  ul {
+    padding: 0;
+}
+.user-sidebar  ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
+    list-style: none;
+}
+.user-sidebar  ul li a {
+    color: #333;
+}
+.user-sidebar  ul li a:hover{
+    color: #E10B14;
+}
+.user-sidebar  ul li a:active{
+    color: #E10B14;
+}
+
+@media only screen and (max-width: 1440px) {
+    .hero {
+        height: 160px !important;
+    }
+}
+@media only screen and (max-width: 1280px){
+    .registered-details {
+        width: 90%;
+    }
+    .hero {
+        height: 149px !important;
+    }
+}
+@media only screen and (max-width: 1024px) { 
+    .hero {
+        height: 137px !important
+    }
+}

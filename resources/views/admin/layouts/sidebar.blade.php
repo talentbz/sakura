@@ -62,6 +62,12 @@
                         <li><a href="{{route('admin.user')}}">Registered User</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{route('admin.inquiry.index')}}">
+                        <i class="bx bx-envelope"></i>
+                        <span>Inquiry List</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

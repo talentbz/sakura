@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mail;
+use App\Models\Inquiry;
 
 class ContactController extends Controller
 {
@@ -30,7 +31,7 @@ class ContactController extends Controller
             $message->to('inquiry@sakuramotors.com', $request->subject)
                     ->subject($request->subject);
         });      
-        
+
         return back()->with('success', 'Thanks for contacting!');
     }
     public function inquiryEmail(Request $request){
@@ -55,7 +56,23 @@ class ContactController extends Controller
             $message->to('inquiry@sakuramotors.com', 'Inquiry - Sakura')
                     ->subject('Inquiry - Sakura');
         });      
-        
+
+        $inquery = new Inquiry;
+        $inquery->vehicle_name =  $request->get('vehicle_name');
+        $inquery->fob_price =  $request->get('fob_price');
+        $inquery->inspection =  $request->get('inspection');
+        $inquery->insurance =  $request->get('insurance');
+        $inquery->inqu_port =  $request->get('inqu_port');
+        $inquery->total_price =  $request->get('total_price');
+        $inquery->site_url =  $request->get('site_url');
+        $inquery->inqu_name =  $request->get('inqu_name');
+        $inquery->inqu_country =  $request->get('inqu_country');
+        $inquery->inqu_email =  $request->get('inqu_email');
+        $inquery->inqu_address =  $request->get('inqu_address');
+        $inquery->inqu_mobile =  $request->get('inqu_mobile');
+        $inquery->inqu_city =  $request->get('inqu_city');
+        $inquery->inqu_comment =  $request->get('inqu_comment');
+        $inquery->save();
         return back()->with('success', 'Thanks for contacting!');
     }
     public function company(Request $request){

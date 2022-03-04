@@ -40,6 +40,7 @@ Route::group(['prefix' => 'user'], function(){
 });
 Route::prefix('/user')->middleware(['auth:web', 'CustomerRole'])->group(function () {
     Route::get('/mypage', [App\Http\Controllers\Frontend\UserController::class, 'myPage'])->name('front.user.mypage');
+    Route::post('/mypage_post', [App\Http\Controllers\Frontend\UserController::class, 'mypage_post'])->name('front.user.mypage_post');
 });
 Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'clear'])->name('front.clear');
 
@@ -89,6 +90,10 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/delete', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
         Route::post('/imageAdd', [App\Http\Controllers\Admin\NewsController::class, 'imageAdd'])->name('admin.news.imageAdd');
         Route::post('/imageDelete', [App\Http\Controllers\Admin\NewsController::class, 'imageDelete'])->name('admin.news.imageDelete');
+    });
+    Route::group(['prefix' => 'inquiry'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\InquiryController::class, 'index'])->name('admin.inquiry.index');
+        Route::get('/detail/{id}', [App\Http\Controllers\Admin\InquiryController::class, 'detail'])->name('admin.inquiry.detail');
     });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');
