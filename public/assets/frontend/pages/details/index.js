@@ -120,6 +120,7 @@ $(document).ready(function () {
         $('.inqu_port').val($('.cif p').text());
         $('.inqu_url').val(window.location.href);
         $('.inqu_total_price').val($('.total-price-value').text());
+        $('.stock_no').val($('.stock-no').text());
         var formData = new FormData(this);
         $.ajaxSetup({
             headers: {

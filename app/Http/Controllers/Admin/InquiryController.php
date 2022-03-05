@@ -16,4 +16,16 @@ class InquiryController extends Controller
             'inquery' => $inquery,
         ]);
     }
+
+    public function detail(Request $request){
+        $id = $request->id;
+        $inquery = Inquiry::findOrFail($id);
+        return response()->json(['result' => true, 'data' => $inquery]);
+    }
+    public function delete(Request $request){
+        $id = $request->id;
+        $inquery = Inquiry::findOrFail($id);
+        $inquery->delete();
+        return response()->json(['result' => true, 'data' => $inquery]);
+    }
 }

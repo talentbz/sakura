@@ -29,6 +29,7 @@ class CreateInquiryTable extends Migration
             $table->string('inqu_country');
             $table->string('inqu_address')->nullable();
             $table->string('inqu_city')->nullable();
+            $table->string('stock_no')->nullable();
             $table->longText('inqu_comment')->nullable();
             $table->timestamps();
         });

@@ -91,11 +91,19 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="inquiry" role="tabpanel">
-                        <form class="custom-validation" action="{{route('front.inquiry.email')}}">
+                        <form class="custom-validation inquForm" >
                             <div class="inquiry-form">
                                 <!-- <div class="inquiry-title">
                                     <h3>Please fill the *required fields</h3>
                                 </div> -->
+                                <input type="hidden" name="vehicle_name" value="{{($vehicle_data->make_type)}} {{$vehicle_data->model_type}} {{$vehicle_data->body_type}}">
+                                <input type="hidden" name="fob_price" class="inqu_fob_price" value="">
+                                <input type="hidden" name="inspection" class="inqu_inspection" value="">
+                                <input type="hidden" name="insurance" class="inqu_insurance" value="">
+                                <input type="hidden" name="inqu_port" class="inqu_port" value="">
+                                <input type="hidden" name="total_price" class="inqu_total_price" value="">
+                                <input type="hidden" name="site_url" class="inqu_url" value="">
+                                <input type="hidden" name="stock_no" class="stock_no" value="">
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
@@ -104,7 +112,7 @@
                                         </div>
                                         <div class="inquiry-right">
                                             <label for="">Select your country</label>
-                                            <select class="form-select" name="inq_country" required>
+                                            <select class="form-select" name="inqu_country" required>
                                                 @foreach($country as $row)
                                                     <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                                 @endforeach
@@ -235,7 +243,7 @@
                     <tbody class="pc-table">
                         <tr>
                             <td class="table-light" scope="row">STOCK NO</td>
-                            <td>SM{{$vehicle_data->stock_no}}</td>
+                            <td class="stock-no">SM{{$vehicle_data->stock_no}}</td>
                             <td class="table-light">Year</td>
                             <td>{{$vehicle_data->registration}}</td>
                             <td class="table-light">Model</td>
@@ -469,6 +477,7 @@
                                 <input type="hidden" name="inqu_port" class="inqu_port" value="">
                                 <input type="hidden" name="total_price" class="inqu_total_price" value="">
                                 <input type="hidden" name="site_url" class="inqu_url" value="">
+                                <input type="hidden" name="stock_no" class="stock_no" value="">
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
