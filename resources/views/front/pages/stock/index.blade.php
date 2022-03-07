@@ -1,6 +1,7 @@
 @extends('front.layouts.index')
 @section('title') Stock @endsection
 @section('css')
+    <link rel="stylesheet" href="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.css') }}">
     <link href="{{ URL::asset('/assets/frontend/pages/stock/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -410,6 +411,9 @@
         var price_port = "{{$price_port}}";
         var inspection = "{{$inspection}}";
         var insurance = "{{$insurance}}";
+        var light_url = "{{route('front.light_gallery')}}";
     </script>
+    <script src="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/lightgallery/lg-video.js') }}"></script>
     <script src="{{ URL::asset('/assets/frontend/pages/stock/index.js')}}"></script>
 @endsection

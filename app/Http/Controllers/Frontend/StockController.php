@@ -94,6 +94,7 @@ class StockController extends Controller
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                     ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
+                                    ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
                                     ->groupBy('vehicle_image.vehicle_id')
                                     ->orderBy('vehicle.created_at', 'desc');
                                 
@@ -157,9 +158,24 @@ class StockController extends Controller
                                 $list.=  '<h5>'.$result->make_type.' '.$result->model_type.' ' .$result->body_type.'</h5>';
                             $list.='</a>';
                         $list.='</div>';
+                        $list.= '<div class="media-count">';
+                                if(isset($result->image_length)){
+                                    $list.= '<div class="image-count" data-id="'.$result->vehicle_id.'">
+                                                <i class="fas fa-camera"></i>
+                                                <span>'.$result->image_length.'</span>
+                                            </div>';
+                                }
+                                if(isset($result->video_link)){
+                                    $list.= '<div class="video-count" data-id="'.$result->video_link.'">
+                                                <i class="fas fa-video"></i>
+                                                <span>1</span>
+                                            </div>';
+                                }
+                        $list.= '</div>';
                         $list.='<div class="stock-image">';
                             $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
                                 $list.='<img src="'.URL::asset('/uploads/vehicle').'/'.$result->vehicle_id.'/thumb'.'/'.$result->image.'" alt="">';
+                                $list.='<div class="reserved-mark">Reserved</div>';
                             $list.='</a>';                                                
                         $list.='</div>';
                         $list.='<div class="stock-contents">';

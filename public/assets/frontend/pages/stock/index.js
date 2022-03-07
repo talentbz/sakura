@@ -2,7 +2,6 @@ $(document).ready(function () {
     var local_url = new URL(window.location.href);
     var body_type = local_url.searchParams.get("body_type");
     var make_type = local_url.searchParams.get("make_type");
-    
     //model select category and sub category
     $('.select-category').on("change", function (e) { 
         var select_val = $(e.currentTarget).val();
@@ -86,7 +85,53 @@ $(document).ready(function () {
             console.log('Server error occured');
         });
     })
-
+    $(document).on('click', '.image-count', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        id = $(this).data("id");
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: light_url,
+            method: 'get',
+            data: {id:id},
+            success: function (data){
+                var host = window.location.origin
+                var arr = data.data;
+                        
+                arr.forEach( function(data) {
+                    data['src'] = data['image'];
+                    delete data['image'];
+                    data.src = host +  '/uploads/vehicle/' + id + '/real/'+data.src;
+                });
+                $(this).lightGallery({
+                    dynamic: true,
+                    dynamicEl: arr,
+                    download: false,
+                    mode: 'lg-fade',
+                })
+            }
+        })
+    });
+    $(document).on('click', '.video-count', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        video = $(this).data("id");
+        console.log(video);
+        $(this).lightGallery({
+            dynamic: true,
+            dynamicEl: [
+                {
+                    src : video
+                },
+            ],
+            download: false,
+            mode: 'lg-fade',
+        })
+    });
     var _token = $('input[name="_token"]').val();
     var page = 1;
     infinteLoadMore(page);

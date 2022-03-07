@@ -146,6 +146,10 @@ body {
 #load_more button:hover {
     background: #c2141d;
 }
+.main-contents-title a {
+    position: relative;
+    overflow: hidden;
+}
 @media only screen and (max-width: 1680px) {
     .calculator-filter {
         width: 60%;
@@ -309,6 +313,15 @@ body {
     }
     .fob-value, .totla-value, .port {
         float: right;
+    }
+    .media-count {
+        display: none;
+    }
+    .reserved-mark {
+        font-size: 7px !important;
+        line-height: 19px !important;
+        right: -85px !important;
+        top: 5px !important;
     }
 }
 @media only screen and (max-width: 768px) {

@@ -246,7 +246,6 @@
                             <span>1</span>
                         </div>
                         @endif
-
                     </div>
                     <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="car-image">
                         <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
@@ -436,8 +435,8 @@
 <script>
     var models = @json($models);
     var light_url = "{{route('front.light_gallery')}}";
-    var video_gallery = "{{route('front.video_gallery')}}";
 </script>
 <script src="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/lightgallery/lg-video.js') }}"></script>
 <script src="{{ URL::asset('/assets/frontend/pages/home/index.js')}}"></script>
 @endsection
