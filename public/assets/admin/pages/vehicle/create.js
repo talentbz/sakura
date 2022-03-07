@@ -24,7 +24,6 @@ $(document).ready(function () {
         },
         
         overwriteInitial: false,
-        validateInitialCount: true,
         maxFileCount: 50,
         showBrowse: false,
         browseOnZoneClick: true,

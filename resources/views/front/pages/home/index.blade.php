@@ -1,6 +1,7 @@
 @extends('front.layouts.index')
 @section('title') Homepage @endsection
 @section('css')
+<link rel="stylesheet" href="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.css') }}">
 @endsection
 @section('content')
 <!-- banner && menu section -->
@@ -232,23 +233,23 @@
             <div class="contents-list mb-5">
                 @foreach($vehicle_data as $row)
                 <div class="car-list">
+                    <div class="media-count">
+                        @if(isset($row->image_length))
+                        <div class="image-count" data-id="{{$row->vehicle_id}}">
+                            <i class="fas fa-camera"></i>
+                            <span>{{$row->image_length}}</span>
+                        </div>
+                        @endif
+                        @if(isset($row->video_link))
+                        <div class="video-count" data-id="{{$row->video_link}}">
+                            <i class="fas fa-video"></i>
+                            <span>1</span>
+                        </div>
+                        @endif
+
+                    </div>
                     <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="car-image">
                         <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
-                        <div class="media-count">
-                            @if(isset($row->image_length))
-                            <div class="image-count">
-                                <i class="fas fa-camera"></i>
-                                <span>{{$row->image_length}}</span>
-                            </div>
-                            @endif
-                            @if(isset($row->video_link))
-                            <div class="image-count">
-                                <i class="fas fa-video"></i>
-                                <span>1</span>
-                            </div>
-                            @endif
-
-                        </div>
                         <div class="reserved-mark">Reserved</div>
                     </a>
                     <div class="car-desc">
@@ -285,7 +286,7 @@
                             </div>
                             @endif
                             @if(isset($row->video_link))
-                            <div class="image-count">
+                            <div class="video-count">
                                 <i class="fas fa-video"></i>
                                 <span>1</span>
                             </div>
@@ -428,11 +429,15 @@
         <!-- /end rightsidebar -->
     </div>
 </div>
+
 @endsection
 
 @section('script')
 <script>
     var models = @json($models);
+    var light_url = "{{route('front.light_gallery')}}";
+    var video_gallery = "{{route('front.video_gallery')}}";
 </script>
+<script src="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/frontend/pages/home/index.js')}}"></script>
 @endsection

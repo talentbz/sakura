@@ -116,4 +116,9 @@ class FrontController extends Controller
         \Artisan::call('view:clear');
         return "cleared cache";
     }
+    public function light_gallery(Request $request){
+        
+        $data = VehicleImage::select('image')->where('vehicle_id', $request->id)->get();
+        return response()->json(['result' => true, 'data' => $data]);
+    }
 }

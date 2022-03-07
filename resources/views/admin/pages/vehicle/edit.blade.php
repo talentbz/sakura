@@ -226,7 +226,7 @@
                                             <label class="col-form-label">Max Loading Capacity</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="text" placeholder="Enter Max Loading Capacity" name="loading_capacity" value="{{$data->loading_capacity}}" required>
+                                            <input class="form-control" type="text" placeholder="Enter Max Loading Capacity" name="loading_capacity" value="{{$data->loading_capacity}}" >
                                         </div>
                                     </div>
                                 </div>

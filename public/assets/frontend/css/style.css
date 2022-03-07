@@ -333,17 +333,26 @@ h3 {
     position: absolute;
     color: #fff;
     font-size: 16px;
+    z-index: 999;
 }
-.image-count {
-    background: rgba(0, 0, 0, 0.27);
+.image-count, .video-count {
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     padding: 3px 5px;
     top: 0;
     margin-top: 10px;
     display: inline-block;
     margin-left: 5px;
+    cursor: pointer;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
-.image-count i{
+.image-count:hover, .video-count:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+.image-count i, .video-count i{
     font-size: 12px;
     margin-right: 3px;
 }
@@ -1326,7 +1335,7 @@ h3 {
         font-size: 8px;
         line-height: 18px;
     }
-    .image-count {
+    .image-count, .video-count {
         display: inherit;
         padding: 1px 2px;
         margin-top: 4px;

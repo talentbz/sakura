@@ -18,6 +18,7 @@ Auth::routes();
 
 //frontend
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index'])->name('front.home');
+Route::get('/light_gallery', [App\Http\Controllers\Frontend\FrontController::class, 'light_gallery'])->name('front.light_gallery');
 Route::any('/stock', [App\Http\Controllers\Frontend\StockController::class, 'index'])->name('front.stock');
 Route::get('/select_port', [App\Http\Controllers\Frontend\StockController::class, 'select_port'])->name('front.select_port');
 Route::get('/details/{id}', [App\Http\Controllers\Frontend\StockController::class, 'details'])->name('front.details');
@@ -41,6 +42,7 @@ Route::group(['prefix' => 'user'], function(){
 Route::prefix('/user')->middleware(['auth:web', 'CustomerRole'])->group(function () {
     Route::get('/mypage', [App\Http\Controllers\Frontend\UserController::class, 'myPage'])->name('front.user.mypage');
     Route::post('/mypage_post', [App\Http\Controllers\Frontend\UserController::class, 'mypage_post'])->name('front.user.mypage_post');
+    Route::get('/changepassword', [App\Http\Controllers\Frontend\UserController::class, 'changePassword'])->name('front.user.changepassword');
 });
 Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'clear'])->name('front.clear');
 

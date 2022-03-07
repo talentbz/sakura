@@ -108,5 +108,10 @@ class UserController extends Controller
         $user->save();
         return response()->json(['result' => true, 'Updated data' => $user]);
     }
-
+    public function changePassword(Request $request) {
+        // return view('front.pages.user.mypage', [
+        //     'country' => $country,
+        //     'user' => $user,
+        // ]);
+    }
 }
