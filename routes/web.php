@@ -87,7 +87,7 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news.index');
         Route::get('/add', [App\Http\Controllers\Admin\NewsController::class, 'add'])->name('admin.news.add');
         Route::post('/add_post', [App\Http\Controllers\Admin\NewsController::class, 'add_post'])->name('admin.news.add_post');
-        Route::get('/edit/{id}', [App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit'); 
         Route::post('/edit_post', [App\Http\Controllers\Admin\NewsController::class, 'edit_post'])->name('admin.news.edit_post');
         Route::get('/delete', [App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
         Route::post('/imageAdd', [App\Http\Controllers\Admin\NewsController::class, 'imageAdd'])->name('admin.news.imageAdd');
@@ -97,6 +97,10 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\InquiryController::class, 'index'])->name('admin.inquiry.index');
         Route::post('/detail', [App\Http\Controllers\Admin\InquiryController::class, 'detail'])->name('admin.inquiry.detail');
         Route::get('/delete', [App\Http\Controllers\Admin\InquiryController::class, 'delete'])->name('admin.inquiry.delete');
+    });
+    Route::group(['prefix' => 'shipping'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\ShippingController::class, 'index'])->name('admin.shipping.index');
+        Route::get('/chat/{id}', [App\Http\Controllers\Admin\ShippingController::class, 'chat'])->name('admin.shipping.chat');
     });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');

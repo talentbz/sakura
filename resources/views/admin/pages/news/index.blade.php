@@ -37,7 +37,7 @@
                                         <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="{{$row->news_id}}" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i
                                                 class="mdi mdi-delete font-size-18"></i></a>
-                                </td>
+                                </td> 
                             </tr>
                             @empty
                             <tr>

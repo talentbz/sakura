@@ -56,6 +56,7 @@ class ContactController extends Controller
             $message->to('inquiry@sakuramotors.com', 'Inquiry - Sakura')
                     ->subject('Inquiry - Sakura');
         });      
+
         $inquery = new Inquiry;
         $inquery->vehicle_name =  $request->get('vehicle_name');
         $inquery->fob_price =  $request->get('fob_price');
@@ -72,6 +73,10 @@ class ContactController extends Controller
         $inquery->inqu_city =  $request->get('inqu_city');
         $inquery->inqu_comment =  $request->get('inqu_comment');
         $inquery->stock_no =  $request->get('stock_no');
+        $inquery->vehicle_id =  $request->get('vehicle_id');
+        if($request->user_id){
+            $inquery->user_id =  $request->get('user_id');
+        }
         $inquery->save();
         return back()->with('success', 'Thanks for contacting!');
     }

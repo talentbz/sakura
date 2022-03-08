@@ -69,9 +69,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.inquiry.index')}}">
-                        <i class="bx bx-envelope"></i>
-                        <span>Inquiry List</span>
+                    <a href="{{route('admin.shipping.index')}}">
+                        <i class="bx bx-store"></i>
+                        <span>Shipping</span>
                     </a>
                 </li>
             </ul>

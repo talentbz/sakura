@@ -363,5 +363,8 @@ return [
         "Serbia",
         "Sint Maarten (Dutch part)",
         "Kosovo",
-    ]  
+    ],
+    'order_status' =>[
+        'Pending', 'Reserved', 'Sales', 'Sold'
+    ],  
 ];

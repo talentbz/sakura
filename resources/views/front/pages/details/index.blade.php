@@ -103,7 +103,9 @@
                                 <input type="hidden" name="inqu_port" class="inqu_port" value="">
                                 <input type="hidden" name="total_price" class="inqu_total_price" value="">
                                 <input type="hidden" name="site_url" class="inqu_url" value="">
-                                <input type="hidden" name="stock_no" class="stock_no" value="">
+                                <input type="hidden" name="stock_no" class="stock_no" value=""> 
+                                <input type="hidden" name="vehicle_id" class="vehicle_id" value="{{$vehicle_data->id}}">
+                                <input type="hidden" name="user_id" class="user_id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
@@ -210,6 +212,10 @@
                     <div class="product-images">
                         <div class="slider">
                             @foreach($vehicle_img as $row)
+                                <div class="image-count" data-id="{{$row->vehicle_id}}">
+                                    <i class="fas fa-camera"></i>
+                                    <span>{{count($vehicle_img)}}</span>
+                                </div>
                                 <div>
                                     <img src="{{$real_url}}/{{$row->image}}" >
                                 </div>
@@ -478,6 +484,8 @@
                                 <input type="hidden" name="total_price" class="inqu_total_price" value="">
                                 <input type="hidden" name="site_url" class="inqu_url" value="">
                                 <input type="hidden" name="stock_no" class="stock_no" value="">
+                                <input type="hidden" name="vehicle_id" class="vehicle_id" value="{{$vehicle_data->id}}">
+                                <input type="hidden" name="user_id" class="user_id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
