@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChatroomsTable extends Migration
+class CreateRepliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateChatroomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chatrooms', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
+            $table->integer('comment_id');
+            $table->longText('reply');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateChatroomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chatrooms');
+        Schema::dropIfExists('replies');
     }
 }

@@ -100,7 +100,7 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     });
     Route::group(['prefix' => 'shipping'], function(){
         Route::get('/', [App\Http\Controllers\Admin\ShippingController::class, 'index'])->name('admin.shipping.index');
-        Route::get('/chat/{id}', [App\Http\Controllers\Admin\ShippingController::class, 'chat'])->name('admin.shipping.chat');
+        Route::get('/chat/{user_id}', [App\Http\Controllers\Admin\ShippingController::class, 'chat'])->name('admin.shipping.chat');
     });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');

@@ -1,0 +1,16 @@
+.wrap-border {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    /* padding: 10px; */
+    min-height: 500px;
+}
+.user-chat .card{
+    margin-bottom: 0;
+}
+.col-auto {
+    align-self: flex-end;
+}
+.chat-input-section textarea {
+    background-color: #eff2f7;
+    border-color: #eff2f7;
+}
