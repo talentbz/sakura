@@ -1,5 +1,53 @@
 $(document).ready(function () {
     price_calc();
+    
+    $(document).on('click', '.image-count', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        id = $(this).data("id");
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: light_url,
+            method: 'get',
+            data: {id:id},
+            success: function (data){
+                var host = window.location.origin
+                var arr = data.data;
+                        
+                arr.forEach( function(data) {
+                    data['src'] = data['image'];
+                    delete data['image'];
+                    data.src = host +  '/uploads/vehicle/' + id + '/real/'+data.src;
+                });
+                $(this).lightGallery({
+                    dynamic: true,
+                    dynamicEl: arr,
+                    download: false,
+                    mode: 'lg-fade',
+                })
+            }
+        })
+    });
+    $(document).on('click', '.video-count', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        video = $(this).data("id");
+        console.log(video);
+        $(this).lightGallery({
+            dynamic: true,
+            dynamicEl: [
+                {
+                    src : video
+                },
+            ],
+            download: false,
+            mode: 'lg-fade',
+        })
+    });
     $('.slider-thumbnails').slick({
         infinite: false,
         slidesToShow: 7,

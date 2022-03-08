@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/assets/libs/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/assets/libs/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.css') }}">
     <link href="{{ URL::asset('/assets/frontend/pages/details/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -210,12 +211,22 @@
             <div class="slick-wrapper">
                 <div class="product">
                     <div class="product-images">
+                        <div class="media-count">
+                            @if($vehicle_img)
+                            <div class="image-count" data-id="{{$vehicle_data->id}}">
+                                <i class="fas fa-camera"></i>
+                                <span>{{count($vehicle_img)}}</span>
+                            </div>
+                            @endif
+                            @if(isset($vehicle_data->video_link))
+                            <div class="video-count" data-id="{{$vehicle_data->video_link}}">
+                                <i class="fas fa-video"></i>
+                                <span>1</span>
+                            </div>
+                            @endif
+                        </div>
                         <div class="slider">
                             @foreach($vehicle_img as $row)
-                                <div class="image-count" data-id="{{$row->vehicle_id}}">
-                                    <i class="fas fa-camera"></i>
-                                    <span>{{count($vehicle_img)}}</span>
-                                </div>
                                 <div>
                                     <img src="{{$real_url}}/{{$row->image}}" >
                                 </div>
@@ -561,9 +572,12 @@
     <script>
         var select_port = "{{route('front.select_port')}}";
         var inq_url = "{{route('front.inquiry.email')}}";
+        var light_url = "{{route('front.light_gallery')}}";
     </script>
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/slick/slick.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/lightgallery/lg-video.js') }}"></script>
     <script src="{{ URL::asset('/assets/frontend/pages/details/index.js')}}"></script>
 @endsection
