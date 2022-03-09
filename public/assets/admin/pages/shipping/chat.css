@@ -14,3 +14,9 @@
     background-color: #eff2f7;
     border-color: #eff2f7;
 }
+.media img {
+    object-fit: cover;
+}
+.chat-conversation .right .conversation-list .ctext-wrap {
+    text-align: left !important;
+}

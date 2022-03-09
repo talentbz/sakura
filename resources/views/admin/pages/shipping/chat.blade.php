@@ -17,37 +17,24 @@
                         <div class="col-md-3">
                             <div class="wrap-border chat-conversation">
                                 <ul class="list-unstyled chat-list" data-simplebar style="max-height: 410px;">
-                                    <li class="active">
-                                        <a href="#">
+                                    @foreach($comments as $row)
+                                    <li class="">
+                                        <a href="{{route('admin.shipping.stockChat', ['user_id' => $row->user_id, 'vehicle_id' => $row->vehicle_id])}}">
                                             <div class="media">
                                                 <div class="align-self-center me-3">
-                                                    <img src="{{ URL::asset('/uploads/vehicle/49/thumb/1-45.jpg') }}"
+                                                    <img src="{{URL::asset('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb'}}{{'/'}}{{$row->image}}"
                                                         class="rounded-circle avatar-xs" alt="">
                                                 </div>
 
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="text-truncate font-size-14 mb-1">SM1186</h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1">{{$row->stock_id}}</h5>
                                                 </div>
-                                                <div class="font-size-11">05 min</div>
+                                                <span class="badge badge-pill badge-soft-warning font-size-12">{{$row->order_status}}</span>
+                                                <!-- <div class="font-size-11">{{$row->created_at->diffForHumans()}}</div> -->
                                             </div>
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <div class="media">
-                                                <div class="align-self-center me-3">
-                                                    <img src="{{ URL::asset('/uploads/vehicle/49/thumb/1-45.jpg') }}"
-                                                        class="rounded-circle avatar-xs" alt="">
-                                                </div>
-
-                                                <div class="media-body overflow-hidden">
-                                                    <h5 class="text-truncate font-size-14 mb-1">SM1187</h5>
-                                                </div>
-                                                <div class="font-size-11">05 min</div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -57,16 +44,16 @@
                                     <div class="p-4 border-bottom ">
                                         <div class="row">
                                             <div class="col-md-4 col-9">
-                                                <a href="#" class="font-size-15 mb-1">SM1186</a>
-                                                <span class="badge badge-pill badge-soft-warning font-size-12">Pending</span>
+                                                <a href="javascript:void(0)" class="font-size-15 mb-1">{{$stock_info->stock_id}}</a>
+                                                <span class="badge badge-pill badge-soft-warning font-size-12">{{$stock_info->order_status}}</span>
                                             </div>
                                             <div class="col-md-8 col-3">
                                                 <ul class="list-inline user-chat-nav text-end mb-0">
                                                     <li class="list-inline-item d-none d-sm-inline-block">
                                                         <div class="dropdown">
-                                                            <button class="btn nav-btn dropdown-toggle" type="button">
+                                                            <a href="javascript:void(0);" data-id="{{$stock_info->vehicle_id}}" class="btn nav-btn status" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                 <i class="bx bx-cog"></i>
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </li>
 
@@ -77,41 +64,47 @@
                                     <div>
                                         <div class="chat-conversation p-3">
                                             <ul class="list-unstyled mb-0" data-simplebar style="max-height: 486px;">
-                                                <li>
-                                                    <div class="conversation-list">
-                                                        <div class="ctext-wrap">
-                                                            <div class="conversation-name">User 1</div>
-                                                            <p>
-                                                                Hello!
-                                                            </p>
-                                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:00
-                                                            </p>
+                                                @foreach($customer_message as $row)
+                                                    <li>
+                                                        <div class="conversation-list">
+                                                            <div class="ctext-wrap">
+                                                                <div class="conversation-name">{{$row->name}}</div>
+                                                                <p>
+                                                                    {!! nl2br(e($row->comments)) !!}
+                                                                </p>
+                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{$row->created_at->diffForHumans()}}
+                                                                </p>
+                                                            </div>
+
                                                         </div>
-
-                                                    </div>
-                                                </li>
-
-                                                <li class="right">
-                                                    <div class="conversation-list">
-                                                        <div class="ctext-wrap">
-                                                            <div class="conversation-name">Admin</div>
-                                                            <p>
-                                                                Hi, How are you? What about our next meeting?
-                                                            </p>
-
-                                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                    </li>
+                                                    @foreach($reply as $r_row)
+                                                        @if($r_row->comment_id == $row->id)
+                                                        <li class="right">
+                                                            <div class="conversation-list">
+                                                                <div class="ctext-wrap">
+                                                                    <div class="conversation-name">{{auth()->user()->name}}</div>
+                                                                    <p>
+                                                                        {!! nl2br(e($r_row->reply)) !!}
+                                                                    </p>
+                                                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>{{$r_row->created_at->diffForHumans()}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <div class="p-3 chat-input-section">
-                                            <form action="">
+                                            <form action="" id="myForm">
+                                                @csrf
+                                                <input type="hidden" name="comment_id" value="{{$latest_id}}">
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="position-relative">
-                                                            <textarea class="form-control" placeholder="Enter Message..." rows="7"></textarea>
+                                                            <textarea class="form-control" placeholder="Enter Message..." name="reply" rows="7"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-auto">
@@ -126,14 +119,47 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
+    <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Change Order Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="col-form-label">Order Satus:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-select select-status">
+                                @foreach($order_status as $row)
+                                    <option value="{{$row}}" {{$stock_info->order_status == $row ? 'selected': ''}}>{{$row}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light save_button">Save</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection
 @section('script')
+    <script>
+        create_url = "{{route('admin.shipping.reply')}}";
+        change_status = "{{route('admin.shipping.change_status')}}";
+    </script>
     <script src="{{ URL::asset('/assets/admin/pages/shipping/chat.js') }}"></script>
 @endsection

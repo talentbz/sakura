@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
 
 
     ],
@@ -231,7 +232,7 @@ return [
         // 'Image' => Intervention\Image\Facades\Image::class,
         'Image' => Intervention\Image\ImageManagerStatic::class,
         'Location' => 'Stevebauman\Location\Facades\Location',
-
+        'Avatar'    => Laravolt\Avatar\Facade::class,
 
     ],
 

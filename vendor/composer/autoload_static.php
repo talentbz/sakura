@@ -19,8 +19,8 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
@@ -126,6 +126,7 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laravolt\\Avatar\\' => 16,
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\SerializableClosure\\' => 28,
@@ -405,6 +406,10 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         'League\\CommonMark\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
+        ),
+        'Laravolt\\Avatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravolt/avatar/src',
         ),
         'Laravel\\Ui\\' => 
         array (
@@ -2932,6 +2937,14 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
+        'Laravolt\\Avatar\\Avatar' => __DIR__ . '/..' . '/laravolt/avatar/src/Avatar.php',
+        'Laravolt\\Avatar\\Concerns\\AttributeGetter' => __DIR__ . '/..' . '/laravolt/avatar/src/Concerns/AttributeGetter.php',
+        'Laravolt\\Avatar\\Concerns\\AttributeSetter' => __DIR__ . '/..' . '/laravolt/avatar/src/Concerns/AttributeSetter.php',
+        'Laravolt\\Avatar\\Facade' => __DIR__ . '/..' . '/laravolt/avatar/src/Facade.php',
+        'Laravolt\\Avatar\\Generator\\DefaultGenerator' => __DIR__ . '/..' . '/laravolt/avatar/src/Generator/DefaultGenerator.php',
+        'Laravolt\\Avatar\\Generator\\GeneratorInterface' => __DIR__ . '/..' . '/laravolt/avatar/src/Generator/GeneratorInterface.php',
+        'Laravolt\\Avatar\\LumenServiceProvider' => __DIR__ . '/..' . '/laravolt/avatar/src/LumenServiceProvider.php',
+        'Laravolt\\Avatar\\ServiceProvider' => __DIR__ . '/..' . '/laravolt/avatar/src/ServiceProvider.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',

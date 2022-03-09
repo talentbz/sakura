@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3258974a5c6eb9dad7bd92f7e488666d55c707a0',
+        'reference' => '11a842e211327d7d5f572a97533fd43190871b14',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -427,7 +427,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3258974a5c6eb9dad7bd92f7e488666d55c707a0',
+            'reference' => '11a842e211327d7d5f572a97533fd43190871b14',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -464,6 +464,15 @@
             'install_path' => __DIR__ . '/../laravel/ui',
             'aliases' => array(),
             'reference' => '64a0f43492c00780b2261c56cd7007a4f370d95b',
+            'dev_requirement' => false,
+        ),
+        'laravolt/avatar' => array(
+            'pretty_version' => '4.1.6',
+            'version' => '4.1.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravolt/avatar',
+            'aliases' => array(),
+            'reference' => 'f9a3e612491bfed6fe144d37a58cf4a2c5be141f',
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(

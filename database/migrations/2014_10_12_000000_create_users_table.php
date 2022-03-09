@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->boolean('status')->default(1);
             $table->integer('role');
+            $table->boolean('comment_status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

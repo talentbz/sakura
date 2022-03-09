@@ -11,7 +11,7 @@ class InquiryController extends Controller
 {
     public function index(Request $request){
         
-        $inquery = Inquiry::get();
+        $inquery = Inquiry::orderBy('created_at', 'desc')->get();
         return view('admin.pages.inquiry.index', [
             'inquery' => $inquery,
         ]);
