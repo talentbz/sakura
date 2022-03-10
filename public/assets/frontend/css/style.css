@@ -384,6 +384,8 @@ h3 {
 .customer-list img {
     width: 100%;
     border-radius: 6px;
+    height: 250px;
+    object-fit: cover;
 }
 .customer-text {
     position: absolute;
@@ -821,6 +823,9 @@ h3 {
         width: 81.47%;
         margin: 58px auto;
     }
+    .customer-list img {
+        height: 230px;
+    }
 }
 @media only screen and (max-width: 1600px) {
     .select-search select, .select-width select, .select-width-last select{
@@ -993,6 +998,9 @@ h3 {
     .search-category p {
         margin-left: 7px;
     }
+    .customer-list img {
+        height: 200px;
+    }
 }
 @media only screen and (max-width: 1024px) {
     .hero {
@@ -1063,6 +1071,9 @@ h3 {
     .footer-contact {
         width: 100%;
         margin-top: 24px;
+    }
+    .customer-list img {
+        height: 180px;
     }
 }
 @media only screen and (max-width: 768px) {

@@ -18,22 +18,22 @@
             </ul>
         </div>
         <div class="main-blog">
-            @for($i=0; $i < 9; $i++)
+            @foreach($news as $row)
             <div class="blog-list">
                 <div class="row">
                     <div class="col-md-3 blog-image">
                         <a href="#">
-                            <img src="{{asset('/uploads/vehicle/50/thumb/1-46.jpg')}}" alt="">
+                            <img src="{{URL::asset('/uploads/news')}}{{'/'}}{{$row->news_id}}{{'/'}}{{$row->image}}" alt="">
                         </a>
                     </div>
                     <div class="col-md-9 blog-contents">
-                        <h3 class="blog-title">1ST TOYOTA PASSENGER CAR 1936 MODEL AANEW BLOG POST</h3>
-                        <p class="blog-desc">This is the 1st Toyota Passenger car Model AA, year 1936, was Developed under leadership of Toyota Motor corporation’s founder,Kiichiro Toyota. it was modeled on the latest American vehicles.</p>
+                        <h3 class="blog-title">{{$row->title}}</h3>
+                        <div class="blog-desc">{!! \Illuminate\Support\Str::limit(strip_tags($row->description), 300,'.....') !!}</div>
                         <a href="#" class="read-more">Read more</a>
                     </div>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
         <div class="right-sidebar">
             <div class="news-box mb-2">

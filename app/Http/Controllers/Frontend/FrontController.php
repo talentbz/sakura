@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;
+use App\Models\UserReview;
+use App\Models\UserReviewImage;
 use Location;
 
 
@@ -18,7 +20,6 @@ class FrontController extends Controller
     {
         // $ip = $request->ip();
         // $data = \Location::get('80.237.47.16');
-        // dd($data);
         $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
@@ -68,6 +69,12 @@ class FrontController extends Controller
         for ($i=1000; $i <= 14000; $i+= 2000) { 
             array_push($price, $i);
         }
+
+        //Customer voice
+        $customer = UserReview::leftJoin('user_review_image', 'user_review.id', '=', 'user_review_image.user_review_id')
+                              ->groupBy('user_review.id')
+                              ->orderBy('user_review.created_at', 'desc')
+                              ->paginate(6);                              
         return view('front.pages.home.index', [
             'vehicle_data' => $vehicle_data,
             'rate' => $rate,
@@ -108,6 +115,9 @@ class FrontController extends Controller
              'make_audi' => $make_audi,
              'make_chrysler' => $make_chrysler,
              'make_volkswagen' => $make_volkswagen,
+
+             //customer voice
+             'customer' => $customer,
         ]);
     }
     public function clear(Request $request)

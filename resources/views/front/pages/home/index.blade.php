@@ -316,84 +316,21 @@
                 <div class="title-border"></div>
             </div>
             <div class="customer-vocie">
+                @foreach($customer as $row)
                 <div class="customer-list">
-                    <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
+                    <img src="{{URL::asset('/uploads/review')}}{{'/'}}{{$row->user_review_id}}{{'/'}}{{$row->image}}" alt="">
                     <div class="customer-text">
-                        <h3>TOYOTA RACTIS</h3>
+                        <h3>{{$row->title}}</h3>
                     </div>
                     <div class="overlay">
                         <div class="overlay-text">
-                            <a href="#"><h3>TOYOTA RACTIS</h3></a>
+                            <a href="#"><h3>{{$row->title}}</h3></a>
                             <div class="overlay-border"></div>
-                            <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
+                            <p>{{$row->description}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="customer-list">
-                    <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
-                    <div class="customer-text">
-                        <h3>TOYOTA RACTIS</h3>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-text">
-                            <a href="#"><h3>TOYOTA RACTIS</h3></a>
-                            <div class="overlay-border"></div>
-                            <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="customer-list">
-                    <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
-                    <div class="customer-text">
-                        <h3>TOYOTA RACTIS</h3>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-text">
-                            <a href="#"><h3>TOYOTA RACTIS</h3></a>
-                            <div class="overlay-border"></div>
-                            <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="customer-list">
-                    <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
-                    <div class="customer-text">
-                        <h3>TOYOTA RACTIS</h3>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-text">
-                            <a href="#"><h3>TOYOTA RACTIS</h3></a>
-                            <div class="overlay-border"></div>
-                            <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="customer-list">
-                    <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
-                    <div class="customer-text">
-                        <h3>TOYOTA RACTIS</h3>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-text">
-                            <a href="#"><h3>TOYOTA RACTIS</h3></a>
-                            <div class="overlay-border"></div>
-                            <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="customer-list">
-                    <img src="{{URL::asset ('/assets/frontend/images/v_1.png')}}" alt="">
-                    <div class="customer-text">
-                        <h3>TOYOTA RACTIS</h3>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-text">
-                            <a href="#"><h3>TOYOTA RACTIS</h3></a>
-                            <div class="overlay-border"></div>
-                            <p>We have been in the vehicle trading business for over 15 years in Japan.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- /end customer voice -->`
         </div>
