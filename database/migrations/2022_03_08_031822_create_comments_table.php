@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->string('vehicle_id');
             $table->string('order_status');
             $table->longText('comments');
+            $table->string('site_url');
             $table->timestamps();
         });
     }

@@ -79,6 +79,19 @@
             </div>
             <!-- /price calculator -->
             <!-- login register  -->
+            @if($comments)
+                <div class="login-register">
+                    <div class="notice">
+                        <h3>Notice</h3>
+                    </div>
+                    <div class="notice-content">
+                        <p>
+                            You have already made an inquiry about this vehicle.
+                            Please click <a href="{{route('front.user.chatdetail', ['id' => $comments->vehicle_id])}}">here</a>.
+                        </p>
+                    </div>
+                </div>
+            @else
             <div class="login-register">
                 <ul class="nav nav-pills nav-justified" role="tablist">
                     <li class="nav-item waves-effect waves-light inquiry-wrapper">
@@ -174,6 +187,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div><!-- /end mobile -->
         <div class="main-products">
             <div class="vehicle-info">
@@ -471,6 +485,19 @@
             </div>
             <!-- /price calculator -->
             <!-- login register  -->
+            @if($comments)
+                <div class="login-register">
+                    <div class="notice">
+                        <h3>Notice</h3>
+                    </div>
+                    <div class="notice-content">
+                        <p>
+                            You have already made an inquiry about this vehicle.
+                            Please click <a href="{{route('front.user.chatdetail', ['id' => $comments->vehicle_id])}}">here</a>.
+                        </p>
+                    </div>
+                </div>
+            @else
             <div class="login-register">
                 <ul class="nav nav-pills nav-justified" role="tablist">
                     <li class="nav-item waves-effect waves-light inquiry-wrapper">
@@ -564,6 +591,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

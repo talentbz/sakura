@@ -17,6 +17,9 @@ body{
     margin-bottom: 25px;
     border: 1px solid #ededed;
 }
+.user-contents {
+    min-height: 300px;
+}
 .user-sidebar  ul {
     padding: 0;
 }
@@ -31,7 +34,7 @@ body{
 .user-sidebar  ul li a:hover{
     color: #E10B14;
 }
-.user-sidebar  ul li a:active{
+.user-sidebar  ul li .active{
     color: #E10B14;
 }
 

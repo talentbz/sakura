@@ -42,7 +42,10 @@ Route::group(['prefix' => 'user'], function(){
 Route::prefix('/user')->middleware(['auth:web', 'CustomerRole'])->group(function () {
     Route::get('/mypage', [App\Http\Controllers\Frontend\UserController::class, 'myPage'])->name('front.user.mypage');
     Route::post('/mypage_post', [App\Http\Controllers\Frontend\UserController::class, 'mypage_post'])->name('front.user.mypage_post');
+    Route::get('/chatroom', [App\Http\Controllers\Frontend\UserController::class, 'chatRoom'])->name('front.user.chatroom');
+    Route::get('/chatroom/{id}', [App\Http\Controllers\Frontend\UserController::class, 'chatDetail'])->name('front.user.chatdetail');
     Route::get('/changepassword', [App\Http\Controllers\Frontend\UserController::class, 'changePassword'])->name('front.user.changepassword');
+    Route::post('/comments/create', [App\Http\Controllers\Frontend\UserController::class, 'comments'])->name('front.user.comment_create');
 });
 Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'clear'])->name('front.clear');
 

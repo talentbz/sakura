@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Validator, Exception, Image, URL, ZipArchive, File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;
 use App\Models\Port;
+use App\Models\Comments;
 use Location;
 
 class StockController extends Controller
@@ -369,6 +371,14 @@ class StockController extends Controller
         $real_url = URL::asset('uploads/vehicle/'.$id.'/real');
         $thumb_url = URL::asset('uploads/vehicle/'.$id.'/thumb');
         $country = Port::get();
+        //if exist inquiry list, then don't show inquiry list
+        $user_info = Auth::guard('web')->user();
+        if($user_info){
+            $comments = Comments::where('user_id', $user_info->id)->where('vehicle_id', $id)->first();
+        } else {
+            $comments ='';
+        }
+        
         return view('front.pages.details.index', [
             'vehicle_img' => $vehicle_img,
             'real_url' => $real_url,
@@ -385,6 +395,7 @@ class StockController extends Controller
             'port' => $port,
             'inspection' => $inspection,
             'insurance' => $insurance,
+            'comments' =>$comments,  
         ]);
     }
     public function image_download(Request $request, $id){

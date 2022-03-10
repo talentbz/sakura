@@ -21,13 +21,7 @@
         <div class="registered-contents">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="user-sidebar">
-                        <ul>
-                            <li><a href="#">My Page</a></li>
-                            <li><a href="#">Chat Room</a></li>
-                            <li><a href="#">Change Password</a></li>
-                        </ul>
-                    </div>
+                    @include('front.pages.user.sidebar')
                 </div>
                 <div class="col-md-10">
                     <div class="user-contents">

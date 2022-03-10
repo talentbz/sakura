@@ -44,7 +44,7 @@
                                     <div class="p-4 border-bottom ">
                                         <div class="row">
                                             <div class="col-md-4 col-9">
-                                                <a href="javascript:void(0)" class="font-size-15 mb-1">{{$stock_info->stock_id}}</a>
+                                                <a href="{{$stock_info->site_url}}" target="_blank" class="font-size-15 mb-1">{{$stock_info->stock_id}}</a>
                                                 <span class="badge badge-pill badge-soft-warning font-size-12">{{$stock_info->order_status}}</span>
                                             </div>
                                             <div class="col-md-8 col-3">
