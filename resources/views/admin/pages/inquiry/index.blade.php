@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
-@section('title') Inquiery List @endsection
+@section('title') Inquiry List @endsection
 @section('css')
     <link href="{{ URL::asset('/assets/admin/pages/inquiry/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') Inquiery Management @endslot
-        @slot('title') Inquiery List @endslot
+        @slot('li_1') Inquiry Management @endslot
+        @slot('title') Inquiry List @endslot
     @endcomponent
     <div class="row">
         <div class="col-lg-12">

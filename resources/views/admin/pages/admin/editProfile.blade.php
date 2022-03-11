@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title') User List @endsection
 @section('css')
-    <link href="{{ URL::asset('/assets/libs/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/admin/pages/admin/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
@@ -12,76 +12,58 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="card">
                 <div class="card-body">
-                    <form>
-                        <div class="row mb-4">
-                            <label for="projectname" class="col-form-label col-lg-2">Project Name</label>
-                            <div class="col-lg-10">
-                                <input id="projectname" name="projectname" type="text" class="form-control"
-                                    placeholder="Enter Project Name...">
+                <div class="my-page">
+                    <form id="myForm" class="custom-validation">
+                        @csrf
+                        <div class="picture-container">
+                            <div class="picture">
+                                <img src="{{ isset(Auth::user()->avatar) ? asset('/uploads/avatar').'/'.(Auth::user()->id).'/'.(Auth::user()->avatar) : asset('/assets/images/users/user-profile.jpg') }}" class="picture-src" id="wizardPicturePreview" title="">
+                                <input type="file" id="wizard-picture" name="file" class="">
                             </div>
                         </div>
-                        <div class="row mb-4">
-                            <label for="projectdesc" class="col-form-label col-lg-2">Project Description</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" id="projectdesc" rows="3"
-                                    placeholder="Enter Project Description..."></textarea>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" name="name" value="{{$user->name}}" required />
                             </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <label for="projectbudget" class="col-form-label col-lg-2">Budget</label>
-                            <div class="col-lg-10">
-                                <input id="projectbudget" name="projectbudget" type="text"
-                                    placeholder="Enter Project Budget..." class="form-control">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" parsley-type="email" name="email" value="{{$user->email}}" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Telephone</label>
+                                <input data-parsley-type="number" type="text" class="form-control" name="phone" value="{{$user->phone}}"  />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Country</label>
+                                <select class="form-select select-category" name="country" value="{{$user->country}}" required>
+                                    @foreach($country as $row)
+                                        <option value="{{$row}}" {{$user->country == $row ? 'selected':''}}>{{$row}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-control" name="city" value="{{$user->city}}" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Address</label>
+                                <input type="text" class="form-control" name="address" value="{{$user->address}}"  />
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
                         </div>
                     </form>
-                    <div class="row mb-4">
-                        <div class="col-lg-8">
-                            <!--begin::Image input-->
-                            <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(assets/media/avatars/blank.png)">
-                                <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/media/avatars/150-2.jpg)"></div>
-                                <!--end::Preview existing avatar-->
-                                <!--begin::Label-->
-                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                    <i class="bi bi-pencil-fill fs-7"></i>
-                                    <!--begin::Inputs-->
-                                    <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-                                    <input type="hidden" name="avatar_remove" />
-                                    <!--end::Inputs-->
-                                </label>
-                                <!--end::Label-->
-                                <!--begin::Cancel-->
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                    <i class="bi bi-x fs-2"></i>
-                                </span>
-                                <!--end::Cancel-->
-                                <!--begin::Remove-->
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                    <i class="bi bi-x fs-2"></i>
-                                </span>
-                                <!--end::Remove-->
-                            </div>
-                            <!--end::Image input-->
-                            <!--begin::Hint-->
-                            <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                            <!--end::Hint-->
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-lg-10">
-                            <button type="submit" class="btn btn-primary">Create Project</button>
-                        </div>
-                    </div>
-
+                </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('script')
-    <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/dropzone/dropzone.min.js') }}"></script>
+    <script>
+        update_url = "{{route('admin.update_profile')}}"
+    </script>
+    <script src="{{ URL::asset('/assets/admin/pages/admin/index.js') }}"></script>
 @endsection

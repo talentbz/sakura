@@ -12,17 +12,17 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                <table id="" class="table table-bordered dt-responsive  nowrap w-100">
+                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                             <tr>
-                                <th align="center" width="5%">Image</th>
-                                <th align="center" width="10%">Title</th>
-                                <th align="center" width="40%">Description</th>
-                                <th align="center" width="10%">Customer Name</th>
-                                <th align="center" width="5%">Country</th>
-                                <th align="center" width="10%">Review Date</th>
-                                <th align="center" width="5%">Rate</th>
-                                <th align="center" width="5%">Action</th>
+                                <th align="center" >Image</th>
+                                <th align="center" >Title</th>
+                                <th align="center" >Description</th>
+                                <th align="center" >Customer Name</th>
+                                <th align="center" >Country</th>
+                                <th align="center" >Review Date</th>
+                                <th align="center" >Rate</th>
+                                <th align="center" >Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,13 +33,13 @@
                                 </td>
                                 <td>{{$row->title}}</td>
                                 <td >
-                                    <p>{{$row->description}}</p>
+                                    <p>{!! Str::limit(strip_tags($row->description), 30,'.....') !!}</p>
                                 </td>
-                                <td align="center">{{$row->customer_name}}</td>
-                                <td align="center">{{$row->country}}</td>
-                                <td align="center">{{$row->register_date}}</td>
-                                <td align="center">{{$row->rate}}</td>
-                                <td align="center">
+                                <td>{{$row->customer_name}}</td>
+                                <td>{{$row->country}}</td>
+                                <td>{{$row->register_date}}</td>
+                                <td>{{$row->rate}}</td>
+                                <td>
                                         <a href="{{route('admin.customer.edit', ['id' => $row->user_review_id])}}" class="text-success edit" ><i
                                                 class="mdi mdi-pencil font-size-18"></i></a>
                                         <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="{{$row->user_review_id}}" data-bs-toggle="modal"

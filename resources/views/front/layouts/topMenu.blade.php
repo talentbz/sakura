@@ -58,6 +58,7 @@
                 @endguest
             </div>
             @auth('web')
+                
                 <ul class="registered-user">
                     <li class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
@@ -67,11 +68,14 @@
                             <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
+                        
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
+                            @if(Auth::user()->role == 2)
                             <a class="dropdown-item" href="{{route('front.user.mypage')}}"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span>My Page</span></a>
                             <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span>Change password</span></a>
                             <div class="dropdown-divider"></div>
+                            @endif
                             <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

@@ -1,0 +1,16 @@
+.blog-detail {
+    background: #fff;
+    padding: 20px;
+}
+.blog-detail h2{
+    color: #E10B14;
+}
+.blog-detail .blog-date {
+    text-align: right;
+}
+.detail-image img{
+    width: 100%;
+}
+.blog-contents {
+    margin-top: 2rem;
+}

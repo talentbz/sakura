@@ -31,7 +31,13 @@
                             @forelse($data as $key=>$row)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>System Architect</td>
+                                <td>
+                                    @if($row->avatar)
+                                        <img src="{{URL::asset('/uploads/avatar')}}{{'/'}}{{$row->id}}{{'/'}}{{$row->avatar}}" class="rounded-circle" width='30' alt="">
+                                    @else
+                                        <img src="{{ Avatar::create($row->name)->toBase64() }}" width='30' alt="">   
+                                    @endif
+                                </td>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->country}}</td>

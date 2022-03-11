@@ -65,5 +65,20 @@ $(document).ready(function () {
                 mode: 'lg-fade',
             })
         });
+        $(".customer-title").on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            image_path = $(this).data("id");
+            $(this).lightGallery({
+                dynamic: true,
+                dynamicEl: [
+                    {
+                        src : image_path
+                    },
+                ],
+                download: false,
+                mode: 'lg-fade',
+            })
+        });
 
 })

@@ -279,13 +279,13 @@
                         <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
                         <div class="media-count">
                             @if(isset($row->image_length))
-                            <div class="image-count">
+                            <div class="image-count" data-id="{{$row->vehicle_id}}">
                                 <i class="fas fa-camera"></i>
                                 <span>{{$row->image_length}}</span>
                             </div>
                             @endif
                             @if(isset($row->video_link))
-                            <div class="video-count">
+                            <div class="video-count" data-id="{{$row->video_link}}">
                                 <i class="fas fa-video"></i>
                                 <span>1</span>
                             </div>
@@ -312,7 +312,7 @@
             <!-- customer voice -->
             <div class="main-contents-title">
                 <h1>Customer's Voice</h1>
-                <a href="javascript:void(0)" class="btn btn-light waves-effect">List of customer's voice</a>
+                <a href="{{route('front.customer_vocie')}}" class="btn btn-light waves-effect">List of customer's voice</a>
                 <div class="title-border"></div>
             </div>
             <div class="customer-vocie">
@@ -324,7 +324,7 @@
                     </div>
                     <div class="overlay">
                         <div class="overlay-text">
-                            <a href="#"><h3>{{$row->title}}</h3></a>
+                            <div class="customer-title" data-id="{{URL::asset('/uploads/review')}}{{'/'}}{{$row->user_review_id}}{{'/'}}{{$row->image}}"><h3>{{$row->title}}</h3></div>
                             <div class="overlay-border"></div>
                             <p>{{$row->description}}</p>
                         </div>

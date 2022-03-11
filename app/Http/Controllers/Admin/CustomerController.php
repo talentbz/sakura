@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File; 
 use DB, Validator, Exception, Image, URL;
+use Illuminate\Support\Str;
 use App\Models\UserReview;
 use App\Models\UserReviewImage;
 

@@ -22,14 +22,16 @@
             <div class="blog-list">
                 <div class="row">
                     <div class="col-md-3 blog-image">
-                        <a href="#">
+                        <a href="{{route('front.blog.detail', ['id' => $row->id])}}">
                             <img src="{{URL::asset('/uploads/news')}}{{'/'}}{{$row->news_id}}{{'/'}}{{$row->image}}" alt="">
                         </a>
                     </div>
                     <div class="col-md-9 blog-contents">
-                        <h3 class="blog-title">{{$row->title}}</h3>
-                        <div class="blog-desc">{!! \Illuminate\Support\Str::limit(strip_tags($row->description), 300,'.....') !!}</div>
-                        <a href="#" class="read-more">Read more</a>
+                        <a href="{{route('front.blog.detail', ['id' => $row->id])}}">
+                            <h3 class="blog-title">{{$row->title}}</h3>
+                        </a>
+                        <div class="blog-desc">{!! Str::limit(strip_tags($row->description), 300,'.....') !!}</div>
+                        <a href="{{route('front.blog.detail', ['id' => $row->id])}}" class="read-more">Read more</a>
                     </div>
                 </div>
             </div>

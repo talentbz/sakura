@@ -441,6 +441,7 @@ h3 {
     font-size: 16px;
     line-height: 19px;
     color: #fff;
+    cursor: pointer;
   }
   .overlay-border {
       height: 0.5px;
@@ -802,6 +803,8 @@ h3 {
 }
 .registered-user button img {
     width: 35px;
+    object-fit: cover;
+    height: 35px;
 }
 /* responsive */
 @media only screen and (max-width: 1680px) {

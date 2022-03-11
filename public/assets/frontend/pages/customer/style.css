@@ -8,48 +8,34 @@
     width: 80%;
     margin: 30px auto;
 }
-.main-blog {
-    width: 81%;
-    float: left;
-}
-.blog-list{
-    background: #fff;
-    padding: 8px;
-    margin-bottom: 10px;
-}
-.blog-image img{
-    width: 100%;
-    max-height: 215px;
-    min-height: 215px;
-    object-fit: cover;
-    opacity: 1;
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
-}
-.blog-image img:hover {
-    opacity: .5;
-}
-.blog-title {
-    color: #E10B14;
-}
-.blog-desc {
-    font-size: 16px;
-}
 .right-sidebar {
     float: right !important;
 }
-.read-more {
-    color: #fff;
-    padding: 6px 7px;
-    border-radius: 3px;
-    background: #E10B14;
-    position: absolute;
-    bottom: 0;
-    right: 18px;
+.main-blog {
+    width: 81%;
+    float: left;
+    background: #fff;
 }
-.read-more:hover {
-    background: #be131c;
-    color: #fff;
+.customer-review {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #D3D3D3;
+    padding-bottom: 14px;
+}
+.review-image {
+    /* background: black; */
+}
+.review-image img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+.review-contents h3 {
+    color: #E10B14;
+}
+.rating-input i {
+    font-size: 15px;
+    padding: 2px;
 }
 @media only screen and (max-width: 1680px) { 
     .contact-details {
