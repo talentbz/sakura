@@ -49,4 +49,7 @@ $(document).ready(function () {
             })
         })
     })
+    console.log($('#chat-scroll')[0].clientHeight);
+    $('#chat-scroll').scrollTop($('#chat-scroll')[0].clientHeight);
+
 })

@@ -12,7 +12,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Chat List</h4>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="wrap-border chat-conversation">
@@ -29,7 +28,7 @@
                                                 <div class="media-body overflow-hidden">
                                                     <h5 class="text-truncate font-size-14 mb-1">{{$row->stock_id}}</h5>
                                                 </div>
-                                                <div class="font-size-11">05 min</div>
+                                                <div class="font-size-11">{{$row->created_at->diffForHumans()}}</div>
                                             </div>
                                         </a>
                                     </li>

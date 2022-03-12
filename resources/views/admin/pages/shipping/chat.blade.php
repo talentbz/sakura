@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Chat List</h4>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="wrap-border chat-conversation">
                                 <ul class="list-unstyled chat-list" data-simplebar style="max-height: 410px;">
                                     @foreach($comments as $row)
@@ -38,7 +38,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <div class="wrap-border user-chat">
                                 <div class="card">
                                     <div class="p-4 border-bottom ">
@@ -62,17 +62,18 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="chat-conversation p-3">
+                                        <div class="chat-conversation  p-3" id="chat-scroll">
                                             <ul class="list-unstyled mb-0" data-simplebar style="max-height: 486px;">
                                                 @foreach($customer_message as $row)
                                                     <li>
                                                         <div class="conversation-list">
                                                             <div class="ctext-wrap">
-                                                                <div class="conversation-name">{{$row->name}}</div>
-                                                                <p>
+                                                                <div class="conversation-header">
+                                                                    <div class="conversation-name">{{$row->name}}</div>
+                                                                    <p class="chat-time mb-0">{{$row->created_at->diffForHumans()}}</p>
+                                                                </div>
+                                                                <p class="chat-description">
                                                                     {!! nl2br(e($row->comments)) !!}
-                                                                </p>
-                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{$row->created_at->diffForHumans()}}
                                                                 </p>
                                                             </div>
 
@@ -83,11 +84,12 @@
                                                         <li class="right">
                                                             <div class="conversation-list">
                                                                 <div class="ctext-wrap">
-                                                                    <div class="conversation-name">{{auth()->user()->name}}</div>
-                                                                    <p>
+                                                                    <div class="conversation-header">
+                                                                        <div class="conversation-name">{{auth()->user()->name}}</div>
+                                                                        <p class="chat-time mb-0">{{$r_row->created_at->diffForHumans()}}</p>
+                                                                    </div>
+                                                                    <p class="chat-description">
                                                                         {!! nl2br(e($r_row->reply)) !!}
-                                                                    </p>
-                                                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>{{$r_row->created_at->diffForHumans()}}
                                                                     </p>
                                                                 </div>
                                                             </div>
