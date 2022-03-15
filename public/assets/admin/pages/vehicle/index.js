@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.confirm_delete').click(function(e){
+    $('#datatable').on('click', '.confirm_delete', function(e){
         e.preventDefault();
         e.stopPropagation();
         var id = $(this).data('id');

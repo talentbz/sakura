@@ -14,7 +14,6 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    @include('front.layouts.header')
     @include('front.layouts.topMenu')
     @yield('content')
     @include('front.layouts.footer')

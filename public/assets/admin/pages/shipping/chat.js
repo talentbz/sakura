@@ -49,7 +49,15 @@ $(document).ready(function () {
             })
         })
     })
-    console.log($('#chat-scroll')[0].clientHeight);
-    $('#chat-scroll').scrollTop($('#chat-scroll')[0].clientHeight);
-
+    // console.log($('#chat-scroll')[0].clientHeight);
+    // $('#chat-scroll').scrollTop($('#chat-scroll')[0].clientHeight);
+    scrollSmoothToBottom('chat-scroll')
+    // if using jQuery
+    function scrollSmoothToBottom (id) {
+        var div = document.getElementById(id);
+        console.log(div)
+        $('#' + id).animate({
+        scrollTop: div.scrollHeight - div.clientHeight
+        }, 500);
+    }
 })
