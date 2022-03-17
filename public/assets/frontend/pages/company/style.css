@@ -50,6 +50,9 @@ body{
     .hero {
         height: 149px !important;
     }
+    .company-contents h1 {
+        font-size: 1.6rem;
+    }
 }
 @media only screen and (max-width: 1024px){
     .hero {

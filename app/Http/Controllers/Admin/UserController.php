@@ -50,7 +50,6 @@ class UserController extends Controller
                 return back()->with('error', __('Current password Does not match.'));
             }
         }
-        dd($input);
         $user->update($input);
 
         Session::flash('success', 'Password update for ' . $user->name);

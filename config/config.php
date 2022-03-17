@@ -365,7 +365,7 @@ return [
         "Kosovo",
     ],
     'order_status' =>[
-        'Pending', 'Reserved', 'Sales', 'Sold'
+        'Inquiry', 'Invoice Issued', 'Payment Received', 'Shipping', 'Document'
     ],  
 ];
 // 

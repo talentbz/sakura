@@ -100,12 +100,13 @@
     overflow: hidden;
     color: #878788;
     padding-left: 0px;
+    margin-bottom: 0px;
 }
 
 .bs4-order-tracking li {
     list-style-type: none;
     font-size: 13px;
-    width: 25%;
+    width: 20%;
     float: left;
     position: relative;
     font-weight: 400;
@@ -176,4 +177,31 @@
 .card-timeline {
     background-color: #fff;
     z-index: 0
+}
+.chat-conversation .conversation-list .chat-time {
+    font-size: 10px !important;
+}
+.chat-conversation .conversation-list .ctext-wrap {
+    padding: 6px 8px !important;
+    background-color: rgb(91 216 61 / 10%) !important;
+}
+.chat-conversation .conversation-list {
+    margin-bottom: 4px !important;
+    min-width: 250px;
+}
+.chat-conversation .right .conversation-list .ctext-wrap {
+    background-color: #eff2f7 !important;
+    text-align: left !important;
+}
+.conversation-header {
+    display: flow-root;
+}
+.chat-conversation .conversation-list .ctext-wrap .conversation-name {
+    float: left;
+}
+.conversation-header p {
+    float: right;
+}
+.chat-description {
+    margin: 0;
 }

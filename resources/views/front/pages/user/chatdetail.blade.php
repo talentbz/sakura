@@ -26,7 +26,7 @@
                 <div class="col-md-10">
                     <div class="user-contents">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="wrap-border chat-conversation">
                                     <ul class="list-unstyled chat-list" data-simplebar style="max-height: 410px;">
                                         @foreach($comments as $row)
@@ -49,7 +49,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                                 <div class="wrap-border user-chat">
                                     <div class="card">
                                         <div class="p-4 border-bottom ">
@@ -62,16 +62,19 @@
                                                     <div class="card card-timeline px-2 border-none">
                                                         <ul class="bs4-order-tracking">
                                                             <li class="step active">
-                                                                <div><i class="fas fa-user"></i></div> Negotiation
+                                                                <div><i class="fas fa-user"></i></div> Inquiry
                                                             </li>
                                                             <li class="step active">
                                                                 <div><i class="fas fa-bread-slice"></i></div> Invoice Issued
                                                             </li>
                                                             <li class="step">
-                                                                <div><i class="fas fa-truck"></i></div> Shipped out and Vehicle arrived soon
+                                                                <div><i class="fas fa-truck"></i></div> Payment Received
                                                             </li>
                                                             <li class="step ">
-                                                                <div><i class="fas fa-birthday-cake"></i></div> Payment received
+                                                                <div><i class="fas fa-birthday-cake"></i></div> Shipping
+                                                            </li>
+                                                            <li class="step ">
+                                                                <div><i class="fas fa-birthday-cake"></i></div> Document
                                                             </li>
                                                         </ul>
                                                     </div>

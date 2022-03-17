@@ -14,9 +14,31 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
+    <div class="whatsapp">
+        <div class="wrap">
+            <img src="{{URL::asset ('/assets/frontend/images/whatsapp.png')}}" alt="">
+        </div>
+    </div>
+    <div id="sideWhatsappAdd" class="side_whatsapp_add">
+        <ul>
+            <li>
+                <a href="#">
+                    <span>Nalaka :</span>
+                    <span>+81-70-4124-0349</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>Rajika :</span>
+                    <span>+81-70-4124-0349</span>
+                </a>
+            </li>
+        </ul>
+    </div>
     @include('front.layouts.topMenu')
     @yield('content')
     @include('front.layouts.footer')
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
     <script>
         $(document).ready(function(){
             //ajax loading spinner
@@ -30,6 +52,9 @@
                         loading.hide();
                     }, 500)
                 });
+            $('.whatsapp').on('click', function(){
+                $('#sideWhatsappAdd').animate({width:'toggle'},350);
+            })
         })
     </script>
 </body>
