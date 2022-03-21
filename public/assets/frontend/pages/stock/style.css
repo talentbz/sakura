@@ -150,6 +150,15 @@ body {
     position: relative;
     overflow: hidden;
 }
+.no-data {
+    padding: 20px;
+    margin-top: 30px;
+    line-height: 30px;
+    /* border: 1px solid #ff7f00; */
+}
+.no-data a {
+    float: left;
+}
 @media only screen and (max-width: 1680px) {
     .calculator-filter {
         width: 60%;

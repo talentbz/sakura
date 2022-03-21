@@ -14,3 +14,8 @@
 .blog-contents {
     margin-top: 2rem;
 }
+@media only screen and (max-width: 1440px) { 
+    .blog-detail .blog-date {
+        display: none;
+    }
+}

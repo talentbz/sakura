@@ -74,17 +74,19 @@
                         <div class="input-group mb-2">
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
-                                <select class="form-select">
+                                <select class="form-select" name="from_price">
                                     <option>Any</option>
-                                    <option>$1,000</option>
-                                    <option>$10,000</option>
+                                    @foreach($price as $row)
+                                        <option value="{{$row}}" >${{number_format($row)}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="select-width-last">
-                                <select class="form-select">
+                                <select class="form-select" name="to_price">
                                     <option>Any</option>
-                                    <option>$10,000</option>
-                                    <option>$20,000</option>
+                                    @foreach($price as $row)
+                                        <option value="{{$row}}" >${{number_format($row)}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -253,7 +255,7 @@
                     </a>
                     <div class="car-desc">
                         <a href="javascript:void(0)">
-                            <h3>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h3>
+                            <h3>{{$row->make_type}} {{$row->model_type}}</h3>
                         </a>
                         @if($row->sale_price==null)
                             <h3>FOB: ${{number_format(round($row->price/$rate))}}</h3>
@@ -296,7 +298,7 @@
                     </a>
                     <div class="car-desc">
                         <a href="javascript:void(0)">
-                            <h3>{{$row->make_type}} {{$row->model_type}} {{$row->body_type}}</h3>
+                            <h3>{{$row->make_type}} {{$row->model_type}} </h3>
                         </a>
                         @if($row->sale_price==null)
                             <h3>FOB: ${{number_format(round($row->price/$rate))}}</h3>

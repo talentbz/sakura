@@ -145,11 +145,11 @@
                                     <option value="">Any</option>
                                     @if(!is_null($from_price))
                                         @foreach($price as $row)
-                                            <option value="{{$row}}" {{ $from_price == $row ? "selected" : "" }}>{{$row}}</option>
+                                            <option value="{{$row}}" {{ $from_price == $row ? "selected" : "" }}>${{number_format($row)}}</option>
                                         @endforeach
                                     @else
                                         @foreach($price as $row)
-                                            <option value="{{$row}}">{{$row}}</option>
+                                            <option value="{{$row}}">${{number_format($row)}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -159,11 +159,11 @@
                                     <option value="">Any</option>
                                     @if(!is_null($to_price))
                                         @foreach($price as $row)
-                                            <option value="{{$row}}" {{ $to_price == $row ? "selected" : "" }}>{{$row}}</option>
+                                            <option value="{{$row}}" {{ $to_price == $row ? "selected" : "" }}>${{number_format($row)}}</option>
                                         @endforeach
                                     @else
                                         @foreach($price as $row)
-                                            <option value="{{$row}}">{{$row}}</option>
+                                            <option value="{{$row}}">${{number_format($row)}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -376,8 +376,11 @@
                     </div>
                     <div class="col-md-8">
                         <select class="form-select sort-by">
-                            <option value="">Select</option>
-                            <option value="">New Arriavals</option>
+                            <option value="new_arriaval">New Arriavals</option>
+                            <option value="price_to_low">Price Low to High</option>
+                            <option value="price_to_high">Price High to Low</option>
+                            <option value="year_to_new">Year New to Old</option>
+                            <option value="year_to_old">Year Old to New</option>
                         </select>
                     </div>
                 </div>
@@ -407,11 +410,11 @@
         var to_year = "{{$to_year}}";
         var from_price = "{{$from_price}}";
         var to_price = "{{$to_price}}";
-        var price_country = "{{$price_country}}";
-        var price_port = "{{$price_port}}";
-        var inspection = "{{$inspection}}";
-        var insurance = "{{$insurance}}";
-        var light_url = "{{route('front.light_gallery')}}";
+        // var price_country = "{{$price_country}}";
+        // var price_port = "{{$price_port}}";
+        // var inspection = "{{$inspection}}";
+        // var insurance = "{{$insurance}}";
+        // var light_url = "{{route('front.light_gallery')}}";
     </script>
     <script src="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/lightgallery/lg-video.js') }}"></script>

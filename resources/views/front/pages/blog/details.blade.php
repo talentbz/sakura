@@ -21,9 +21,9 @@
         <div class="main-blog">
             <div class="blog-detail">
                 <h2>{{$news->title}}</h2>
-                <p class="blog-date">{{date('j F, Y', strtotime($news->date))}}</p>
                 <div class="detail-image">
                     <img src="{{URL::asset('/uploads/news')}}{{'/'}}{{$news->news_id}}{{'/'}}{{$news->image}}" alt="">
+                    <!-- <p class="blog-date">{{date('j F, Y', strtotime($news->date))}}</p> -->
                 </div>
                 <div class="blog-contents">
                     {!! $news->description !!}

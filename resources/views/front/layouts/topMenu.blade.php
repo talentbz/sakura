@@ -31,13 +31,13 @@
         </div>
         <div class="top-right">
             <div class="social">
-                <a href="#">
+                <a href="https://www.facebook.com/SakuraMotorsCo.Ltd" >
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#">
-                    <i class="fab fa-twitter"></i>
+                <a href="https://www.youtube.com/channel/UC2rMo2rX0_bljt2Dwgg_RHg">
+                    <i class="fab fa-youtube"></i>
                 </a>
-                <a href="#">
+                <a href="https://www.instagram.com/sakuramotorsjapan/" >
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>

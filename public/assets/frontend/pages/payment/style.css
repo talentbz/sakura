@@ -28,6 +28,12 @@ table {
     .hero {
         height: 160px !important;
     }
+    .payment-details {
+        width: 94%;
+    }
+    .right-sidebar {
+        width: 19%;
+    }
 }
 @media only screen and (max-width: 1280px){
     .hero {
@@ -38,13 +44,16 @@ table {
     .hero {
         height: 137px !important
     }
+    .right-sidebar {
+        width: 100% !important;
+    }
+    .main-payment {
+        width: 100%;
+    }
 }
 @media only screen and (max-width: 768px) {
     .payment-details {
         width: 90%;
-    }
-    .main-payment{
-        width: 100%;
     }
 }
 @media only screen and (max-width: 425px) {

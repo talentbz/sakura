@@ -6,7 +6,7 @@
             <p>We believe in offering you the best customer service possible. We have been in the vehicle trading business for over 15 years in Japan. Our new company, established in 2011, is even better equipped to provide you with your dream vehicle. We offer you 24hour prompt and reliable service. We will also help you to find the best customised solution to meet your specific needs.</p>
             <div class="footer-social">
                 <a href="https://www.facebook.com/SakuraMotorsCo.Ltd" class="footer-facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="footer-twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UC2rMo2rX0_bljt2Dwgg_RHg" class="footer-youtube"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/sakuramotorsjapan/" class="footer-instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>

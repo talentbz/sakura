@@ -11,6 +11,7 @@ $(document).ready(function () {
                     var sub_category = models[cat].children
                     if(sub_category.length>1){
                         for(sub=0; sub<sub_category.length; sub++){
+                            $('.subcategory').append('<option value="">'+'Any'+'</option>');
                             $('.subcategory').append('<option value="'+sub_category[sub]+'">'+sub_category[sub]+'</option>');
                         };
                     } else {
@@ -134,6 +135,7 @@ $(document).ready(function () {
     });
     var _token = $('input[name="_token"]').val();
     var page = 1;
+    var sort_by = 'new_arriaval';
     infinteLoadMore(page);
     $(document).on('click', '#load_more_button', function(){
         $('#load_more_button').html('<b>Loading...</b>');
@@ -153,6 +155,35 @@ $(document).ready(function () {
         // }  
 
     })
+    
+    $('.sort-by').on("change", function (e) { 
+        e.preventDefault();
+        e.stopPropagation();
+        sort_by = $(e.currentTarget).val()
+        $.ajax({
+            url: sock_page,
+            data:{
+                body_type:body_type,
+                make_type:make_type,
+                search_keyword:search_keyword,
+                maker:maker,
+                model_name:model_name,
+                from_year:from_year,
+                to_year:to_year,
+                from_price:from_price,
+                to_price:to_price,
+                sort_by:sort_by,
+            },
+            type: "get",
+        })
+        .done(function (response) {
+            $("#stock-list").empty();
+            $("#stock-list").append(response);
+        })
+        .fail(function (jqXHR, ajaxOptions, thrownError) {
+            console.log('Server error occured');
+        });
+    })
     function infinteLoadMore(page) {
         $.ajax({
             url: sock_page + "?page=" + page,
@@ -166,6 +197,7 @@ $(document).ready(function () {
                 to_year:to_year,
                 from_price:from_price,
                 to_price:to_price,
+                sort_by:sort_by,
                 // price_country:price_country,
                 // price_port:price_port,
                 // inspection:inspection,

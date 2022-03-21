@@ -86,6 +86,10 @@ class StockController extends Controller
         $price_port = $request->price_port;
         $inspection = $request->inspection;
         $insurance = $request->insurance;
+
+        //sort by
+        $sort_by = $request->sort_by;
+
         for ($i=date('Y'); $i >= 1950 ; $i--) { 
             array_push($year, $i);
         }
@@ -97,8 +101,8 @@ class StockController extends Controller
                                     ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
-                                    ->groupBy('vehicle_image.vehicle_id')
-                                    ->orderBy('vehicle.created_at', 'desc');
+                                    ->groupBy('vehicle_image.vehicle_id');
+                                    //->orderBy('vehicle.created_at', 'desc');
                                 
         $list = '';                            
         if ($request->ajax()) {
@@ -141,6 +145,20 @@ class StockController extends Controller
             }
             if(!is_null($request->to_price)){
                 $vehicle_data = $vehicle_data->where('price_usd', '<=', (int)$request->to_price);  
+            }
+            if(!is_null($request->sort_by)){
+                $sort_by = $request->sort_by;
+                if($sort_by == "new_arriaval"){
+                    $vehicle_data = $vehicle_data->orderBy('vehicle.created_at', 'desc');
+                } elseif($sort_by == 'price_to_low') {
+                    $vehicle_data = $vehicle_data->orderBy('vehicle_price.price_usd', 'asc');
+                } elseif($sort_by == 'price_to_high') {
+                    $vehicle_data = $vehicle_data->orderBy('vehicle_price.price_usd', 'desc');
+                } elseif($sort_by == 'year_to_new') {
+                    $vehicle_data = $vehicle_data->orderBy('vehicle.created_at', 'asc');
+                } else{
+                    $vehicle_data = $vehicle_data->orderBy('vehicle.created_at', 'desc');
+                }
             }
             //price calc
             // if(!is_null($price_country) && !is_null($price_port) && !is_null($inspection) && !is_null($insurance)){
@@ -276,6 +294,7 @@ class StockController extends Controller
                             <button type="button" name="load_more_button" data-id="'.$last_id.'" id="load_more_button">Load More</button>
                         </div>';
             } else {
+                $list.= '<h3 class="no-data">Sorry. The vehicle you are searching for is currently out of our stock. <br> Please send us an email mentioning your request car and budget: <br> <a href="mailto:info@sakuramotors.com">info@sakuramotors.com</a></h3>';
                 $list.= '<div id="load_more" style="display:none">
                             <button type="button" name="load_more_button">No Data Found</button>
                         </div>';

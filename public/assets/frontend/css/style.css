@@ -43,7 +43,30 @@ h3 {
 .social {
     float: left;
 }
+/* .social a{
+    font-size: 23px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 3px;
+    min-width: 33px;
+    display: inline-block;
+}
+.social .menu-facebook {
+    background: #3B5998;
+}
+.social .menu-youtube {
+    background: #e64a41;
+}
+.social .menu-instagram {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+} */
 .social i{
+    /* font-size: 18px; */
     color: #fff;
     font-size: 24px;
     margin-left: 20px;
@@ -510,11 +533,11 @@ h3 {
 .footer-facebook:hover {
     background: #314b81;
 }
-.footer-twitter {
-    background: #00B6F1;
+.footer-youtube {
+    background: #e64a41;
 }
-.footer-twitter:hover {
-    background: #0a9ccc;
+.footer-youtube:hover {
+    background: #d13b33;
 }
 .footer-instagram {
     background: #f09433;
@@ -808,7 +831,7 @@ h3 {
 }
 .whatsapp {
     position: fixed;
-    top: 157px;
+    bottom: 100px;
     right: 0;
     z-index: 39000;
     cursor: pointer;
@@ -824,7 +847,7 @@ h3 {
 }
 .side_whatsapp_add {
     position: fixed;
-    top: 157px;
+    bottom: 122px;
     right: 81px;
     margin-right: 2px;
     box-sizing: border-box;

@@ -1,7 +1,9 @@
 @extends('front.layouts.index')
 @section('title') Contact Us @endsection
 @section('css')
+    <!-- leaflet Css -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
     <link href="{{ URL::asset('/assets/frontend/pages/contact/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -74,17 +76,23 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <h4>Office Address</h4>
-                <p>Ibaraki Ken, Tsukuba Shi, Gakuen Minami, 3 – 48 – 48,<br> 〒 305 – 0818</p>
-                <h4>Phone Number</h4>
-                <a href="tel: +81298683668">Office: +81-29-868-3668</a><br>
-                <a href="tel: +819093450908">Mobile: +81-90-9345-0908</a>
-                <h4>Fax</h4>
-                <a href="tel:+81298683669">+81-29-868-3669</a>
-                <h4>Email Address</h4>
-                <a href="mailto:info@sakuramotors.com">info@sakuramotors.com</a><br>
-                <a href="https://www.sakuramotors.com" target="_blank" rel="noopener noreferrer">www.sakuramotors.com</a>
-                <div id="map"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Office Address</h4>
+                        <p>Ibaraki Ken, Tsukuba Shi, Gakuen Minami, 3 – 48 – 48,<br> 〒 305 – 0818</p>
+                        <h4>Phone Number</h4>
+                        <a href="tel: +81298683668">Office: +81-29-868-3668</a><br>
+                        <a href="tel: +819093450908">Mobile: +81-90-9345-0908</a>
+                        <h4>Fax</h4>
+                        <a href="tel:+81298683669">+81-29-868-3669</a>
+                        <h4>Email Address</h4>
+                        <a href="mailto:info@sakuramotors.com">info@sakuramotors.com</a><br>
+                        <a href="https://www.sakuramotors.com" target="_blank" rel="noopener noreferrer">www.sakuramotors.com</a>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="map" style="height: 400px"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -93,6 +101,18 @@
 @section('script')
     <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-    <!-- <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
-    <script src="{{ URL::asset('/assets/frontend/pages/contact/index.js')}}"></script> -->
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWxhYiIsImEiOiJjbDAwaTk1a2owa2Q0M2x0OGtvc3hjc2t0In0.gmilwByvO7UW5lhwWiszfw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [139.8998889, 36.0659722],
+            zoom: 8
+        });
+        
+        // Create a default Marker and add it to the map.
+        const marker1 = new mapboxgl.Marker()
+                                    .setLngLat([139.8998889, 36.0659722])
+                                    .addTo(map);
+    </script>
 @endsection

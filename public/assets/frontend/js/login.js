@@ -18,7 +18,7 @@ $('form#myForm').submit(function(e){
                     location.href = mypage_url; 
                 }, 2000);
             } else {
-                toastr["warning"]("The provided credentials do not match our records");
+                toastr["error"]("The provided credentials do not match our records");
             }
         },
         error: function (res){

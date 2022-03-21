@@ -14,13 +14,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <a href="{{route('admin.port.index')}}">
                         <i class="bx bx-calculator"></i>
-                        <span>Country & Port</span>
+                        <span>Port List</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="{{route('admin.port.index')}}">Port List</a></li>
-                    </ul>
+                </li>
+                <li>
+                    <a href="{{route('admin.vehicle.rate')}}">
+                        <i class="bx bx-bitcoin"></i>
+                        <span>Currency Rate</span>
+                    </a>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -28,7 +31,6 @@
                         <span>Vehicle Management</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="{{route('admin.vehicle.rate')}}" >Currency Rate</a></li>
                         <li><a href="{{route('admin.vehicle.index')}}" >Vehicle List</a></li>
                         <li><a href="{{route('admin.vehicle.create')}}" >Add Vehicle</a></li>
                     </ul>
