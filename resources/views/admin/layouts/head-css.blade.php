@@ -25,4 +25,5 @@
         left: 50%;
     }
 </style>
+<script src="{{ URL::asset('assets/libs/jquery/jquery.min.js')}}"></script>
 

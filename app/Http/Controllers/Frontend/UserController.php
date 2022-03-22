@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Location;
+use Notification;
+use App\Notifications\NewUserNotification;
 use App\Models\Port;
 use App\Models\User;
 use App\Models\Comments;
@@ -169,6 +171,8 @@ class UserController extends Controller
         $comments->comments = $request->comments;
         $comments->site_url = $request->site_url;
         $comments->save();
+        $admins = User::where('role', 1)->get();
+        Notification::send($admins, new NewUserNotification($comments));
         return response()->json(['result' => true, 'save' => $comments]);
     }
 }

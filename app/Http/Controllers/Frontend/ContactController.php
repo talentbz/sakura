@@ -8,6 +8,8 @@ use Mail;
 use App\Models\Inquiry;
 use App\Models\Comments;
 use App\Models\User;
+use Notification;
+use App\Notifications\NewUserNotification;
 
 class ContactController extends Controller
 {
@@ -88,6 +90,8 @@ class ContactController extends Controller
             $comments->site_url =  $request->get('site_url');
             $comments->save();
             User::where('id', $request->user_id)->update(['comment_status' => 1]);
+            $admins = User::where('role', 1)->get();
+            Notification::send($admins, new NewUserNotification($comments));
         }
         $inquery->save();
         return back()->with('success', 'Thanks for contacting!');

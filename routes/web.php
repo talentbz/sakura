@@ -53,6 +53,10 @@ Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'cle
 // admin dashboard
 Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    Route::group(['prefix' => 'notification'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\NotificationController::class, 'index'])->name('admin.notification');
+        Route::get('/mark', [App\Http\Controllers\Admin\NotificationController::class, 'markNotification'])->name('admin.markNotification');
+    });
     Route::group(['prefix' => 'user'], function(){
         Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.user');
         Route::get('/{id}/change_passowrd', [App\Http\Controllers\Admin\UserController::class, 'change_password'])->name('admin.user.change_password');

@@ -19,7 +19,14 @@
     </div>
 
     <div class="d-flex">
-
+        <div class="dropdown d-inline-block" id="notification"></div>
+            
+                <!-- <div class="p-2 border-top d-grid">
+                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">@lang('translation.View_More')</span> 
+                    </a>
+                </div> -->
+        
         <div class="dropdown d-none d-lg-inline-block ms-1">
             <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
                 <i class="bx bx-fullscreen"></i>
@@ -97,3 +104,80 @@ aria-labelledby="myLargeModalLabel" aria-hidden="true">
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script>
+    var notify_url = "{{route('admin.notification')}}";
+    $.ajax({
+            url: notify_url,
+            method: 'get',
+            dataType: 'json',
+            success: function (res) {
+                result = res.notification;
+                notify = '';
+                console.log(result.length);
+                
+                if(result.length > 0){
+                    notify += '<button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+                                + '<i class="bx bx-bell bx-tada"></i>' +
+                                '<span class="badge bg-danger rounded-pill">'+ result.length+'</span>' +
+                            '</button>' 
+                    notify += '<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">'
+                        notify += '<div class="p-3">'+
+                                    '<div class="row align-items-center">' + 
+                                        '<div class="col">' +
+                                            '<h6 class="m-0" key="t-notifications">Notifications</h6>'+
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>'
+                        notify += '<div class="simplebar-content" style="max-height: 230px;">'
+                                for(i=0; i<result.length; i++){
+                                    notify += '<a href="'+ window.location.origin + '/admin/shipping/chat/' + result[i].user_id + '/'+ result[i].vehicle_id +'" class="text-reset notification-item" data-id="'+result[i].user_avatar+'">' +
+                                                '<div class="media">';
+                                                if(result['user_avatar']) {
+                                                    notify += '<img src="'+ window.location.host +'/uploads/avatar/'+ result[i].user_id+ '/' + result[i].user_avatar+'" class="me-3 rounded-circle avatar-xs" alt="user-pic">'   
+                                                } else {
+                                                    notify += '<img src="'+ result[i].name_avatar+'" class="me-3 rounded-circle avatar-xs" alt="user-pic">'   
+                                                }  
+                                                notify +=  '<div class="media-body">' +
+                                                        '<h6 class="mt-0 mb-1">'+ result[i].user_name +'</h6>' +
+                                                        '<div class="font-size-12 text-muted">' +
+                                                            '<p class="mb-1" key="t-occidental">'+ result[i].comments +'</p>' +
+                                                            '<p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">'+result[i].date+'</span></p>' +
+                                                        '</div>' +
+                                                    '</div>' +
+                                                '</div>' +
+                                            '</a>'
+                                }
+                    notify += '</div>'
+                                
+                }
+                $('#notification').append(notify);
+            },
+            error: function (res){
+                console.log(res)
+            },
+    })
+    function sendMarkRequest(id = null) {
+        return $.ajax("{{ route('admin.markNotification') }}", {
+            method: 'get',
+            data: {
+                id
+            }
+        });
+    }
+    $(function() {
+        $('.notification-item').click(function() {
+            let request = sendMarkRequest($(this).data('id'));
+            request.done(() => {
+                //$(this).parents('div.simplebar-content').remove();
+            });
+        });
+
+        $('#mark-all').click(function() {
+            let request = sendMarkRequest();
+
+            request.done(() => {
+                $('div.alert').remove();
+            })
+        });
+    });
+</script>

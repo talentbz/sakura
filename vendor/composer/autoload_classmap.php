@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Frontend\\BlogController' => $baseDir . '/app/Http/Controllers/Frontend/BlogController.php',
     'App\\Http\\Controllers\\Frontend\\ContactController' => $baseDir . '/app/Http/Controllers/Frontend/ContactController.php',
+    'App\\Http\\Controllers\\Frontend\\CustomerController' => $baseDir . '/app/Http/Controllers/Frontend/CustomerController.php',
     'App\\Http\\Controllers\\Frontend\\FrontController' => $baseDir . '/app/Http/Controllers/Frontend/FrontController.php',
     'App\\Http\\Controllers\\Frontend\\StockController' => $baseDir . '/app/Http/Controllers/Frontend/StockController.php',
     'App\\Http\\Controllers\\Frontend\\UserController' => $baseDir . '/app/Http/Controllers/Frontend/UserController.php',

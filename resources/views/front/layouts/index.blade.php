@@ -22,15 +22,15 @@
     <div id="sideWhatsappAdd" class="side_whatsapp_add">
         <ul>
             <li>
-                <a href="#">
+                <a href="https://wa.me/819093450908">
                     <span>Nalaka :</span>
-                    <span>+81-70-4124-0349</span>
+                    <span>+81-90-9345-0908</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="https://wa.me/8180688235539">
                     <span>Rajika :</span>
-                    <span>+81-70-4124-0349</span>
+                    <span>+81-80-6882-35539</span>
                 </a>
             </li>
         </ul>
