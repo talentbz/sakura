@@ -410,11 +410,11 @@
         var to_year = "{{$to_year}}";
         var from_price = "{{$from_price}}";
         var to_price = "{{$to_price}}";
+        var light_url = "{{route('front.light_gallery')}}";
         // var price_country = "{{$price_country}}";
         // var price_port = "{{$price_port}}";
         // var inspection = "{{$inspection}}";
         // var insurance = "{{$insurance}}";
-        // var light_url = "{{route('front.light_gallery')}}";
     </script>
     <script src="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/lightgallery/lg-video.js') }}"></script>

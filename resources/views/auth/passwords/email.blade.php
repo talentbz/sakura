@@ -27,7 +27,7 @@
                                 <div class="d-flex h-100 flex-column">
 
 
-                                    <div class="p-4 mt-auto">
+                                    <!-- <div class="p-4 mt-auto">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-7">
                                                 <div class="text-center">
@@ -75,7 +75,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -88,10 +88,10 @@
 
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5">
-                                        <a href="index" class="d-block auth-logo">
-                                            <img src="{{ URL::asset('/assets/images/logo-dark.png') }}" alt="" height="18"
+                                        <a href="{{route('front.home')}}" class="d-block auth-logo">
+                                            <img src="{{URL::asset ('/assets/frontend/images/logo.png')}}" alt="" width="100"
                                                 class="auth-logo-dark">
-                                            <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="18"
+                                            <img src="{{URL::asset ('/assets/frontend/images/logo.png')}}" alt="" width="100"
                                                 class="auth-logo-light">
                                         </a>
                                     </div>
@@ -99,7 +99,7 @@
 
                                         <div>
                                             <h5 class="text-primary"> Reset Password</h5>
-                                            <p class="text-muted">Re-Password with Skote.</p>
+                                            <p class="text-muted">Re-Password with SakuraMotors.</p>
                                         </div>
 
                                         <div class="mt-4">
@@ -130,10 +130,10 @@
                                                 </div>
 
                                             </form>
-                                            <div class="mt-5 text-center">
+                                            <!-- <div class="mt-5 text-center">
                                                 <p>Remember It ? <a href="{{ url('login') }}"
                                                         class="font-weight-medium text-primary"> Sign In here</a> </p>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
 
@@ -141,8 +141,7 @@
                                         <p class="mb-0">© <script>
                                                 document.write(new Date().getFullYear())
 
-                                            </script> Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by
-                                            Themesbrand</p>
+                                            </script> SakuraMotors</p>
                                     </div>
                                 </div>
 
