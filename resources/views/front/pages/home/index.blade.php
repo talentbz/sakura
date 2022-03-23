@@ -251,7 +251,9 @@
                     </div>
                     <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="car-image">
                         <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
-                        <div class="reserved-mark">Reserved</div>
+                        @if($row->status == 'Invoice Issued')
+                            <div class="reserved-mark">Reserved</div>
+                        @endif
                     </a>
                     <div class="car-desc">
                         <a href="javascript:void(0)">
@@ -275,7 +277,7 @@
                 <div class="title-border"></div>
             </div>
             <div class="contents-list">
-                @foreach($vehicle_data as $row)
+                @foreach($best_vehicle_data as $row)
                 <div class="car-list">
                     <a href="{{route('front.details', ['id' => $row->vehicle_id])}}" class="car-image">
                         <img src="{{URL::asset ('/uploads/vehicle')}}{{'/'}}{{$row->vehicle_id}}{{'/thumb/'}}{{$row->image}}" alt="">
@@ -294,7 +296,9 @@
                             @endif
 
                         </div>
+                        @if($row->status == 'Invoice Issued')
                         <div class="reserved-mark">Reserved</div>
+                        @endif
                     </a>
                     <div class="car-desc">
                         <a href="javascript:void(0)">

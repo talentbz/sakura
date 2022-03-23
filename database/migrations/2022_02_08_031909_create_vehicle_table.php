@@ -64,6 +64,7 @@ class CreateVehicleTable extends Migration
             $table->string('video_link')->nullable();
             $table->double('price')->nullable();
             $table->double('sale_price')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

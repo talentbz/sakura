@@ -10,8 +10,8 @@ $(document).ready(function () {
                     $(".subcategory").empty();
                     var sub_category = models[cat].children
                     if(sub_category.length>1){
+                        $('.subcategory').append('<option value="">'+'Any'+'</option>');
                         for(sub=0; sub<sub_category.length; sub++){
-                            $('.subcategory').append('<option value="">'+'Any'+'</option>');
                             $('.subcategory').append('<option value="'+sub_category[sub]+'">'+sub_category[sub]+'</option>');
                         };
                     } else {

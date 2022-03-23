@@ -101,6 +101,9 @@ class StockController extends Controller
                                     ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                    ->where('vehicle.status', '')
+                                    ->orWhere('vehicle.status', Vehicle::INQUIRY)
+                                    ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
                                     ->groupBy('vehicle_image.vehicle_id');
                                     //->orderBy('vehicle.created_at', 'desc');
                                 
@@ -195,7 +198,9 @@ class StockController extends Controller
                         $list.='<div class="stock-image">';
                             $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
                                 $list.='<img src="'.URL::asset('/uploads/vehicle').'/'.$result->vehicle_id.'/thumb'.'/'.$result->image.'" alt="">';
-                                $list.='<div class="reserved-mark">Reserved</div>';
+                                if($result->status == Vehicle::INVOICE_ISSUED){
+                                    $list.='<div class="reserved-mark">Reserved</div>';
+                                }
                             $list.='</a>';                                                
                         $list.='</div>';
                         $list.='<div class="stock-contents">';

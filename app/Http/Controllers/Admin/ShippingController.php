@@ -8,6 +8,7 @@ use App\Models\Comments;
 use App\Models\Reply;
 use App\Models\User;
 use App\Models\VehicleImage;
+use App\Models\Vehicle;
 
 class ShippingController extends Controller
 {
@@ -74,6 +75,7 @@ class ShippingController extends Controller
     }
     public function change_status(Request $request){ 
         Comments::where('vehicle_id', $request->id)->update(['order_status' => $request->status]);
+        Vehicle::where('id', $request->id)->update(['status' => $request->status]);
         return response()->json(['result' => true]);
     }
     public function delete(Request $request, $id){ 

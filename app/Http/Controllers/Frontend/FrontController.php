@@ -23,7 +23,19 @@ class FrontController extends Controller
         $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                     ->where('vehicle.status', '')
+                                     ->orWhere('vehicle.status', Vehicle::INQUIRY)
+                                     ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
                                      ->groupBy('vehicle_image.vehicle_id')
+                                     ->orderBy('vehicle.created_at', 'desc')
+                                     ->paginate(8);
+        $best_vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+                                    ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                    ->whereNotNull('vehicle.sale_price')
+                                    ->where('vehicle.status', '')
+                                    ->orWhere('vehicle.status', Vehicle::INQUIRY)
+                                    ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
+                                    ->groupBy('vehicle_image.vehicle_id')
                                     ->orderBy('vehicle.created_at', 'desc')
                                     ->paginate(8);
         $body_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'bus')->first();
@@ -69,7 +81,6 @@ class FrontController extends Controller
         for ($i=1000; $i <= 14000; $i+= 2000) { 
             array_push($price, $i);
         }
-
         //Customer voice
         $customer = UserReview::leftJoin('user_review_image', 'user_review.id', '=', 'user_review_image.user_review_id')
                               ->groupBy('user_review.id')
@@ -77,6 +88,7 @@ class FrontController extends Controller
                               ->paginate(6);                              
         return view('front.pages.home.index', [
             'vehicle_data' => $vehicle_data,
+            'best_vehicle_data' => $best_vehicle_data,
             'rate' => $rate,
             //config variable
             'models' => $models,
