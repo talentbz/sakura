@@ -20,10 +20,7 @@
         </div>
         <div class="registered-contents">
             <div class="row">
-                <div class="col-md-2">
-                    @include('front.pages.user.sidebar')
-                </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="user-contents">
                         <div class="my-page">
                             <form id="myForm" class="custom-validation">

@@ -73,6 +73,7 @@
                             <!-- item-->
                             @if(Auth::user()->role == 2)
                             <a class="dropdown-item" href="{{route('front.user.mypage')}}"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span>My Page</span></a>
+                            <a class="dropdown-item" href="{{route('front.user.chatroom')}}"><i class="bx bx-chat font-size-16 align-middle me-1"></i> <span>Chat Room</span></a>
                             <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span>Change password</span></a>
                             <div class="dropdown-divider"></div>
                             @endif

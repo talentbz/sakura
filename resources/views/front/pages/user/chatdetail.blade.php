@@ -20,10 +20,7 @@
         </div>
         <div class="registered-contents">
             <div class="row">
-                <div class="col-md-2">
-                    @include('front.pages.user.sidebar')
-                </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="user-contents">
                         <div class="row">
                             <div class="col-md-2">
@@ -88,13 +85,14 @@
                                                         <li class="right">
                                                             <div class="conversation-list">
                                                                 <div class="ctext-wrap">
+                                                                <div class="conversation-header">
                                                                     <div class="conversation-name">{{$c_row->name}}</div>
-                                                                    <p>
-                                                                        {!! nl2br(e($c_row->comments)) !!}
-                                                                    </p>
-
                                                                     <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{$c_row->created_at->diffForHumans()}}
                                                                     </p>
+                                                                </div>
+                                                                <p class="chat-description">
+                                                                    {!! nl2br(e($c_row->comments)) !!}
+                                                                </p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -103,11 +101,12 @@
                                                             <li>
                                                                 <div class="conversation-list">
                                                                     <div class="ctext-wrap">
-                                                                        <div class="conversation-name">Admin</div>
-                                                                        <p>
+                                                                        <div class="conversation-header">
+                                                                            <div class="conversation-name">Admin</div>
+                                                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{$r_row->created_at->diffForHumans()}}</p>
+                                                                        </div>
+                                                                        <p class="chat-description">
                                                                             {!! nl2br(e($r_row->reply)) !!}
-                                                                        </p>
-                                                                        <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{$r_row->created_at->diffForHumans()}}
                                                                         </p>
                                                                     </div>
                                                                 </div>
