@@ -26,4 +26,6 @@ $(document).ready(function () {
             processData: false
         })
     })
+    var container = document.querySelector('#chat-scroll .simplebar-content-wrapper'); 
+    container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
 })

@@ -2,6 +2,7 @@
 @section('title') Mypage @endsection
 @section('css')
     <link href="{{ URL::asset('/assets/frontend/pages/user/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/frontend/pages/user/simplebar.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('/assets/frontend/pages/user/chatroom.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -36,8 +37,8 @@
                                                     </div>
                                                     <div class="media-body overflow-hidden">
                                                         <h5 class="text-truncate font-size-14 mb-1">{{$row->stock_id}}</h5>
+                                                        <span class="badge badge-pill badge-soft-warning font-size-12">{{$row->order_status}}</span>
                                                     </div>
-                                                    <span class="badge badge-pill badge-soft-warning font-size-12">{{$row->order_status}}</span>
                                                     <!-- <div class="font-size-11">{{$row->created_at->diffForHumans()}}</div> -->
                                                 </div>
                                             </a>
@@ -49,37 +50,37 @@
                             <div class="col-md-10">
                                 <div class="wrap-border user-chat">
                                     <div class="card">
-                                        <div class="p-4 border-bottom ">
+                                        <div class="p-1 border-bottom ">
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <a href="{{$stock_info->site_url}}" target="_blank" class="font-size-15 mb-1">{{$stock_info->stock_id}}</a>
                                                     <span class="badge badge-pill badge-soft-warning font-size-12">{{$stock_info->order_status}}</span>
                                                 </div>
-                                                <div class="col-md-10">
-                                                    <div class="card card-timeline px-2 border-none">
-                                                        <ul class="bs4-order-tracking">
-                                                            <li class="step active">
-                                                                <div><i class="fas fa-user"></i></div> Inquiry
-                                                            </li>
-                                                            <li class="step active">
-                                                                <div><i class="fas fa-bread-slice"></i></div> Invoice Issued
-                                                            </li>
-                                                            <li class="step">
-                                                                <div><i class="fas fa-truck"></i></div> Payment Received
-                                                            </li>
-                                                            <li class="step ">
-                                                                <div><i class="fas fa-birthday-cake"></i></div> Shipping
-                                                            </li>
-                                                            <li class="step ">
-                                                                <div><i class="fas fa-birthday-cake"></i></div> Document
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-1 border-bottom card-timeline">
+                                            <div class="row">
+                                                <ul class="bs4-order-tracking">
+                                                    <li class="step">
+                                                        <div><i class="fas fa-user"></i></div> Inquiry
+                                                    </li>
+                                                    <li class="step">
+                                                        <div><i class="fas fa-bread-slice"></i></div> Invoice Issued
+                                                    </li>
+                                                    <li class="step">
+                                                        <div><i class="fas fa-truck"></i></div> Payment Received
+                                                    </li>
+                                                    <li class="step ">
+                                                        <div><i class="fas fa-birthday-cake"></i></div> Shipping
+                                                    </li>
+                                                    <li class="step ">
+                                                        <div><i class="fas fa-birthday-cake"></i></div> Document
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="chat-conversation p-3">
+                                            <div class="chat-conversation p-3" id="chat-scroll">
                                                 <ul class="list-unstyled mb-0" data-simplebar style="max-height: 486px;">
                                                     @foreach($customer_message as $c_row)
                                                         <li class="right">
@@ -154,6 +155,30 @@
 @section('script')
     <script>
         create_url = "{{route('front.user.comment_create')}}";
+        order_status = '{{$stock_info->order_status}}';
+        
+        if(order_status == 'Inquiry'){
+            $('.step').eq(0).addClass('active');
+        } else if(order_status == 'Invoice Issued') {
+            $('.step').eq(0).addClass('active');
+            $('.step').eq(1).addClass('active');
+        } else if(order_status == 'Payment Received') {
+            $('.step').eq(0).addClass('active');
+            $('.step').eq(1).addClass('active');
+            $('.step').eq(2).addClass('active');
+        } else if(order_status == 'Shipping') {
+            $('.step').eq(0).addClass('active');
+            $('.step').eq(1).addClass('active');
+            $('.step').eq(2).addClass('active');
+            $('.step').eq(3).addClass('active');
+        } else {
+            $('.step').eq(0).addClass('active');
+            $('.step').eq(1).addClass('active');
+            $('.step').eq(2).addClass('active');
+            $('.step').eq(3).addClass('active');
+            $('.step').eq(4).addClass('active');
+        }
     </script>
+    <script src="{{ URL::asset('/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/frontend/pages/user/chatroom.js') }}"></script>
 @endsection

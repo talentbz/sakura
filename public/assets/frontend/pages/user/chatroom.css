@@ -74,27 +74,6 @@
 .wrap-border .card {
     margin-bottom: 0;
 }
-.chat-conversation ul {
-    overflow-y: scroll;
-}
-.chat-conversation ul::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px #eff2f7;
-	border-radius: 10px;
-	background-color: #fff;
-}
-.chat-conversation ul::-webkit-scrollbar
-{
-	width: 3px;
-	background-color: #fff;
-}
-
-.chat-conversation ul::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px #eff2f7;
-	background-color: #fff;
-}
 
 .bs4-order-tracking {
     overflow: hidden;

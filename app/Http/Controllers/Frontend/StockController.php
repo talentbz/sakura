@@ -115,8 +115,8 @@ class StockController extends Controller
                 $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->make_type);  
             }
             if(!is_null($request->search_keyword)) {
-                // $general_search = preg_split('/\s+/', $request->search_keyword, -1, PREG_SPLIT_NO_EMPTY); 
-                $general_search = $request->search_keyword;
+                $general_search = preg_split('/\s+/', $request->search_keyword, -1, PREG_SPLIT_NO_EMPTY); 
+                // $general_search = $request->search_keyword;
                 $vehicle_data = $vehicle_data->where(function ($q) use ($general_search) {
                     foreach ($general_search as $value) {
                         $q->orWhere('make_type', 'LIKE', "%{$value}%");
