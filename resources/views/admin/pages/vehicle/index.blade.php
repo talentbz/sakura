@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
-@section('title') User List @endsection
+@section('title') Vehicle List @endsection
 @section('css')
     <link href="{{ URL::asset('/assets/admin/pages/vehicle/style.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1') Vehicle Management @endslot
-        @slot('title') Vehilce List @endslot
+        @slot('title') Vehicle List @endslot
     @endcomponent
     <div class="row">
         <div class="col-lg-12">

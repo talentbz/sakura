@@ -9,6 +9,7 @@ use App\Models\Reply;
 use App\Models\User;
 use App\Models\VehicleImage;
 use App\Models\Vehicle;
+use Mail;
 
 class ShippingController extends Controller
 {
@@ -71,6 +72,20 @@ class ShippingController extends Controller
         $reply->comment_id = $request->comment_id;
         $reply->reply = $request->reply;
         $reply->save();
+        $email = Comments::leftJoin('users', 'comments.user_id', '=', 'users.id')
+                         ->where('comments.id', $request->comment_id)
+                         ->first()->email;
+        $reply = $request->reply;
+        $subject = 'SakuraMotors new reply';
+        Mail::send('mail', array(
+            'chat' => 'reply',
+            'subject' => $subject,
+            'reply' => $reply,
+        ), function($message) use ($email, $subject){
+            $message->from('inquiry@sakuramotors.com');
+            $message->to($email, $subject)
+                    ->subject($subject);
+        });
         return response()->json(['result' => true, 'save port' => $reply]);
     }
     public function change_status(Request $request){ 
