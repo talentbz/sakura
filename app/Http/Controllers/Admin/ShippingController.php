@@ -9,7 +9,8 @@ use App\Models\Reply;
 use App\Models\User;
 use App\Models\VehicleImage;
 use App\Models\Vehicle;
-use Mail;
+use App\Models\OrderStatus;
+use Mail, DB;
 
 class ShippingController extends Controller
 {
@@ -65,6 +66,7 @@ class ShippingController extends Controller
             'reply' => $reply,
             'stock_info' => $stock_info,
             'order_status' => $order_status,
+            'user_id' => $id,
         ]);
     }
     public function reply(Request $request){ 
@@ -89,8 +91,36 @@ class ShippingController extends Controller
         return response()->json(['result' => true, 'save port' => $reply]);
     }
     public function change_status(Request $request){ 
-        Comments::where('vehicle_id', $request->id)->update(['order_status' => $request->status]);
-        Vehicle::where('id', $request->id)->update(['status' => $request->status]);
+        Comments::where('vehicle_id', $request->id)
+                ->where('user_id', $request->user_id)
+                ->update(['order_status' => $request->status]);
+        OrderStatus::where('vehicle_id', $request->id)
+                   ->where('user_id', $request->user_id)
+                   ->update(['status' => orderStatus($request->status)]);
+        $max_status = OrderStatus::select(DB::raw('MAX(status) as max_status'))
+                   ->where('vehicle_id', $request->id)
+                   ->groupBy('vehicle_id')
+                   ->first()->max_status;                           
+        Vehicle::where('id', $request->id)->update(['status' => decodeStatus($max_status)]);
+
+        //send status email to user
+        $email = User::where('id', $request->user_id)->first()->email;
+        $user = User::where('id', $request->user_id)->first();
+        $stock_no = Comments::where('vehicle_id', $request->id)
+                            ->where('user_id', $request->user_id)
+                            ->first()->stock_id;
+        $subject = decodeStatus($max_status).' ('.$stock_no.' )';
+        Mail::send('mail', array(
+            'is_contact' => 'status',
+            'subject' => $subject,
+            'email' => $email,
+            'user' => $user,
+            'max_status' => $max_status,
+        ), function($message) use ($email, $subject){
+            $message->from('inquiry@sakuramotors.com');
+            $message->to($email, $subject)
+                    ->subject($subject);
+        });
         return response()->json(['result' => true]);
     }
     public function delete(Request $request, $id){ 

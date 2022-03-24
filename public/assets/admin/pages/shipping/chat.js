@@ -30,6 +30,7 @@ $(document).ready(function () {
         e.preventDefault();
         e.stopPropagation();
         var id = $(this).data('id');
+        var user_id = $(this).attr('data-user');
         $('.save_button').click(function(){
             var status = $( ".select-status option:selected" ).text();
             $.ajaxSetup({
@@ -40,7 +41,7 @@ $(document).ready(function () {
             $.ajax({
                 url: change_status,
                 method: 'get',
-                data: {id:id, status:status},
+                data: {id:id, status:status, user_id:user_id},
                 success: function (data){
                     toastr["success"]("Success");
                     $('#myModal').modal('hide');

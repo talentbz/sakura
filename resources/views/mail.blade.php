@@ -450,11 +450,38 @@
                 </tr>
                 
             </tbody>
-            @else
+            @elseif($is_contact == 'reply')
             <tr>
                 <td>
                 <p>{!! nl2br(e($reply)) !!}</p>
                 <p><a href="https://sakuramotors.com/">Sakuramotors.com</a></p>
+                </td>
+            </tr>
+            @elseif
+            <tr>
+                <td>
+                @if($max_status == 2)
+                    <p>Dear, $user->name</p>
+                    <p>Thank you for confirming your order. Please kindly arrange your payment within 48 hours.</p>
+                    <p>After you have done the payment kindly send bank TT copy or swift copy to start shipping process for speed shipping.</p><br>
+                @elseif(max_status == 3)
+                    <p>Dear, $user->name</p>
+                    <p>We received your payment. Thank you very much.</p>
+                @elseif(max_status == 4)
+                    <p>Dear, $user->name</p>
+                    <p>This is to inform you that we have already started shipping your vehicle, We will inform you the date and ship name as soon as possible.</p>
+                @else
+                    <p>Dear, $user->name</p>
+                    <p>We have already sent the document by DHL. Please kindly use tracking number to track your document.</p>
+                @endif
+                    <p>Thank you and Best Regards.</p><br>
+                    <a href="https://sakuramotors.com/">Sakura Motors Co.Ltd.</a><br>
+                    <p>Address : 3-48-48, Gakuen Minami, Tsukuba-Shi,</p>
+                    <p>Ibaraki Prefecture, Japan 305-0818.</p>
+                    <p>E-mail : <a href="mailto:info@sakuramotors.com">info@sakuramotors.com</a></p>
+                    <p>Tel : <a href="tel:+81298190850"> +81-29-819-0850</a></p>
+                    <p>Fax : <a href="tel:+81298683669">+81-29-868-3669</a></p>
+                    <p>WhatsApp : <a href="https://wa.me/819093450908">+81-90-9345-0908</a></p>
                 </td>
             </tr>
             @endif

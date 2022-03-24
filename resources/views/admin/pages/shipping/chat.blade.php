@@ -50,7 +50,7 @@
                                                 <ul class="list-inline user-chat-nav text-end mb-0">
                                                     <li class="list-inline-item d-none d-sm-inline-block">
                                                         <div class="dropdown">
-                                                            <a href="javascript:void(0);" data-id="{{$stock_info->vehicle_id}}" class="btn nav-btn status" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                            <a href="javascript:void(0);" data-id="{{$stock_info->vehicle_id}}" data-user = {{$user_id}} class="btn nav-btn status" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                 <i class="bx bx-cog"></i>
                                                             </a>
                                                         </div>

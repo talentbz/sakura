@@ -8,6 +8,7 @@ use Mail;
 use App\Models\Inquiry;
 use App\Models\Comments;
 use App\Models\User;
+use App\Models\OrderStatus;
 use Notification;
 use App\Notifications\NewUserNotification;
 
@@ -39,27 +40,27 @@ class ContactController extends Controller
         return back()->with('success', 'Thanks for contacting!');
     }
     public function inquiryEmail(Request $request){
-        Mail::send('mail', array(
-            'is_contact'  =>'off',
-            'vehicle_name' => $request->get('vehicle_name'),
-            'fob_price' => $request->get('fob_price'),
-            'inspection' => $request->get('inspection'),
-            'insurance' => $request->get('insurance'),
-            'inqu_port' => $request->get('inqu_port'),
-            'total_price' => $request->get('total_price'),
-            'site_url' => $request->get('site_url'),
-            'inqu_name' => $request->get('inqu_name'),
-            'inqu_country' => $request->get('inqu_country'),
-            'inqu_email' => $request->get('inqu_email'),
-            'inqu_address' => $request->get('inqu_address'),
-            'inqu_mobile' => $request->get('inqu_mobile'),
-            'inqu_city' => $request->get('inqu_city'),
-            'inqu_comment' => $request->get('inqu_comment'),
-        ), function($message) use ($request){
-            $message->from('inquiry@sakuramotors.com');
-            $message->to('inquiry@sakuramotors.com', 'Inquiry - Sakura')
-                    ->subject('Inquiry - Sakura');
-        });      
+        // Mail::send('mail', array(
+        //     'is_contact'  =>'off',
+        //     'vehicle_name' => $request->get('vehicle_name'),
+        //     'fob_price' => $request->get('fob_price'),
+        //     'inspection' => $request->get('inspection'),
+        //     'insurance' => $request->get('insurance'),
+        //     'inqu_port' => $request->get('inqu_port'),
+        //     'total_price' => $request->get('total_price'),
+        //     'site_url' => $request->get('site_url'),
+        //     'inqu_name' => $request->get('inqu_name'),
+        //     'inqu_country' => $request->get('inqu_country'),
+        //     'inqu_email' => $request->get('inqu_email'),
+        //     'inqu_address' => $request->get('inqu_address'),
+        //     'inqu_mobile' => $request->get('inqu_mobile'),
+        //     'inqu_city' => $request->get('inqu_city'),
+        //     'inqu_comment' => $request->get('inqu_comment'),
+        // ), function($message) use ($request){
+        //     $message->from('inquiry@sakuramotors.com');
+        //     $message->to('inquiry@sakuramotors.com', 'Inquiry - Sakura')
+        //             ->subject('Inquiry - Sakura');
+        // });      
 
         $inquery = new Inquiry;
         $inquery->vehicle_name =  $request->get('vehicle_name');
@@ -89,7 +90,15 @@ class ContactController extends Controller
             $comments->comments = $request->get('inqu_comment');
             $comments->site_url =  $request->get('site_url');
             $comments->save();
+            //insert order status
+            $order_status = new OrderStatus;
+            $order_status->user_id = $request->user_id;
+            $order_status->vehicle_id = $request->vehicle_id;
+            $order_status->status = 1;
+            $order_status->save();
+
             User::where('id', $request->user_id)->update(['comment_status' => 1]);
+            //send notification
             $admins = User::where('role', 1)->get();
             Notification::send($admins, new NewUserNotification($comments));
         }
