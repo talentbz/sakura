@@ -78,7 +78,7 @@ class ShippingController extends Controller
         $reply = $request->reply;
         $subject = 'SakuraMotors new reply';
         Mail::send('mail', array(
-            'chat' => 'reply',
+            'is_contact' => 'reply',
             'subject' => $subject,
             'reply' => $reply,
         ), function($message) use ($email, $subject){
