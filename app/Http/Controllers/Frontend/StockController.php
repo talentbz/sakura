@@ -178,7 +178,7 @@ class StockController extends Controller
                     $list.='<div class="contents-list">';
                         $list.= '<div class="stock-mobile-title">';
                             $list.= '<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'">';
-                                $list.=  '<h5>'.$result->make_type.' '.$result->model_type.' ' .$result->body_type.'</h5>';
+                                $list.=  '<h5>'.$result->make_type.' '.$result->model_type.'</h5>';
                             $list.='</a>';
                         $list.='</div>';
                         $list.= '<div class="media-count">';
@@ -205,7 +205,7 @@ class StockController extends Controller
                         $list.='</div>';
                         $list.='<div class="stock-contents">';
                             $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="stock-name">';
-                                $list.='<h5>'.$result->make_type.' '.$result->model_type.' '.$result->body_type.'</h5>';
+                                $list.='<h5>'.$result->make_type.' '.$result->model_type.'</h5>';
                             $list.='</a>';
                             $list.='<table class="table table-bordered dt-responsive  nowrap w-100">';
                                 $list.='<thead>';

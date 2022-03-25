@@ -334,6 +334,12 @@ body {
     }
 }
 @media only screen and (max-width: 768px) {
+    .stock-mobile-title, .stock-mobile-contents {
+        display: flex;
+    }
+    #stock-contents {
+        display: flex;
+    }
     body {
         background: #E5E5E5 !important;
     }

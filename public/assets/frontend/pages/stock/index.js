@@ -121,7 +121,6 @@ $(document).ready(function () {
         e.preventDefault();
         e.stopPropagation();
         video = $(this).data("id");
-        console.log(video);
         $(this).lightGallery({
             dynamic: true,
             dynamicEl: [
@@ -221,7 +220,6 @@ $(document).ready(function () {
                 }
             }
             if($( window ).width() <= 425){
-                console.log(border_object);
                 for(i=0; i<border_object.length; i++){  
                         border_object.eq(2*i).css('display', 'none');
                 }

@@ -38,7 +38,7 @@
     @include('front.layouts.topMenu')
     @yield('content')
     @include('front.layouts.footer')
-    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+    <script src='https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js'></script>
     <script>
         $(document).ready(function(){
             //ajax loading spinner
