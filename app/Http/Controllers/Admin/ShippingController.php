@@ -98,9 +98,9 @@ class ShippingController extends Controller
                    ->where('user_id', $request->user_id)
                    ->update(['status' => orderStatus($request->status)]);
         $max_status = OrderStatus::select(DB::raw('MAX(status) as max_status'))
-                   ->where('vehicle_id', $request->id)
-                   ->groupBy('vehicle_id')
-                   ->first()->max_status;                           
+                                ->where('vehicle_id', $request->id)
+                                ->groupBy('vehicle_id')
+                                ->first()->max_status;                           
         Vehicle::where('id', $request->id)->update(['status' => decodeStatus($max_status)]);
 
         //send status email to user

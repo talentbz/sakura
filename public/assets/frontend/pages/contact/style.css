@@ -68,4 +68,7 @@ body {
     .page-title a {
         font-size: 16px !important;
     }
+    #map {
+        height: 250px !important;
+    }
 }

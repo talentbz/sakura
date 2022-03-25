@@ -184,3 +184,29 @@
 .chat-description {
     margin: 0;
 }
+@media only screen and (max-width: 425px) {
+    .wrap-border {
+        min-height: initial;
+    }
+    .user-contents {
+        min-height: initial;
+    }
+    .user-sidebar, .user-contents {
+        padding: 0;
+        border: transparent;
+    }
+    .user-chat {
+        min-height: 500px;
+    }
+    .bs4-order-tracking li {
+        font-size: 10px;
+    }
+    .bs4-order-tracking li>div {
+        width: 26px;
+        line-height: 26px;
+        font-size: 10px;
+    }
+    #chat-scroll ul{
+        min-height: 200px;
+    }
+}

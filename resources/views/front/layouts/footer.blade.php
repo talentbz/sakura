@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="footer-contact">
-            <h3>Contact Us</h3>
+            <h3 class="contact-title">Contact Us</h3>
             <div class="footer-contact-list">
                 <div class="address-contact">
                     <div class="contact-list">

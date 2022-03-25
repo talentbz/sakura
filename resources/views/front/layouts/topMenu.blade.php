@@ -3,13 +3,13 @@
     <div class="top-menu-wrapper">
         <div class="top-left">
             <div class="topnav" id="myTopnav">
-                <a href="#" class="active">Home</a>
-                <a href="#">Stock</a>
-                <a href="#">Payment</a>
-                <a href="#">News</a>
-                <a href="#">Agents</a>
-                <a href="#">Gallery</a>
-                <a href="#">Contact us</a>
+                <a href="{{route('front.home')}}" class="{{request()->routeIs('front.home') ? 'active' : ''}}">Home</a>
+                <a href="{{route('front.stock')}}" class="{{request()->routeIs('front.stock') ? 'active' : ''}}">Stock</a>
+                <a href="{{route('front.payment')}}" class="{{request()->routeIs('front.payment') ? 'active' : ''}}">Payment</a>
+                <a href="{{route('front.blog')}}" class="{{request()->routeIs('front.blog') ? 'active' : ''}}">News</a>
+                <a href="{{route('front.agents')}}" class="{{request()->routeIs('front.agents') ? 'active' : ''}}">Agents</a>
+                <a href="{{route('front.gallery')}}" class="{{request()->routeIs('front.gallery') ? 'active' : ''}}">Gallery</a>
+                <a href="{{route('front.contact')}}" class="{{request()->routeIs('front.contact') ? 'active' : ''}}">Contact us</a>
             </div>
             <a href="javascript:void(0);" class="mobile-icon" onclick="mobileMenu()">
                 <i class="fa fa-bars"></i>

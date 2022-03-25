@@ -394,6 +394,9 @@ a.active {
 .notice-content p {
     font-size: 15px;
 }
+.mobile-featured-option{
+    display: none;
+}
 @media only screen and (max-width: 1680px) {
     .contents-details {
         width: 80%;
@@ -473,6 +476,34 @@ a.active {
     .image-count, .video-count {
         display: inline-block !important;
     }
+    .featured-option {
+        display: none;
+    }
+    .mobile-featured-option{
+        display: block;
+    }
+    .contents-details {
+        margin: 10px auto;
+    }
+    .login-register {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .vehicle-name h3 {
+        font-size: 16px;
+    }
+    .vehicle-name-border {
+        margin: 5px 0;
+    }
+    .fob-label, .fob-value {
+        font-size: 16px;
+    }
+    .cif p {
+        margin-bottom: 0;
+    }
+    .clac-form {
+        padding: 8px 12px;
+    }
 }
 @media only screen and (max-width: 414px) {
     .contents-details {
@@ -487,5 +518,10 @@ a.active {
 @media only screen and (max-width: 375px) { 
     a.btn-ins {
         padding: 7px 31px;
+    }
+}
+@media only screen and (max-width: 375px) { 
+    a.btn-ins {
+        padding: 7px 29px;
     }
 }

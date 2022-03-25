@@ -21,9 +21,11 @@ class VehicleController extends Controller
                         ->select('vehicle.*', 'vehicle_image.image')
                         ->orderBy('vehicle.created_at', 'desc')
                         ->get();
+        $order_status = config('config.order_status');
         return view('admin.pages.vehicle.index', [
             'data' => $data,
             'rate' => $rate,
+            'order_status' => $order_status,
         ]);
     }
     public function create(Request $request)
@@ -344,5 +346,9 @@ class VehicleController extends Controller
         $rate->insurance = $request->insurance;
         $rate->save();
         return response()->json(['result' => true, 'Updated rate' => $rate]);
+    }
+    public function change_status(Request $request){
+        Vehicle::where('id', $request->id)->update(['status' => $request->status]);
+        return response()->json(['result' => true]);
     }
 }

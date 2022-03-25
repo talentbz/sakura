@@ -6,7 +6,7 @@
     <title> @yield('title') | Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="SAKURA MOTORS - Dashboard …." name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
@@ -19,7 +19,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
         @include('admin.layouts.topbar')
-        @include('admin.layouts.sidebar')
+        @include('admin.layouts.sidebar')   
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->

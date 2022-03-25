@@ -213,6 +213,19 @@ $(document).ready(function () {
                 return;
             }
             $("#stock-list").append(response);
+            border_object = $('.contents-border-right')
+            if($(window).width() <= 1024){
+                for(i=0; i<border_object.length; i++){
+                    border_object.eq(i).css('display', 'block')
+                    border_object.eq(3*i).css('display', 'none');
+                }
+            }
+            if($( window ).width() <= 425){
+                console.log(border_object);
+                for(i=0; i<border_object.length; i++){  
+                        border_object.eq(2*i).css('display', 'none');
+                }
+            }
             if( page>1 ){
                 price_calc();
             }
@@ -337,15 +350,4 @@ function price_calc_mobile(){
         $(this).find('.totla-value').text(final_price);
     })
 }
-border_object = $('.contents-border-right');
-if($(window).width() <= 1024){
-    for(i=0; i<border_object.length; i++){
-        border_object.eq(3*i).css('display', 'none');
-    }
-}
-if($( window ).width() <= 425){
-    border_object.css('display', 'block')
-    for(i=0; i<border_object.length; i++){  
-            border_object.eq(2*i).css('display', 'none');
-    }
-}
+

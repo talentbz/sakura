@@ -454,6 +454,7 @@ body {
         margin-bottom: 0 !important;
         padding-bottom: 10px !important;
         position: relative;
+        padding: 8px;
     }
     .stock-image img {
         min-height: 80px;
@@ -468,6 +469,14 @@ body {
     }
     .main-contents-title a {
         font-weight: 100 !important;
+    }
+    #load_more button {
+        font-size: 13px;
+        padding: 7px 10px;
+        margin-top: 10px;
+    }
+    .calc-mobile {
+        margin-top: 0;
     }
 }
 @media only screen and (max-width: 414px) {
@@ -500,6 +509,9 @@ body {
     .calc-submit button {
         padding: 8px 54px;
     }
+    .contents-wrapper {
+        margin: 6px auto;
+    }
 }
 @media only screen and (max-width: 393px) {
     a.btn-ins {
@@ -530,9 +542,36 @@ body {
 }
 @media only screen and (max-width: 375px) {
     a.btn-ins {
-        padding: 7px 27px;
+        padding: 7px 25px;
     }
     .calc-submit button {
-        padding: 8px 45px;
+        padding: 8px 42px;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .select-width, .select-width-last {
+        width: 39.1%;
+    }
+    .search-type, .search-maker {
+        margin-top: 10px;
+    }
+    .search-category a {
+        width: 79px;
+    }
+    .calc-mobile {
+        margin-bottom: 4px;
+    }
+    .stock-sort {
+        width: 44%;
+    }
+    .stock-label, .stock-value {
+        font-size: 8px;
+    }
+    .fob-label, .total-label, .cif, .port {
+        font-size: 11px;
+    }
+    .btn-detail, .btn-inquire {
+        padding: 4px 11px;
+        font-size: 12px !important;
     }
 }

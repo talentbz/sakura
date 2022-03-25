@@ -74,6 +74,7 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::post('/imageDelete', [App\Http\Controllers\Admin\VehicleController::class, 'imageDelete'])->name('admin.vehicle.imageDelete');
         Route::post('/imageAdd', [App\Http\Controllers\Admin\VehicleController::class, 'imageAdd'])->name('admin.vehicle.imageAdd');
         Route::get('/delete', [App\Http\Controllers\Admin\VehicleController::class, 'delete'])->name('admin.vehicle.delete');
+        Route::get('/change_status', [App\Http\Controllers\Admin\VehicleController::class, 'change_status'])->name('admin.vehicle.change_status');
     });
 
     Route::group(['prefix' => 'customer'], function(){

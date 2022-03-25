@@ -20,6 +20,7 @@
                                 <th align="center">Price</th>
                                 <th align="center">Discounted Price</th>
                                 <th align="center">USD Price</th>
+                                <th align="center">Status</th>
                                 <th align="center">Date</th>
                                 <th align="center">Action</th>
                             </tr>
@@ -42,6 +43,7 @@
                                 @else
                                     <td align="center">$ {{number_format(round($row->price / $rate))}}</td>
                                 @endif
+                                <td align="center"><span class="badge badge-pill badge-soft-warning font-size-12">{{$row->status}}</span></td>
                                 <td align="center">{{date("Y-m-d", strtotime($row->created_at))}}</td>
                                 <td align="center">
                                         <a href="{{route('admin.vehicle.edit', ['id' => $row->id])}}" class="text-success edit" ><i
@@ -49,6 +51,9 @@
                                         <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="{{$row->id}}" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i
                                                 class="mdi mdi-delete font-size-18"></i></a>
+                                        <a href="javascript:void(0);" class="text-warning confirm_status" data-id="{{$row->id}}" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModalScrollable"><i
+                                                class="bx bx-cog font-size-18"></i></a>
                                 </td>
                             </tr>
                             @empty
@@ -81,11 +86,42 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <div id="exampleModalScrollable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Change Order Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="col-form-label">Order Satus:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-select select-status">
+                                @foreach($order_status as $row)
+                                    <option value="{{$row}}">{{$row}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light save_button">Save</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection
 @section('script')
     <script>
         var delete_url = "{{route('admin.vehicle.delete')}}";
         var index_url = "{{route('admin.vehicle.index')}}";
+        var change_status = "{{route('admin.vehicle.change_status')}}";
     </script>
     <script src="{{ URL::asset('/assets/admin/pages/vehicle/index.js') }}"></script>
 @endsection

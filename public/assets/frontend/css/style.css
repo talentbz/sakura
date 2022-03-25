@@ -1294,6 +1294,15 @@ h3 {
     }
 }
 @media only screen and (max-width: 425px) {
+    .custom-search .form-content, .select-search {
+        padding: 8px 12px;
+    }
+    .form-content span {
+        top: 9px;
+    }
+    .search-type, .search-maker {
+        margin-top: 12px;
+    }
     .top-menu-wrapper, .hero-wrapper, .contents-wrapper, .footer-warpper {
         width: 92%;
     }
@@ -1319,6 +1328,7 @@ h3 {
     }
     .topnav.responsive {
         margin-top: 54px;
+        z-index: 999;
     }
     .banner-desc h1 {
         font-size: 23px;
@@ -1355,8 +1365,8 @@ h3 {
     .search-category a {
         width: 90px;
         margin-right: 7px;
-        min-height: 82px;
-        max-height: 82px;
+        min-height: 72px;
+        max-height: 72px;
         margin-bottom: 4px !important;
     }
     .search-category {
@@ -1371,7 +1381,7 @@ h3 {
     }
     .search-title h3 {
         padding-top: 0;
-        padding-bottom: 15px;
+        padding-bottom: 7px;
     }
     .main-contents-title h1 {
         font-size: 20px;
@@ -1395,30 +1405,34 @@ h3 {
         line-height: 14px;
     }
     .contents-list {
-        margin-bottom: 30px;
+        margin-top: 5px;
+        margin-bottom: 0 !important;
     }
     .main-contents {
         padding: 0;
+        margin-top: 0;
     }
     .customer-list {
         width: 48%;
         margin-right: 7px;
+        margin-top: 5px;
     }
     .news-box {
         width: 100%;
+        margin-top: 0;
     }
     .fb-wrapper {
         display: block;
     }
     .footer-warpper {
-        margin-top: 36px !important;
-        margin-bottom: 44px !important;
+        margin-top: 12px !important;
+        margin-bottom: -2px !important;
     }
     .footer-logo, .footer-menu, .footer-contact {
         width: 100%;
     }
     .footer-social {
-        margin-top: 26px;
+        margin-top: 4px;
     }
     .footer-menu h3{
         margin-top: 30px;
@@ -1429,6 +1443,7 @@ h3 {
     }
     .footer-contact {
         width: 100%;
+        margin-top: 9px;
     }
     .address-contact {
         width: 100%;
@@ -1451,6 +1466,42 @@ h3 {
         margin-top: 4px;
         margin-left: 5px;
     }
+    .whatsapp .wrap {
+        width: 54px;
+    }
+    .side_whatsapp_add li span:last-child {
+        font-size: 13px;
+    }
+    .side_whatsapp_add li span:first-child {
+        font-size: 13px;
+    }
+    .side_whatsapp_add li::before {
+        top: 9px;
+    }
+    .side_whatsapp_add {
+        bottom: 111px;
+        right: 52px;
+    }
+    .side_whatsapp_add ul {
+        margin-bottom: 0;
+    }
+    .side_whatsapp_add li a {
+        width: 211px;
+    }
+    .footer-logo p {
+        margin-top: 3px;
+        margin-bottom: 0;
+    }
+    .footer-menu h3{
+        font-size: 20px;
+    }
+    .footer-contact .contact-title{
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    .footer-contact h3 {
+        font-size: 15px;
+    }
 }
 @media only screen and (max-width: 414px) {
     .search-category a {
@@ -1458,7 +1509,7 @@ h3 {
         margin-bottom: 8px !important;
     }
     .car-list{
-        margin-right: 8px;
+        margin-right: 7px;
     }
     .select-width, .select-width-last {
         width: 40%;
@@ -1476,6 +1527,9 @@ h3 {
     }
     .search-category a {
         width: 87px;
+    }
+    .car-list .car-desc{
+        min-height: 78px;
     }
 }
 @media only screen and (max-width: 393px) {
@@ -1528,9 +1582,6 @@ h3 {
     }
     .search-category a {
         width: 75px;
-    }
-    .car-list {
-        margin-right: 7px;
     }
 }
 @media only screen and (max-width: 320px) {
