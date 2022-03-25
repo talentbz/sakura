@@ -335,7 +335,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
     .stock-mobile-title, .stock-mobile-contents {
-        display: flex;
+        display: inline-block;
     }
     #stock-contents {
         display: flex;
