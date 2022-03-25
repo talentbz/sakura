@@ -75,7 +75,7 @@
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
                                 <select class="form-select" name="from_price">
-                                    <option>Any</option>
+                                    <option value="">Any</option>
                                     @foreach($price as $row)
                                         <option value="{{$row}}" >${{number_format($row)}}</option>
                                     @endforeach
@@ -83,7 +83,7 @@
                             </div>
                             <div class="select-width-last">
                                 <select class="form-select" name="to_price">
-                                    <option>Any</option>
+                                    <option value="">Any</option>
                                     @foreach($price as $row)
                                         <option value="{{$row}}" >${{number_format($row)}}</option>
                                     @endforeach

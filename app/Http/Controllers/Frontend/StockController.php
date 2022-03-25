@@ -101,9 +101,6 @@ class StockController extends Controller
                                     ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
-                                    ->where('vehicle.status', '')
-                                    ->orWhere('vehicle.status', Vehicle::INQUIRY)
-                                    ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
                                     ->groupBy('vehicle_image.vehicle_id');
                                     //->orderBy('vehicle.created_at', 'desc');
                                 
@@ -136,7 +133,7 @@ class StockController extends Controller
                 $vehicle_data = $vehicle_data->where('make_type', $request->maker);  
             }
             if(!is_null($request->model_name)){
-                $vehicle_data = $vehicle_data->where('model_type', $request->model_name);  
+                $vehicle_data = $vehicle_data->where('model_type', $request->model_name);
             }
             if(!is_null($request->from_year)){
                 $vehicle_data = $vehicle_data->where('year', '>=', $request->from_year);  
@@ -168,7 +165,9 @@ class StockController extends Controller
             // if(!is_null($price_country) && !is_null($price_port) && !is_null($inspection) && !is_null($insurance)){
                 
             // }
-            $vehicle_data = $vehicle_data->paginate(24);
+            $vehicle_data = $vehicle_data->where('vehicle.status', '')
+                                        ->orWhere('vehicle.status', Vehicle::INQUIRY)
+                                        ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)->paginate(24);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
             // } else {
@@ -300,7 +299,9 @@ class StockController extends Controller
                             <button type="button" name="load_more_button" data-id="'.$last_id.'" id="load_more_button">Load More</button>
                         </div>';
             } else {
-                $list.= '<h3 class="no-data">Sorry. The vehicle you are searching for is currently out of our stock. <br> Please send us an email mentioning your request car and budget: <br> <a href="mailto:info@sakuramotors.com">info@sakuramotors.com</a></h3>';
+                if($vehicle_data->currentPage() == 1) {
+                    $list.= '<h3 class="no-data">Sorry. The vehicle you are searching for is currently out of our stock. <br> Please send us an email mentioning your request car and budget: <br> <a href="mailto:info@sakuramotors.com">info@sakuramotors.com</a></h3>';
+                }
                 $list.= '<div id="load_more" style="display:none">
                             <button type="button" name="load_more_button">No Data Found</button>
                         </div>';

@@ -1294,6 +1294,11 @@ h3 {
     }
 }
 @media only screen and (max-width: 425px) {
+    .topnav.responsive a .active{
+        background: #286090;
+        border-color: #286090;
+        color: #fff !important;
+    }
     .custom-search .form-content, .select-search {
         padding: 8px 12px;
     }
