@@ -464,13 +464,13 @@
                     <p>Dear, {{$user->name}}</p>
                     <p>Thank you for confirming your order. Please kindly arrange your payment within 48 hours.</p>
                     <p>After you have done the payment kindly send bank TT copy or swift copy to start shipping process for speed shipping.</p><br>
-                @elseif(max_status == 3)
+                @elseif($max_status == 3)
                     <p>Dear, {{$user->name}}</p>
                     <p>We received your payment. Thank you very much.</p>
-                @elseif(max_status == 4)
+                @elseif($max_status == 4)
                     <p>Dear, {{$user->name}}</p>
                     <p>This is to inform you that we have already started shipping your vehicle, We will inform you the date and ship name as soon as possible.</p>
-                @else
+                @elseif($max_status == 5)
                     <p>Dear, {{$user->name}}</p>
                     <p>We have already sent the document by DHL. Please kindly use tracking number to track your document.</p>
                 @endif

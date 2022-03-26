@@ -165,9 +165,11 @@ class StockController extends Controller
             // if(!is_null($price_country) && !is_null($price_port) && !is_null($inspection) && !is_null($insurance)){
                 
             // }
-            $vehicle_data = $vehicle_data->where('vehicle.status', '')
-                                        ->orWhere('vehicle.status', Vehicle::INQUIRY)
-                                        ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)->paginate(24);
+            $vehicle_data = $vehicle_data->where(function ($q){
+                                            $q->where('vehicle.status', '');
+                                            $q->orWhere('vehicle.status', Vehicle::INQUIRY);
+                                            $q->where('vehicle.status', Vehicle::INVOICE_ISSUED);
+                                          })->paginate(24);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
             // } else {
