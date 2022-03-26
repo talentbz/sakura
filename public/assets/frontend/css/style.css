@@ -1305,8 +1305,11 @@ h3 {
     .form-content span {
         top: 9px;
     }
-    .search-type, .search-maker {
-        margin-top: 12px;
+    .search-maker {
+        margin-top: 0;
+    }
+    .search-type{
+        margin-top: 8px;
     }
     .top-menu-wrapper, .hero-wrapper, .contents-wrapper, .footer-warpper {
         width: 92%;
