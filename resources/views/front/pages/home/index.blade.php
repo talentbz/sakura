@@ -232,7 +232,7 @@
                 <a href="{{route('front.stock')}}" class="btn btn-light waves-effect">See all</a>
                 <div class="title-border"></div>
             </div>
-            <div class="contents-list mb-5">
+            <div class="contents-list">
                 @foreach($vehicle_data as $row)
                 <div class="car-list">
                     <div class="media-count">

@@ -1507,6 +1507,9 @@ h3 {
     .footer-contact h3 {
         font-size: 15px;
     }
+    .search-category img {
+        max-width: 60px;
+    }
 }
 @media only screen and (max-width: 414px) {
     .search-category a {

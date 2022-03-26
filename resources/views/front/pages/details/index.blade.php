@@ -325,57 +325,75 @@
                         <tr>
                             <td class="table-light" scope="row">STOCK NO</td>
                             <td>SM{{$vehicle_data->stock_no}}</td>
+                        </tr>    
+                        <tr>
                             <td class="table-light">Year</td>
                             <td>{{$vehicle_data->registration}}</td>
-                        </tr>    
+                        </tr>
                         <tr>
                             <td class="table-light">Model</td>
                             <td>TD42</td>
-                            <td class="table-light" scope="row">Transmission</td>
-                            <td>{{$vehicle_data->transmission}}</td>
                         </tr>   
                         <tr>
-                            <td class="table-light">ENGINE MODEL</td>
+                            <td class="table-light" scope="row">Transmission</td>
+                            <td>{{$vehicle_data->transmission}}</td>
+                        </tr>
+                        <tr>
+                            <td class="table-light"> ENGINE MODEL </td>
                             <td>{{$vehicle_data->engine_model}}</td>
+                        </tr>       
+                        <tr>
                             <td class="table-light">Fuel Type</td>
                             <td>{{$vehicle_data->fuel_type}}</td>
-                        </tr>       
+                        </tr>
                         <tr>
                             <td class="table-light">Engine CC</td>
                             <td>{{$vehicle_data->engine_size}}</td>
+                        </tr>
+                        <tr>
                             <td class="table-light">Drive Type</td>
                             <td>{{$vehicle_data->drive_type}}</td>
                         </tr>
                         <tr>
                             <td class="table-light">Seating</td>
                             <td>{{$vehicle_data->seats}}</td>
+                        </tr>        
+                        <tr>
                             <td class="table-light">Chassis</td>
                             <td>{{$vehicle_data->chassis}}</td>
-                        </tr>        
+                        </tr>
                         <tr>
                             <td class="table-light">Mileage</td>
                             <td>{{$vehicle_data->mileage}} (km)</td>
+                        </tr>
+                        <tr>
                             <td class="table-light">Make</td>
                             <td>{{$vehicle_data->make_type}}</td>
                         </tr>
                         <tr>
                             <td class="table-light">Width(Cm)</td>
                             <td>{{$vehicle_data->width}}</td>
+                        </tr>  
+                        <tr>
                             <td class="table-light">Steering</td>
                             <td>{{$vehicle_data->steering}}</td>
-                        </tr>  
+                        </tr>
                         <tr>
                             <td class="table-light">Height(cm)</td>
                             <td>{{$vehicle_data->height}}</td>
-                            <td class="table-light">Length(cm)</td>
-                            <td>{{$vehicle_data->length}}</td>
                         </tr>  
+                        <tr>
+                            <td class="table-light">Length(cm) </td>
+                            <td>{{$vehicle_data->length}}</td>
+                        </tr>
                         <tr>
                             <td class="table-light">Doors</td>
                             <td>{{$vehicle_data->doors}}</td>
-                            <td class="table-light">Fuel Type</td>
-                            <td>{{$vehicle_data->fuel_type}}</td>
                         </tr> 
+                        <tr>
+                            <td class="table-light">Fuel Type </td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -431,36 +449,48 @@
                     <tr>
                         <td class="{{$vehicle_data->ac==1?'attached-on':'attached-off'}}">AC</td>
                         <td class="{{$vehicle_data->power_steering==1?'attached-on':'attached-off'}}">Power Steering</td>
+                    </tr>
+                    <tr>
                         <td class="{{$vehicle_data->auto_door==1?'attached-on':'attached-off'}}">Auto Door</td>
                         <td class="{{$vehicle_data->remote_key==1?'attached-on':'attached-off'}}">Remote Key</td>
                     </tr>
                     <tr>
                         <td class="{{$vehicle_data->backup_camera==1?'attached-on':'attached-off'}}">Backup Camera</td>
                         <td class="{{$vehicle_data->navigation==1?'attached-on':'attached-off'}}">Navigation</td>
+                    </tr>
+                    <tr>
                         <td class="{{$vehicle_data->power_locks==1?'attached-on':'attached-off'}}">Power Locks</td>
                         <td class="{{$vehicle_data->cd_player==1?'attached-on':'attached-off'}}">CD player</td>
                     </tr>
                     <tr>
                         <td class="{{$vehicle_data->dvd==1?'attached-on':'attached-off'}}">DVD</td>
                         <td class="{{$vehicle_data->mp3_interface==1?'attached-on':'attached-off'}}">MP3 interface</td>
+                    </tr>
+                    <tr>
                         <td class="{{$vehicle_data->ratio==1?'attached-on':'attached-off'}}">Radio</td>
                         <td class="{{$vehicle_data->sun_roof==1?'attached-on':'attached-off'}}">Sun Roof</td>
                     </tr>
                     <tr>
                         <td class="{{$vehicle_data->air_bag==1?'attached-on':'attached-off'}}">Air bag</td>
                         <td class="{{$vehicle_data->abs==1?'attached-on':'attached-off'}}">ABS</td>
+                    </tr>
+                    <tr>
                         <td class="{{$vehicle_data->s_power_locks==1?'attached-on':'attached-off'}}">Power Locks</td>
                         <td class="{{$vehicle_data->parking_sensors==1?'attached-on':'attached-off'}}">Parking sensors</td>
                     </tr>
                     <tr>
                         <td class="{{$vehicle_data->grill_guard==1?'attached-on':'attached-off'}}">Grill Guard</td>
                         <td class="{{$vehicle_data->back_camera==1?'attached-on':'attached-off'}}">Back Camera</td>
+                    </tr>
+                    <tr>
                         <td class="{{$vehicle_data->leather_seat==1?'attached-on':'attached-off'}}">Leather Seat</td>
                         <td class="{{$vehicle_data->power_seat==1?'attached-on':'attached-off'}}">Power Seat</td>
                     </tr>
                     <tr>
                         <td class="{{$vehicle_data->power_mirrors==1?'attached-on':'attached-off'}}">Power Mirrors</td>
                         <td class="{{$vehicle_data->power_window==1?'attached-on':'attached-off'}}">Power Window</td>
+                    </tr>
+                    <tr>
                         <td class="{{$vehicle_data->rear_spoiler==1?'attached-on':'attached-off'}}">Rear Spoiler</td>
                         <td class="{{$vehicle_data->alloy_wheels==1?'attached-on':'attached-off'}}">Alloy wheels</td>
                     </tr>
