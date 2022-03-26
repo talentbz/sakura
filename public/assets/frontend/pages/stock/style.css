@@ -18,6 +18,7 @@ body {
     margin-top: 26px;
     background: #EF1923;
     border: 1px solid #EF1923;
+    font-size: 16px;
 }
 .calculator-select button:hover{
     background: #d31620 !important;
@@ -335,7 +336,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
     .stock-mobile-title, .stock-mobile-contents {
-        display: inline-block;
+        display: table;
     }
     #stock-contents {
         display: flex;
