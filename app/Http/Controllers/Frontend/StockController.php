@@ -88,7 +88,7 @@ class StockController extends Controller
         $insurance = $request->insurance;
 
         //sort by
-        $sort_by = $request->sort_by;
+        $sort_by = $request->sort_by; 
 
         for ($i=date('Y'); $i >= 1950 ; $i--) { 
             array_push($year, $i);
