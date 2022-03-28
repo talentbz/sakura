@@ -78,116 +78,6 @@
                 <button type="submit" class="ins-submit" id="mobile-calc"><i class="bx bx-calendar"></i> Calculate</button>
             </div>
             <!-- /price calculator -->
-            <!-- login register  -->
-            @if($comments)
-                <div class="login-register">
-                    <div class="notice">
-                        <h3>Notice</h3>
-                    </div>
-                    <div class="notice-content">
-                        <p>
-                            You have already made an inquiry about this vehicle.
-                            Please click <a href="{{route('front.user.chatdetail', ['id' => $comments->vehicle_id])}}">here</a>.
-                        </p>
-                    </div>
-                </div>
-            @else
-            <div class="login-register">
-                <ul class="nav nav-pills nav-justified" role="tablist">
-                    <li class="nav-item waves-effect waves-light inquiry-wrapper">
-                        <a class="nav-link inquiry active " data-bs-toggle="tab" href="#inquiry" role="tab"> Guest Inquiry </a>
-                    </li>
-                    <li class="nav-item waves-effect waves-light login-wrapper">
-                        <a class="nav-link login" data-bs-toggle="tab" href="#login" role="tab">LOG IN</a>
-                    </li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="inquiry" role="tabpanel">
-                        <form class="custom-validation inquForm" >
-                            <div class="inquiry-form">
-                                <!-- <div class="inquiry-title">
-                                    <h3>Please fill the *required fields</h3>
-                                </div> -->
-                                <input type="hidden" name="vehicle_name" value="{{($vehicle_data->make_type)}} {{$vehicle_data->model_type}} {{$vehicle_data->body_type}}">
-                                <input type="hidden" name="fob_price" class="inqu_fob_price" value="">
-                                <input type="hidden" name="inspection" class="inqu_inspection" value="">
-                                <input type="hidden" name="insurance" class="inqu_insurance" value="">
-                                <input type="hidden" name="inqu_port" class="inqu_port" value="">
-                                <input type="hidden" name="total_price" class="inqu_total_price" value="">
-                                <input type="hidden" name="site_url" class="inqu_url" value="">
-                                <input type="hidden" name="stock_no" class="stock_no" value=""> 
-                                <input type="hidden" name="vehicle_id" class="vehicle_id" value="{{$vehicle_data->id}}">
-                                <input type="hidden" name="user_id" class="user_id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
-                                <div class="inquiry-contents">
-                                    <div class="inquiry-list">
-                                        <div class="inquiry-left">
-                                            <label for="">Your Name*</label>
-                                            <input class="form-control"  type="text" placeholder="Full Name" name="inqu_name" required > 
-                                        </div>
-                                        <div class="inquiry-right">
-                                            <label for="">Select your country</label>
-                                            <select class="form-select" name="inqu_country" required>
-                                                @foreach($country as $row)
-                                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="inquiry-list">
-                                        <div class="inquiry-left">
-                                            <label for="">Your Email*</label>
-                                            <input class="form-control"  type="email" placeholder="Email address" name="inqu_email" required > 
-                                        </div>
-                                        <div class="inquiry-right">
-                                            <label for="">Address*</label>
-                                            <input class="form-control"  type="text" placeholder="Street, Town..." name="inqu_address" required > 
-                                        </div>
-                                    </div>
-                                    <div class="inquiry-list">
-                                        <div class="inquiry-left">
-                                            <label for="">Mobile*</label>
-                                            <input class="form-control"  type="text" placeholder="Mobile Number" name="inqu_mobile" required > 
-                                        </div>
-                                        <div class="inquiry-right">
-                                            <label for="">City*</label>
-                                            <input class="form-control"  type="text" placeholder="Your City" name="inqu_city" required > 
-                                        </div>
-                                    </div>
-                                    <div class="inquiry-list">
-                                        <label for="">Your Message</label>
-                                        <textarea  class="form-control" rows="3" placeholder="" ></textarea>
-                                    </div>
-                                    <div class="inquiry-list">
-                                        <div class="inquiry-right">
-                                            <button type="submit" class="btn btn-inquiry">Send</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane" id="login" role="tabpanel">
-                        <form class="custom-validation" action="">
-                            <div class="login-form">
-                                <div class="login-list">
-                                    <label for="">Email*</label>
-                                    <input class="form-control"  type="email" placeholder="Email" name="login_email" required > 
-                                </div>
-                                <div class="login-list">
-                                    <label for="">Password*</label>
-                                    <input class="form-control"  type="password" placeholder="Email" name="login_pass" required > 
-                                </div>
-                                <div class="login-list">
-                                    <button type="submit" class="btn btn-login">Login</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            @endif
         </div><!-- /end mobile -->
         <div class="main-products">
             <div class="vehicle-info">
@@ -222,9 +112,11 @@
                     </div>
                 </div>
             </div>
+            <!-- -->
             <div class="slick-wrapper">
                 <div class="product">
                     <div class="product-images">
+                        <div class="special-label">Reserved</div>
                         <div class="media-count">
                             @if($vehicle_img)
                             <div class="image-count" data-id="{{$vehicle_data->id}}">
@@ -501,6 +393,119 @@
                 </table>
             </div>
         </div>
+        <!-- mobile -->
+        <div class="detail-sidebar mobile-sidebar">
+            <!-- login register  -->
+            @if($comments)
+                <div class="login-register">
+                    <div class="notice">
+                        <h3>Notice</h3>
+                    </div>
+                    <div class="notice-content">
+                        <p>
+                            You have already made an inquiry about this vehicle.
+                            Please click <a href="{{route('front.user.chatdetail', ['id' => $comments->vehicle_id])}}">here</a>.
+                        </p>
+                    </div>
+                </div>
+            @else
+            <div class="login-register">
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li class="nav-item waves-effect waves-light inquiry-wrapper">
+                        <a class="nav-link inquiry active " data-bs-toggle="tab" href="#inquiry" role="tab"> Guest Inquiry </a>
+                    </li>
+                    <!-- <li class="nav-item waves-effect waves-light login-wrapper">
+                        <a class="nav-link login" data-bs-toggle="tab" href="#login" role="tab">LOG IN</a>
+                    </li> -->
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="inquiry" role="tabpanel">
+                        <form class="custom-validation inquForm" >
+                            <div class="inquiry-form">
+                                <!-- <div class="inquiry-title">
+                                    <h3>Please fill the *required fields</h3>
+                                </div> -->
+                                <input type="hidden" name="vehicle_name" value="{{($vehicle_data->make_type)}} {{$vehicle_data->model_type}} {{$vehicle_data->body_type}}">
+                                <input type="hidden" name="fob_price" class="inqu_fob_price" value="">
+                                <input type="hidden" name="inspection" class="inqu_inspection" value="">
+                                <input type="hidden" name="insurance" class="inqu_insurance" value="">
+                                <input type="hidden" name="inqu_port" class="inqu_port" value="">
+                                <input type="hidden" name="total_price" class="inqu_total_price" value="">
+                                <input type="hidden" name="site_url" class="inqu_url" value="">
+                                <input type="hidden" name="stock_no" class="stock_no" value=""> 
+                                <input type="hidden" name="vehicle_id" class="vehicle_id" value="{{$vehicle_data->id}}">
+                                <input type="hidden" name="user_id" class="user_id" value="{{isset(Auth::user()->id)?Auth::user()->id:''}}">
+                                <div class="inquiry-contents">
+                                    <div class="inquiry-list">
+                                        <div class="inquiry-left">
+                                            <label for="">Your Name*</label>
+                                            <input class="form-control"  type="text" placeholder="Full Name" name="inqu_name" required > 
+                                        </div>
+                                        <div class="inquiry-right">
+                                            <label for="">Select your country</label>
+                                            <select class="form-select" name="inqu_country" required>
+                                                @foreach($country as $row)
+                                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="inquiry-list">
+                                        <div class="inquiry-left">
+                                            <label for="">Your Email*</label>
+                                            <input class="form-control"  type="email" placeholder="Email address" name="inqu_email" required > 
+                                        </div>
+                                        <div class="inquiry-right">
+                                            <label for="">Address*</label>
+                                            <input class="form-control"  type="text" placeholder="Street, Town..." name="inqu_address" required > 
+                                        </div>
+                                    </div>
+                                    <div class="inquiry-list">
+                                        <div class="inquiry-left">
+                                            <label for="">Mobile*</label>
+                                            <input class="form-control"  type="text" placeholder="Mobile Number" name="inqu_mobile" required > 
+                                        </div>
+                                        <div class="inquiry-right">
+                                            <label for="">City*</label>
+                                            <input class="form-control"  type="text" placeholder="Your City" name="inqu_city" required > 
+                                        </div>
+                                    </div>
+                                    <div class="inquiry-list">
+                                        <label for="">Your Message</label>
+                                        <textarea  class="form-control" rows="3" placeholder="" ></textarea>
+                                    </div>
+                                    <div class="inquiry-list">
+                                        <div class="inquiry-right">
+                                            <button type="submit" class="btn btn-inquiry">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="login" role="tabpanel">
+                        <form class="custom-validation" action="">
+                            <div class="login-form">
+                                <div class="login-list">
+                                    <label for="">Email*</label>
+                                    <input class="form-control"  type="email" placeholder="Email" name="login_email" required > 
+                                </div>
+                                <div class="login-list">
+                                    <label for="">Password*</label>
+                                    <input class="form-control"  type="password" placeholder="Email" name="login_pass" required > 
+                                </div>
+                                <div class="login-list">
+                                    <button type="submit" class="btn btn-login">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endif
+        </div><!-- /end mobile -->
         <div class="detail-sidebar pc-sidebar">
             <!-- price calculator -->
             <div class="price-calculator">
@@ -580,9 +585,9 @@
                     <li class="nav-item waves-effect waves-light inquiry-wrapper">
                         <a class="nav-link inquiry active " data-bs-toggle="tab" href="#inquiry-pc" role="tab"> Guest Inquiry </a>
                     </li>
-                    <li class="nav-item waves-effect waves-light login-wrapper">
+                    <!-- <li class="nav-item waves-effect waves-light login-wrapper">
                         <a class="nav-link login" data-bs-toggle="tab" href="#login-pc" role="tab">LOG IN</a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <!-- Tab panes -->

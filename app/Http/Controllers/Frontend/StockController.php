@@ -101,6 +101,12 @@ class StockController extends Controller
                                     ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                    ->where(function ($q){
+                                            // $q->orWhere('vehicle.status', '');
+                                            $q->orWhere('vehicle.status', null);
+                                            $q->orWhere('vehicle.status', Vehicle::INQUIRY);
+                                            $q->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED);
+                                          })
                                     ->groupBy('vehicle_image.vehicle_id');
                                     //->orderBy('vehicle.created_at', 'desc');
                                 
@@ -108,7 +114,8 @@ class StockController extends Controller
         if ($request->ajax()) {
             if(isset($request->body_type)){
                 $vehicle_data = $vehicle_data->where('vehicle.body_type', $request->body_type);
-            } elseif(isset($request->make_type)){
+            } 
+            if(isset($request->make_type)){
                 $vehicle_data = $vehicle_data->where('vehicle.make_type', $request->make_type);  
             }
             if(!is_null($request->search_keyword)) {
@@ -116,16 +123,16 @@ class StockController extends Controller
                 // $general_search = $request->search_keyword;
                 $vehicle_data = $vehicle_data->where(function ($q) use ($general_search) {
                     foreach ($general_search as $value) {
-                        $q->orWhere('make_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('stock_no', 'LIKE', "%{$value}%");
-                        $q->orWhere('model_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('body_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('registration', 'LIKE', "%{$value}%");
-                        $q->orWhere('engine_model', 'LIKE', "%{$value}%");
-                        $q->orWhere('model_code', 'LIKE', "%{$value}%");
-                        $q->orWhere('fuel_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('drive_type', 'LIKE', "%{$value}%");
-                        $q->orWhere('exterior_color', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.make_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.stock_no', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.model_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.body_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.registration', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.engine_model', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.model_code', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.fuel_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.drive_type', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.exterior_color', 'LIKE', "%{$value}%");
                     }
                 });
             }
@@ -165,11 +172,7 @@ class StockController extends Controller
             // if(!is_null($price_country) && !is_null($price_port) && !is_null($inspection) && !is_null($insurance)){
                 
             // }
-            $vehicle_data = $vehicle_data->where(function ($q){
-                                            $q->where('vehicle.status', '');
-                                            $q->orWhere('vehicle.status', Vehicle::INQUIRY);
-                                            $q->where('vehicle.status', Vehicle::INVOICE_ISSUED);
-                                          })->paginate(24);
+            $vehicle_data = $vehicle_data->paginate(24);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
             // } else {
@@ -255,25 +258,30 @@ class StockController extends Controller
                             $list.='</table>';
                         $list.='</div>';
                         $list.='<div class="stock-mobile-contents">';
-                            $list.='<p class="stock-label">Stock No</p>';
-                            $list.='<p class="stock-value">SM'.$result->stock_no.'</p>';
-                            $list.='<p class="stock-label">Year</p>';
-                            $list.='<p class="stock-value">'.$result->registration.'</p>';
-                            $list.='<p class="stock-label">Model</p>';
-                            $list.='<p class="stock-value">TD42</p>';
-                            $list.='<p class="stock-label">Trans</p>';
-                            $list.='<p class="stock-value">'.$result->transmission.'</p>';
-                            $list.='<p class="stock-label">Trans</p>';
-                            $list.='<p class="stock-value">Manual</p>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Stock No :</p>';
+                            $list.='<p class="stock-value">SM'.$result->stock_no.'</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Year :</p>';
+                            $list.='<p class="stock-value">'.$result->registration.'</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Fuel :</p>';
+                            $list.='<p class="stock-value">'.$result->fuel_type.'</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Model :</p>';
+                            $list.='<p class="stock-value">TD42</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Transmission :</p>';
+                            $list.='<p class="stock-value">'.$result->transmission.'</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Chassis :</p>';
+                            $list.='<p class="stock-value">'.$result->chassis.'</p></div>';
                         $list.='</div>';
                         $list.='<div class="stock-price-list">';
                             $list.='<div class="fob-price">';
-                                $list.='<span class="fob-label">Price (FOB)</span>';
                                 $list.='<input type="hidden" class="cubic-meter" value="'.(($result->length * $result->width * $result->height)/1000000).'">';
                                 if($result->sale_price==null){
+                                    $list.='<span class="fob-label">Price (FOB)</span>';
                                     $list.='<input type="hidden" class="price" value="'.round($result->price/$rate).'">';
                                     $list.='<span class="fob-value">$'.number_format(round($result->price/$rate)).'</span>';
                                 } else{
+                                    $list.='<div class="original-price">Original Price $'.number_format(round($result->price/$rate)).'</div>';
+                                    $list.='<div class="price-border-bottom"></div>';
+                                    $list.='<span class="fob-label">Price (FOB)</span>';
                                     $list.='<input type="hidden" class="price" value="'.round($result->sale_price/$rate).'">';
                                     $list.='<span class="fob-value">$'.number_format(round($result->sale_price/$rate)).'</span>';
                                 }
@@ -293,7 +301,7 @@ class StockController extends Controller
                                 $list.='<a target="_blank" href="'.route('front.details', ['id' => $result->vehicle_id]).'" class="btn-inquire">Inquire</a>';
                             $list.='</div>';
                         $list.='</div>';
-                        $list.='<div class="contents-border-right"></div>';
+                        // $list.='<div class="contents-border-right"></div>';
                     $list.='</div>';
                     $last_id = $result->vehicle_id;
                 }

@@ -911,6 +911,7 @@ h3 {
     .select-search .input-group span {
         width: 62px;
         font-size: 13px;
+        font-weight: 900;
     }
     .search-category img {
         max-width: 30px;
@@ -933,6 +934,7 @@ h3 {
     .select-width, .select-width-last {
         width: 33%;
     }
+
 }
 @media only screen and (max-width: 1440px) {
     .hero-wrapper, .top-menu-wrapper, .contents-wrapper {
@@ -1207,6 +1209,7 @@ h3 {
         color: #4B4B4B;
         padding: 8px 10px;
         font-size: 15px;
+        font-weight: bold;
     }
     .topnav.responsive a:hover{
         background: #4B4B4B;
@@ -1219,7 +1222,7 @@ h3 {
         display: none;
     }
     .top-left {
-        width: 30%;
+        width: 34%;
     }
     .top-right {
         width: 70%;
@@ -1260,6 +1263,7 @@ h3 {
         margin-right: 37px;
         min-height: 80px;
         max-height: 80px;
+        font-weight: bold;
     }
     .search-category img {
         float: initial;
@@ -1321,7 +1325,7 @@ h3 {
         display: none;
     }
     .contact-info i, .user-register i{
-        font-size: 25px;
+        font-size: 29px;
     }
     .mobile-icon {
         font-size: 22px;
@@ -1339,7 +1343,7 @@ h3 {
         z-index: 999;
     }
     .banner-desc h1 {
-        font-size: 23px;
+        font-size: 16px;
         letter-spacing: 0.03em;
         line-height: 32px;
         padding-top:3px;
@@ -1407,6 +1411,9 @@ h3 {
     .car-desc h3 {
         font-size: 12px;
         line-height: 14px;
+    }
+    .car-desc a h3{
+        color: black;
     }
     .car-desc p {
         font-size: 11px;
@@ -1509,9 +1516,20 @@ h3 {
     }
     .footer-contact h3 {
         font-size: 15px;
+        float: left;
+        margin-right: 10px;
+    }
+    .contact-right {
+        display: flex;
+        margin-left: 12px;
     }
     .search-category img {
         max-width: 60px;
+        height: 27px;
+        object-fit: revert;
+    }
+    .contact-right p {
+        line-height: 1.2;
     }
 }
 @media only screen and (max-width: 414px) {
@@ -1586,7 +1604,7 @@ h3 {
         margin-left: 10px;
     }
     .hero {
-        height: 262px;
+        height: 223px;
     }
     .select-width, .select-width-last {
         width: 38.6%;

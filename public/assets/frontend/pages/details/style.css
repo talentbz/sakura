@@ -62,6 +62,7 @@ body {
 }
 .product-images {
     position: relative;
+    overflow: hidden;
 }
 .slider {
     margin-bottom: 0 !important;
@@ -211,6 +212,7 @@ a.active {
 }
 .inquiry-wrapper {
     border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
 }
 .login-wrapper {
     border-top-right-radius: 6px !important;
@@ -284,8 +286,12 @@ a.active {
     width: 70%;
     float: left;
 }
+.pc-table, .attached-on{
+    font-size: 15px;
+    color: #000;
+}
 .table>:not(caption)>*>* {
-    padding: 0.5rem !important;
+    padding: 0.2rem !important;
 }
 .table .table-light {
     color: #495057;
@@ -397,6 +403,26 @@ a.active {
 .mobile-featured-option{
     display: none;
 }
+.special-label {
+    position: absolute;
+    top: 27px;
+    left: -81px;
+    height: 49px;
+    padding: 0 50px !important;
+    width: 261px !important;
+    text-align: center !important;
+    line-height: 49px;
+    color: #fff !important;
+    text-transform: uppercase;
+    background-color: #fab637;
+    transform: rotate(-45deg) translateZ(0);
+    -webkit-transform-origin: 50% 50%;
+    z-index: 10;
+    background-color: #e41415;
+    font-size: 14px;
+    font-weight: 700;
+
+}
 @media only screen and (max-width: 1680px) {
     .contents-details {
         width: 80%;
@@ -465,7 +491,8 @@ a.active {
         display: none;
     }
     .mobile-table{
-        display: block;
+        display: contents;
+        color: #000;
     }
     .social-face, .social-viber, .social-whatsapp {
         margin-right: 0;

@@ -256,7 +256,7 @@
                         @endif
                     </a>
                     <div class="car-desc">
-                        <a href="javascript:void(0)">
+                        <a href="{{route('front.details', ['id' => $row->vehicle_id])}}">
                             <h3>{{$row->make_type}} {{$row->model_type}}</h3>
                         </a>
                         @if($row->sale_price==null)
@@ -346,17 +346,17 @@
         <div class="right-sidebar">
             <div class="news-box mb-2">
                 <a href="#">
+                    <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">
+                </a>
+            </div>
+            <div class="news-box mb-2">
+                <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/news_clearange.png')}}" alt="">
                 </a>
             </div>
             <div class="news-box mb-2">
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/news_shipping.png')}}" alt="">
-                </a>
-            </div>
-            <div class="news-box mb-2">
-                <a href="#">
-                    <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">
                 </a>
             </div>
             <div class="news-box mb-2">

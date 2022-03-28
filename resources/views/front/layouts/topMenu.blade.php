@@ -15,14 +15,14 @@
                 <i class="fa fa-bars"></i>
             </a>
             <div class="contact-info call-us">
-                <a href="#">
+                <a href="tel:81298683668">
                     <i class="bx bxs-phone-call"></i>    
                 </a>
                 <span>Call Us:</span>
-                <a class="mobile-no" href="tel:+81-29-868-3668">+81-29-868-3668</a>
+                <a class="mobile-no" href="tel:81298683668">+81-29-868-3668</a>
             </div>
             <div class="contact-info whats-app">
-                <a href="#">
+                <a href="https://wa.me/819093450908">
                     <i class="mdi mdi-whatsapp"></i>
                 </a>
                 <span>Whatsapp:</span>
