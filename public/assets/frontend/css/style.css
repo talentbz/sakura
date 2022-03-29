@@ -1324,11 +1324,14 @@ h3 {
     .social{
         display: none;
     }
+    .top-left {
+        width: 45%;
+    }
     .contact-info i, .user-register i{
-        font-size: 29px;
+        font-size: 35px;
     }
     .mobile-icon {
-        font-size: 22px;
+        font-size: 28px;
     }
     .user-register a {
         display: grid;
@@ -1530,6 +1533,10 @@ h3 {
     }
     .contact-right p {
         line-height: 1.2;
+    }
+    .car-list img {
+        max-height: 100px;
+        object-fit: cover;
     }
 }
 @media only screen and (max-width: 414px) {

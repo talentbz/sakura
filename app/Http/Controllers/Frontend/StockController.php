@@ -102,7 +102,7 @@ class StockController extends Controller
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
                                     ->where(function ($q){
-                                            // $q->orWhere('vehicle.status', '');
+                                            $q->orWhere('vehicle.status', '');
                                             $q->orWhere('vehicle.status', null);
                                             $q->orWhere('vehicle.status', Vehicle::INQUIRY);
                                             $q->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED);

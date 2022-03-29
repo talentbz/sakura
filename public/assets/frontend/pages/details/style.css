@@ -342,9 +342,15 @@ a.active {
 }
 .attached-on {
     background-color: #FFDDBF !important;
+    width: 50%;
+    float: left;
+    border: 1px solid #eee;
 }
 .attached-off{
     color: #B9B9B9 !important;
+    width: 50%;
+    float: left;
+    display: none;
 }
 .parsley-error {
     border-color: #f46a6a !important;
