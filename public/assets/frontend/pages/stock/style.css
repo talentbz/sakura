@@ -519,7 +519,7 @@ body {
         color: #222;
     }
     .cif, .port {
-        /* font-size: 17px; */
+        font-size: .8125rem;
     }
     .btn-detail, .btn-inquire {
         padding: 10px 18px;
