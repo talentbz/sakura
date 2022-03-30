@@ -32,8 +32,9 @@ class UserController extends Controller
     {
         $country = config('config.country');
         $ip = $request->ip();
-        $country_ip = \Location::get('112.134.189.70');
-        // $country_ip = \Location::get($ip);
+        // $country_ip = \Location::get('112.134.189.70');
+        $ip = file_get_contents('https://api.ipify.org');
+        $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first()->country;
         return view('front.pages.user.signup', [
             'country' => $country,
