@@ -18,7 +18,11 @@ class StockController extends Controller
 {
     public function index(Request $request)
     {
-        $ip = file_get_contents('https://api.ipify.org');
+        // $ip = file_get_contents('https://api.ipify.org');
+        $ip = $request->getClientIp();
+        if($ip == '127.0.0.1'){
+            $ip = '188.43.235.177'; //Russia IP address
+        }
         $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
         
@@ -376,7 +380,10 @@ class StockController extends Controller
     }
     public function details(Request $request, $id){
         
-        $ip = file_get_contents('https://api.ipify.org');
+        $ip = $request->getClientIp();
+        if($ip == '127.0.0.1'){
+            $ip = '188.43.235.177'; //Russia IP address
+        }
         $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
         $total_price = '';
