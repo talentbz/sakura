@@ -463,7 +463,7 @@
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
                                             <label for="">Mobile*</label>
-                                            <input class="form-control"  type="text" placeholder="Mobile Number" name="inqu_mobile" required > 
+                                            <input class="form-control"  type="text" placeholder="+81298683668" name="inqu_mobile" required > 
                                         </div>
                                         <div class="inquiry-right">
                                             <label for="">City*</label>
@@ -632,7 +632,7 @@
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
                                             <label for="">Mobile*</label>
-                                            <input class="form-control"  data-parsley-type="number" type="text" placeholder="Mobile Number" name="inqu_mobile" required > 
+                                            <input class="form-control" type="text" placeholder="+81298683668" name="inqu_mobile" required > 
                                         </div>
                                         <div class="inquiry-right">
                                             <label for="">City*</label>

@@ -15,28 +15,28 @@
                     <table id="datatable" class="table table-bordered nowrap w-100">
                         <thead>
                             <tr>
+                                <th align="center">No</th>
                                 <th align="center">Name</th>
                                 <th align="center">Email</th>
                                 <th align="center">Country</th>
                                 <th align="center">Mobile</th>
                                 <th align="center">Stock No</th>
                                 <th align="center">Total Price</th>
-                                <!-- <th align="center">Status</th> -->
                                 <th align="center">Date</th>
                                 <th align="center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($inquery as $row)
+                            @forelse($inquery as $key=>$row)
                             <tr>
+                                <td align="center">{{$key + 1}}</td>
                                 <td align="center">{{$row->inqu_name}}</td>
                                 <td align="center">{{$row->inqu_email}}</td>
                                 <td align="center">{{$row->inqu_country}}</td>
                                 <td align="center">{{$row->inqu_mobile}}</td>
                                 <td align="center"><a href="{{$row->site_url}}">{{$row->stock_no}}</a></td>
                                 <td align="center">{{$row->total_price}}</td>
-                                <!-- <td align="center"><span class="badge rounded-pill badge-soft-warning font-size-11">Unregister</span></td> -->
-                                <td align="center">{{date("Y-m-d", strtotime($row->created_at))}}</td>
+                                <td align="center" data-order="{{$row->created_at}}" >{{date("Y-m-d", strtotime($row->created_at))}}</td>
                                 <td align="center">
                                         <a href="javascript:void(0);" class="text-success edit" data-id="{{$row->id}}" data-bs-toggle="modal" data-bs-target="#detail"><i
                                                 class="mdi mdi-eye font-size-18"></i></a>
