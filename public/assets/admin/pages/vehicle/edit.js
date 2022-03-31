@@ -16,9 +16,6 @@ $(document).ready(function () {
                 }
             }
     })
-    $(document).on('click', '.file-drop-zone', function(){
-        $('.fileinput-upload-button').attr('style','display: block !important'); 
-    })
     $("#input-711").fileinput({
         
         initialPreview: image_path,
@@ -44,7 +41,44 @@ $(document).ready(function () {
         showBrowse: false,
         browseOnZoneClick: true,
     });
-
+    $('.fileinput-remove-button').on('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        id = id_array;
+        if(id.length > 0){
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: image_all_delete,
+                method: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(id),
+                beforeSend: function(){
+                    $('.back').hide();
+                },
+                success: function (res) {
+                    toastr["success"]("Success");
+                    setInterval(function(){ 
+                        location.href = window.location.href; 
+                    }, 2000);
+                },
+                error: function (res){
+                    console.log(res)
+                }
+            })
+        }
+    })
+    if(id_array.length > 0) {
+        $('.fileinput-upload-button').attr('style','display: none !important'); 
+    } else {
+        $('.fileinput-upload-button').attr('style','display: block !important'); 
+    }
+    $(document).on('click', '.file-drop-zone', function(){
+        $('.fileinput-upload-button').attr('style','display: block !important'); 
+    })
     $('form#myForm').submit(function(e){
         e.preventDefault();
         e.stopPropagation();

@@ -351,4 +351,21 @@ class VehicleController extends Controller
         Vehicle::where('id', $request->id)->update(['status' => $request->status]);
         return response()->json(['result' => true]);
     }
+    public function image_all_delete(Request $request){
+        $ids = $request->all();
+        foreach($ids as $id){
+            $vehicle_id = VehicleImage::where('id', $id['key'])->first()->vehicle_id;
+            $fileName = VehicleImage::where('id', $id['key'])->first()->image;
+            $real_image = ('uploads/vehicle/'.$vehicle_id.'/real'.'/'.$fileName);
+            $thumb_image = ('uploads/vehicle/'.$vehicle_id.'/thumb'.'/'.$fileName);
+            if(File::exists(public_path($real_image))){
+                File::delete(public_path($real_image));   
+            }
+            if(File::exists(public_path($thumb_image))){
+                File::delete(public_path($thumb_image));   
+            }
+            $result = VehicleImage::where('id', $id['key'])->delete();
+        }
+        return response()->json(['result' => true]);
+    }
 }
