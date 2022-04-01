@@ -3,95 +3,89 @@
 return [     
     'model_catgory' => [
         [
-            'category_name' => 'Toyota',
-            'children' => [
-                'CAMRY', 'RAV4', 'RDX','LAND CRUISER', 'SAI', 'VOLTZ', 'GRAND HIACE', 'PRIUS', 'CALDINA', 'LITEACE VAN', 'ALLION', 'SUCCEED VAN','CORONA PREMIO', 'HIACE WAGON', 'RAUM', 'CELSIOR', 'DYNA TRUCK', 'NOAH', 'AVENSIS', 'TOYOACE', 'ISIS', 'COROLLA RUMION', 'VITZ', 'GAIA', 'PREVIA', 'BREVIS', 'LITEACE TRUCK', 'STARLET','COROLLA VERSO', 'HIACE VAN', 'RACTIS', 'CELICA', 'NADIA', 'AURIS', 'TOWNACE VAN', 'DYNA ROUTE VAN', 'IQ', 'RUSH', 'COROLLA FIELDER', 'VISTA ARDEO', 'FUN CARGO', 'PREMIO', 'BLADE', 'LITEACE NOAH', 'SPRINTER SEDAN', 'COROLLA VAN', 'YARIS', 'HIACE TRUCK', 'PROGRES', 'CARINA', 'MR-S', 'ARISTO', 'TOWNACE TRUCK', 'DUET', 'IPSUM', 'REGIUSACE VAN', 'COROLLA AXIO', 'VEROSSA', 'FORTUNER', 'PORTE', 'BELTA', 'LAND CRUISER PRADO', 'SPRINTER CARIB', 'COROLLA TOURING WAGON', 'HIACE COMMUTER', 'PROBOX WAGON', 'MARK X ZIO', 'AQUA', 'TOWNACE NOAH', 'CROWN MAJESTA', 'HILUX TRUCK', 'REGIUSACE COMMUTER', 'COROLLA', 'VELLFIRE', 'FJ CRUISER', 'PLATZ', 'BB', 'SPADE', 'COROLLA SPACIO', 'WILL VS', 'HARRIER', 'PROBOX VAN', 'CAMI', 'MARK X', 'ALTEZZA', 'TOURING HIACE', 'CROWN', 'HILUX SURF', 'REGIUS WAGON', 'COASTER', 'ESTIMA', 'PASSO SETTE', 'AVENSIS WAGON', 'VANGUARD', 'KLUGER', 'SOARER', 'COROLLA SEDAN', 'VOXY', 'GRANVIA', 'PRIUS ALPHA', 'CALDINA VAN', 'MARK II', 'ALPHARD', 'SUCCEED WAGON', 'CORSA', 'HILUX', 'CHASER', 'DYNA URBAN SUPPORTER', 'PASSO', 'AVENSIS VERSO', 'TUNDRA', 'IST', 'SIENTA', 'COROLLA RUNX'
-            ]
+          'category_name' => 'Toyota',
+          'children' => [
+            'ALLION', 'ALPHARD', 'ALTEZZA', 'AQUA', 'ARISTO', 'AURIS', 'AVENSIS VERSO', 'AVENSIS WAGON', 'AVENSIS', 'BB', 'BELTA', 'BLADE', 'BREVIS', 'CALDINA VAN', 'CALDINA', 'CAMI', 'CARINA', 'CAMRY', 'CELICA', 'CELSIOR', 'CHASER', 'COASTER', 'COROLLA AXIO', 'COROLLA FIELDER', 'COROLLA RUMION', 'COROLLA RUNX', 'COROLLA SEDAN', 'COROLLA SPACIO', 'COROLLA TOURING WAGON', 'COROLLA VAN', 'COROLLA', 'CORSA', 'CORONA PREMIO', 'CROWN MAJESTA','COROLLA VERSO','CROWN', 'DUET', 'DYNA ROUTE VAN', 'DYNA TRUCK', 'DYNA URBAN SUPPORTER', 'ESTIMA', 'FJ CRUISER', 'FORTUNER', 'FUN CARGO', 'GAIA', 'GRANVIA','GRAND HIACE', 'HARRIER', 'HIACE COMMUTER', 'HIACE TRUCK', 'HIACE VAN', 'HIACE WAGON', 'HILUX SURF', 'HILUX TRUCK', 'HILUX', 'IPSUM', 'IQ', 'ISIS','IST', 'KLUGER', 'LAND CRUISER PRADO','LAND CRUISER', 'LITEACE NOAH', 'LITEACE TRUCK', 'LITEACE VAN', 'MARK II', 'MARK X ZIO', 'MARK X', 'MR-S', 'NADIA', 'NOAH', 'PASSO SETTE', 'PASSO', 'PLATZ', 'PORTE', 'PREMIO', 'PREVIA', 'PRIUS ALPHA', 'PRIUS', 'PROBOX VAN', 'PROBOX WAGON', 'PROGRES', 'RACTIS', 'RAUM','RAV4','RDX', 'REGIUS WAGON', 'REGIUSACE COMMUTER','REGIUSACE VAN', 'RUSH', 'SAI','SOARER', 'SPADE', 'SPRINTER CARIB','SIENTA','SPRINTER SEDAN', 'STARLET', 'SUCCEED VAN', 'SUCCEED WAGON', 'TOURING HIACE', 'TOWNACE NOAH', 'TOWNACE TRUCK', 'TOWNACE VAN', 'TOYOACE','TUNDRA', 'VANGUARD', 'VELLFIRE', 'VEROSSA', 'VISTA ARDEO', 'VITZ', 'VOXY','VOLTZ', 'WILL VS', 'YARIS'
+          ]
         ],
         [
-            'category_name' => 'MITSUBISHI',
-            'children' => [
-                'ROSA', 'FIGHTER MIGNON DUMP', 'DION', 'OUTLANDER', 'AERO MIDI', 'GREAT', 'RVR', 'COLT', 'LANCER CARGO', 'DELICA VAN', 'MINICAB VAN', 'GRANDIS', 'CHALLENGER', 'LANCER', 'DELICA TRUCK', 'MINICAB TRUCK', 'GALANT FORTIS', 'PAJERO MINI', 'CARISMA', 'L400', 'FIGHTER DUMP', 'DELICA SPACEGEAR', 'MINICA', 'FIGHTER MIGNON', 'PAJERO JR', 'CANTER GUTS', 'L300', 'SUPER GREAT', 'DELICA D5', 'LANCER EVOLUTION VIII', 'FIGHTER', 'PAJERO IO', 'CANTER', 'L200', 'STRADA', 'DELICA CARGO', 'LANCER EVOLUTION VII', 'EK WAGON', 'PAJERO', 'AIRTREK', 'JEEP', 'SPACE GEER', 'COLTPLUS', 'LANCER EVOLUTION'
-            ]
+          'category_name' => 'MITSUBISHI',
+          'children' => [
+            'AERO MIDI', 'AIRTREK', 'CANTER GUTS', 'CANTER', 'CARISMA', 'CHALLENGER', 'COLT', 'COLTPLUS', 'DELICA CARGO', 'DELICA D5', 'DELICA SPACEGEAR', 'DELICA TRUCK', 'DELICA VAN', 'DION', 'EK WAGON', 'FIGHTER DUMP', 'FIGHTER MIGNON DUMP', 'FIGHTER MIGNON', 'FIGHTER', 'GALANT FORTIS', 'GRANDIS', 'GREAT', 'JEEP', 'L200', 'L300', 'L400', 'LANCER CARGO', 'LANCER EVOLUTION', 'LANCER EVOLUTION VII', 'LANCER EVOLUTION VIII', 'LANCER', 'MINICA', 'MINICAB TRUCK', 'MINICAB VAN', 'OUTLANDER', 'PAJERO IO', 'PAJERO JR', 'PAJERO MINI', 'PAJERO', 'RVR','ROSA', 'SPACE GEER', 'STRADA', 'SUPER GREAT'
+          ]
         ],
         [
-            'category_name' => 'Nissan',
-            'children' => [
-                'ALTIMA', 'ATLAS', 'SKYLINE GT-R', 'CLIPPER TRUCK', 'MURANO', 'DEXPERT', 'TERRANO REGULUS', 'DUALIS', 'PRESAGE', 'BLUEBIRD SYLPHY', 'VANETTE VAN', 'JUKE', 'SKYLINE COUPE', 'CIVILIAN', 'MOCO', 'TERRANO', 'DATSUN', 'PATROL GR', 'BIG THUMB', 'VANETTE TRUCK', 'HOMY VAN', 'SKYLINE', 'CIMA', 'MARCH', 'TEANA', 'CUBE CUBIC', 'PAO', 'URVAN', 'HOMY COACH', 'SERENA', 'CEDRIC', 'LIBERTY', 'SUNNY TRUCK', 'CUBE', 'OTTI', 'UD', 'FUGA', 'SAFARI', 'CARAVAN VAN', 'LATIO', 'SUNNY', 'CONDOR', 'NOTE', 'ALMERA', 'TIIDA LATIO', 'FAIRLADY Z', 'PRIMERA WAGON', 'CARAVAN COACH', 'X-TRAIL', 'LAFESTA', 'STAGEA', 'CLIPPER VAN', 'NAVARA', 'AD', 'TIIDA', 'ELGRAND', 'PRIMERA', 'CARAVAN', 'WINGROAD', 'KUON'
-            ],
+          'category_name' => 'Nissan',
+          'children' => [
+            'AD', 'ALMERA', 'ATLAS','ALTIMA', 'BIG THUMB', 'BLUEBIRD SYLPHY', 'CARAVAN COACH', 'CARAVAN VAN', 'CARAVAN', 'CEDRIC', 'CIMA', 'CIVILIAN', 'CLIPPER TRUCK', 'CLIPPER VAN', 'CONDOR', 'CUBE CUBIC', 'CUBE', 'DATSUN','DEXPERT','DUALIS', 'ELGRAND', 'FAIRLADY Z', 'FUGA', 'HOMY COACH', 'HOMY VAN', 'JUKE','KUON', 'LAFESTA', 'LATIO', 'LIBERTY', 'MARCH', 'MURANO','MOCO', 'NAVARA', 'NOTE', 'OTTI', 'PAO', 'PATROL GR', 'PRESAGE', 'PRIMERA WAGON', 'PRIMERA', 'SAFARI', 'SERENA', 'SKYLINE GT-R', 'SKYLINE', 'STAGEA', 'SUNNY TRUCK', 'SUNNY','SKYLINE COUPE', 'TEANA', 'TERRANO REGULUS', 'TERRANO', 'TIIDA LATIO', 'TIIDA', 'URVAN','UD', 'VANETTE TRUCK', 'VANETTE VAN', 'WINGROAD', 'X-TRAIL'
+          ],
         ],
         [
-            'category_name' => 'ISUZU',
-            'children' => [
-                'JOURNEY', 'ASKA', 'FORWARD', 'FARGO', 'WIZARD', 'ELF', 'MU', 'D-MAX', 'JUSTON', 'COMO', 'BIGHORN', 'GIGA'
-            ],
+          'category_name' => 'ISUZU',
+          'children' => [
+             'ASKA', 'BIGHORN', 'COMO', 'D-MAX', 'ELF', 'FORWARD', 'FARGO', 'GIGA', 'JOURNEY', 'JUSTON', 'MU', 'WIZARD'
+          ],
         ],
         [
-            'category_name' => 'Hino',
-            'children' => [
-                'RANGER', 'DOLPHIN', 'RANGER2', 'RAINBOW', 'PROFIA', 'LIESSE II', 'DUTRO', 'MELPHA'
-            ],
+          'category_name' => 'Hino',
+          'children' => [
+            'DOLPHIN', 'DUTRO', 'LIESSE II', 'MELPHA', 'PROFIA', 'RANGER2', 'RAINBOW', 'RANGER'
+          ],
         ],
         [
-            'category_name' => 'Suzuki',
-            'children' => [
-                'WAGON R', 'ALTO', 'JIMNY SIERRA', 'SX4', 'JIMNY', 'SWIFT', 'GRAND ESCUDO', 'SPLASH', 'EVERY', 'LANDY', 'ESCUDO', 'KEI', 'CARRY', 'JIMNY WIDE'
-            ],
+          'category_name' => 'Suzuki',
+          'children' => [
+            'ALTO', 'CARRY', 'ESCUDO', 'EVERY', 'GRAND ESCUDO', 'JIMNY SIERRA', 'JIMNY', 'JIMNY WIDE', 'KEI', 'LANDY', 'SX4', 'SWIFT', 'SPLASH', 'WAGON R'
+          ],
         ],
         [
-            'category_name' => 'Benz',
-            'children' => [
-                'C-Class', 'E-Class', 'Actros'
-            ],
+          'category_name' => 'Benz',
+          'children' => [
+           'Actros', 'C-Class', 'E-Class'
+          ],
         ],
         [
-            'category_name' => 'Volvo',
-            'children' => [
-                ''
-            ],
+          'category_name' => 'Volvo',
+          'children' => [
+            ''
+          ],
         ],
         [
-            'category_name' => 'BMW',
-            'children' => [
-                ''
-            ],
+          'category_name' => 'BMW',
+          'children' => [
+            ''
+          ],
         ],
         [
-            'category_name' => 'Ford',
-            'children' => [
-                'RANGER'
-            ],
+          'category_name' => 'Ford',
+          'children' => [
+            'RANGER'
+          ],
         ],
         [
-            'category_name' => 'Honda',
-            'children' => [
-                'Accord', 'Civic', 'Corvette', 'CR-V', 'ELYSION', 'INSIGHT', 'MDX', 'ELEMENT', 'HR-V', 'CAPA', 'LIFE', 'EDIX', 'STREAM', 'FREED', 'AVANCIER', 'LEGEND', 'CROSSROAD', 'STEP WGN', 'FIT SHUTTLE', 'AIRWAVE', 'INTEGRA', 'CR-Z', 'ODYSSEY', 'FIT HYBRID', 'ACTY VAN', 'INSPIRE', 'MOBILIO SPIKE', 'FIT', 'ACTY TRUCK', 'INSIGHT EXCLUSIVE', 'CIVIC HYBRID', 'MOBILIO'
-            ],
+          'category_name' => 'Honda',
+          'children' => [
+             'ACCORD','ACTY TRUCK','ACTY VAN','AIRWAVE','AVANCIER','CAPA','CIVIC HYBRID', 'Civic','Corvette','CR-V','CR-Z','CROSSROAD', 'EDIX','ELEMENT','ELYSION','FIT HYBRID','FIT SHUTTLE', 'FIT','FREED','HR-V','INSIGHT','INSIGHT EXCLUSIVE', 'INSPIRE', 'INTEGRA', 'LEGEND', 'LIFE', 'MDX', 'MOBILIO', 'MOBILIO SPIKE', 'ODYSSEY','STEP WGN','STREAM',
+          ],
         ],
         [
-            'category_name' => 'Mazda',
-            'children' => [
-                'CX-5', 'ATENZA', 'LEVANTE', 'B-SERIES', 'TITAN', 'CAROL', 'FAMILIA VAN', 'AXELA SPORT', 'RX-8', 'BONGO VAN', 'FAMILIA S-WAGON', 'AXELA', 'ROADSTER', 'BONGO TRUCK', 'E2200', 'ATENZA WAGON', 'PREMACY', 'BONGO FRIENDEE', 'VERISA', 'DEMIO', 'ATENZA SPORT WAGON', 'MPV', 'BONGO BRAWNY VAN', 'TRIBUTE', 'CX-7', 'ATENZA SPORT', 'MAZDA5', 'BIANTE', 'TITAN DASH'
-            ],
+          'category_name' => 'Mazda',
+          'children' => [
+            'ATENZA WAGON','ATENZA SPORT WAGON','ATENZA SPORT','ATENZA','AXELA SPORT', 'AXELA','BIANTE','BONGO BRAWNY VAN','BONGO FRIENDEE','BONGO TRUCK','BONGO VAN','B-SERIES','CAROL','CX-5','CX-7','DEMIO', 'E2200', 'FAMILIA S-WAGON', 'FAMILIA VAN','LEVANTE', 'MAZDA5','MPV', 'PREMACY','ROADSTER','RX-8', 'TRIBUTE','TITAN DASH', 'TITAN','VERISA',
+          ],
         ],
         [
-            'category_name' => 'Daihatsu',
-            'children' => [
-                'TERIOS KID', 'BE-GO', 'HIJET', 'TERIOS', 'HIJET CARGO', 'NAKED', 'ESSE', 'MOVE', 'DELTA', 'MIRAGINO', 'COO', 'MIRA ES', 'BOON', 'MIRA'
-            ],
+          'category_name' => 'Daihatsu',
+          'children' => [
+            'BE-GO','BOON','COO','DELTA','ESSE', 'HIJET','HIJET CARGO', 'MOVE', 'MIRAGINO', 'MIRA ES', 'MIRA','NAKED','TERIOS', 'TERIOS KID'
+          ],
         ],
         [
-            'category_name' => 'Subaru',
-            'children' => [
-                'SAMBAR', 'EXIGA', 'IMPREZA SPORTSWAGON', 'PLEO', 'IMPREZA SPORTS', 'OUTBACK', 'IMPREZA G4', 'LEGACY TOURING WAGON', 'IMPREZA ANESIS', 'LEGACY B4', 'VIVIO', 'IMPREZA', 'IMPREZA WRX STI', 'SAMBAR TRUCK', 'FORESTER', 'IMPREZA WRX'
-            ],
+          'category_name' => 'Subaru',
+          'children' => [
+            'EXIGA', 'FORESTER', 'IMPREZA ANESIS', 'IMPREZA G4', 'IMPREZA SPORTS', 'IMPREZA SPORTSWAGON', 'IMPREZA WRX', 'IMPREZA WRX STI', 'IMPREZA', 'LEGACY B4', 'LEGACY TOURING WAGON', 'OUTBACK', 'PLEO', 'SAMBAR TRUCK','SAMBAR','VIVIO'
+          ],
         ],
-        [
-            'category_name' => 'Volkswagen',
-            'children' => [
-                ''
-            ],
-        ],        
     ],
     'body_type' =>[
         'Bus', 'Truck', 'Van', 'SUV', 'Sedan', 'Pick Up', 'Machinery', 'Tractor'

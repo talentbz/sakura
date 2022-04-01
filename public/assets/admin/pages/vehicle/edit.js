@@ -72,6 +72,7 @@ $(document).ready(function () {
         }
     })
     if(id_array.length > 0) {
+        // 
         $('.fileinput-upload-button').attr('style','display: none !important'); 
     } else {
         $('.fileinput-upload-button').attr('style','display: block !important'); 
