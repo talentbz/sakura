@@ -408,7 +408,7 @@ class StockController extends Controller
         }
         $vehicle_data = Vehicle::where('id', $id)->first();
         $rate = Rate::first();
-        $vehicle_img = VehicleImage::select('image')->where('vehicle_id', $id)->get();
+        $vehicle_img = VehicleImage::select('image')->where('vehicle_id', $id)->orderByRaw('CONVERT(image, SIGNED) asc')->get();
         $real_url = URL::asset('uploads/vehicle/'.$id.'/real');
         $thumb_url = URL::asset('uploads/vehicle/'.$id.'/thumb');
         $country = Port::get();

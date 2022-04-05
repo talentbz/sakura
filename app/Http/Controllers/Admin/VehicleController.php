@@ -50,7 +50,7 @@ class VehicleController extends Controller
     }
     public function edit(Request $request, $id) {
         $data = Vehicle::findOrFail($id);
-        $image_path = VehicleImage::where('vehicle_id', $id)->get();
+        $image_path = VehicleImage::where('vehicle_id', $id)->orderByRaw('CONVERT(image, SIGNED) asc')->get();
         $get_url = URL::asset('uploads/vehicle/'.$id.'/real');
         $get_image_path = [];
         $id_array = [];
