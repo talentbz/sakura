@@ -17,6 +17,7 @@ class VehicleController extends Controller
     {
         $rate = Rate::latest('id')->first()->rate;
         $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+                        ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
                         ->groupBy('vehicle.id')
                         ->select('vehicle.*', 'vehicle_image.image')
                         ->orderBy('vehicle.created_at', 'desc')

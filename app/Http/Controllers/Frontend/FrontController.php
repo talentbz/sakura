@@ -26,6 +26,7 @@ class FrontController extends Controller
                                      ->where('vehicle.status', '')
                                      ->orWhere('vehicle.status', Vehicle::INQUIRY)
                                      ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
+                                     ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
                                      ->groupBy('vehicle_image.vehicle_id')
                                      ->orderBy('vehicle.created_at', 'desc')
                                      ->paginate(8);
