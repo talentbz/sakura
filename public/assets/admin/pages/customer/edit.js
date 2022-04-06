@@ -42,9 +42,7 @@ $(document).ready(function () {
             data: formData,
             success: function (res) {
                 toastr["success"]("Success");
-                setInterval(function(){ 
-                    location.href = list_url; 
-                }, 2000);
+                location.href = list_url; 
             },
             error: function (res){
                 console.log(res)
