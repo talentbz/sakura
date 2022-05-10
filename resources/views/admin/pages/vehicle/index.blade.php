@@ -31,7 +31,7 @@
                                 <td align="center">
                                     <img src="{{URL::asset('/uploads/vehicle')}}{{'/'}}{{$row->id}}{{'/thumb'}}{{'/'}}{{$row->image}}" alt="" width="80">
                                 </td>
-                                <td align="center">SM{{$row->stock_no}}</td>
+                                <td align="center">{{$row->stock_no}}</td>
                                 <td align="center">¥ {{number_format($row->price)}}</td>
                                 @if($row->sale_price)
                                     <td align="center">¥ {{number_format($row->sale_price)}}</td>
