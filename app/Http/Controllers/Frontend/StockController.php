@@ -56,6 +56,7 @@ class StockController extends Controller
         $body_pick_up = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Pick up')->first();
         $body_machinery = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Machinery')->first();
         $body_tractor = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Tractor')->first();
+        $body_hatchback = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Hatchback')->first();
 
         //make type
         $make_toyoda = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Toyota')->first();
@@ -335,6 +336,7 @@ class StockController extends Controller
             'rate' => $rate,
             'body_bus' => $body_bus,
             'body_truck' => $body_truck,
+            'body_hatchback' => $body_hatchback,
             'body_van' => $body_van,
             'body_sedan' => $body_sedan,
             'body_pick_up' => $body_pick_up,
