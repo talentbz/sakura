@@ -88,7 +88,7 @@ return [
         ],
     ],
     'body_type' =>[
-        'Bus', 'Truck', 'Van', 'SUV', 'Sedan', 'Pick Up', 'Machinery', 'Tractor'
+        'Bus', 'Truck', 'Van', 'SUV', 'Sedan', 'Hatchback', 'Pick Up', 'Machinery', 'Tractor'
     ],
     'fuel_type' =>[
         'Diesel', 'Electric', 'Gasoline', 'Hybrid', 'Petrol'

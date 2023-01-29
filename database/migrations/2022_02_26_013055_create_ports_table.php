@@ -16,6 +16,7 @@ class CreatePortsTable extends Migration
         Schema::create('ports', function (Blueprint $table) {
             $table->id();
             $table->string('country');
+            $table->string('body_type')->nullable();
             $table->string('port')->nullable();
             $table->string('price')->nullable();
             $table->timestamps();

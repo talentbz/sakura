@@ -17,7 +17,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label class="form-label">Select Country</label>
-                                <select class="form-select select-category" name="country" required>
+                                <select class="form-select select-category select-country" name="country" required>
                                     @foreach($country as $row)
                                         <option value="{{$row->id}}" {{ $current_country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                     @endforeach
@@ -28,6 +28,7 @@
                                 <table id="myTable" class="table order-list">
                                     <thead>
                                         <tr>
+                                            <td>Body Type</td>
                                             <td>Port</td>
                                             <td>Price</td>
                                         </tr>
@@ -36,6 +37,20 @@
                                         @if($port_count)
                                             @for($i=0; $i<$port_count; $i++)
                                             <tr>
+                                                <td class="col-sm-4">
+                                                    <select class="form-select select-category" name="body_type[]" required>
+                                                        @if($port_body_type)
+                                                            @foreach($body_type as $row)
+                                                                <option value="{{$row}}" {{ $row == $port_body_type[$i] ? "selected" : "" }} >{{$row}}</option>
+                                                            @endforeach
+                                                        @else
+                                                            <option value="">select</option>
+                                                            @foreach($body_type as $row)
+                                                                <option value="{{$row}}">{{$row}}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </td>
                                                 <td class="col-sm-4">
                                                     <input type="text" name="port[]" class="form-control" value="{{$port_key[$i]}}" required/>
                                                 </td>
@@ -47,6 +62,14 @@
                                             @endfor
                                         @else
                                         <tr>
+                                            <td class="col-sm-4">
+                                                <select class="form-select select-category" name="body_type[]" required>
+                                                    <option value="">select</option>
+                                                    @foreach($body_type as $row)
+                                                        <option value="{{$row}}">{{$row}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
                                             <td class="col-sm-4">
                                                 <input type="text" name="port[]" class="form-control" required/>
                                             </td>
@@ -79,8 +102,9 @@
 @section('script')
     <script>
         var add_port = "{{route('admin.port.edit_post')}}";
+        var body_type =  {!! json_encode($body_type) !!};
         $(document).ready(function () {
-            $('.select-category').on("change", function (e) { 
+            $('.select-country').on("change", function (e) { 
                 var id = $(e.currentTarget).val();
                 edit_url = `{{route('admin.port.index')}}/edit/${id}`;
                 console.log(edit_url)

@@ -5,6 +5,12 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
+        cols += '<td><select class="form-select select-category" name="body_type[]" required>';
+        cols += '<option value="">select</option>';
+        for (i = 0; i < body_type.length; i++) {
+            cols += '<option value="'+ body_type[i] +'">'+ body_type[i] +'</option>';   
+        }
+        cols += '</select></td>';
         cols += '<td><input type="text" class="form-control" name="port[]" required/></td>';
         cols += '<td><input type="number" class="form-control" name="price[]" required/></td>';
 
