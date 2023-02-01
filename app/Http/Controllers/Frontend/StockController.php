@@ -276,6 +276,7 @@ class StockController extends Controller
                             $list.='<p class="stock-value">'.$result->transmission.'</p></div>';
                             $list.='<div class="stock-mobile-info"><p class="stock-label">Chassis :</p>';
                             $list.='<p class="stock-value">'.$result->chassis.'</p></div>';
+                            $list.='<input type="hidden" class="mobile-body-type" value="'.$result->body_type.'">';
                         $list.='</div>';
                         $list.='<div class="stock-price-list">';
                             $list.='<div class="fob-price">';
