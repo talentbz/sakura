@@ -20,7 +20,6 @@ $(document).ready(function () {
                 }
             }
     })
-
     //price calc for pc version
     $('#select-country').on("change", function (e) { 
         e.preventDefault();
@@ -37,10 +36,16 @@ $(document).ready(function () {
             var port = response.port;
             var port_name = JSON.parse(port.port)
             var port_price = JSON.parse(port.price)
+            var port_list = response.port_list;
+            var port_list_array= $.map(port_list, function(value, index) {
+                return [[index,value]];
+            });
             html = ''
-            if(port_name != null){
-                for(i=0; i<port_name.length; i++){
-                    html +='<option value="'+port_price[i]+'">'+port_name[i]+'</option>'
+            if(port_list_array){
+                for(i=0; i<port_list_array.length; i++){
+                    arr_str = port_list_array[i][1];
+                    console.log(arr_str);
+                    html +=`<option value='${JSON.stringify(port_list_array[i][1])}'>${port_list_array[i][0]}</option>`
                 }
             } 
             html +='<option value="0"></option>'
@@ -268,12 +273,21 @@ $(document).ready(function () {
     pc price calculator
 */
 function price_calc(){
-    port_price = parseInt($('.port-pc option:selected' ).val()); 
+    port_array = JSON.parse($('.port-pc option:selected' ).val());
+    port_price = 0
     port_name = $('.port-pc option:selected' ).text(); 
     inspection_price = parseInt($('.inspection option:selected' ).val());
     insurance_price = parseInt($('.insurance option:selected' ).val()); 
     country = $('#select-country').val();
     $('.contents-list').each(function(e) {
+        body_type = $(this).find('.body_type').text(); 
+        for (i = 0; i < port_array.length; i++) {
+            alert(Object.keys(port_array[i]));
+            if(body_type == Object.keys(port_array[i])){
+                port_price = port_array[i][body_type];
+                alert(port_price)
+            }
+        }
         total_price = parseInt($(this).find('.price').val());
         cubic_meter = $(this).find('.cubic-meter').val();
         price_shipping = port_price*cubic_meter;

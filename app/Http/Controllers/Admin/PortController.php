@@ -45,9 +45,21 @@ class PortController extends Controller
         // dd($request->all());
         $country_id = $request->country;
         $port = Port::where('id', $country_id)->first();
-        $port->port = $request->port;
-        $port->price = $request->price;
-        $port->body_type = $request->body_type;
+        $port_name = $request->port;
+        $port_price = $request->price;
+        $port_body_type = $request->body_type;
+        $port->port = $port_name;
+        $port->price = $port_price;
+        $port->body_type = $port_body_type;
+        $port_array = [];
+        foreach($port_name as $key=>$row){
+            $single_port_array = [];
+            $single_port_array[$port_body_type[$key]] =  $port_price[$key];
+            array_push($single_port_array, $port_name[$key]);
+            $port_array[] = $single_port_array;
+        }
+        $port->port_array = $port_array;
+        
         $port->save();
         return response()->json(['result' => true, 'save port' => $port]);
     }

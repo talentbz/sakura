@@ -24,7 +24,8 @@ class StockController extends Controller
             $ip = '188.43.235.177'; //Russia IP address
         }
         $country_ip = \Location::get($ip);
-        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        // $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
         
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
@@ -90,7 +91,7 @@ class StockController extends Controller
         $price_port = $request->price_port;
         $inspection = $request->inspection;
         $insurance = $request->insurance;
-
+        
         //sort by
         $sort_by = $request->sort_by; 
 
@@ -235,7 +236,7 @@ class StockController extends Controller
                                         $list.='<td class="table-light">ENGINE MODEL</td>';
                                         $list.='<td>'.$result->engine_model.'</td>';
                                         $list.='<td class="table-light">Body Type</td>';
-                                        $list.='<td>'.$result->body_type.'</td>';
+                                        $list.='<td class="body_type">'.$result->body_type.'</td>';
                                     $list.='</tr>';       
                                     $list.='<tr>';
                                         $list.='<td class="table-light">Engine CC</td>';
@@ -462,6 +463,24 @@ class StockController extends Controller
     public function select_port(Request $request){ 
         $country_id = $request->id;
         $port = Port::where('id', $country_id)->first();
-        return response()->json(['result' => true, 'port' => $port]);
+        $port_unique_name =  array_values(array_unique(json_decode($port->port)));
+
+        // create new port array
+        $port_list = [];
+        $port_array = json_decode($port->port_array);
+        if($port_array) {
+            foreach($port_unique_name as $key=>$row){
+                $get_last_body = [];
+                for ($i=0; $i <count($port_array) ; $i++) { 
+                    $new_obj_arr = (array)$port_array[$i];
+                    if($new_obj_arr[0] == $row){
+                        $get_last_body[] =array_splice($new_obj_arr, 0, 1);
+                    }
+                }
+                $port_list[$row] = $get_last_body;
+            }
+        }
+        
+        return response()->json(['result' => true, 'port' => $port, 'port_list' =>$port_list]);
     }
 }
