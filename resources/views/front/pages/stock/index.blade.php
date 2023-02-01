@@ -31,9 +31,9 @@
                     <label for="">Select port</label>
                     <select class="form-select port-pc" name="price_port" id="price-port">
                         @if($port_count)
-                            @for($i=0; $i<$port_count; $i++)
-                                <option value="{{$port_price[$i]}}" {{$price_port ==$port_price[$i]? 'selected':'' }}>{{$port_key[$i]}}</option>
-                            @endfor
+                            @foreach($port_list as $key=>$row)
+                                <option value='{{json_encode($row)}}'>{{$key}}</option>
+                            @endforeach
                             <option value="0"></option>
                         @else
                             <option value="0"></option>
@@ -333,9 +333,9 @@
                         <div class="calc-list-value">
                             <select class="form-select port" name="" id="price-port-mobile">
                                 @if($port_count)
-                                    @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
-                                    @endfor
+                                    @foreach($port_list as $key=>$row)
+                                        <option value='{{json_encode($row)}}'>{{$key}}</option>
+                                    @endforeach
                                     <option value="0"></option>
                                 @else
                                     <option value="0"></option>
