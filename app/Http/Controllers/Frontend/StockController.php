@@ -24,8 +24,8 @@ class StockController extends Controller
             $ip = '188.43.235.177'; //Russia IP address
         }
         $country_ip = \Location::get($ip);
-        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
-        // $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
+        // $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
             $port_key = json_decode($current_country->port);
@@ -409,7 +409,8 @@ class StockController extends Controller
             $ip = '188.43.235.177'; //Russia IP address
         }
         $country_ip = \Location::get($ip);
-        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        // $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
         $total_price = '';
         $port = '';
         $inspection = '';
@@ -429,6 +430,24 @@ class StockController extends Controller
             $port_count = 0;
             $port_key = [];
             $port_price = [];
+        }
+        // create new port array
+        $port_list = [];
+        if($current_country->port){
+            $port_unique_name =  array_values(array_unique(json_decode($current_country->port)));
+            $port_array = json_decode($current_country->port_array);
+            if($port_array) {
+                foreach($port_unique_name as $key=>$row){
+                    $get_last_body = [];
+                    for ($i=0; $i <count($port_array) ; $i++) { 
+                        $new_obj_arr = (array)$port_array[$i];
+                        if($new_obj_arr[0] == $row){
+                            $get_last_body[] =array_splice($new_obj_arr, 0, 1);
+                        }
+                    }
+                    $port_list[$row] = $get_last_body;
+                }
+            }
         }
         $vehicle_data = Vehicle::where('id', $id)->first();
         $rate = Rate::first();
@@ -461,6 +480,7 @@ class StockController extends Controller
             'inspection' => $inspection,
             'insurance' => $insurance,
             'comments' =>$comments,  
+            'port_list' => $port_list,
         ]);
     }
     public function image_download(Request $request, $id){

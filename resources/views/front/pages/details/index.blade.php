@@ -42,14 +42,14 @@
                             <label for="">Select Port</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select port" name="">
+                            <select class="form-select port-ad" name="">
                                 @if($port_count)
-                                    @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}" {{$port == ''?'':($port == $port_price[$i] ? 'selected':'')}}>{{$port_key[$i]}}</option>
-                                    @endfor
-                                    <option value="0" {{$port == ''?:($port == 0? 'selected':'')}}></option>
+                                    @foreach($port_list as $key=>$row)
+                                        <option value='{{json_encode($row)}}'>{{$key}}</option>
+                                    @endforeach
+                                    <option value="0"></option>
                                 @else
-                                    <option value="0" {{$port == ''?:($port == 0? 'selected':'')}}></option>
+                                    <option value="0"></option>
                                 @endif
                             </select>
                         </div>
@@ -106,9 +106,9 @@
                             <h5 class="total-price-label">Total Price</h5>
                             <h5 class="total-price-value">{{!$total_price=='' ? $total_price:'ASK'}}</h5>
                         </div>
-                    </div>
-                    <div class="cif">
-                        <p></p>
+                        <div class="ml-2 cif">
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,6 +173,7 @@
                             <td>{{$vehicle_data->registration}}</td>
                             <td class="table-light">Model</td>
                             <td>TD42</td>
+                            <input type="hidden" value="{{$vehicle_data->body_type}}" class="body_type">
                                
                         <tr>
                             <td class="table-light" scope="row">Transmission</td>
@@ -530,9 +531,9 @@
                         <div class="calc-list-value">
                             <select class="form-select port" name="">
                                 @if($port_count)
-                                    @for($i=0; $i<$port_count; $i++)
-                                        <option value="{{$port_price[$i]}}">{{$port_key[$i]}}</option>
-                                    @endfor
+                                    @foreach($port_list as $key=>$row)
+                                        <option value='{{json_encode($row)}}'>{{$key}}</option>
+                                    @endforeach
                                     <option value="0"></option>
                                 @else
                                     <option value="0"></option>

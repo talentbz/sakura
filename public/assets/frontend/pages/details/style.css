@@ -49,6 +49,9 @@ body {
     color: #E10B14;
     font-weight: 600;
 }
+.total-price {
+    float: left;
+}
 .total-price-label {
     float: left;
     margin-right: 20px;
@@ -58,7 +61,8 @@ body {
     color: #E10B14;
 }
 .cif {
-    float: right;
+    margin-left: 5px;
+    float: left;
 }
 .product-images {
     position: relative;

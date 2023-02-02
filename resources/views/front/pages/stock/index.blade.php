@@ -209,7 +209,7 @@
                             <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=Hatchback'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
+                            <img src="{{URL::asset ('/assets/frontend/images/s_hatchback.png')}}" alt="">
                             <p>Hatchback</p><span>({{$body_hatchback && $body_hatchback->body_count ? $body_hatchback->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=pick up'}}" class="mb-1">
