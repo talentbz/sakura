@@ -42,7 +42,7 @@
                             <label for="">Select Port</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select port-ad" name="">
+                            <select class="form-select port-mb" name="">
                                 @if($port_count)
                                     @foreach($port_list as $key=>$row)
                                         <option value='{{json_encode($row)}}'>{{$key}}</option>
@@ -529,7 +529,7 @@
                             <label for="">Select Port</label>
                         </div>
                         <div class="calc-list-value">
-                            <select class="form-select port" name="">
+                            <select class="form-select port-pc" name="">
                                 @if($port_count)
                                     @foreach($port_list as $key=>$row)
                                         <option value='{{json_encode($row)}}'>{{$key}}</option>

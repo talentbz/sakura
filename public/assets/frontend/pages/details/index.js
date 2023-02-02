@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    price_calc();
+    pc_price_calc();
+    mb_price_calc();
     
     $(document).on('click', '.image-count', function(e){
         e.preventDefault();
@@ -61,11 +62,13 @@ $(document).ready(function () {
         asNavFor: '.slider-thumbnails',
     });
     $(document).on('click', '#pc-calc', function(){       
-        price_calc();
+        pc_price_calc();
     })
     $(document).on('click', '#mobile-calc', function(){       
-        price_calc();
+        mb_price_calc();
     })
+
+    // select country pc version
     $('.select-country').on("change", function (e) { 
         var id = $(e.currentTarget).val()
         $.ajax({
@@ -89,7 +92,42 @@ $(document).ready(function () {
                 }
             } 
             html +='<option value="0"></option>'
-            $('.port')
+            $('.port-pc')
+                    .find('option')
+                    .remove()
+                    .end()
+                    .append(html)
+        })
+        .fail(function (jqXHR, ajaxOptions, thrownError) {
+            console.log('Server error occured');
+        });
+    })
+
+    // select country mobile version
+    $('.select-country').on("change", function (e) { 
+        var id = $(e.currentTarget).val()
+        $.ajax({
+            url: select_port,
+            data:{
+                id:id
+            },
+            type: "get",
+        })
+        .done(function (response) {
+            var port_list = response.port_list;
+            var port_list_array= $.map(port_list, function(value, index) {
+                return [[index,value]];
+            });
+            html = ''
+            if(port_list_array){
+                for(i=0; i<port_list_array.length; i++){
+                    arr_str = port_list_array[i][1];
+                    console.log(arr_str);
+                    html +=`<option value='${JSON.stringify(port_list_array[i][1])}'>${port_list_array[i][0]}</option>`
+                }
+            } 
+            html +='<option value="0"></option>'
+            $('.port-mb')
                     .find('option')
                     .remove()
                     .end()
@@ -167,10 +205,52 @@ $(document).ready(function () {
     })
 })
 
-function price_calc(){
+
+//pc calc
+function pc_price_calc(){
     port_price = 0; 
-    port_array = JSON.parse($('.port option:selected').val());
-    port_name = $('.port option:selected' ).text(); 
+    port_array = JSON.parse($('.port-pc option:selected').val());
+    port_name = $('.port-pc option:selected' ).text(); 
+    inspection_price = parseInt($('.insp-value' ).val());
+    insurance_price = parseInt($('.insu-value' ).val()); 
+    total_price = parseInt($('.price').val());                                                                                                                 
+    cubic_meter = $('.cubic-meter').val();
+    body_type = $('.body_type').val(); 
+    for (i = 0; i < port_array.length; i++) {
+        if(body_type == Object.keys(port_array[i])){
+            port_price = port_array[i][body_type];
+        }
+    }
+    price_shipping = port_price*cubic_meter;
+    console.log(port_price);  
+    if(port_price == 0) {
+        cif = "( C & F )"
+        final_price = "ASK"    
+        port_name = 'Port'
+    } else {
+        if(inspection_price == 0){          
+            cif = '( CIF )'
+        }
+        if(insurance_price == 0){
+            cif = '(  C&F Inspect )'
+        }
+        if(insurance_price == 0 && inspection_price == 0){
+            cif = '( C & F )';
+        }
+        if(!insurance_price == 0 && !inspection_price == 0){
+            cif = '( CIF Inspect )'
+        }
+        final_price ='$' + Math.round(total_price + price_shipping + inspection_price + insurance_price).toLocaleString();
+    }
+    $('.cif p').text(cif +', '+ port_name);
+    $('.total-price-value').text(final_price);
+}
+
+// mobile calc
+function mb_price_calc(){
+    port_price = 0; 
+    port_array = JSON.parse($('.port-mb option:selected').val());
+    port_name = $('.port-mb option:selected' ).text(); 
     inspection_price = parseInt($('.insp-value' ).val());
     insurance_price = parseInt($('.insu-value' ).val()); 
     total_price = parseInt($('.price').val());                                                                                                                 
