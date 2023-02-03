@@ -232,7 +232,7 @@
         <div class="main-contents">
             <!-- new arrivals -->
             <div class="main-contents-title">
-                <h1>New Arriavals</h1>
+                <h1>New Arrivals</h1>
                 <a href="{{route('front.stock')}}" class="btn btn-light waves-effect">See all</a>
                 <div class="title-border"></div>
             </div>
@@ -305,7 +305,7 @@
                         @endif
                     </a>
                     <div class="car-desc">
-                        <a href="javascript:void(0)">
+                        <a href="{{route('front.details', ['id' => $row->vehicle_id])}}">
                             <h3>{{$row->make_type}} {{$row->model_type}} </h3>
                         </a>
                         @if($row->sale_price==null)

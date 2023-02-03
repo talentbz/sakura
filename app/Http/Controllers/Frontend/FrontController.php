@@ -23,12 +23,12 @@ class FrontController extends Controller
         $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                     ->orderBy('vehicle.id', 'desc')
                                      ->where('vehicle.status', '')
                                      ->orWhere('vehicle.status', Vehicle::INQUIRY)
                                      ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
                                      ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
                                      ->groupBy('vehicle_image.vehicle_id')
-                                     ->orderBy('vehicle.created_at', 'desc')
                                      ->paginate(8);
         $best_vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   

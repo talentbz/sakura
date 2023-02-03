@@ -116,7 +116,7 @@
             <div class="slick-wrapper">
                 <div class="product">
                     <div class="product-images">
-                        @if($vehicle_data->status)
+                        @if($vehicle_data->status == 'Invoice Issued')
                         <div class="special-label">Reserved</div>
                         @endif
                         <div class="media-count">
