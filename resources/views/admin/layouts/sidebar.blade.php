@@ -22,7 +22,7 @@
                 <li>
                     <a href="{{route('admin.vehicle.rate')}}">
                         <i class="bx bx-bitcoin"></i>
-                        <span>Currency Rate</span>
+                        <span>Rate</span>
                     </a>
                 </li>
                 <li>

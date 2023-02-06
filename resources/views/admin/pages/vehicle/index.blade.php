@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                         <thead>
                             <tr>
                                 <th align="center" width="5%">Image</th>
@@ -123,5 +123,11 @@
         var index_url = "{{route('admin.vehicle.index')}}";
         var change_status = "{{route('admin.vehicle.change_status')}}";
     </script>
+    <!-- Required datatable js -->
+    <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <!-- Datatable init js -->
+    <!-- <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script> -->
     <script src="{{ URL::asset('/assets/admin/pages/vehicle/index.js') }}"></script>
 @endsection

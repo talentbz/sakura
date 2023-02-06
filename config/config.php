@@ -47,19 +47,19 @@ return [
         [
           'category_name' => 'Volvo',
           'children' => [
-            ''
+            '1800', '240', '240 WAGON', '244', '245 WAGON', '740', '740 ESTATE', '760', '850', '850 ESTATE', '940', '940 ESTATE', '960', '960 ESTATE', 'AMAZON', 'C30', 'C70', 'CROSS COUNTRY', 'S40', 'S60', 'S70', 'S80', 'S90', 'V40', 'V50', 'V60', 'V70', 'V90', 'XC40', 'XC60', 'XC70', 'XC90'
           ],
         ],
         [
           'category_name' => 'BMW',
           'children' => [
-            ''
+            '120I', '1 SERIES', '2 SERIES', '3 SERIES', '3 SERIES CABRIORET', '4 SERIES', '5 SERIES', '6 SERIES', '7 SERIES', '8 SERIES', 'ACTIVE HYBRID 3', 'ALPINA', 'i3', 'i8', 'JETTA', 'M MODEL', 'M8', 'MINI', 'MINI ONE', 'OTHER', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'Z3', 'Z4'
           ],
         ],
         [
           'category_name' => 'Ford',
           'children' => [
-            'RANGER'
+            'BRONCO', 'E350', 'ECOSPORT', 'ESCAPE', 'EXCURSION', 'EXPEDITION', 'EXPLORER', 'F150', 'FESTIVA', 'FIESTA', 'FLEX', 'FOCUS', 'FREDA', 'J80', 'Ka', 'KUGA', 'MONDEO', 'MUSTANG', 'OTHER', 'RANGER', 'WINNEBAGO'
           ],
         ],
         [
