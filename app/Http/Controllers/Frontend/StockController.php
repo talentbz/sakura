@@ -246,7 +246,7 @@ class StockController extends Controller
                                         $list.='<td class="table-light">Year</td>';
                                         $list.='<td>'.$result->registration.'</td>';
                                         $list.='<td class="table-light">Model</td>';
-                                        $list.='<td>TD42</td>';
+                                        $list.='<td>'.$result->model_type.'</td>';
                                     $list.='</tr>';
                                     $list.='<tr>';
                                         $list.='<td class="table-light" scope="result">Transmission</td>';

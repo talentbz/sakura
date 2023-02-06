@@ -202,7 +202,7 @@
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
-                            <p>Sub</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
+                            <p>Suv</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=sedan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">

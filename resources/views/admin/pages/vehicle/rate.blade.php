@@ -6,7 +6,7 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1') Vehicle Management @endslot
-        @slot('title') Currency Rate @endslot
+        @slot('title') Rate @endslot
     @endcomponent
     <div class="row">
         <div class="col-12">
@@ -15,7 +15,7 @@
                     {!! csrf_field() !!}
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Currency Rate</h4>
+                            <h4 class="card-title mb-4">Rate</h4>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="detail-list mb-3 row">
