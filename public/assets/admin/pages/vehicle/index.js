@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#datatable').on('click', '.confirm_delete', function(e){
+    $('#datatable-buttons').on('click', '.confirm_delete', function(e){
         e.preventDefault();
         e.stopPropagation();
         var id = $(this).data('id');
@@ -21,7 +21,7 @@ $(document).ready(function () {
             })
         })
     })
-    $('#datatable').on('click', '.confirm_status', function(e){
+    $('#datatable-buttons').on('click', '.confirm_status', function(e){
         e.preventDefault();
         e.stopPropagation();
         var id = $(this).data('id');
