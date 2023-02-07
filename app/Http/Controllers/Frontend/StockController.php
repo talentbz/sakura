@@ -157,6 +157,7 @@ class StockController extends Controller
                         $q->orWhere('vehicle.fuel_type', 'LIKE', "%{$value}%");
                         $q->orWhere('vehicle.drive_type', 'LIKE', "%{$value}%");
                         $q->orWhere('vehicle.exterior_color', 'LIKE', "%{$value}%");
+                        $q->orWhere('vehicle.chassis', 'LIKE', "%{$value}%");
                     }
                 });
             }

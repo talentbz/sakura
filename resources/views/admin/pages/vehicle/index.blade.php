@@ -17,6 +17,7 @@
                             <tr>
                                 <th align="center" width="5%">Image</th>
                                 <th align="center">Stock No</th>
+                                <th align="center">Chassis</th>
                                 <th align="center">Price</th>
                                 <th align="center">Discounted Price</th>
                                 <th align="center">USD Price</th>
@@ -32,6 +33,7 @@
                                     <img src="{{URL::asset('/uploads/vehicle')}}{{'/'}}{{$row->id}}{{'/thumb'}}{{'/'}}{{$row->image}}" alt="" width="80">
                                 </td>
                                 <td align="center">{{$row->stock_no}}</td>
+                                <td align="center">{{$row->chassis}}</td>
                                 <td align="center">¥ {{number_format($row->price)}}</td>
                                 @if($row->sale_price)
                                     <td align="center">¥ {{number_format($row->sale_price)}}</td>
