@@ -44,11 +44,15 @@ class FrontController extends Controller
                                     ->groupBy('vehicle_image.vehicle_id')
                                     ->orderBy('vehicle.created_at', 'desc')
                                     ->paginate(8);
-        $body_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'bus')->first();
-        $body_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Truck')->first();
+        $body_large_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Large Bus')->first();
+        $body_mini_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Mini Bus')->first();
+        $body_heavy_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Heavy Truck')->first();
+        $body_light_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Light Truck')->first();
         $body_van = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Van')->first();
+        $body_mini_van = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Mini Van')->first();
         $body_sub = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'sub')->first();
         $body_sedan = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Sedan')->first();
+        $body_wagon = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Wagon')->first();
         $body_pick_up = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Pick up')->first();
         $body_machinery = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Machinery')->first();
         $body_tractor = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Tractor')->first();
@@ -108,14 +112,18 @@ class FrontController extends Controller
             'year' => $year,
             'price' => $price,
             //body type
-            'body_bus' => $body_bus,
-            'body_truck' => $body_truck,
+            'body_large_bus' => $body_large_bus,
+            'body_mini_bus' => $body_mini_bus,
+            'body_heavy_truck' => $body_heavy_truck,
+            'body_light_truck' => $body_light_truck,
             'body_van' => $body_van,
+            'body_mini_van' => $body_mini_van,
+            'body_sub' => $body_sub,
+            'body_wagon' => $body_wagon,
             'body_sedan' => $body_sedan,
             'body_pick_up' => $body_pick_up,
             'body_machinery' => $body_machinery,
             'body_tractor' => $body_tractor,
-            'body_sub' => $body_sub,
             'body_hatchback' => $body_hatchback,
 
              //make type

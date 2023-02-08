@@ -188,17 +188,29 @@
                 </div>
                 <div class="search-type-contents">
                     <div class="search-category">
-                    <a href="{{route('front.stock')}}{{'/?body_type=bus'}}" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=large bus'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                            <p>Bus</p><span>({{$body_bus && $body_bus->body_count ? $body_bus->body_count : 0}})</span>
+                            <p>Large Bus</p><span>({{$body_large_bus && $body_large_bus->body_count ? $body_large_bus->body_count : 0}})</span>
                         </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=truck'}}" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=mini bus'}}" class="mb-1">
+                            <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
+                            <p>Mini Bus</p><span>({{$body_mini_bus && $body_mini_bus->body_count ? $body_mini_bus->body_count : 0}})</span>
+                        </a>
+                        <a href="{{route('front.stock')}}{{'/?body_type=heavy truck'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
-                            <p>Truck</p><span>({{$body_truck && $body_truck->body_count ? $body_truck->body_count : 0}})</span>
+                            <p>Heavy Truck</p><span>({{$body_heavy_truck && $body_heavy_truck->body_count ? $body_heavy_truck->body_count : 0}})</span>
+                        </a>
+                        <a href="{{route('front.stock')}}{{'/?body_type=light truck'}}" class="mb-1">
+                            <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
+                            <p>Light Truck</p><span>({{$body_light_truck && $body_light_truck->body_count ? $body_light_truck->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=van'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
                             <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
+                        </a>
+                        <a href="{{route('front.stock')}}{{'/?body_type=mini van'}}" class="mb-1">
+                            <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
+                            <p>Mini Van</p><span>({{$body_mini_van && $body_mini_van->body_count ? $body_mini_van->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
@@ -207,6 +219,10 @@
                         <a href="{{route('front.stock')}}{{'/?body_type=sedan'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
                             <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
+                        </a>
+                        <a href="{{route('front.stock')}}{{'/?body_type=wagon'}}" class="mb-1">
+                            <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
+                            <p>Wagon</p><span>({{$body_wagon && $body_wagon->body_count ? $body_wagon->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=Hatchback'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_hatchback.png')}}" alt="">
