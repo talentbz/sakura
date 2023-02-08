@@ -24,8 +24,8 @@ class StockController extends Controller
             $ip = '188.43.235.177'; //Russia IP address
         }
         $country_ip = \Location::get($ip);
-        // $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
-        $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
+        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        // $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
             $port_key = json_decode($current_country->port);
@@ -420,8 +420,8 @@ class StockController extends Controller
             $ip = '188.43.235.177'; //Russia IP address
         }
         $country_ip = \Location::get($ip);
-        // $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
-        $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
+        $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        // $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
         $total_price = '';
         $port = '';
         $inspection = '';
