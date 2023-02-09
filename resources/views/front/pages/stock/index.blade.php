@@ -193,7 +193,7 @@
                             <p>Large Bus</p><span>({{$body_large_bus && $body_large_bus->body_count ? $body_large_bus->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=mini bus'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
+                            <img src="{{URL::asset ('/assets/frontend/images/minibus.png')}}" alt="">
                             <p>Mini Bus</p><span>({{$body_mini_bus && $body_mini_bus->body_count ? $body_mini_bus->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=heavy truck'}}" class="mb-1">
@@ -209,7 +209,7 @@
                             <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=mini van'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
+                            <img src="{{URL::asset ('/assets/frontend/images/mini-van.png')}}" alt="">
                             <p>Mini Van</p><span>({{$body_mini_van && $body_mini_van->body_count ? $body_mini_van->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
@@ -221,7 +221,7 @@
                             <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=wagon'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
+                            <img src="{{URL::asset ('/assets/frontend/images/wagon-r.png')}}" alt="">
                             <p>Wagon</p><span>({{$body_wagon && $body_wagon->body_count ? $body_wagon->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=Hatchback'}}" class="mb-1">
