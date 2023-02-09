@@ -122,7 +122,7 @@
                             <p>Heavy Truck</p><span>({{$body_heavy_truck && $body_heavy_truck->body_count ? $body_heavy_truck->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=light truck'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
+                            <img src="{{URL::asset ('/assets/frontend/images/light-truck.png')}}" alt="">
                             <p>Light Truck</p><span>({{$body_light_truck && $body_light_truck->body_count ? $body_light_truck->body_count : 0}})</span>
                         </a>
                         <a href="{{route('front.stock')}}{{'/?body_type=van'}}" class="mb-1">
