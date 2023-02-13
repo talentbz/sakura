@@ -15,7 +15,7 @@
         <div class="">
             <div class="calculator-filter mt-3">
                 <div class="calculator-select">
-                    <label for="">Select your country</label>
+                    <label for="">Select country</label>
                     <select class="form-select" name="price_country" id="select-country">
                         @foreach($country as $row)
                         {{$price_country}}
@@ -212,7 +212,7 @@
                             <img src="{{URL::asset ('/assets/frontend/images/mini-van.png')}}" alt="">
                             <p>Mini Van</p><span>({{$body_mini_van && $body_mini_van->body_count ? $body_mini_van->body_count : 0}})</span>
                         </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=suv'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
                             <p>Suv</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>

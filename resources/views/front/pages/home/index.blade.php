@@ -133,7 +133,7 @@
                             <img src="{{URL::asset ('/assets/frontend/images/mini-van.png')}}" alt="">
                             <p>Mini Van</p><span>({{$body_mini_van && $body_mini_van->body_count ? $body_mini_van->body_count : 0}})</span>
                         </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=sub'}}" class="mb-1">
+                        <a href="{{route('front.stock')}}{{'/?body_type=suv'}}" class="mb-1">
                             <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
                             <p>Suv</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
                         </a>
@@ -369,7 +369,7 @@
                     <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">
                 </a>
             </div>
-            <div class="news-box mb-2">
+            <!-- <div class="news-box mb-2">
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/news_clearange.png')}}" alt="">
                 </a>
@@ -378,7 +378,7 @@
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/news_shipping.png')}}" alt="">
                 </a>
-            </div>
+            </div> -->
             <div class="news-box mb-2">
                 <div class="fb-wrapper">
                     <h3>FaceBook</h3>
