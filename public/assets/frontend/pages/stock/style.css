@@ -51,10 +51,15 @@ body {
 }
 .stock-contents h5, .stock-contents .table-light {
     font-weight: 600;
+    color: black;
+    text-transform: uppercase;
+    border-color: #eff2f7;
+    background-color: #e6eef5;
 }
 .stock-contents h5 {
     color: #E10B14;
     text-transform: uppercase;
+    background: #fff;
 }
 .stock-contents table {
     font-size: 12px;
