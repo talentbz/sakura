@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -233,7 +233,7 @@ return [
         'Image' => Intervention\Image\ImageManagerStatic::class,
         'Location' => 'Stevebauman\Location\Facades\Location',
         'Avatar'    => Laravolt\Avatar\Facade::class,
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

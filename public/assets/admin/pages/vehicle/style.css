@@ -1,9 +1,16 @@
-#datatable th{
+.datatable th{
     text-align: center;
 }
-#datatable td{
+.datatable td{
     vertical-align: baseline;
 }
 .edit {
     /* margin-right: 12px; */
+}
+td.dt-body-center {
+    text-align: center;
+    vertical-align: baseline;
+}
+.dataTables_filter {
+    float: right;
 }

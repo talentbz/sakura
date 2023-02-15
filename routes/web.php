@@ -65,6 +65,7 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     });
     Route::group(['prefix' => 'vehicle'], function(){
         Route::get('/', [App\Http\Controllers\Admin\VehicleController::class, 'index'])->name('admin.vehicle.index');
+        Route::get('/get_data', [App\Http\Controllers\Admin\VehicleController::class, 'getData'])->name('admin.vehicle.get_data');
         Route::get('/rate', [App\Http\Controllers\Admin\VehicleController::class, 'rate'])->name('admin.vehicle.rate');
         Route::post('/rate_post', [App\Http\Controllers\Admin\VehicleController::class, 'rate_post'])->name('admin.vehicle.rate_post');
         Route::get('/create', [App\Http\Controllers\Admin\VehicleController::class, 'create'])->name('admin.vehicle.create');

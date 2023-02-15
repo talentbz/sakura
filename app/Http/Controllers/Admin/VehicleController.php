@@ -10,24 +10,79 @@ use DB, Validator, Exception, Image, URL;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;
+use DataTables;
 
 class VehicleController extends Controller
 {
     public function index(Request $request)
     {
         $rate = Rate::latest('id')->first()->rate;
-        $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
-                        ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
-                        ->groupBy('vehicle.id')
-                        ->select('vehicle.*', 'vehicle_image.image')
-                        ->orderBy('vehicle.created_at', 'desc')
-                        ->get();
+        // $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+        //                 ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
+        //                 ->groupBy('vehicle.id')
+        //                 ->select('vehicle.*', 'vehicle_image.image')
+        //                 ->orderBy('vehicle.created_at', 'desc')
+        //                 ->get();
         $order_status = config('config.order_status');
         return view('admin.pages.vehicle.index', [
-            'data' => $data,
+            // 'data' => $data,
             'rate' => $rate,
             'order_status' => $order_status,
         ]);
+    }
+    public function getData(Request $request)
+    {
+        if ($request->ajax()) {
+            $rate = Rate::latest('id')->first()->rate;
+            $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+                        // ->orderBy('vehicle.id', 'desc')
+                        ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
+                        ->groupBy('vehicle.id')
+                        ->select('vehicle.*', 'vehicle_image.image')
+                        ->get();
+            return Datatables::of($data)
+                            ->addColumn('image', function($row){
+                                return  asset('/uploads/vehicle').'/'.$row->id.'/thumb'.'/'.$row->image;
+                            })
+                            ->addColumn('price', function($row){
+                                return  '¥ '.number_format($row->price);
+                            })
+                            ->addColumn('sale_price', function($row){
+                                if($row->sale_price) {
+                                    return  '¥ '.number_format($row->sale_price);
+                                }
+                            })
+                            ->addColumn('status', function($row){
+                                if($row->status) {
+                                    return  $row->status;
+                                } else {
+                                    return '';
+                                }
+                            })
+                            ->addColumn('usd', function($row) use($rate){
+                                if($row->sale_price) {
+                                    return  '$ '.number_format(round($row->sale_price / $rate));
+                                } else {
+                                    return  '$ '.number_format(round($row->price / $rate));
+                                }
+                            })
+                            ->addColumn('created_at', function($row){
+                                return  date("Y-m-d", strtotime($row->created_at));
+                            })
+                            ->addColumn('action', function($row){
+                                return  '<a href="'.route('admin.vehicle.edit', ['id' => $row->id]).'" class="text-success edit" >
+                                            <i class="mdi mdi-pencil font-size-18"></i>
+                                        </a>
+                                        <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="'.$row->id.'" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <i class="mdi mdi-delete font-size-18"></i>
+                                        </a>
+                                        <a href="javascript:void(0);" class="text-warning confirm_status" data-id="'.$row->id.'" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
+                                            <i class="bx bx-cog font-size-18"></i>
+                                        </a>';
+                            })
+                            ->make(true);
+        }
+  
     }
     public function create(Request $request)
     {

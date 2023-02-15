@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 datatable">
+                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                         <thead>
                             <tr>
                                 <th align="center" width="5%">Image</th>
@@ -26,7 +26,44 @@
                                 <th align="center">Action</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <!-- @forelse($data as $row)
+                            <tr>
+                                <td align="center">
+                                    <img src="{{URL::asset('/uploads/vehicle')}}{{'/'}}{{$row->id}}{{'/thumb'}}{{'/'}}{{$row->image}}" alt="" width="80">
+                                </td>
+                                <td align="center">{{$row->stock_no}}</td>
+                                <td align="center">{{$row->chassis}}</td>
+                                <td align="center">¥ {{number_format($row->price)}}</td>
+                                @if($row->sale_price)
+                                    <td align="center">¥ {{number_format($row->sale_price)}}</td>
+                                @else
+                                    <td align="center"></td>
+                                @endif
+                                @if($row->sale_price)
+                                    <td align="center">$ {{number_format(round($row->sale_price / $rate))}}</td>
+                                @else
+                                    <td align="center">$ {{number_format(round($row->price / $rate))}}</td>
+                                @endif
+                                <td align="center"><span class="badge badge-pill badge-soft-warning font-size-12">{{$row->status}}</span></td>
+                                <td align="center">{{date("Y-m-d", strtotime($row->created_at))}}</td>
+                                <td align="center">
+                                        <a href="{{route('admin.vehicle.edit', ['id' => $row->id])}}" class="text-success edit" ><i
+                                                class="mdi mdi-pencil font-size-18"></i></a>
+                                        <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="{{$row->id}}" data-bs-toggle="modal"
+                                                data-bs-target="#myModal"><i
+                                                class="mdi mdi-delete font-size-18"></i></a>
+                                        <a href="javascript:void(0);" class="text-warning confirm_status" data-id="{{$row->id}}" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModalScrollable"><i
+                                                class="bx bx-cog font-size-18"></i></a>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td align="center" colspan="13">There are no any data.</p>
+                            </tr>
+                            @endforelse -->
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -83,17 +120,16 @@
     </div><!-- /.modal -->
 @endsection
 @section('script')
+    <script>
+        var delete_url = "{{route('admin.vehicle.delete')}}";
+        var index_url = "{{route('admin.vehicle.index')}}";
+        var change_status = "{{route('admin.vehicle.change_status')}}";
+    </script>
     <!-- Required datatable js -->
     <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
     <!-- Datatable init js -->
     <!-- <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script> -->
-    <script>
-        var delete_url = "{{route('admin.vehicle.delete')}}";
-        var index_url = "{{route('admin.vehicle.index')}}";
-        var change_status = "{{route('admin.vehicle.change_status')}}";
-        var get_data = "{{ route('admin.vehicle.get_data')}}"
-    </script>
     <script src="{{ URL::asset('/assets/admin/pages/vehicle/index.js') }}"></script>
 @endsection
