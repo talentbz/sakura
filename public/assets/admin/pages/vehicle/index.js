@@ -43,6 +43,8 @@ $(document).ready(function () {
     var table = $('.datatable').DataTable({
         searching: true,
         serverSide: true,
+        processing: true,
+        deferRender:true,
         ajax: get_data,
         order: [[7, 'desc']],
         columns: [
