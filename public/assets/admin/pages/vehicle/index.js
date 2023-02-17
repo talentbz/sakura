@@ -51,11 +51,21 @@ $(document).ready(function () {
             {data: 'image', name: 'image', render: function( data ){
                 return '<img src="' + data + '" width="80"/>';
             }},
-            {data: 'stock_no', name: 'Stock No' },
+            {data: 'stock_no', name: 'stock_no' },
             {data: 'chassis', name: 'chassis'},
-            {data: 'price', name: 'price'},
-            {data: 'sale_price', name: 'Discounted Price'},
-            {data: 'usd', name: 'usd'},
+            {data: 'price', name: 'price', render: function( data ){
+                return '¥ ' + data.toLocaleString()
+            }},
+            {data: 'sale_price', name: 'sale_price', render: function( data ){
+                if(data){
+                    return '¥ ' + data.toLocaleString()
+                } else {
+                    return ''
+                }
+            }},
+            {data: 'usd', name: 'usd', render: function( data ){
+                return '$ ' + data.toLocaleString()
+            }},
             {data: 'status', name: 'status', render: function( data ){
                 return '<span class="badge badge-pill badge-soft-warning font-size-12">'+ data +'</span>';
             }},
@@ -63,7 +73,8 @@ $(document).ready(function () {
             {data: 'action', name: 'action'},
         ],
         columnDefs: [
-            {"className": "dt-body-center", "targets": "_all"}
+            {"className": "dt-body-center", "targets": "_all"},
+            { orderable: false, targets: [0] },
         ],
         dom: 'lBfrtip',
         buttons: [

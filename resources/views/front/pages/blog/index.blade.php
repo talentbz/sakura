@@ -38,7 +38,7 @@
             @endforeach
         </div>
         <div class="right-sidebar">
-            <div class="news-box mb-2">
+            <!-- <div class="news-box mb-2">
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/news_clearange.png')}}" alt="">
                 </a>
@@ -47,7 +47,7 @@
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/news_shipping.png')}}" alt="">
                 </a>
-            </div>
+            </div> -->
             <div class="news-box mb-2">
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">

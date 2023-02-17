@@ -38,18 +38,18 @@ class VehicleController extends Controller
                         // ->orderBy('vehicle.id', 'desc')
                         ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
                         ->groupBy('vehicle.id')
-                        ->select('vehicle.*', 'vehicle_image.image')
+                        ->select('vehicle.id', 'vehicle.chassis', 'vehicle.stock_no', 'vehicle.price', 'vehicle.sale_price', 'vehicle.status', 'vehicle.created_at', 'vehicle_image.image')
                         ->get();
             return Datatables::of($data)
                             ->addColumn('image', function($row){
                                 return  asset('/uploads/vehicle').'/'.$row->id.'/thumb'.'/'.$row->image;
                             })
                             ->addColumn('price', function($row){
-                                return  '¥ '.number_format($row->price);
+                                return  $row->price;
                             })
                             ->addColumn('sale_price', function($row){
                                 if($row->sale_price) {
-                                    return  '¥ '.number_format($row->sale_price);
+                                    return  $row->sale_price;
                                 }
                             })
                             ->addColumn('status', function($row){
@@ -61,9 +61,9 @@ class VehicleController extends Controller
                             })
                             ->addColumn('usd', function($row) use($rate){
                                 if($row->sale_price) {
-                                    return  '$ '.number_format(round($row->sale_price / $rate));
+                                    return  round($row->sale_price / $rate);
                                 } else {
-                                    return  '$ '.number_format(round($row->price / $rate));
+                                    return  round($row->price / $rate);
                                 }
                             })
                             ->addColumn('created_at', function($row){
