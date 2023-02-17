@@ -439,11 +439,11 @@
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
-                                            <label for="">Your Name*</label>
+                                            <label for="">Your Name<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="Full Name" name="inqu_name" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">Select your country</label>
+                                            <label for="">Select your country<span class="require-lavel">*</span></label>
                                             <select class="form-select" name="inqu_country" required>
                                                 @foreach($country as $row)
                                                     <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
@@ -453,21 +453,21 @@
                                     </div>
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
-                                            <label for="">Your Email*</label>
+                                            <label for="">Your Email<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="email" placeholder="Email address" name="inqu_email" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">Address*</label>
+                                            <label for="">Address<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="Street, Town..." name="inqu_address" required > 
                                         </div>
                                     </div>
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
-                                            <label for="">Mobile*</label>
+                                            <label for="">Mobile<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="+81298683668" name="inqu_mobile" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">City*</label>
+                                            <label for="">City<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="Your City" name="inqu_city" required > 
                                         </div>
                                     </div>
@@ -488,11 +488,11 @@
                         <form class="custom-validation" action="">
                             <div class="login-form">
                                 <div class="login-list">
-                                    <label for="">Email*</label>
+                                    <label for="">Email<span class="require-lavel">*</span></label>
                                     <input class="form-control"  type="email" placeholder="Email" name="login_email" required > 
                                 </div>
                                 <div class="login-list">
-                                    <label for="">Password*</label>
+                                    <label for="">Password<span class="require-lavel">*</span></label>
                                     <input class="form-control"  type="password" placeholder="Email" name="login_pass" required > 
                                 </div>
                                 <div class="login-list">
@@ -608,11 +608,11 @@
                                 <div class="inquiry-contents">
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
-                                            <label for="">Your Name*</label>
+                                            <label for="">Your Name<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="Full Name" name="inqu_name" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">Select your country</label>
+                                            <label for="">Select your country<span class="require-lavel">*</span></label>
                                             <select class="form-select" name="inqu_country" required>
                                                 @foreach($country as $row)
                                                     <option value="{{$row->country}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
@@ -622,21 +622,21 @@
                                     </div>
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
-                                            <label for="">Your Email*</label>
+                                            <label for="">Your Email<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="email" placeholder="Email address" name="inqu_email" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">Address*</label>
+                                            <label for="">Address<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="Street, Town..." name="inqu_address" required > 
                                         </div>
                                     </div>
                                     <div class="inquiry-list">
                                         <div class="inquiry-left">
-                                            <label for="">Mobile*</label>
+                                            <label for="">Mobile<span class="require-lavel">*</span></label>
                                             <input class="form-control" type="text" placeholder="+81298683668" name="inqu_mobile" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">City*</label>
+                                            <label for="">City<span class="require-lavel">*</span></label>
                                             <input class="form-control"  type="text" placeholder="Your City" name="inqu_city" required > 
                                         </div>
                                     </div>
@@ -657,11 +657,11 @@
                         <form class="custom-validation" action="">
                             <div class="login-form">
                                 <div class="login-list">
-                                    <label for="">Email*</label>
+                                    <label for="">Email<span class="require-lavel">*</span></label>
                                     <input class="form-control"  type="email" placeholder="Email" name="login_email" required > 
                                 </div>
                                 <div class="login-list">
-                                    <label for="">Password*</label>
+                                    <label for="">Password<span class="require-lavel">*</span></label>
                                     <input class="form-control"  type="password" placeholder="Email" name="login_pass" required > 
                                 </div>
                                 <div class="login-list">

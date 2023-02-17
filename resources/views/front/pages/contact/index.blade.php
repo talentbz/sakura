@@ -26,26 +26,26 @@
                 <form class="custom-validation" action="{{route('front.contact.email')}}" method="post">
                     @csrf
                     <div class="list-margin">
-                        <label class="form-label">Subject*</label>
+                        <label class="form-label">Subject<span class="require-lavel">*</span></label>
                         <input type="text" class="form-control" name="subject" required />
                     </div>
                     <div class="list-margin row">
                         <div class="col-md-6">
-                            <label class="form-label">Name*</label>
+                            <label class="form-label">Name<span class="require-lavel">*</span></label>
                             <input type="text" class="form-control" name="name" required />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Email*</label>
+                            <label class="form-label">Email<span class="require-lavel">*</span></label>
                             <input type="email" class="form-control" parsley-type="email" name="email" required />
                         </div>
                     </div>
                     <div class="list-margin row">
                         <div class="col-md-6">
-                            <label class="form-label">Telephone*</label>
+                            <label class="form-label">Telephone<span class="require-lavel">*</span></label>
                             <input data-parsley-type="number" type="text" class="form-control" name="phone" required />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Country*</label>
+                            <label class="form-label">Country<span class="require-lavel">*</span></label>
                             <select class="form-select select-category" name="country" required>
                                 <option value="">select</option>
                                 @foreach($country as $row)
@@ -60,7 +60,7 @@
                             <input type="text" class="form-control" name="city" />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Address*</label>
+                            <label class="form-label">Address<span class="require-lavel">*</span></label>
                             <input type="text" class="form-control" name="address" required />
                         </div>
                     </div>

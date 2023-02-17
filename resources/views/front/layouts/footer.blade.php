@@ -67,7 +67,7 @@
     </div>
 </div>
 <div class="copywirter">
-    <p>© 2019 -2022 All rights reserved</p>
+    <p>© 2019 - {{date("Y")}} All rights reserved</p>
 </div>
 <!-- footer section -->
 <!-- JAVASCRIPT -->
