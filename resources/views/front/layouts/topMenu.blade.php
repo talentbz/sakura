@@ -8,7 +8,8 @@
                 <a href="{{route('front.payment')}}" class="{{request()->routeIs('front.payment') ? 'active' : ''}}">Payment</a>
                 <a href="{{route('front.blog')}}" class="{{request()->routeIs('front.blog') ? 'active' : ''}}">News</a>
                 <a href="{{route('front.agents')}}" class="{{request()->routeIs('front.agents') ? 'active' : ''}}">Agents</a>
-                <a href="{{route('front.gallery')}}" class="{{request()->routeIs('front.gallery') ? 'active' : ''}}">Gallery</a>
+                <a href="{{route('front.gallery')}}" class="{{request()->routeIs('front.gallery') ? 'active' : ''}}">Image Gallery</a>
+                <a href="{{route('front.video.gallery')}}" class="{{request()->routeIs('front.video.gallery') ? 'active' : ''}}">Video Gallery</a>
                 <a href="{{route('front.contact')}}" class="{{request()->routeIs('front.contact') ? 'active' : ''}}">Contact us</a>
             </div>
             <a href="javascript:void(0);" class="mobile-icon" onclick="mobileMenu()">
