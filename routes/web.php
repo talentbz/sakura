@@ -28,7 +28,9 @@ Route::post('/contact_us/email', [App\Http\Controllers\Frontend\ContactControlle
 Route::post('/inquery/email', [App\Http\Controllers\Frontend\ContactController::class, 'inquiryEmail'])->name('front.inquiry.email');
 Route::get('/company', [App\Http\Controllers\Frontend\ContactController::class, 'company'])->name('front.company');
 Route::get('/agents', [App\Http\Controllers\Frontend\ContactController::class, 'agents'])->name('front.agents');
-Route::get('/gallery', [App\Http\Controllers\Frontend\ContactController::class, 'gallery'])->name('front.gallery');
+Route::get('/gallery/image', [App\Http\Controllers\Frontend\ContactController::class, 'gallery'])->name('front.gallery');
+Route::get('/gallery/video', [App\Http\Controllers\Frontend\GalleryController::class, 'index'])->name('front.video.gallery');
+Route::get('/gallery/video/fetch_data', [App\Http\Controllers\Frontend\GalleryController::class, 'fetch_data'])->name('front.video.fetch_data');
 Route::get('/payment', [App\Http\Controllers\Frontend\ContactController::class, 'payment'])->name('front.payment');
 Route::get('/blog', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('front.blog');
 Route::get('/blog/{id}', [App\Http\Controllers\Frontend\BlogController::class, 'details'])->name('front.blog.detail');

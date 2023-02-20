@@ -40,6 +40,8 @@ class VideoController extends Controller
     public function delete(Request $request){
         Video::where('id', $request->id)->delete();
         return response()->json(['result' => true]);
+
+
     }
     public function getData(Request $request)
     {
@@ -47,7 +49,7 @@ class VideoController extends Controller
             $data = Video::get();
             return Datatables::of($data)
                             ->editColumn('url', function($row){
-                                return  '<div>'.$row->url.'</div>';
+                                return  '<div>'.htmlspecialchars_decode($row->url).'</div>';
                             })
                             ->addColumn('created_at', function($row){
                                 return  date("Y-m-d", strtotime($row->created_at));
