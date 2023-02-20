@@ -104,6 +104,17 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::post('/imageAdd', [App\Http\Controllers\Admin\NewsController::class, 'imageAdd'])->name('admin.news.imageAdd');
         Route::post('/imageDelete', [App\Http\Controllers\Admin\NewsController::class, 'imageDelete'])->name('admin.news.imageDelete');
     });
+    Route::group(['prefix' => 'video'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\VideoController::class, 'index'])->name('admin.video.index');
+        Route::get('/add', [App\Http\Controllers\Admin\VideoController::class, 'add'])->name('admin.video.add');
+        Route::get('/get_data', [App\Http\Controllers\Admin\VideoController::class, 'getData'])->name('admin.video.get_data');
+        Route::post('/add_post', [App\Http\Controllers\Admin\VideoController::class, 'add_post'])->name('admin.video.add_post');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\VideoController::class, 'edit'])->name('admin.video.edit'); 
+        Route::post('/edit_post', [App\Http\Controllers\Admin\VideoController::class, 'edit_post'])->name('admin.video.edit_post');
+        Route::get('/delete', [App\Http\Controllers\Admin\VideoController::class, 'delete'])->name('admin.video.delete');
+        Route::post('/videoAdd', [App\Http\Controllers\Admin\VideoController::class, 'videoAdd'])->name('admin.video.videoAdd');
+        Route::post('/videoDelete', [App\Http\Controllers\Admin\VideoController::class, 'videoDelete'])->name('admin.video.videoDelete');
+    });
     Route::group(['prefix' => 'inquiry'], function(){
         Route::get('/', [App\Http\Controllers\Admin\InquiryController::class, 'index'])->name('admin.inquiry.index');
         Route::post('/detail', [App\Http\Controllers\Admin\InquiryController::class, 'detail'])->name('admin.inquiry.detail');

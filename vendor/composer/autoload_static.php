@@ -618,6 +618,7 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         'App\\Models\\UserReviewImage' => __DIR__ . '/../..' . '/app/Models/UserReviewImage.php',
         'App\\Models\\Vehicle' => __DIR__ . '/../..' . '/app/Models/Vehicle.php',
         'App\\Models\\VehicleImage' => __DIR__ . '/../..' . '/app/Models/VehicleImage.php',
+        'App\\Models\\Video' => __DIR__ . '/../..' . '/app/Models/Video.php',
         'App\\Notifications\\NewUserNotification' => __DIR__ . '/../..' . '/app/Notifications/NewUserNotification.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

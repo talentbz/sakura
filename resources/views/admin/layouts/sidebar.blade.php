@@ -57,6 +57,16 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-video-recording"></i>
+                        <span>Video</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.video.index')}}" >Video List</a></li>
+                        <li><a href="{{route('admin.video.add')}}" >Add Video</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
                         <span>User Management</span>
                     </a>

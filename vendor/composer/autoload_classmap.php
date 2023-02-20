@@ -58,6 +58,7 @@ return array(
     'App\\Models\\UserReviewImage' => $baseDir . '/app/Models/UserReviewImage.php',
     'App\\Models\\Vehicle' => $baseDir . '/app/Models/Vehicle.php',
     'App\\Models\\VehicleImage' => $baseDir . '/app/Models/VehicleImage.php',
+    'App\\Models\\Video' => $baseDir . '/app/Models/Video.php',
     'App\\Notifications\\NewUserNotification' => $baseDir . '/app/Notifications/NewUserNotification.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
