@@ -160,5 +160,6 @@
     var detail_url = "{{route('admin.inquiry.detail')}}"
     var delete_url = "{{route('admin.inquiry.delete')}}"
 </script>
+<script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('/assets/admin/pages/inquiry/index.js') }}"></script>
 @endsection

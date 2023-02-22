@@ -86,5 +86,6 @@
         var list_url = "{{route('admin.shipping.index')}}"
         var delete_url = "{{route('admin.shipping.delete')}}"
     </script>
+    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/admin/pages/shipping/index.js') }}"></script>
 @endsection

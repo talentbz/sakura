@@ -13,10 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
-                    <h4 class="card-title">Registered Users</h4>
-
-                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -79,8 +76,8 @@
     </div><!-- /.modal -->
 @endsection
 @section('script')
+    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
     <script>
         var delete_url = "{{ route('admin.user.delete') }}";
     </script>
-    <script src="{{ URL::asset('/assets/Admin/js/Hotel/user.js') }}"></script>
 @endsection
