@@ -11,6 +11,8 @@ use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use App\Models\Rate;
 use DataTables;
+use Carbon\Carbon;
+
 
 class VehicleController extends Controller
 {
@@ -35,7 +37,7 @@ class VehicleController extends Controller
         if ($request->ajax()) {
             $rate = Rate::latest('id')->first()->rate;
             $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
-                        // ->orderBy('vehicle.id', 'desc')
+                        // ->whereNull('vehicle.deleted_at')
                         ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
                         ->groupBy('vehicle.id')
                         ->select('vehicle.id', 'vehicle.chassis', 'vehicle.stock_no', 'vehicle.price', 'vehicle.sale_price', 'vehicle.status', 'vehicle.created_at', 'vehicle_image.image')
@@ -152,23 +154,10 @@ class VehicleController extends Controller
 
     public function delete(Request $request){
         $vehicleId = $request->id;
-        $fileNames = VehicleImage::where('vehicle_id', $vehicleId)->get();
-
-        foreach($fileNames as $fileName){
-            $real_image = ('uploads/vehicle/'.$vehicleId.'/real'.'/'.$fileName->image);
-            $thumb_image = ('uploads/vehicle/'.$vehicleId.'/thumb'.'/'.$fileName->image);
-            if(File::exists(public_path($real_image))){
-                File::delete(public_path($real_image));   
-            }
-            if(File::exists(public_path($thumb_image))){
-                File::delete(public_path($thumb_image));   
-            }
-        }
-        VehicleImage::where('vehicle_id', $vehicleId)->delete();
-        Vehicle::where('id', $vehicleId)->delete();
+        $vehicle = Vehicle::where('id', $vehicleId)->delete();
         return response()->json(['result' => true]);
-
     }
+    
     public function create_post(Request $request)
     {
         $vehicle = new Vehicle;
@@ -423,5 +412,104 @@ class VehicleController extends Controller
             $result = VehicleImage::where('id', $id['key'])->delete();
         }
         return response()->json(['result' => true]);
+    }
+
+    public function deltedList(Request $request){
+        // auto delete (3 months)
+        $deleted_list = Vehicle::withTrashed()->WhereNotNull('deleted_at')->where('deleted_at', '<', Carbon::now()->subMonths(3))->get();
+        foreach ($deleted_list as $row) {
+            $vehicleId = $row->id;
+            $fileNames = VehicleImage::where('vehicle_id', $vehicleId)->get();
+
+            foreach($fileNames as $fileName){
+                $real_image = ('uploads/vehicle/'.$vehicleId.'/real'.'/'.$fileName->image);
+                $thumb_image = ('uploads/vehicle/'.$vehicleId.'/thumb'.'/'.$fileName->image);
+                if(File::exists(public_path($real_image))){
+                    File::delete(public_path($real_image));   
+                }
+                if(File::exists(public_path($thumb_image))){
+                    File::delete(public_path($thumb_image));   
+                }
+            }
+            VehicleImage::where('vehicle_id', $vehicleId)->delete();
+            Vehicle::where('id', $vehicleId)->forceDelete();
+        } 
+        return view('admin.pages.vehicle.deleted_list', []);
+    }
+
+    public function getDeltedList(Request $request){
+        $rate = Rate::latest('id')->first()->rate;
+        if ($request->ajax()) {
+            $data = Vehicle::leftJoin('vehicle_image', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+                        ->withTrashed()
+                        ->WhereNotNull('vehicle.deleted_at')
+                        ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
+                        ->groupBy('vehicle.id')
+                        ->orderBy('vehicle.deleted_at', 'desc')
+                        ->select('vehicle.id', 'vehicle.chassis', 'vehicle.stock_no', 'vehicle.price', 'vehicle.sale_price', 'vehicle.status', 'vehicle.deleted_at', 'vehicle_image.image')
+                        ->get();
+            return Datatables::of($data)
+                            ->addColumn('image', function($row){
+                                return  asset('/uploads/vehicle').'/'.$row->id.'/thumb'.'/'.$row->image;
+                            })
+                            ->addColumn('price', function($row){
+                                return  $row->price;
+                            })
+                            ->addColumn('sale_price', function($row){
+                                if($row->sale_price) {
+                                    return  $row->sale_price;
+                                }
+                            })
+                            ->addColumn('status', function($row){
+                                if($row->status) {
+                                    return  $row->status;
+                                } else {
+                                    return '';
+                                }
+                            })
+                            ->addColumn('usd', function($row) use($rate){
+                                if($row->sale_price) {
+                                    return  round($row->sale_price / $rate);
+                                } else {
+                                    return  round($row->price / $rate);
+                                }
+                            })
+                            ->addColumn('deleted_at', function($row){
+                                return  date("Y-m-d", strtotime($row->deleted_at));
+                            })
+                            ->addColumn('action', function($row){
+                                return  '<a href="javscript:void(0);" data-id="'.$row->id.'" class="text-success confirm_restore" data-bs-toggle="modal" data-bs-target="#restoreModal">
+                                            <i class="mdi mdi-backup-restore font-size-18"></i>
+                                        </a>
+                                        <a href="javascript:void(0);" class="text-danger confirm_delete" data-id="'.$row->id.'" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            <i class="mdi mdi-delete font-size-18"></i>
+                                        </a>';
+                            })
+                            ->make(true);   
+        }
+    }
+    public function restore(Request $request){
+        Vehicle::where('id', $request->id)->restore();
+        return response()->json(['result' => true]);
+    }
+
+    public function forceDelete(Request $request){
+        $vehicleId = $request->id;
+        $fileNames = VehicleImage::where('vehicle_id', $vehicleId)->get();
+
+        foreach($fileNames as $fileName){
+            $real_image = ('uploads/vehicle/'.$vehicleId.'/real'.'/'.$fileName->image);
+            $thumb_image = ('uploads/vehicle/'.$vehicleId.'/thumb'.'/'.$fileName->image);
+            if(File::exists(public_path($real_image))){
+                File::delete(public_path($real_image));   
+            }
+            if(File::exists(public_path($thumb_image))){
+                File::delete(public_path($thumb_image));   
+            }
+        }
+        VehicleImage::where('vehicle_id', $vehicleId)->delete();
+        Vehicle::where('id', $vehicleId)->forceDelete();
+        return response()->json(['result' => true]);
+
     }
 }

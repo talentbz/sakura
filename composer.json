@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "laravolt/avatar": "^4.1",
+        "litespeed/lscache-laravel": "^1.3",
         "stevebauman/location": "^6.3",
         "yajra/laravel-datatables-oracle": "^9.21"
     },

@@ -23,8 +23,10 @@ class FrontController extends Controller
         $rate = Rate::first()->rate;
         $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                      ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                     ->whereNull('vehicle.deleted_at')
                                      ->where(function ($q) use ($request){
                                           $q->orWhereNull('vehicle.status');
+                                          $q->orWhereNull('vehicle.deleted_at');
                                           $q->orWhere('vehicle.status', '=', Vehicle::INQUIRY);
                                           $q->orWhere('vehicle.status', '=', Vehicle::INVOICE_ISSUED);
                                         })
@@ -34,7 +36,9 @@ class FrontController extends Controller
                                      ->paginate(8);
         $best_vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                    ->whereNull('vehicle.deleted_at')
                                     ->whereNotNull('vehicle.sale_price')
+                                    ->whereNotNull('vehicle.deleted_at')
                                     ->where('vehicle.status', '')
                                     ->orWhere('vehicle.status', Vehicle::INQUIRY)
                                     ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)

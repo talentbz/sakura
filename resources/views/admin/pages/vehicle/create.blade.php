@@ -207,7 +207,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!--<div class="col-md-4">
                                         <div class="detail-list mb-3 row">
                                             <div class="col-md-4">
                                                 <label class="col-form-label">Exterior Color</label>
@@ -216,7 +216,7 @@
                                                 <input class="form-control" type="text" placeholder="Enter Exterior Color" name="exterior_color" required>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-4">
                                         <div class="detail-list mb-3 row">
                                             <div class="col-md-4">

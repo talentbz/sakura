@@ -76,12 +76,12 @@
                 <form action="{{route('front.stock')}}" method="get" class="custom-search">
                     <div class="form-content">
                         <input type="text" class="form-control search-input" placeholder="Keywords" name="search_keyword" value="{{$search_keyword}}"> 
-                        <span class="bx bx-search-alt"></span>
-                        <p class="req">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
+                         <span> <button type="submit" class="btn search-submit-key"><i class="fas fa-search"></i></button></span>
+                        <p class="req">*Stock No.,Body Type, Chassis</p>
                     </div>
                     <div class="select-search">
                         <div class="input-group mb-2">
-                            <span class="input-group-text">Maker</span>
+                            <span class="input-group-text">Make</span>
                             <select class="form-select select-category" name="maker">
                                 <option value="">Any</option>
                                 @if(!is_null($maker))
@@ -104,6 +104,15 @@
                                 @else
                                     <option></option>
                                 @endif
+                            </select>
+                        </div>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">Gear</span>
+                            <select class="form-select" name="gear">
+                                <option value="">Any</option>
+                                @foreach($transmission as $row)
+                                    <option value="{{$row}}" {{ $gear == $row ? "selected" : ""}}>{{$row}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="input-group mb-2">
@@ -138,7 +147,7 @@
                             </div>
                         </div>
 
-                        <div class="input-group mb-2">
+                        <!-- <div class="input-group mb-2">
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
                                 <select class="form-select" name="from_price">
@@ -169,14 +178,14 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="advance-search mb-2">
+                        <div class="advance-search mb-2">
                             <a data-bs-toggle="modal" href="javascript:void(0)" data-bs-target=".advanced-seach-modal">
                                 Advance Search
                                 <i class="fas fa-angle-double-right"></i>    
                             </a>
                         </div> -->
                     </div>
-                    <button type="submit" class="search-submit">Search <i class="fas fa-search"></i></button>
+                    <button type="submit" class="btn search-submit">Search <i class="fas fa-search"></i></button>
                 </form>
             </div>
             <!-- /end search car -->
@@ -407,7 +416,13 @@
                 <div class="title-border"></div>
                 <div id="stock-contents">
                     {{ csrf_field() }}
-                    <div id="stock-list"></div>
+                    <div id="stock-list">
+                        <div class="stock-spinner">
+                            <div class="spinner-border text-danger m-1" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /end new arrivals -->

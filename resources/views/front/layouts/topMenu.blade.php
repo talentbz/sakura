@@ -5,6 +5,7 @@
             <div class="topnav" id="myTopnav">
                 <a href="{{route('front.home')}}" class="{{request()->routeIs('front.home') ? 'active' : ''}}">Home</a>
                 <a href="{{route('front.stock')}}" class="{{request()->routeIs('front.stock') ? 'active' : ''}}">Stock</a>
+                <a href="{{route('front.company')}}" class="{{  request()->routeIs('front.company') ? 'active' : '' }}">Company</a>
                 <a href="{{route('front.payment')}}" class="{{request()->routeIs('front.payment') ? 'active' : ''}}">Payment</a>
                 <a href="{{route('front.blog')}}" class="{{request()->routeIs('front.blog') ? 'active' : ''}}">News</a>
                 <a href="{{route('front.agents')}}" class="{{request()->routeIs('front.agents') ? 'active' : ''}}">Agents</a>

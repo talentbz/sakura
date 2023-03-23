@@ -234,6 +234,7 @@ return [
         'Location' => 'Stevebauman\Location\Facades\Location',
         'Avatar'    => Laravolt\Avatar\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+	    'LSCache'   => Litespeed\LSCache\LSCache::class,
     ],
 
 ];

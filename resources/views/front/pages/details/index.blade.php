@@ -1,10 +1,21 @@
 @extends('front.layouts.index')
 @section('title') Details @endsection
 @section('css')
+<?php
+$string = url()->current();
+$explode = explode('/details/', $string);
+$last = end($explode);
+?>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/assets/libs/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('/assets/libs/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('/assets/libs/lightgallery/lightgallery.min.css') }}">
     <link href="{{ URL::asset('/assets/frontend/pages/details/style.css') }}" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=64061d00b4b9dc0019a951cd&product=inline-share-buttons' async='async'></script>
+  <meta property="og:title" content="Sakura Motors | Japanese Car" />
+  <meta property="og:url" content="https://sakuramotors.com/details/{{$last}}" />
+  <meta property="og:image" content="https://sakuramotors.com/uploads/vehicle/{{$last}}/real/1.jpg" />
+  <meta property="og:description" content="We believe in offering you the best customer service possible. We have been in the vehicle trading business for over 15 years in Japan. Our new company, established in 2011, is even better equipped to provide you with your dream vehicle. We offer you 24hour prompt and reliable service. We will also help you to find the best customised solution to meet your specific needs." />
+  <meta property="og:site_name" content="ShareThis" />
 @endsection
 @section('content')
 <!-- banner && menu section-->
@@ -15,6 +26,7 @@
 </div>
 <!-- /end banner && menu -->
 <!-- contents -->
+
 <div class="contents">
     <div class="contents-details">
         <!-- mobile -->
@@ -27,7 +39,7 @@
                 <div class="clac-form">
                     <div class="calc-list">
                         <div class="calc-list-label">
-                            <label for="">Select Country</label>
+                            <label for="">Country</label>
                         </div>
                         <div class="calc-list-value">
                             <select class="form-select select-country" name="">
@@ -39,7 +51,7 @@
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
-                            <label for="">Select Port</label>
+                            <label for="">Port</label>
                         </div>
                         <div class="calc-list-value">
                             <select class="form-select port-mb" name="">
@@ -75,7 +87,7 @@
                         <input type="hidden" class="insu-value" value="{{$insurance?$insurance:0}}">
                     </div>
                 </div>
-                <button type="submit" class="ins-submit" id="mobile-calc"><i class="bx bx-calendar"></i> Calculate</button>
+                <button type="submit" class="btn ins-submit" id="mobile-calc"><i class="bx bx-calendar"></i> Calculate</button>
             </div>
             <!-- /price calculator -->
         </div><!-- /end mobile -->
@@ -83,10 +95,6 @@
             <div class="vehicle-info">
                 <div class="vehicle-name">
                     <h3>{{$vehicle_data->make_type}} {{$vehicle_data->model_type}} {{$vehicle_data->body_type}}</h3>
-                    <div class="vehicle-chas">
-                        <span>CHASSIS</span>
-                        <p>{{$vehicle_data->chassis}}</p>
-                    </div>
                     <div class="vehicle-name-border"></div>
                 </div>
                 <div class="vehicle-price">
@@ -150,12 +158,14 @@
                     </div>
                 </div>
             </div>
-            <div class="social-share">
+            <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64061d00b4b9dc0019a951cd&product=inline-share-buttons&source=platform" async="async"></script>
+           <div class="sharethis-inline-share-buttons"></div>
+           <div class="social-share">
                 <div class="social-wrapper">
-                    <a href="#" class="social-face"><i class="fab fa-facebook-f"></i> share</a>
-                    <a href="#" class="social-viber"><i class="fab fa-viber"></i> share</a>
-                    <a href="#" class="social-whatsapp"><i class="bx bxl-whatsapp"></i> share</a>
-                    <a href="{{route('front.details.image_download', ['id' => $id])}}" class="download-image"><i class="fas fa-download"></i>Download all images</a>
+                         <a href="{{route('front.details.image_download', ['id' => $id])}}" class="download-image"><i class="fas fa-download"></i>Download all images</a>
+                    <!-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" class="social-face"><i class="fab fa-facebook-f"></i> share</a>
+                         <a href="#" class="social-viber"><i class="fab fa-viber"></i> share</a>
+                         <a href="#" data-action="share/whatsapp/share" target="_blank" class="social-whatsapp"><i class="bx bxl-whatsapp"></i> share</a>-->
                 </div>
             </div>
             <div class="car-detail">
@@ -167,127 +177,102 @@
                     </thead>
                     <tbody class="pc-table">
                         <tr>
-                            <td class="table-light" scope="row">STOCK NO</td>
-                            <td class="stock-no">SM{{$vehicle_data->stock_no}}</td>
+                            <td class="table-light" scope="row">Stock No</td>
+                            <td class="stock-no">{{$vehicle_data->stock_no}}</td>
+                            <td class="table-light">Model</td>
+                            <td>{{$vehicle_data->model_code}}</td>
                             <td class="table-light">Year</td>
                             <td>{{$vehicle_data->registration}}</td>
-                            <td class="table-light">Model</td>
-                            <td>TD42</td>
-                            <input type="hidden" value="{{$vehicle_data->body_type}}" class="body_type">
-                               
+                            <input type="hidden" value="{{$vehicle_data->body_type}}" class="body_type">                           
                         <tr>
-                            <td class="table-light" scope="row">Transmission</td>
-                            <td>{{$vehicle_data->transmission}}</td>
-                            <td class="table-light">ENGINE MODEL</td>
+                            <td class="table-light">Engine Model</td>
                             <td>{{$vehicle_data->engine_model}}</td>
-                            <td class="table-light">Fuel Type</td>
-                            <td>{{$vehicle_data->fuel_type}}</td>
-                        </tr>       
-                        <tr>
                             <td class="table-light">Engine CC</td>
                             <td>{{$vehicle_data->engine_size}}</td>
-                            <td class="table-light">Seating</td>
-                            <td>{{$vehicle_data->seats}}</td>
-                            <td class="table-light">Chassis</td>
-                            <td>{{$vehicle_data->chassis}}</td>
-                        </tr>        
+                            <td class="table-light" scope="row">Gear</td>
+                            <td>{{$vehicle_data->transmission}}</td>
+                        </tr>       
                         <tr>
+                            <td class="table-light">Fuel Type</td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
                             <td class="table-light">Drive Type</td>
                             <td>{{$vehicle_data->drive_type}}</td>
                             <td class="table-light">Mileage</td>
                             <td>{{$vehicle_data->mileage}} (km)</td>
-                            <td class="table-light">Make</td>
-                            <td>{{$vehicle_data->make_type}}</td>
-                        </tr>  
+                        </tr>        
                         <tr>
-                            <td class="table-light">Width(Cm)</td>
-                            <td>{{$vehicle_data->width}}</td>
-                            <td class="table-light">Height(cm)</td>
-                            <td>{{$vehicle_data->height}}</td>
+                            <td class="table-light">Seating</td>
+                            <td>{{$vehicle_data->seats}}</td>
                             <td class="table-light">Length(cm)</td>
                             <td>{{$vehicle_data->length}}</td>
+                            <td class="table-light">Width(cm)</td>
+                            <td>{{$vehicle_data->width}}</td>
                         </tr>  
                         <tr>
-                            <td class="table-light">Steering</td>
-                            <td>{{$vehicle_data->steering}}</td>
-                            <td class="table-light">Doors</td>
-                            <td>{{$vehicle_data->doors}}</td>
-                            <td class="table-light">Fuel Type</td>
-                            <td>{{$vehicle_data->fuel_type}}</td>
-                        </tr> 
+                            <td class="table-light">Height(cm)</td>
+                            <td>{{$vehicle_data->height}}</td>
+                            <td class="table-light">Chassis</td>
+                            <td>{{$vehicle_data->chassis}}</td>
+                            <td class="table-light"></td>
+                            <td></td>
+                        </tr>  
                     </tbody>
                     <tbody class="mobile-table">
                         <tr>
-                            <td class="table-light" scope="row">STOCK NO</td>
+                            <td class="table-light" scope="row">Stock No</td>
                             <td>SM{{$vehicle_data->stock_no}}</td>
-                        </tr>    
+                        </tr>  
+                        <tr>
+                            <td class="table-light">Model Code</td>
+                            <td>{{$vehicle_data->model_code}}</td>
+                        </tr>  
                         <tr>
                             <td class="table-light">Year</td>
                             <td>{{$vehicle_data->registration}}</td>
                         </tr>
                         <tr>
-                            <td class="table-light">Model</td>
-                            <td>TD42</td>
-                        </tr>   
-                        <tr>
-                            <td class="table-light" scope="row">Transmission</td>
-                            <td>{{$vehicle_data->transmission}}</td>
-                        </tr>
-                        <tr>
-                            <td class="table-light"> ENGINE MODEL </td>
+                            <td class="table-light">Engine Model</td>
                             <td>{{$vehicle_data->engine_model}}</td>
-                        </tr>       
-                        <tr>
-                            <td class="table-light">Fuel Type</td>
-                            <td>{{$vehicle_data->fuel_type}}</td>
-                        </tr>
+                        </tr> 
                         <tr>
                             <td class="table-light">Engine CC</td>
                             <td>{{$vehicle_data->engine_size}}</td>
                         </tr>
                         <tr>
+                            <td class="table-light" scope="row">Gear</td>
+                            <td>{{$vehicle_data->transmission}}</td>
+                        </tr>
+                        <tr>
+                            <td class="table-light">Fuel Type</td>
+                            <td>{{$vehicle_data->fuel_type}}</td>
+                        </tr> 
+                        <tr>
                             <td class="table-light">Drive Type</td>
                             <td>{{$vehicle_data->drive_type}}</td>
                         </tr>
                         <tr>
-                            <td class="table-light">Seating</td>
-                            <td>{{$vehicle_data->seats}}</td>
-                        </tr>        
-                        <tr>
-                            <td class="table-light">Chassis</td>
-                            <td>{{$vehicle_data->chassis}}</td>
-                        </tr>
-                        <tr>
                             <td class="table-light">Mileage</td>
                             <td>{{$vehicle_data->mileage}} (km)</td>
-                        </tr>
+                        </tr> 
                         <tr>
-                            <td class="table-light">Make</td>
-                            <td>{{$vehicle_data->make_type}}</td>
-                        </tr>
-                        <tr>
-                            <td class="table-light">Width(Cm)</td>
-                            <td>{{$vehicle_data->width}}</td>
-                        </tr>  
-                        <tr>
-                            <td class="table-light">Steering</td>
-                            <td>{{$vehicle_data->steering}}</td>
-                        </tr>
-                        <tr>
-                            <td class="table-light">Height(cm)</td>
-                            <td>{{$vehicle_data->height}}</td>
-                        </tr>  
+                            <td class="table-light">Seating</td>
+                            <td>{{$vehicle_data->seats}}</td>
+                        </tr> 
                         <tr>
                             <td class="table-light">Length(cm) </td>
                             <td>{{$vehicle_data->length}}</td>
                         </tr>
                         <tr>
-                            <td class="table-light">Doors</td>
-                            <td>{{$vehicle_data->doors}}</td>
-                        </tr> 
+                            <td class="table-light">Width(cm)</td>
+                            <td>{{$vehicle_data->width}}</td>
+                        </tr>  
                         <tr>
-                            <td class="table-light">Fuel Type </td>
-                            <td>{{$vehicle_data->fuel_type}}</td>
+                            <td class="table-light">Height(cm)</td>
+                            <td>{{$vehicle_data->height}}</td>
+                        </tr>  
+                        <tr>
+                            <td class="table-light">Chassis</td>
+                            <td>{{$vehicle_data->chassis}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -443,10 +428,10 @@
                                             <input class="form-control"  type="text" placeholder="Full Name" name="inqu_name" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">Select your country<span class="require-lavel">*</span></label>
+                                            <label for="">Select Country<span class="require-lavel">*</span></label>
                                             <select class="form-select" name="inqu_country" required>
                                                 @foreach($country as $row)
-                                                    <option value="{{$row->id}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
+                                                    <option value="{{$row->country}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -514,7 +499,7 @@
                 <div class="clac-form">
                     <div class="calc-list">
                         <div class="calc-list-label">
-                            <label for="">Select Country</label>
+                            <label for="">Country</label>
                         </div>
                         <div class="calc-list-value">
                             <select class="form-select select-country" name="">
@@ -526,7 +511,7 @@
                     </div>
                     <div class="calc-list">
                         <div class="calc-list-label">
-                            <label for="">Select Port</label>
+                            <label for="">Port</label>
                         </div>
                         <div class="calc-list-value">
                             <select class="form-select port-pc" name="">
@@ -612,7 +597,7 @@
                                             <input class="form-control"  type="text" placeholder="Full Name" name="inqu_name" required > 
                                         </div>
                                         <div class="inquiry-right">
-                                            <label for="">Select your country<span class="require-lavel">*</span></label>
+                                            <label for="">Select country<span class="require-lavel">*</span></label>
                                             <select class="form-select" name="inqu_country" required>
                                                 @foreach($country as $row)
                                                     <option value="{{$row->country}}" {{ $current_country->country == $row->country ? "selected" : "" }}>{{$row->country}}</option>

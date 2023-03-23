@@ -22,8 +22,10 @@ class ContactController extends Controller
         ]);
     }
     public function contactEmail(Request $request){
+        $emails = ['rajika@sakuramotors.com', 'nalaka@sakuramotors.com'];
+        // dd($request->email);
         Mail::send('mail', array(
-            'is_contact'  =>'on',
+        'is_contact'  =>'on',
             'subject' => $request->get('subject'),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
@@ -31,15 +33,19 @@ class ContactController extends Controller
             'country' => $request->get('country'),
             'city' => $request->get('city'),
             'comment' => $request->get('comment'),
-        ), function($message) use ($request){
-            $message->from('inquiry@sakuramotors.com');
-            $message->to('inquiry@sakuramotors.com', $request->subject)
-                    ->subject($request->subject);
+        ), function($message) use ($request, $emails){
+            foreach($emails as $email){
+                $message->to($email)
+                        ->replyTo($request->get('email'))
+                        ->from('inquiry@sakuramotors.com', $request->get('name'))
+                        ->subject($request->subject);
+            }
         });      
 
         return back()->with('success', 'Thanks for contacting!');
     }
     public function inquiryEmail(Request $request){
+        $emails = ['rajika@sakuramotors.com', 'nalaka@sakuramotors.com'];
         Mail::send('mail', array(
             'is_contact'  =>'off',
             'vehicle_name' => $request->get('vehicle_name'),
@@ -56,10 +62,13 @@ class ContactController extends Controller
             'inqu_mobile' => $request->get('inqu_mobile'),
             'inqu_city' => $request->get('inqu_city'),
             'inqu_comment' => $request->get('inqu_comment'),
-        ), function($message) use ($request){
-            $message->from('inquiry@sakuramotors.com');
-            $message->to('inquiry@sakuramotors.com', 'Inquiry - Sakura')
-                    ->subject('Inquiry - Sakura');
+        ), function($message) use ($request, $emails){
+            foreach($emails as $email){
+                $message->to($email)
+                        ->replyTo($request->get('inqu_email'))
+                        ->from('inquiry@sakuramotors.com', $request->get('inqu_name'))
+                        ->subject('Inquiry - Sakura');
+            }
         });      
 
         $inquery = new Inquiry;

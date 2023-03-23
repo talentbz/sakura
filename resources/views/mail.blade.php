@@ -7,8 +7,9 @@
     </head>
     <style>
         table {
-            width: 80%;
-            margin: 50px auto;
+            width: 20%;
+            margin: 10px auto;
+            padding-left: 5px;
             caption-side: bottom;
             border-collapse: collapse;
         }
@@ -445,7 +446,7 @@
                     <td ><a href="{{$site_url}}">{{$site_url}}</a></td>
                 </tr>
                 <tr>
-                    <td class="table-light" scope="row">comment</td>
+                    <td class="table-light" scope="row">Comment</td>
                     <td >{{$inqu_comment}}</td>
                 </tr>
                 

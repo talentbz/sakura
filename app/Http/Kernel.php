@@ -21,6 +21,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+	\Litespeed\LSCache\LSCacheMiddleware::class,
+	\Litespeed\LSCache\LSTagsMiddleware::class,
     ];
 
     /**
@@ -66,5 +68,7 @@ class Kernel extends HttpKernel
         'Admin' => \App\Http\Middleware\Admin::class,
         'AdminRole' => \App\Http\Middleware\AdminRole::class,
         'CustomerRole' => \App\Http\Middleware\CustomerRole::class,
+	'lscache' => \Litespeed\LSCache\LSCacheMiddleware::class,
+	'lstags' => \Litespeed\LSCache\LSTagsMiddleware::class,
     ];
 }

@@ -11,10 +11,10 @@ use App\Models\NewsImage;
 class BlogController extends Controller
 {
     public function index(Request $request){
-        $news = News::leftJoin('news_image', 'news.id', '=', 'news_image.news_id')
+        $news = News::leftJoin('news_image', 'news_image.news_id', '=', 'news.id')
                     ->groupBy('news.id')
                     ->orderBy('news.created_at', 'desc')
-                    ->paginate(10);
+                    ->get();
         return view('front.pages.blog.index', [
             'news' => $news,
         ]);
@@ -23,7 +23,7 @@ class BlogController extends Controller
         $news = News::leftJoin('news_image', 'news.id', '=', 'news_image.news_id')
                     ->groupBy('news.id')
                     ->where('news.id', $id)
-                    ->first();
+                    ->first();             
         return view('front.pages.blog.details', [
             'news' => $news,
         ]);

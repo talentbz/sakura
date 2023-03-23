@@ -59,6 +59,7 @@ class PortController extends Controller
             $port_array[] = $single_port_array;
         }
         $port->port_array = $port_array;
+        
         $port->save();
         return response()->json(['result' => true, 'save port' => $port]);
     }

@@ -9,7 +9,7 @@
     <div class="hero-wrapper">
         @include('front.layouts.menu')
         <div class="banner-desc">
-            <h1>YOUR SATISFACTION IS OUR REWARD?</h1>
+            <h1>YOUR SATISFACTION IS OUR REWARD</h1>
         </div>
         <div class="banner-img">
             <img src="{{URL::asset ('/assets/frontend/images/banner_truck.png')}}" alt="">
@@ -31,12 +31,13 @@
                 <form action="{{route('front.stock')}}" method="get" class="custom-search">
                     <div class="form-content">
                         <input type="text" class="form-control search-input" placeholder="Keywords" name="search_keyword"> 
-                        <span class="bx bx-search-alt"></span>
-                        <p class="req">*Ref No., Maker, Model, Model Code, Chassis, Grade</p>
+                        <span> <button type="submit" class="btn search-submit-key"><i class="fas fa-search"></i></button></span>
+                       
+                        <p class="req">*Stock No.,Body Type, Chassis</p>
                     </div>
                     <div class="select-search">
                         <div class="input-group mb-2">
-                            <span class="input-group-text">Maker</span>
+                            <span class="input-group-text">Make</span>
                             <select class="form-select select-category" name="maker">
                                 <option value="">Any</option>
                                 @foreach($models as $model)
@@ -49,6 +50,15 @@
                             <select class="form-select subcategory" name="model_name">
                                 <option value="">Any</option>
                                 <option></option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">Gear</span>
+                            <select class="form-select" name="gear">
+                                <option value="">Any</option>
+                                @foreach($transmission as $row)
+                                    <option value="{{$row}}">{{$row}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="input-group mb-2">
@@ -71,7 +81,7 @@
                             </div>
                         </div>
 
-                        <div class="input-group mb-2">
+                        <!--<div class="input-group mb-2">
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
                                 <select class="form-select" name="from_price">
@@ -90,14 +100,14 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="advance-search mb-2">
+                        <div class="advance-search mb-2">
                             <a data-bs-toggle="modal" href="javascript:void(0)" data-bs-target=".advanced-seach-modal">
                                 Advance Search
                                 <i class="fas fa-angle-double-right"></i>    
                             </a>
                         </div> -->
                     </div>
-                    <button type="submit" class="search-submit">Search <i class="fas fa-search"></i></button>
+                    <button type="submit" class="btn search-submit">Search<i class="fas fa-search"></i></button>
                 </form>
             </div>
             <!-- /end search car -->
@@ -167,7 +177,7 @@
             <!-- /end search type -->
 
             <!-- search Maker -->
-            <div class="search-maker">
+            <!-- <div class="search-maker">
                 <div class="search-title">
                     <h3>Search by Maker</h3>
                 </div>
@@ -239,7 +249,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /search maker -->
         </div>
         <!-- /end left sidebar -->
@@ -359,11 +369,11 @@
                 @endforeach
             </div>
             <!-- /end customer voice -->`
-        </div>
+        </div> 
         <!-- /end main contents -->
 
         <!-- right sidebar -->
-        <div class="right-sidebar">
+       <div class="right-sidebar">
             <div class="news-box mb-2">
                 <a href="#">
                     <img src="{{URL::asset ('/assets/frontend/images/nes_arrivel.png')}}" alt="">
@@ -381,12 +391,12 @@
             </div> -->
             <div class="news-box mb-2">
                 <div class="fb-wrapper">
-                    <h3>FaceBook</h3>
+                    <a href='https://www.facebook.com/SakuraMotorsCo.Ltd/'><h3>FaceBook</h3> </a>
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=846808562582364&autoLogAppEvents=1" nonce="0rEHGYlH"></script>
                     <div class="fb-page" data-href="https://www.facebook.com/SakuraMotorsCo.Ltd" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SakuraMotorsCo.Ltd" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SakuraMotorsCo.Ltd">Sakura Motors Co.,Ltd</a></blockquote></div>
                 </div>
-            </div>
+            </div> 
         </div>
         <!-- /end rightsidebar -->
     </div>

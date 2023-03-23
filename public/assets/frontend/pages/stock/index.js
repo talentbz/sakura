@@ -210,13 +210,16 @@ $(document).ready(function () {
             type: "get",
         })
         .done(function (response) {
-            $('#load_more_button').remove();
             if (response.length <= 24) {
                 $('#load-more').hide();
                 //$('.auto-load').html("We don't have more data to display :(");
                 return;
             }
             $("#stock-list").append(response);
+            
+            setTimeout(function(){
+                $('.stock-spinner').addClass('hide')
+            }, 500)
             border_object = $('.contents-border-right')
             if($(window).width() <= 1024){
                 for(i=0; i<border_object.length; i++){
@@ -320,7 +323,21 @@ function price_calc(){
         $(this).find('.port').text(port_name);
         $(this).find('.totla-value').text(final_price);
     })
+
+    
 }
+// enable search icon 
+$(".form-content input").on('input', function(){
+    if($(this).val()){
+        $('.form-content span').css({'color': '#34424e', 'cursor':'pointer'})
+        $('.form-content span').click(function(){
+            $('.custom-search').closest('form').submit();
+        })
+
+    } else {
+        $('.form-content span').css({'color':'#b9bfc4'})
+    }
+})
 //   mobile calc function 
 function price_calc_mobile(){
     port_price = 0;

@@ -33,6 +33,7 @@
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{route('admin.vehicle.index')}}" >Vehicle List</a></li>
                         <li><a href="{{route('admin.vehicle.create')}}" >Add Vehicle</a></li>
+                        <li><a href="{{route('admin.vehicle.deletedList')}}" >Deleted Vehicle</a></li>
                     </ul>
                 </li>
                 <li>

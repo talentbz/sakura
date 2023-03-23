@@ -25,7 +25,9 @@ class StockController extends Controller
         }
         $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
-        // $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
+        if(!$current_country){
+            $current_country = Port::findOrFail(1); // default country is Zambia
+        }
         if($current_country->port) {
             $port_count = count(json_decode($current_country->port));
             $port_key = json_decode($current_country->port);
@@ -103,6 +105,7 @@ class StockController extends Controller
         $search_keyword = $request->search_keyword;
         $maker = $request->maker;
         $model_name = $request->model_name;
+        $gear = $request->gear;
         $from_year = $request->from_year;
         $to_year = $request->to_year;
         $from_price = $request->from_price;
@@ -128,11 +131,14 @@ class StockController extends Controller
                                     ->leftJoin(DB::raw('(SELECT id AS vid, CONVERT(SUBSTR(registration, 1, 4), SIGNED) AS year FROM vehicle) AS vehicle_year'), 'vehicle_year.vid', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT id AS price_id, ROUND(price/"'.$rate.'") AS price_usd FROM vehicle) AS vehicle_price'), 'vehicle_price.price_id', '=', 'vehicle.id')   
                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+                                    ->whereNull('vehicle.deleted_at')
                                     ->where(function ($q){
                                             $q->orWhere('vehicle.status', '');
                                             $q->orWhere('vehicle.status', null);
                                             $q->orWhere('vehicle.status', Vehicle::INQUIRY);
                                             $q->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED);
+                                            // $q->orWhere('vehicle.deleted_at', '');
+                                            // $q->orWhere('vehicle.deleted_at', null);
                                           })
                                     ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
                                     ->groupBy('vehicle_image.vehicle_id');
@@ -171,6 +177,9 @@ class StockController extends Controller
             if(!is_null($request->model_name)){
                 $vehicle_data = $vehicle_data->where('model_type', $request->model_name);
             }
+            if(!is_null($request->gear)){
+                $vehicle_data = $vehicle_data->where('transmission', $request->gear);  
+            }
             if(!is_null($request->from_year)){
                 $vehicle_data = $vehicle_data->where('year', '>=', $request->from_year);  
             }
@@ -201,7 +210,7 @@ class StockController extends Controller
             // if(!is_null($price_country) && !is_null($price_port) && !is_null($inspection) && !is_null($insurance)){
                 
             // }
-            $vehicle_data = $vehicle_data->paginate(24);
+            $vehicle_data = $vehicle_data->paginate(10);
             // if($request->id > 0) {
             //     $vehicle_data = $vehicle_data->where('vehicle.id', '<', $request->id)->paginate(24);
             // } else {
@@ -247,14 +256,14 @@ class StockController extends Controller
                                 $list.='<tbody>';
                                     $list.='<tr>';
                                         $list.='<td class="table-light" scope="result">STOCK NO</td>';
-                                        $list.='<td>SM'.$result->stock_no.'</td>';
+                                        $list.='<td>'.$result->stock_no.'</td>';
                                         $list.='<td class="table-light">Year</td>';
                                         $list.='<td>'.$result->registration.'</td>';
                                         $list.='<td class="table-light">Model</td>';
-                                        $list.='<td>'.$result->model_type.'</td>';
+                                        $list.='<td>'.$result->model_code.'</td>';
                                     $list.='</tr>';
                                     $list.='<tr>';
-                                        $list.='<td class="table-light" scope="result">Transmission</td>';
+                                        $list.='<td class="table-light" scope="result">Gear</td>';
                                         $list.='<td>'.$result->transmission.'</td>';
                                         $list.='<td class="table-light">ENGINE MODEL</td>';
                                         $list.='<td>'.$result->engine_model.'</td>';
@@ -288,17 +297,19 @@ class StockController extends Controller
                         $list.='</div>';
                         $list.='<div class="stock-mobile-contents">';
                             $list.='<div class="stock-mobile-info"><p class="stock-label">Stock No :</p>';
-                            $list.='<p class="stock-value">SM'.$result->stock_no.'</p></div>';
+                            $list.='<p class="stock-value">'.$result->stock_no.'</p></div>';
                             $list.='<div class="stock-mobile-info"><p class="stock-label">Year :</p>';
                             $list.='<p class="stock-value">'.$result->registration.'</p></div>';
-                            $list.='<div class="stock-mobile-info"><p class="stock-label">Fuel :</p>';
-                            $list.='<p class="stock-value">'.$result->fuel_type.'</p></div>';
+                            // $list.='<div class="stock-mobile-info"><p class="stock-label">Fuel :</p>';
+                            // $list.='<p class="stock-value">'.$result->fuel_type.'</p></div>';
                             $list.='<div class="stock-mobile-info"><p class="stock-label">Model :</p>';
-                            $list.='<p class="stock-value">TD42</p></div>';
-                            $list.='<div class="stock-mobile-info"><p class="stock-label">Transmission :</p>';
+                            $list.='<p class="stock-value">'.$result->model_code.'</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Gear :</p>';
                             $list.='<p class="stock-value">'.$result->transmission.'</p></div>';
-                            $list.='<div class="stock-mobile-info"><p class="stock-label">Chassis :</p>';
-                            $list.='<p class="stock-value">'.$result->chassis.'</p></div>';
+                            // $list.='<div class="stock-mobile-info"><p class="stock-label">Chassis :</p>';
+                            // $list.='<p class="stock-value">'.$result->chassis.'</p></div>';
+                            $list.='<div class="stock-mobile-info"><p class="stock-label">Engine :</p>';
+                            $list.='<p class="stock-value">'.$result->engine_model.'</p></div>';
                             $list.='<input type="hidden" class="mobile-body-type" value="'.$result->body_type.'">';
                         $list.='</div>';
                         $list.='<div class="stock-price-list">';
@@ -336,7 +347,7 @@ class StockController extends Controller
                     $last_id = $result->vehicle_id;
                 }
                 $list.='<div id="load_more">
-                            <button type="button" name="load_more_button" data-id="'.$last_id.'" id="load_more_button">Load More</button>
+                            <button type="button" name="load_more_button" data-id="'.$last_id.'" id="load_more_button">View More</button>
                         </div>';
             } else {
                 if($vehicle_data->currentPage() == 1) {
@@ -402,6 +413,7 @@ class StockController extends Controller
             'search_keyword' => $search_keyword,
             'maker' => $maker,
             'model_name' => $model_name,
+            'gear' => $gear,
             'from_year' => $from_year,
             'to_year' => $to_year,
             'from_price' => $from_price,
@@ -421,6 +433,9 @@ class StockController extends Controller
         }
         $country_ip = \Location::get($ip);
         $current_country = Port::where('country', 'LIKE', "%{$country_ip->countryName}%")->first();
+        if(!$current_country){
+            $current_country = Port::findOrFail(1); // default country is Zambia
+        }
         // $current_country = Port::where('country', 'LIKE', "%Russia%")->first();
         $total_price = '';
         $port = '';
@@ -532,7 +547,6 @@ class StockController extends Controller
                 }
             }
         }
-        
         return response()->json(['result' => true, 'port' => $port, 'port_list' =>$port_list]);
     }
 }

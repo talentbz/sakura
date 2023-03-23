@@ -18,8 +18,8 @@ class CustomerController extends Controller
         $review = UserReview::leftJoin('user_review_image', 'user_review.id', '=', 'user_review_image.user_review_id')
                             ->groupBy('user_review_image.user_review_id')
                             ->orderBy('user_review.created_at', 'desc')
+                            ->select('user_review.*', 'user_review_image.image')
                             ->get();
-        
         return view('admin.pages.customer.index', [
             'review' => $review,
         ]);

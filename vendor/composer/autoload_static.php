@@ -128,6 +128,7 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         ),
         'L' => 
         array (
+            'Litespeed\\LSCache\\' => 18,
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
@@ -404,6 +405,10 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         array (
             0 => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db',
         ),
+        'Litespeed\\LSCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/litespeed/lscache-laravel/src',
+        ),
         'League\\MimeTypeDetection\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/mime-type-detection/src',
@@ -577,6 +582,7 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         'App\\Http\\Controllers\\Admin\\ShippingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ShippingController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\VehicleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/VehicleController.php',
+        'App\\Http\\Controllers\\Admin\\VideoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/VideoController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -588,6 +594,7 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         'App\\Http\\Controllers\\Frontend\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ContactController.php',
         'App\\Http\\Controllers\\Frontend\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/CustomerController.php',
         'App\\Http\\Controllers\\Frontend\\FrontController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/FrontController.php',
+        'App\\Http\\Controllers\\Frontend\\GalleryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/GalleryController.php',
         'App\\Http\\Controllers\\Frontend\\StockController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/StockController.php',
         'App\\Http\\Controllers\\Frontend\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/UserController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -3228,6 +3235,11 @@ class ComposerStaticInit60f3c667bfe75aa78063ec28b9b3b797
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
+        'Litespeed\\LSCache\\LSCache' => __DIR__ . '/..' . '/litespeed/lscache-laravel/src/LSCache.php',
+        'Litespeed\\LSCache\\LSCacheMiddleware' => __DIR__ . '/..' . '/litespeed/lscache-laravel/src/LSCacheMiddleware.php',
+        'Litespeed\\LSCache\\LSCacheServiceProvider' => __DIR__ . '/..' . '/litespeed/lscache-laravel/src/LSCacheServiceProvider.php',
+        'Litespeed\\LSCache\\LSTagsMiddleware' => __DIR__ . '/..' . '/litespeed/lscache-laravel/src/LSTagsMiddleware.php',
+        'Litespeed\\LSCache\\LiteSpeedCache' => __DIR__ . '/..' . '/litespeed/lscache-laravel/src/LiteSpeedCache.php',
         'MaxMind\\Db\\Reader' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader.php',
         'MaxMind\\Db\\Reader\\Decoder' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader/Decoder.php',
         'MaxMind\\Db\\Reader\\InvalidDatabaseException' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader/InvalidDatabaseException.php',
