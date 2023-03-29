@@ -11,6 +11,7 @@ use App\Models\VehicleImage;
 use App\Models\Rate;
 use App\Models\UserReview;
 use App\Models\UserReviewImage;
+use App\Models\VehicleType;
 use Location;
 
 
@@ -21,62 +22,77 @@ class FrontController extends Controller
         // $ip = $request->ip();
         // $data = \Location::get('80.237.47.16');
         $rate = Rate::first()->rate;
-        $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
-                                     ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
-                                     ->whereNull('vehicle.deleted_at')
-                                     ->where(function ($q) use ($request){
-                                          $q->orWhereNull('vehicle.status');
-                                          $q->orWhereNull('vehicle.deleted_at');
-                                          $q->orWhere('vehicle.status', '=', Vehicle::INQUIRY);
-                                          $q->orWhere('vehicle.status', '=', Vehicle::INVOICE_ISSUED);
-                                        })
-                                     ->orderBy('vehicle.id', 'desc')
-                                     ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
-                                     ->groupBy('vehicle_image.vehicle_id')
-                                     ->paginate(8);
-        $best_vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
-                                    ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
-                                    ->whereNull('vehicle.deleted_at')
-                                    ->whereNotNull('vehicle.sale_price')
-                                    ->whereNotNull('vehicle.deleted_at')
-                                    ->where('vehicle.status', '')
-                                    ->orWhere('vehicle.status', Vehicle::INQUIRY)
-                                    ->orWhere('vehicle.status', Vehicle::INVOICE_ISSUED)
-                                    ->groupBy('vehicle_image.vehicle_id')
-                                    ->orderBy('vehicle.created_at', 'desc')
-                                    ->paginate(8);
-        $body_large_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Large Bus')->first();
-        $body_mini_bus = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Mini Bus')->first();
-        $body_heavy_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Heavy Truck')->first();
-        $body_light_truck = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Light Truck')->first();
-        $body_van = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Van')->first();
-        $body_mini_van = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Mini Van')->first();
-        $body_sub = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'suv')->first();
-        $body_sedan = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Sedan')->first();
-        $body_wagon = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Wagon')->first();
-        $body_pick_up = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Pick up')->first();
-        $body_machinery = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Machinery')->first();
-        $body_tractor = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Tractor')->first();
-        $body_hatchback = Vehicle::select('body_type', DB::raw('count(body_type) as body_count'))->groupBy('body_type')->where('body_type', 'Hatchback')->first();
-        
-        //make type
-        $make_toyoda = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Toyota')->first();
-        $make_nissan = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Nissan')->first();
-        $make_mitsubishi = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Mitsubishi')->first();
-        $make_honda= Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Honda')->first();
-        $make_mazda = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Mazda')->first();
-        $make_subaru = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Subaru')->first();
-        $make_suzuki = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Suzuki')->first();
-        $make_isuzu = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Isuzu')->first();
-        $make_daihatsu = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Daihatsu')->first();
-        $make_hino = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Hino')->first();
-        $make_udTrucks = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Ud Trucks')->first();
-        $make_mercedesBenz = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Mercedes benz')->first();
-        $make_bmw = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Bmw')->first();
-        $make_audi = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Audi')->first();
-        $make_chrysler = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Chrysler')->first();
-        $make_volkswagen = Vehicle::select('make_type', DB::raw('count(make_type) as make_count'))->groupBy('make_type')->where('make_type', 'Volkswagen')->first();
-        
+        // $vehicle_data = VehicleImage::leftJoin('vehicle', 'vehicle.id', '=', 'vehicle_image.vehicle_id')
+        //                              ->leftJoin(DB::raw('(SELECT vehicle_id AS vid,COUNT(vehicle_id) AS image_length FROM vehicle_image GROUP BY vehicle_image.vehicle_id) AS media_option'), 'media_option.vid', '=', 'vehicle.id')   
+        //                              ->whereNull('vehicle.deleted_at')
+        //                              ->where(function ($q) use ($request){
+        //                                   $q->orWhereNull('vehicle.status');
+        //                                   $q->orWhereNull('vehicle.deleted_at');
+        //                                   $q->orWhere('vehicle.status', '=', Vehicle::INQUIRY);
+        //                                   $q->orWhere('vehicle.status', '=', Vehicle::INVOICE_ISSUED);
+        //                                 })
+        //                              ->orderBy('vehicle.id', 'desc')
+        //                              ->orderByRaw('CONVERT(vehicle_image.image, SIGNED) asc')
+        //                              ->groupBy('vehicle_image.vehicle_id')
+        //                              ->paginate(8);
+
+        $vehicle_data = DB::select('SELECT a.*,
+                                        b.image_length,
+                                        b.*
+                                    FROM 	 vehicle	a,
+                                    (
+                                        SELECT vehicle_id,
+                                            COUNT(*)	AS image_length,
+                                            MIN(image)	AS image
+                                        FROM vehicle_image
+                                        GROUP BY vehicle_id
+                                        ) b
+                                    WHERE a.id = b.vehicle_id
+                                    AND a.status IN ("", "Inquiry", "Invoice Issued")
+                                    ORDER BY a.id DESC
+                                    LIMIT 8');
+;
+                                    //  dd($vehicle_data);
+        $best_vehicle_data = DB::select('SELECT a.*,
+                                            b.image_length,
+                                            b.*
+                                        FROM 	 vehicle	a,
+                                        (
+                                            SELECT vehicle_id,
+                                                COUNT(*)	AS image_length,
+                                                MIN(image)	AS image
+                                            FROM vehicle_image
+                                            GROUP BY vehicle_id
+                                            ) b
+                                        WHERE a.id = b.vehicle_id
+                                        AND a.sale_price IS NOT NULL
+                                        AND a.status IN ("", "Inquiry", "Invoice Issued")
+                                        ORDER BY a.id DESC
+                                        LIMIT 8');
+        $vehicle_type = DB::select('SELECT  a.*,
+                                    IFNULL(b.cnt, 0) AS cnt
+                                FROM vehicle_types a
+                                LEFT OUTER JOIN 
+                                (
+                                    SELECT body_type,
+                                        COUNT(*) 	cnt
+                                    FROM vehicle
+                                    GROUP BY body_type
+                                ) b ON a.vehicle_type = b.body_type
+                                    ORDER BY a.order_id'
+                                );
+        $make_type = DB::select('SELECT  a.*,
+                            IFNULL(b.cnt, 0) AS cnt
+                        FROM maker_types a
+                        LEFT OUTER JOIN 
+                        (
+                            SELECT make_type,
+                                COUNT(*) 	cnt
+                            FROM vehicle
+                            GROUP BY make_type
+                        ) b ON a.maker_type = b.make_type
+                            ORDER BY a.order_id'
+                        );
         //config variable
         $models = config('config.model_catgory');
         $body_type= config('config.body_type');
@@ -113,38 +129,9 @@ class FrontController extends Controller
             'year' => $year,
             'price' => $price,
             //body type
-            'body_large_bus' => $body_large_bus,
-            'body_mini_bus' => $body_mini_bus,
-            'body_heavy_truck' => $body_heavy_truck,
-            'body_light_truck' => $body_light_truck,
-            'body_van' => $body_van,
-            'body_mini_van' => $body_mini_van,
-            'body_sub' => $body_sub,
-            'body_wagon' => $body_wagon,
-            'body_sedan' => $body_sedan,
-            'body_pick_up' => $body_pick_up,
-            'body_machinery' => $body_machinery,
-            'body_tractor' => $body_tractor,
-            'body_hatchback' => $body_hatchback,
-
+            'vehicle_type' => $vehicle_type,
              //make type
-             'make_toyoda' => $make_toyoda,
-             'make_nissan' => $make_nissan,
-             'make_mitsubishi' => $make_mitsubishi,
-             'make_honda' => $make_honda,
-             'make_mazda' => $make_mazda,
-             'make_subaru' => $make_subaru,
-             'make_suzuki' => $make_suzuki,
-             'make_isuzu' => $make_isuzu,
-             'make_daihatsu' => $make_daihatsu,
-             'make_hino' => $make_hino,
-             'make_udTrucks' => $make_udTrucks,
-             'make_mercedesBenz' => $make_mercedesBenz,
-             'make_bmw' => $make_bmw,
-             'make_audi' => $make_audi,
-             'make_chrysler' => $make_chrysler,
-             'make_volkswagen' => $make_volkswagen,
-
+             'make_type' => $make_type,
              //customer voice
              'customer' => $customer,
         ]);

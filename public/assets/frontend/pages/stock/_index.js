@@ -141,6 +141,7 @@ $(document).ready(function () {
     var _token = $('input[name="_token"]').val();
     var page = 1;
     var sort_by = 'new_arriaval';
+    // infinteLoadMore(page);
     $(document).on('click', '#load_more_button', function(){
         $('#load_more_button').html('<b>Loading...</b>');
         page++;

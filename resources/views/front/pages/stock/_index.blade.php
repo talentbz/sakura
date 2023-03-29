@@ -146,6 +146,7 @@
                                 </select>
                             </div>
                         </div>
+
                     </div>
                     <button type="submit" class="btn search-submit">Search <i class="fas fa-search"></i></button>
                 </form>
@@ -275,7 +276,12 @@
                 <div id="stock-contents">
                     {{ csrf_field() }}
                     <div id="stock-list">
-                        @include('front.pages.stock.list')
+                        <!-- <div class="stock-spinner">
+                            <div class="spinner-border text-danger m-1" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div> -->
+                        
                     </div>
                 </div>
             </div>

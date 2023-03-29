@@ -81,7 +81,7 @@
                             </div>
                         </div>
 
-                        <!--<div class="input-group mb-2">
+                        {{-- <div class="input-group mb-2">
                             <span class="input-group-text">Price</span>
                             <div class="select-width">
                                 <select class="form-select" name="from_price">
@@ -105,7 +105,7 @@
                                 Advance Search
                                 <i class="fas fa-angle-double-right"></i>    
                             </a>
-                        </div> -->
+                        </div> --}}
                     </div>
                     <button type="submit" class="btn search-submit">Search<i class="fas fa-search"></i></button>
                 </form>
@@ -119,137 +119,33 @@
                 </div>
                 <div class="search-type-contents">
                     <div class="search-category">
-                        <a href="{{route('front.stock')}}{{'/?body_type=large bus'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_bus.png')}}" alt="">
-                            <p>Large Bus</p><span>({{$body_large_bus && $body_large_bus->body_count ? $body_large_bus->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=mini bus'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/minibus.png')}}" alt="">
-                            <p>Mini Bus</p><span>({{$body_mini_bus && $body_mini_bus->body_count ? $body_mini_bus->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=heavy truck'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_truck.png')}}" alt="">
-                            <p>Heavy Truck</p><span>({{$body_heavy_truck && $body_heavy_truck->body_count ? $body_heavy_truck->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=light truck'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/light-truck.png')}}" alt="">
-                            <p>Light Truck</p><span>({{$body_light_truck && $body_light_truck->body_count ? $body_light_truck->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=van'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_van.png')}}" alt="">
-                            <p>Van</p><span>({{$body_van && $body_van->body_count ? $body_van->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=mini van'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/mini-van.png')}}" alt="">
-                            <p>Mini Van</p><span>({{$body_mini_van && $body_mini_van->body_count ? $body_mini_van->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=suv'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_suv.png')}}" alt="">
-                            <p>Suv</p><span>({{$body_sub && $body_sub->body_count ? $body_sub->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=sedan'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_sedan.png')}}" alt="">
-                            <p>Sedan</p><span>({{$body_sedan && $body_sedan->body_count ? $body_sedan->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=wagon'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/wagon-r.png')}}" alt="">
-                            <p>Wagon</p><span>({{$body_wagon && $body_wagon->body_count ? $body_wagon->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=Hatchback'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_hatchback.png')}}" alt="">
-                            <p>Hatchback</p><span>({{$body_hatchback && $body_hatchback->body_count ? $body_hatchback->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=pick up'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_pickup.png')}}" alt="">
-                            <p>Pick up</p><span>({{$body_pick_up && $body_pick_up->body_count ? $body_pick_up->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=Machinery'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_machinery.png')}}" alt="">
-                            <p>Machinery </p><span>({{$body_machinery && $body_machinery->body_count ? $body_machinery->body_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?body_type=Tractor'}}">
-                            <img src="{{URL::asset ('/assets/frontend/images/s_stractor.png')}}" alt="">
-                            <p>Tractor</p><span>({{$body_tractor && $body_tractor->body_count ? $body_tractor->body_count : 0}})</span>
-                        </a>
+                        @foreach ($vehicle_type as $row)
+                            <a href="{{route('front.stock')}}{{'/?body_type='}}{{$row->vehicle_type}}" class="mb-1">
+                                <img src="{{URL::asset ('/assets/frontend/images')}}{{'/'}}{{$row->image}}" alt="">
+                                <p>{{$row->vehicle_type}}</p><span>({{$row->cnt}})</span>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <!-- /end search type -->
 
             <!-- search Maker -->
-            <!-- <div class="search-maker">
+            <div class="search-maker">
                 <div class="search-title">
                     <h3>Search by Maker</h3>
                 </div>
                 <div class="search-maker-contents">
                     <div class="search-category">
-                        <a href="{{route('front.stock')}}{{'/?make_type=toyota'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_toyota.png')}}" alt="">
-                            <p>Toyota</p><span>({{$make_toyoda && $make_toyoda->make_count ? $make_toyoda->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=nissan'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_nissan.png')}}" alt="">
-                            <p>Nissan</p><span>({{$make_nissan && $make_nissan->make_count ? $make_nissan->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=mitsubishi'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_mitsubishi.png')}}" alt="">
-                            <p>Mitsubishi</p><span>({{$make_mitsubishi && $make_mitsubishi->make_count ? $make_mitsubishi->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=honda'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_honda.png')}}" alt="">
-                            <p>Honda</p><span>({{$make_honda && $make_honda->make_count ? $make_honda->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=mazda'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_mazda.png')}}" alt="">
-                            <p>Mazda</p><span>({{$make_mazda && $make_mazda->make_count ? $make_mazda->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=subaru'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_subaru.png')}}" alt="">
-                            <p>Subaru</p><span>({{$make_subaru && $make_subaru->make_count ? $make_subaru->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=suzuki'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_suzuki.png')}}" alt="">
-                            <p>Suzuki</p><span>({{$make_suzuki && $make_suzuki->make_count ? $make_suzuki->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=isuzu'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_isuzu.png')}}" alt="">
-                            <p>Isuzu</p><span>({{$make_isuzu && $make_isuzu->make_count ? $make_isuzu->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=daihatsu'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_daihatsu.png')}}" alt="">
-                            <p>Daihatsu</p><span>({{$make_daihatsu && $make_daihatsu->make_count ? $make_daihatsu->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=hino'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_hino.png')}}" alt="">
-                            <p>Hino</p><span>({{$make_hino && $make_hino->make_count ? $make_hino->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=ud trucks'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_udtrucks.png')}}" alt="">
-                            <p>Ud Trucks</p><span>({{$make_udTrucks && $make_udTrucks->make_count ? $make_udTrucks->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=Mercedes benz'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_mercedes.png')}}" alt="">
-                            <p>Mercedes benz</p><span>({{$make_mercedesBenz && $make_mercedesBenz->make_count ? $make_mercedesBenz->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=Bmw'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_bmw.png')}}" alt="">
-                            <p>Bmw</p><span>({{$make_bmw && $make_bmw->make_count ? $make_bmw->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=Audi'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_audi.png')}}" alt="">
-                            <p>Audi</p><span>({{$make_audi && $make_audi->make_count ? $make_audi->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=Chrysler'}}" class="mb-1">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_chrysler.png')}}" alt="">
-                            <p>Chrysler</p><span>({{$make_chrysler && $make_chrysler->make_count ? $make_chrysler->make_count : 0}})</span>
-                        </a>
-                        <a href="{{route('front.stock')}}{{'/?make_type=Volkswagen'}}">
-                            <img src="{{URL::asset ('/assets/frontend/images/m_volkswagen.png')}}" alt="">
-                            <p>Volkswagen</p><span>({{$make_volkswagen && $make_volkswagen->make_count ? $make_volkswagen->make_count : 0}})</span>
-                        </a>
+                        @foreach ($make_type as $row)
+                            <a href="{{route('front.stock')}}{{'/?make_type='}}{{$row->maker_type}}" class="mb-1">
+                                <img src="{{URL::asset ('/assets/frontend/images')}}{{'/'}}{{$row->image}}" alt="">
+                                <p>{{$row->maker_type}}</p><span>({{$row->cnt}})</span>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- /search maker -->
         </div>
         <!-- /end left sidebar -->
