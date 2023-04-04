@@ -87,7 +87,7 @@
             <p class="stock-value">{{$row->transmission}}</p></div>
             <div class="stock-mobile-info"><p class="stock-label">Engine :</p>
             <p class="stock-value">{{$row->engine_model}}</p></div>
-            <input type="hidden" class="mobile-body-type" value="$row->body_type">
+            <input type="hidden" class="mobile-body-type" value="{{$row->body_type}}">
         </div>
         <div class="stock-price-list">
             <div class="fob-price">

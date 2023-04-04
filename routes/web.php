@@ -54,7 +54,7 @@ Route::get('/clear', [App\Http\Controllers\Frontend\FrontController::class, 'cle
 
 // admin dashboard
 Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('root');
     Route::group(['prefix' => 'notification'], function(){
         Route::get('/', [App\Http\Controllers\Admin\NotificationController::class, 'index'])->name('admin.notification');
         Route::get('/mark', [App\Http\Controllers\Admin\NotificationController::class, 'markNotification'])->name('admin.markNotification');
@@ -134,6 +134,24 @@ Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
         Route::post('/reply/create', [App\Http\Controllers\Admin\ShippingController::class, 'reply'])->name('admin.shipping.reply');
         Route::get('/delete', [App\Http\Controllers\Admin\ShippingController::class, 'delete'])->name('admin.shipping.delete');
         Route::get('/change_status', [App\Http\Controllers\Admin\ShippingController::class, 'change_status'])->name('admin.shipping.change_status');
+    });
+    Route::group(['prefix' => 'category'], function(){
+        Route::group(['prefix' => 'body_type'], function(){
+            Route::get('/', [App\Http\Controllers\Admin\BodyTypeController::class, 'index'])->name('admin.bodyType.index');
+            Route::get('/add', [App\Http\Controllers\Admin\BodyTypeController::class, 'add'])->name('admin.bodyType.add');
+            Route::post('/add_post', [App\Http\Controllers\Admin\BodyTypeController::class, 'add_post'])->name('admin.bodyType.add_post');
+            Route::get('/edit/{id}', [App\Http\Controllers\Admin\BodyTypeController::class, 'edit'])->name('admin.bodyType.edit');
+            Route::post('/edit_post', [App\Http\Controllers\Admin\BodyTypeController::class, 'edit_post'])->name('admin.bodyType.edit_post');
+            Route::get('/delete', [App\Http\Controllers\Admin\BodyTypeController::class, 'delete'])->name('admin.bodyType.delete');
+        });
+        Route::group(['prefix' => 'maker_type'], function(){
+            Route::get('/', [App\Http\Controllers\Admin\MakerTypeController::class, 'index'])->name('admin.makerType.index');
+            Route::get('/add', [App\Http\Controllers\Admin\MakerTypeController::class, 'add'])->name('admin.makerType.add');
+            Route::post('/add_post', [App\Http\Controllers\Admin\MakerTypeController::class, 'add_post'])->name('admin.makerType.add_post');
+            Route::get('/edit/{id}', [App\Http\Controllers\Admin\MakerTypeController::class, 'edit'])->name('admin.makerType.edit');
+            Route::post('/edit_post', [App\Http\Controllers\Admin\MakerTypeController::class, 'edit_post'])->name('admin.makerType.edit_post');
+            Route::get('/delete', [App\Http\Controllers\Admin\MakerTypeController::class, 'delete'])->name('admin.makerType.delete');
+        });
     });
     Route::get('/edit_profile', [App\Http\Controllers\Admin\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
     Route::post('/update_profile', [App\Http\Controllers\Admin\AdminController::class, 'update_profile'])->name('admin.update_profile');

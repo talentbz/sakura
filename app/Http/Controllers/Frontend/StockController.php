@@ -68,18 +68,25 @@ class StockController extends Controller
         $country= Port::get();
         $year = [];
         $price =[];
-        $vehicle_type = DB::select('SELECT  a.*,
-                                    IFNULL(b.cnt, 0) AS cnt
-                                FROM vehicle_types a
-                                LEFT OUTER JOIN 
-                                (
-                                    SELECT body_type,
-                                        COUNT(*) 	cnt
-                                    FROM vehicle
-                                    GROUP BY body_type
-                                ) b ON a.vehicle_type = b.body_type
-                                    ORDER BY a.order_id'
-                                );
+        // $vehicle_type = DB::select('SELECT  a.*,
+        //                             IFNULL(b.cnt, 0) AS cnt
+        //                         FROM vehicle_types a
+        //                         LEFT OUTER JOIN 
+        //                         (
+        //                             SELECT body_type,
+        //                                 COUNT(*) 	cnt
+        //                             FROM vehicle
+        //                             GROUP BY body_type
+        //                         ) b ON a.vehicle_type = b.body_type
+        //                             ORDER BY a.order_id'
+        //                         );
+
+        $vehicle_type = DB::table('vehicle_types as a')
+                            ->leftJoin(DB::raw('(SELECT body_type, COUNT(*) cnt FROM vehicle WHERE deleted_at IS NULL GROUP BY body_type) as b'), 'a.vehicle_type', '=', 'b.body_type')
+                            ->select('a.*', DB::raw('IFNULL(b.cnt, 0) AS cnt'))
+                            ->orderBy('a.order_id')
+                            ->get();
+                            
         $make_type = DB::select('SELECT  a.*,
                             IFNULL(b.cnt, 0) AS cnt
                         FROM maker_types a

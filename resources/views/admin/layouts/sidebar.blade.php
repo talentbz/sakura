@@ -8,7 +8,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{route('root')}}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Dashboards</span>
                     </a>
@@ -34,6 +34,18 @@
                         <li><a href="{{route('admin.vehicle.index')}}" >Vehicle List</a></li>
                         <li><a href="{{route('admin.vehicle.create')}}" >Add Vehicle</a></li>
                         <li><a href="{{route('admin.vehicle.deletedList')}}" >Deleted Vehicle</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-briefcase-alt-2"></i>
+                        <span>Category</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.bodyType.index')}}" >Vehicle Type</a></li>
+                        <li><a href="{{route('admin.bodyType.add')}}" >Add Vehicle Type</a></li>
+                        <li><a href="{{route('admin.makerType.index')}}" >Maker Type</a></li>
+                        <li><a href="{{route('admin.makerType.add')}}" >Add Maker Type</a></li>
                     </ul>
                 </li>
                 <li>
